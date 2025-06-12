@@ -1,0 +1,99 @@
+<!-- jQuery -->
+<script type="text/javascript" src="../lib/js/jquery.3.7.1.js"></script>
+<script type="text/javascript" src="../lib/js/jquery.3.7.1.min.js"></script>
+<script type="text/javascript" src="../lib/js/jquery-ui.1.13.3.js"></script>
+<script type="text/javascript" src="../lib/js/datepicker-pt-BR.js"></script>
+
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        margin: 5% auto;
+        border: 1px solid #888;
+        width: 60%;
+        height: 50%;
+        background: linear-gradient(90deg, #525252 0%, black 100%);
+        border-radius: 12px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin: 10px 15px 0px 0px;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
+
+<!-- Trigger/Open The Modal -->
+<button id="abrirModalBioMentoria">Open Modal</button>
+
+<!-- The Modal -->
+<div id="modalBioMentoria" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div style="width: 100%; height: 100%; padding-top: 64px; padding-bottom: 64px; background: linear-gradient(90deg, #525252 0%, black 100%); box-shadow: 0px 0px 1px rgba(24, 24, 27, 0.04); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex; border-radius: 8px;">
+            <div style="align-self: stretch; justify-content: center; align-items: flex-start; gap: 32px; display: inline-flex;">
+                <img style="width: 350px; height: 350px; border-radius: 33px" src="https://humanograma.intranet.bb.com.br/avatar/F0493211" />
+                <div style="flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; display: inline-flex">
+                    <div style="width: 443px; color: #FCFC30; font-size: 36px; font-family: BancoDoBrasil Textos; font-weight: 300; word-wrap: break-word">Aline Castro </div>
+                    <div style="width: 443px; color: white; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 300; word-wrap: break-word">Mãe de adolescente e dois pets. Ama fazer trilhas para apreciar o sol do alto de uma montanha. Descobriu sua paixão por UX enquanto tratava as demandas do Reclame Aqui no SAC, percebendo que as pessoas queriam ser compreendidas, não apenas ressarcidas. Hoje é analista UX no CAD e responsável por algumas jornadas de destaques como: Ativo de Aniversário, Sextou com S de segurança e Momentos de Vida com Ourocard TEM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        // Get the modal
+        var modal = $("#modalBioMentoria");
+
+        // Get the button that opens the modal
+        var abreModal = $("#abrirModalBioMentoria");
+
+        // Get the <span> element that closes the modal
+        var span = $(".close").first();
+
+        // When the user clicks on the button, open the modal
+        abreModal.on("click", function() {
+            modal.show();
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.on("click", function() {
+            modal.hide();
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        $(window).on("click", function(event) {
+            if ($(event.target).is(modal)) {
+                modal.hide();
+            }
+        });
+    });
+</script>

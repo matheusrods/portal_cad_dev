@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <style>
+            body {
+                align-items: center;
+                background: #E3E3E3;
+                display: flex;
+                height: 100vh;
+                justify-content: center;
+            }
+
+            @mixin white-gradient {
+                background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+            }
+
+            /* Animation */
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-250px * 10))}
+            }
+
+
+            /* Styling */
+            .slider {
+                background: white;
+                box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+                height: 100px;
+                margin: auto;
+                overflow:hidden;
+                position: relative;
+                width: 960px;
+                
+                &::before,
+                &::after {
+                    @include white-gradient;
+                    content: "";
+                    height: 100px;
+                    position: absolute;
+                    width: 200px;
+                    z-index: 2;
+                }
+                
+                &::after {
+                    right: 0;
+                    top: 0;
+                    transform: rotateZ(180deg);
+                }
+
+                &::before {
+                    left: 0;
+                    top: 0;
+                }
+                
+                .slide-track {
+                    animation: scroll 20s linear infinite;
+                    display: flex;
+                    width: calc(250px * 14);
+                    &:hover {
+                        animation-play-state: paused;
+                    }
+                }
+                
+                .slide {
+                    height: 100px;
+                    width: 250px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide" attr-matricula="F0493211">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F0493211" alt="Professora Aline Castro">
+                    </div>
+                    <div class="slide" attr-matricula="F5009076">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F5009076" alt="Professor João Victor">
+                    </div>
+                    <div class="slide" attr-matricula="F6875001">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F6875001" alt="Professora Mariana Sakae">
+                    </div>
+                    <div class="slide" attr-matricula="F0720422">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F0720422" alt="Professora Ana Cristina">
+                    </div>
+                    <div class="slide" attr-matricula="F6072957">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F6072957" alt="Professora Keity Yuasa">
+                    </div>
+                    <div class="slide" attr-matricula="F3295827">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F3295827" alt="Professora Flávia Lima">
+                    </div>
+                    <div class="slide" attr-matricula="F9132354">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F9132354" alt="Professora Shirley Passos">
+                    </div>
+                    <div class="slide" attr-matricula="F1482039">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F1482039" alt="Professor Augusto Carvalho">
+                    </div>
+                    <div class="slide" attr-matricula="F4117657">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F4117657" alt="Professor Henrique Rosler">
+                    </div>
+                    <div class="slide" attr-matricula="F6002054">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F6002054" alt="Professora Juliana Ferreira">
+                    </div>
+                    <div class="slide" attr-matricula="F0493211">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F0493211" alt="Professora Aline Castro">
+                    </div>
+                    <div class="slide" attr-matricula="F5009076">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F5009076" alt="Professor João Victor">
+                    </div>
+                    <div class="slide" attr-matricula="F6875001">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F6875001" alt="Professora Mariana Sakae">
+                    </div>
+                    <div class="slide" attr-matricula="F0720422">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F0720422" alt="Professora Ana Cristina">
+                    </div>
+                    <div class="slide" attr-matricula="F6072957">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F6072957" alt="Professora Keity Yuasa">
+                    </div>
+                    <div class="slide" attr-matricula="F3295827">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F3295827" alt="Professora Flávia Lima">
+                    </div>
+                    <div class="slide" attr-matricula="F9132354">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F9132354" alt="Professora Shirley Passos">
+                    </div>
+                    <div class="slide" attr-matricula="F1482039">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F1482039" alt="Professor Augusto Carvalho">
+                    </div>
+                    <div class="slide" attr-matricula="F4117657">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F4117657" alt="Professor Henrique Rosler">
+                    </div>
+                    <div class="slide" attr-matricula="F6002054">
+                        <img class="imgProfessorMentoria" style="width: 100%; height: 100%; border-radius: 33px;" src="https://humanograma.intranet.bb.com.br/avatar/F6002054" alt="Professora Juliana Ferreira">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+</html>

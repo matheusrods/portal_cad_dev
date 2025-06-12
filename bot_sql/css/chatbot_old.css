@@ -1,0 +1,248 @@
+/* Fonte BancoDoBrasilTextos */
+@font-face { font-family: BancoDoBrasilTextos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasilTextos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasilTextos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasilTextos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-BoldIt.ttf');}
+
+/* Fonte BancoDoBrasilTitulos */
+@font-face { font-family: BancoDoBrasilTitulos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasilTitulos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-BoldIt.ttf');}
+
+body {
+    font-family: BancoDoBrasilTextos;;
+}
+
+#chatbot-container {
+    display: inline-flex;
+}
+
+#img-bot-sql {
+    padding-top: 25vh;
+    left: 10%;
+}
+
+#chat-header {
+    /* background-color: #4E71E5;*/
+    justify-content: left; 
+    background-color: #00FFA3;
+    color: #5F5F5F;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    display: inline-block;
+    clear: both;
+    /* font-size: 12px; */
+    font-size: 18px;
+}
+
+.message.bot {
+    background-color: #c6e7f8;
+    align-self: flex-start;
+    float: left;
+    border-bottom-left-radius: 0;
+}
+
+.code-container {
+    width: 80%; 
+    margin-bottom: 20px; 
+    position: relative;
+    background-color: #282c34;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+    width: 50%;
+    margin-bottom: 20px;
+    display: none;
+}
+#outputAntes {
+    text-align: center; 
+    margin: 10;
+    padding: 10;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%; 
+    width: 50%; 
+}
+#outputDepois {
+    text-align: center; 
+    margin: 10;
+    padding: 10;
+    flex-direction: column;
+    justify-content: center;
+    height: 50vh; 
+    width: 50%;
+    margin-bottom: 50px;
+}
+
+pre {
+    text-align: left; 
+    color: #c9d1d9; 
+    border-radius: 16px;
+    
+}
+
+#chat-window {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#chat-input-container {
+    background-color: #61dafb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+#inputField { 
+    background-color: #f9f9fc;
+    color: rgb(58, 50, 50);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-bottom: 10px;  
+    border: 1px solid #e2e7ec; 
+    width: 80%; 
+    height: 60px;
+    flex-grow: 1;
+    resize: none;
+    margin: 0;
+}
+
+#sendButton {
+    background-color: #61dafb;
+    border: none;
+    color: #282c34;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; 
+}
+
+#copyButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #61dafb;
+    border: none;
+    color: #282c34;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    
+#copyButton:hover {
+    background-color: #21a1f1;
+}
+#sendButton:hover {
+    background-color: #21a1f1;
+}
+
+#loadingIndicator {
+    text-align: center;
+    padding: 10px;
+    /* Estilos adicionais para o indicador de carregamento */
+}
+
+.spinner {
+    border: 4px solid rgba(6, 119, 172, 0.507);
+    border-top: 4px solid #53f3b6;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1750px) {
+    #img-bot-tom {
+        max-width: 85% !important;
+        max-height: 85% !important;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #chat-window {
+        height: 105vh !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #chat-window {
+        height: 130vh !important;
+    }
+
+    #img-bot-tom {
+        max-width: 70% !important;
+        max-height: 70% !important;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1750px) {
+    #img-bot-tom {
+        max-width: 85% !important;
+        max-height: 85% !important;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #chat-window {
+        height: 105vh !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #chat-window {
+        height: 130vh !important;
+    }
+
+    #img-bot-tom {
+        max-width: 70% !important;
+        max-height: 70% !important;
+    }
+}

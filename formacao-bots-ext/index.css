@@ -1,0 +1,1149 @@
+/* Estilos para a primeira div */
+.divCabecalhoLogo {
+    position: absolute;
+    top: 1rem;
+    left: 75%;
+    min-width: 10%;
+    max-width: 100%;
+    height: auto;
+}
+
+.divCabecalhoLogo img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para a segunda div */
+.divCabecalhoCapa {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: inline-grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    top: -11px;
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    min-width: 30%;
+}
+
+.divCabecalhoCapa img {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: -3%;
+}
+
+h1 > span {
+    position: relative;
+    color: white;
+    font-family: 'BancoDoBrasil Textos', sans-serif;
+    font-weight: 300;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos específicos para cada span */
+h1 > span:nth-child(1) {
+    font-size: 11px;
+    height: 11px;
+    letter-spacing: 6.89px;
+}
+
+h1 > span:nth-child(2) {
+    font-size: 60px;
+    letter-spacing: -2px;
+    line-height: 6vh;
+}
+
+h1 > span:nth-child(3) {
+    font-size: 13px;
+    height: 13px;
+}
+
+h1 > span:nth-child(4) {
+    font-size: 64px;
+    font-weight: 700;
+    height: 62px;
+    letter-spacing: -2px;
+    line-height: 3vh;
+}
+
+
+.divExternaCabecalho {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    top: 65%;
+    margin-top: -1.5%;
+    z-index: 3;
+}
+
+.divInternaCabecalho {
+    min-width: 50rem;
+    max-width: 100%; /* Garante que a div não ultrapasse a largura da tela */
+    height: 22px;
+    background: #00FFA3;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para os botões e links */
+.botaoNavega, .divInternaCabecalho a {
+    color: #13E89A;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 4px;
+}
+
+.quadroApresentacao02{
+    width: 60%;
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    flex-direction: row;
+}
+
+.subQuadroApresentacao01{
+    width: 50%;
+    text-align: center;
+    padding: 1rem;
+    text-align: left;
+}
+
+.subQuadroApresentacao02{
+    width: 50%;
+    text-align: left;
+    position: relative;
+    top: 0rem;
+    padding: 1rem;
+}
+
+.subQuadroInscricoes {
+    position: relative;
+    width: 100%;
+    left: 24rem;
+    top: -30rem;
+}
+
+.dataInscricao {
+    color: white;
+    font-size: 3rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+    position: relative;
+    align-self: flex-start;
+    text-align: left;
+    margin-top: -32px;
+}
+
+#requisitos {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -150rem;
+}
+
+#etapas {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+}
+
+.quadroPrincipalEtapas {
+    width: 100%;
+    max-width: 65vw;
+    position: relative;
+    left: 17%;
+    top: 30rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.quadrosEtapas {
+    flex: 1 1 20%;
+    border-radius: 33px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 300px;
+    border-radius: 33px;
+    border: 1px solid #465EFE;
+    box-shadow: 0px 10px 37px 5px rgba(0,0,0,0.75);
+}
+
+.dataEtapas {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.2vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.quadrEtapas, h3 {
+    font-size: 3rem;
+}
+
+.apresentacaoEtapas {
+    width: 75rem;
+    left: 23rem;
+    top: 15rem;
+    position: relative;
+    transform-origin: 0 0;
+    mix-blend-mode: plus-lighter;
+    transform: skewY(-3deg);
+}
+
+.Clicar {
+    cursor: pointer;
+}
+
+.botaoNavega {
+    color: #5F5F5F;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    word-wrap: break-word;
+    background-color: #00FFA3;
+    border: none;
+    outline: none;
+}
+
+#apresentacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h2, h3, h4, span {
+    word-wrap: break-word;
+}
+
+h2 {
+    left: 0 !important;
+}
+
+#h2Apresentacao {
+    margin-top: -35%;
+    position: absolute;
+    opacity: 0.05;
+    color: white;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    text-align: center;
+}
+
+#h2Etapas {
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+    text-align: left !important;
+    position: absolute;
+    opacity: 0.05;
+    color: white;    
+}
+
+#h2Inscricoes {
+    position: relative;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    color: white;
+    opacity: 0.05;
+    word-wrap: break-word;
+    top: -12rem;
+}
+
+#h2Requisitos {
+    position: absolute;
+    top: 115rem;
+    opacity: 0.05;
+    color: white;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+#h2LinhaDoTempo {
+    position: absolute;
+    opacity: 0.05;
+    color: white;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+    top: -20rem;
+}
+
+#h2Faq {
+    position: absolute;
+    top: 255rem;
+    opacity: 0.05;
+    color: white;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+#h2Aulas {
+    position: absolute;
+    top: 295rem;
+    opacity: 0.05;
+    color: white;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+#h2Resultados {
+    position: absolute;
+    top: 340rem;
+    opacity: 0.05;
+    color: white;
+    font-size: 10vw;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+.h3Apresentacao {
+    width: 60%;
+    font-size: 1.9rem;
+    font-weight: 300;
+    position: relative;
+    color: white;
+    text-align: left;
+    font-family: BancoDoBrasil Textos;
+    margin-top: 6%;
+}
+
+.quadroApresentacao01 {
+    width: 60%;
+    color: white;
+    font-size: 1.25rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    text-align: left;
+}
+
+.texto-responsivo {
+    display: flex;
+    position: relative;
+}
+
+#linhaDoTempo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.font400 {
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'BancoDoBrasil Textos', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.imgTrilha {
+    width: 270px;
+    height: 285px;
+    left: 1086px;
+    top: 2303.96px;
+    position: absolute;
+    transform-origin: 0 0;
+    border-radius: 5px
+}
+
+.imgReflexoTrilha {
+    position: absolute;
+    width: 270px;
+    height: 285px;
+    left: -20px;
+    top: -303px;
+    transform-origin: 0 0;
+    opacity: 0.40;
+    border-radius: 5px;
+    transform: scaleX(1) rotateY(180deg) rotateZ(3.81deg);
+    -webkit-filter: blur(2px);
+}
+
+.font300 {
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'BancoDoBrasil Textos', sans-serif;
+    font-weight: 300;
+    word-wrap: break-word;
+}
+
+.botEtapas {
+    /* width: 785px; */
+    height: 60vh;
+    left: 39rem;
+    top: -54rem;
+    position: relative;
+}
+
+.imgRegulamento {
+    /* width: 354px; */
+    position: relative;
+}
+
+.imgDuvidas {
+    /*height: 24rem;*/
+}
+
+.imgLinhaDoTempoDetalhe{
+    position: relative;
+    left: 9%;
+    top: -25%;
+}
+
+.linhaDecorativaEtapas {
+    width: 100%;
+    max-width: 31rem;
+    height: auto;
+    margin-top: -17%;
+    left: 53%;
+    position: absolute;
+}
+
+.caminhoInscricao {
+    width: 58%;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background: #00FFA3;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    margin-top: 3%;
+}
+
+.detalhesEtapas {
+    color: white;
+    font-size: 1.25rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-top: 1rem;
+}
+
+.tituloQuadroEtapas {
+    color: white;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+.h3LinhaDoTempo {
+    color: white;
+    font-size: 2rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+    text-align: left;
+    position: relative;
+    align-self: flex-start;
+    text-align: left;
+    left: 20%;
+    top: -28%;
+}
+
+.h3Faq {
+    color: white;
+    font-size: 2rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+    position: relative;
+    left: 20%;
+    /* margin-top: 7%; */
+}
+
+.quadroFaq {
+    margin-top: 12%;
+}
+
+/* .quadroPerguntaFaq {
+    width: 66%;
+    height: 100%;
+    background: rgba(63.17, 92.44, 81.90, 0.30);
+    border-radius: 24px;
+    position: relative;
+    display: flex;
+    margin: 4% 0 0 22%;
+} */
+
+.perguntaFaq {
+    width: 62%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgba(63.17, 92.44, 81.90, 0.30);
+    color: white;
+    font-size: 32px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+    padding: 1%;
+    margin: 4% 0 0 22%;
+    border-radius: 24px;
+  }
+
+.respostaFaq{
+    width: 61%;
+    height: 100%;
+    position: relative;
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;*/
+    margin: 1% 0 0 24%;
+}
+
+.h3Aulas {
+    color: white;
+    font-size: 2rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+    position: relative;
+    left: 20%;
+    /* margin-top: 8%; */
+}
+
+.quadroResultados {
+    margin-top: 11%;
+}
+
+.h3Resultados {
+    color: white;
+    font-size: 2rem;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+    position: relative;
+    left: 20%;
+    margin-top: 0%;
+}
+
+#divChamaBot {
+    position: fixed;
+    bottom: -45px;
+    left: -70px;
+    z-index: 4;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px;
+    scale: 0.65;
+}
+
+#toTop {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #00FFA3;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 99px;
+}
+
+#toTop:hover {
+    background-color: #00FFAF;
+}
+
+.divVideoAulas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.quadroAulas {
+    margin-top: 6%;
+}
+
+.divAula {
+    width: 100%;
+    max-width: 400px;
+    background: #F0F2F4;
+    /* box-shadow: 0px 16px 32.5px 6px rgba(0, 0, 0, 0.25); */
+    box-shadow: 0px 10px 37px 5px rgba(0,0,0,0.75);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.imagemAula {
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.divTituloVideoAulas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px;
+}
+
+.textoAula {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.tituloAula {
+    color: #111214;
+    font-size: 22px;
+    font-family: 'BancoDoBrasil Titulos', sans-serif;
+    font-weight: 700;
+    line-height: 27.50px;
+}
+
+.botoesAula {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0 10px 0;
+}
+
+.botaoAula {
+    padding: 9px 16px;
+    background: #FDF429;
+    border-radius: 4px;
+    color: #3354FD;
+    font-size: 12px;
+    font-family: 'BancoDoBrasil Titulos', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    flex: 1;
+}
+
+.divAcessaResultados {
+    width: 65%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    grid-template-rows: repeat(2, auto); /* Duas linhas */
+    gap: 20px; /* Espaçamento entre as divs */
+    justify-items: center;
+    align-items: center;
+    margin: 3% 0 0 15%;
+}
+
+.acessaResultado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    padding: 10px;
+    background-color: rgba(63, 92, 81, 0.30);
+    box-shadow: 0px 10px 37px 5px rgba(0,0,0,0.75);
+    border-radius: 24px;
+    text-align: center;
+    color: white;
+    gap: 20px;
+    font-family: BancoDoBrasil Textos;
+    margin-bottom: 5%;
+}
+
+.tituloResultado {
+	font-size: 28px;
+	font-weight: 700;
+	text-align: center;
+	/* margin-bottom: 20px; */
+    margin-top: 2%;
+}
+
+.botaoAcessaResultado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	width: 259px;
+	padding: 15px 32px;
+    margin: 2%;
+	background-color: #FDF429;
+	border-radius: 4px;
+	text-align: center;
+	color: #3354FD;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08px;
+	cursor: pointer;
+}
+
+.aulaIndisponivel {
+    background: #E5E7EB;
+    color: #B4B9C1;
+    cursor: not-allowed;
+}
+
+.resultado05 {
+    grid-column: 1 / -1;
+    max-width: 60%;
+}
+
+@media (max-width: 1800px) {
+    #linhaDoTempo {
+        margin-top: 11%;
+    }
+
+    .divVideoAulas {
+        flex-wrap: nowrap;
+        padding: 0 6%;
+    }
+
+    .quadroAulas {
+        margin-top: 13%;
+    }
+
+    
+}
+
+@media (max-width: 1700px) {
+    .imgLinhaDoTempoDetalhe{
+        left: 13%;
+        width: 90%;
+        top: -15%;
+    }
+
+    #linhaDoTempo {
+        margin-top: 15%;
+    }
+
+    .detalhesEtapas {
+        font-size: 1.15rem;
+    }
+
+    .h3Aulas{
+        margin-top: 0%;
+    }
+    
+    .quadroFaq {
+        margin-top: 15%;
+    }
+
+    .quadroResultados {
+        margin-top: 16%;
+    }
+
+    .quadroAulas {
+        margin-top: 9%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .botEtapas {
+        top: -62rem !important;
+        left: 34rem;
+    }
+
+    #h2Apresentacao {
+        margin-top: -47%;
+    }
+
+    .h3Apresentacao {
+        font-size: 1.6rem;
+    }
+
+    .detalhesEtapas {
+        font-size: 1.1rem;
+    }
+
+    #linhaDoTempo {
+        margin-top: 18%;
+    }
+    
+    .h3LinhaDoTempo{
+        top: -34%;
+    }
+
+    h1 > span:nth-child(2) {
+        line-height: 7vh;
+    }
+
+    h1 > span:nth-child(4){
+        line-height: 6vh;
+    }
+
+    .divVideoAulas {
+        margin-top: 0%;
+    }
+
+    .quadroFaq {
+        margin-top: 19%;
+    }
+}
+
+@media (max-width: 1500px) {
+    html {
+        zoom: 0.9;
+    }
+
+    h3 {
+        font-size: 24px;
+        left: 5%;
+    }
+    
+    h4 {
+        font-size: 24px;
+        left: 5%;
+    }
+    
+    .font300, .font400 {
+            font-size: 2.3rem;
+    }
+
+    .linhaDecorativaEtapas, .botEtapas {
+        display: none;
+    }
+
+    /* .etapaFormacao {
+        height: 58rem !important;
+    } */
+    
+    .imgLinhaDoTempoDetalhe{
+        left: 14%;
+        width: 88%;
+        top: -13%;
+    }
+    
+    #h2Apresentacao {
+        margin-top: -45%;
+    }
+
+    .h3Apresentacao {
+        font-size: 1.5rem;
+    }
+
+    #linhaDoTempo {
+        margin-top: 50%;
+    }
+
+    .divExternaCabecalho {
+        margin-top: -3.5%;
+    }
+
+    h1 > span:nth-child(2) {
+        line-height: 7vh;
+    }
+
+    h1 > span:nth-child(4){
+        line-height: 6vh;
+    }
+
+    .quadroFaq {
+        margin-top: 14%;
+    }
+
+    .h3Aulas {
+        margin-top: 17%;
+    }
+
+    .quadroResultados {
+        margin-top: 11%;
+    }
+}
+
+@media (max-width: 1450px) {
+    .quadroResultados {
+        margin-top: 15%;
+    }
+}
+
+@media (max-width: 1400px) {
+    html {
+        zoom: 0.75;
+    }
+
+    .divExternaCabecalho {
+        margin-top: -7.5%;
+    }
+
+    .font300, .font400 {
+        font-size: 1.8rem; /* Tamanho da fonte menor para telas pequenas */
+    }
+
+    /* .etapaInscricao {
+        height: 37rem !important;
+    }
+
+    .etapaFormacao {
+        height: 64rem !important;
+    }
+
+    .etapaEstagio {
+        height: 19rem !important;
+    } */
+
+    .imgRegulamento {
+        width: 300px;
+    }
+    
+    .imgDuvidas {
+        width: 300px;
+        right: -10px;
+        position: relative;
+    }
+
+    .imgLinhaDoTempoDetalhe{
+        left: 15%;
+        width: 85%;
+        top: -9%;
+    }
+
+    #h2Aulas {
+        margin-top: 4%;
+    }
+
+    .h3Aulas {
+        margin-top: 12%;
+    }
+    
+    @supports (-moz-appearance:none) {
+        html {
+            font-size: 0.87rem;
+        }
+
+        .imgDuvidas {
+            width: 250px;
+            right: -10px;
+            position: relative;
+        }
+
+        .imgRegulamento {
+            width: 250px;
+        }
+
+        /* #divChamaBot {
+            position: fixed;
+            bottom: -45px;
+            left: -70px;
+            z-index: 4;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 15px;
+            scale: 0.65;
+        } */
+    }
+    
+    
+
+    .imgReflexoTrilha, .imgTrilha {
+        display: none;
+    }
+
+    h3 {
+        font-size: 1.7rem !important;
+    }
+
+    #h2Apresentacao {
+        margin-top: -45%;
+    }
+
+    #linhaDoTempo {
+        margin-top: 58%;
+    }
+
+    h1 > span:nth-child(2) {
+        line-height: 10vh;
+    }
+
+    h1 > span:nth-child(4){
+        line-height: 8vh;
+    }
+
+    .quadroFaq {
+        margin-top: 3%;
+    }
+}
+
+@media (max-width: 1300px) {
+    @supports (-moz-appearance:none) {
+        html {
+            font-size: 0.87rem;
+        }
+
+        .imgDuvidas {
+            width: 250px;
+            right: -10px;
+            position: relative;
+        }
+
+        .imgRegulamento {
+            width: 250px;
+        }
+
+        /* #divChamaBot {
+            position: fixed;
+            bottom: -45px;
+            left: -70px;
+            z-index: 4;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 15px;
+            scale: 0.65;
+        } */
+    }
+    html {
+        zoom: 0.75;
+        /* -moz-transform: scale(0.70);
+        -moz-transform-origin: 50% 0; */
+    }
+
+    .divExternaCabecalho {
+        top: 8%;
+    }
+
+    #h2Apresentacao {
+        margin-top: -50%;
+    }
+    .subQuadroInscricoes {
+        top: -23rem;
+    }
+    
+    #requisitos {
+        top: -147rem;
+    }
+
+    #h2Requisitos {
+        top: 122rem;
+    }
+
+    .h3Apresentacao {
+        width: 80%;
+        left: 10%
+    }
+
+    #h2Aulas {
+        margin-top: 8%;
+    }
+
+    .divVideoAulas {
+        gap: 16px;
+    }
+
+    .h3Aulas {
+        margin-top: 14%;
+    }
+
+    .quadroFaq {
+        margin-top: 7%;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        zoom: 0.7;
+    }
+
+    h3 {
+        font-size: 1.5rem !important;
+    }
+    h4 {
+        font-size: 18px;
+        /* top: 15rem; */
+        left: 5%;
+    }
+
+    .font300, .font400 {
+        font-size: 1.7rem; /* Tamanho da fonte menor para telas pequenas */
+    }
+
+    /* .etapaInscricao {
+        height: 40rem !important;
+    }
+
+    .etapaFormacao {
+        height: 65rem !important;
+    }
+
+    .etapaEstagio {
+        height: 22rem !important;
+    } */
+
+    .imgLogoRodape {
+        display: none;
+    }
+
+    .imgDuvidas {
+        height: 10rem;
+        right: -30px;
+    }
+
+    .imgRegulamento {
+        height: 10rem;
+        left: -10px;
+    }
+
+    .quadroFaq {
+        margin-top: 14%;
+    }
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .divInternaCabecalho {
+        width: 90%; /* Ajuste a largura conforme necessário */
+        height: 18px; /* Ajuste a altura conforme necessário */
+    }
+}
+
+#AtualizacaoRegulamento{
+    color: white;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    padding-left: 10%;
+    margin-top: 2.5%;
+}

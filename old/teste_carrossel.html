@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carrossel</title>
+
+    <link href="../lib/css/bootstrap-grid.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-grid.rtl.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-grid.rtl.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-reboot.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-reboot.rtl.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-reboot.rtl.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-utilities.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-utilities.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-utilities.rtl.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap-utilities.rtl.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap.rtl.css" rel="stylesheet">
+    <link href="../lib/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../lib/js/jquery.3.7.1.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery.3.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery-ui.1.13.3.js"></script>
+    <script type="text/javascript" src="../lib/js/datepicker-pt-BR.js"></script>
+
+    <!-- CSS Jquery Datepicker-->
+    <link href="../lib/css/jquery-ui.css" rel="stylesheet">
+
+    <!-- JS Bootstrap -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/bootstrap.bundle.js"></script>
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/bootstrap.esm.js"></script>
+    <script src="../lib/js/bootstrap.esm.min.js"></script>
+    <script src="../lib/js/bootstrap.js"></script>
+    <script src="../lib/js/bootstrap.min.js"></script>
+
+    <style>
+        @media (max-width: 767px) {
+            .carousel-inner .carousel-item>div {
+                display: none;
+            }
+
+            .carousel-inner .carousel-item>div:first-child {
+                display: block;
+            }
+        }
+
+        .carousel-inner .carousel-item.active,
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+            display: flex;
+        }
+
+        /* medium and up screens */
+        @media (min-width: 768px) {
+
+            .carousel-inner .carousel-item-end.active,
+            .carousel-inner .carousel-item-next {
+                transform: translateX(25%);
+            }
+
+            .carousel-inner .carousel-item-start.active,
+            .carousel-inner .carousel-item-prev {
+                transform: translateX(-25%);
+            }
+        }
+
+        .carousel-inner .carousel-item-end,
+        .carousel-inner .carousel-item-start {
+            transform: translateX(0);
+        }
+
+        .provaSocial {
+            width: 100.1%;
+            height: auto;
+            left: 0px;
+            position: relative;
+            background: url(https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png);
+        }
+
+        .tituloPassaramPorAquiMentoria {
+            width: 100%;
+            height: 40vh;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #FCFC30;
+            font-size: 96px;
+            font-family: BancoDoBrasil Titulos;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .imagensPassaramPorAquiMentoria {
+            width: 100%;
+            padding-left: 208px;
+            left: 0px;
+            position: relative;
+            justify-content: flex-start;
+            align-items: flex-start;
+            display: inline-flex;
+            background: #83FFEA;
+        }
+
+        .tituloOQueDizemSobreMentoria {
+            width: 100%;
+            height: 40vh;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #FCFC30;
+            font-size: 96px;
+            font-family: BancoDoBrasil Titulos;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .quadroOQueDizemSobreMentoria {
+            width: 80%;
+            position: relative;
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 69px;
+            border-radius: 17px;
+        }
+
+        .nomeDepoimentoMentoria {
+            width: 271px;
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-family: BancoDoBrasil Titulos;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .imagemDepoimentoMentoria {
+            width: 315px;
+            height: 128px;
+            position: relative;
+            background: #6FDDE8;
+            border-top-left-radius: 17px
+        }
+
+        .cargoDepoimentoMentoria {
+            width: 271px;
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-family: BancoDoBrasil Titulos;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .dependenciaDepoimentoMentoria {
+            width: 271px;
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-family: BancoDoBrasil Titulos;
+            font-weight: 300;
+            word-wrap: break-word;
+        }
+
+        .quadroDepoimentoMentoria {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            width: 830px;
+            height: 497px;
+            position: relative;
+            background: rgba(217, 217, 217, 0.62);
+            border-radius: 0 17px 17px 0;
+        }
+
+        .textoDepoimentoMentoria {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 383px;
+            position: relative;
+            color: white;
+            font-size: 32px;
+            font-family: BancoDoBrasil Textos;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .imgDepoenteMentoria {
+            width: 315px;
+            height: 369px;
+            position: relative;
+            border-top-left-radius: 17px;
+        }
+
+        .dadosDepoenteMentoria {
+            width: 315px;
+            height: 128px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: #6FDDE8;
+            border-radius: 0 0 0 17px;
+        }
+
+        .detalheOQueDizem {
+            width: 30%;
+            height: auto;
+            position: relative;
+            display: flex;
+        }
+
+        /*CSS do carrossel*/
+
+        .carousel {
+            height: 90vh;
+        }
+
+        /* .slides {
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } */
+        
+        
+
+        .slide {
+            width: 80%;
+            height: 100%;
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 80%;
+            object-fit: fill;
+            border-radius: 20px;
+        }
+
+        .navigation {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom: 10;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 9%;
+        }
+
+        .navigation label {
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+
+        .botao_Carousel{
+            display: none;
+        }
+
+
+        #slide1:checked ~ .slides .slide:nth-child(1),
+        #slide2:checked ~ .slides .slide:nth-child(2),
+        #slide3:checked ~ .slides .slide:nth-child(3),
+        #slide4:checked ~ .slides .slide:nth-child(4),
+        #slide5:checked ~ .slides .slide:nth-child(5) {
+            display: block;
+        }
+
+        .detalheOQueDizem {
+            transition: opacity .25s ease-in-out , top .25s ease-in-out;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+
+    <div class="carousel" style="width: 100%; position: relative" id="container">
+        <input type="radio" class = "botao_Carousel" name="carousel" id="slide1" checked>
+        <input type="radio" class = "botao_Carousel" name="carousel" id="slide2">
+        <input type="radio" class = "botao_Carousel" name="carousel" id="slide3">
+        <input type="radio" class = "botao_Carousel" name="carousel" id="slide4">
+        <input type="radio" class = "botao_Carousel" name="carousel" id="slide5">
+        <div class="slides">
+            <div class="slide">
+                <div class="detalheOQueDizem quadroDetalhe01">
+                    <div class="imagemEDadosDepoenteMentoria" style="margin-left: 50%;">
+                        <img class="imgDepoenteMentoria" src="/lib/img/apps/mentoria/imgDepoenteQuadro01.png">
+                        <div class="dadosDepoenteMentoria">
+                            <div class="nomeDepoimentoMentoria">Bruno P Siqueira</div>
+                            <div class="cargoDepoimentoMentoria">Gerente de Setor</div>
+                            <div class="dependenciaDepoimentoMentoria">Ditec - XXXX</div>
+                        </div>
+                    </div>
+                                
+                    <div class="quadroDepoimentoMentoria">
+                    <div style="width: 100%; height: 1%; color: white; font-size: 128px; font-family: Balthazar; font-weight: 400; word-wrap: break-word; margin-top: -8rem;">“</div>
+                        <div class="textoDepoimentoMentoria">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="detalheOQueDizem quadroDetalhe02">
+                    <div class="imagemEDadosDepoenteMentoria" style="margin-left: 50%;">
+                        <img class="imgDepoenteMentoria" src="/lib/img/apps/mentoria/imgDepoenteQuadro01.png">
+                        <div class="dadosDepoenteMentoria">
+                            <div class="nomeDepoimentoMentoria">Bruno P Siqueira</div>
+                            <div class="cargoDepoimentoMentoria">Gerente de Setor</div>
+                            <div class="dependenciaDepoimentoMentoria">Ditec - XXXX</div>
+                        </div>
+                    </div>
+                                
+                    <div class="quadroDepoimentoMentoria">
+                    <div style="width: 100%; height: 1%; color: white; font-size: 128px; font-family: Balthazar; font-weight: 400; word-wrap: break-word; margin-top: -8rem;">“</div>
+                        <div class="textoDepoimentoMentoria">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="detalheOQueDizem quadroDetalhe03">
+                    <div class="imagemEDadosDepoenteMentoria" style="margin-left: 50%;">
+                        <img class="imgDepoenteMentoria" src="/lib/img/apps/mentoria/imgDepoenteQuadro01.png" />
+                        <div class="dadosDepoenteMentoria">
+                            <div class="nomeDepoimentoMentoria">Bruno P Siqueira</div>
+                            <div class="cargoDepoimentoMentoria">Gerente de Setor</div>
+                            <div class="dependenciaDepoimentoMentoria">Ditec - XXXX</div>
+                        </div>
+                    </div>
+                                
+                    <div class="quadroDepoimentoMentoria">
+                    <div style="width: 100%; height: 1%; color: white; font-size: 128px; font-family: Balthazar; font-weight: 400; word-wrap: break-word; margin-top: -8rem;">“</div>
+                        <div class="textoDepoimentoMentoria">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="detalheOQueDizem quadroDetalhe04">
+                    <div class="imagemEDadosDepoenteMentoria" style="margin-left: 50%;">
+                        <img class="imgDepoenteMentoria" src="/lib/img/apps/mentoria/imgDepoenteQuadro01.png" />
+                        <div class="dadosDepoenteMentoria">
+                            <div class="nomeDepoimentoMentoria">Bruno P Siqueira</div>
+                            <div class="cargoDepoimentoMentoria">Gerente de Setor</div>
+                            <div class="dependenciaDepoimentoMentoria">Ditec - XXXX</div>
+                        </div>
+                    </div>
+                                
+                    <div class="quadroDepoimentoMentoria">
+                    <div style="width: 100%; height: 1%; color: white; font-size: 128px; font-family: Balthazar; font-weight: 400; word-wrap: break-word; margin-top: -8rem;">“</div>
+                        <div class="textoDepoimentoMentoria">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="detalheOQueDizem quadroDetalhe05">
+                    <div class="imagemEDadosDepoenteMentoria" style="margin-left: 50%;">
+                        <img class="imgDepoenteMentoria" src="/lib/img/apps/mentoria/imgDepoenteQuadro01.png" />
+                        <div class="dadosDepoenteMentoria">
+                            <div class="nomeDepoimentoMentoria">Bruno P Siqueira</div>
+                            <div class="cargoDepoimentoMentoria">Gerente de Setor</div>
+                            <div class="dependenciaDepoimentoMentoria">Ditec - XXXX</div>
+                        </div>
+                    </div>
+                                
+                    <div class="quadroDepoimentoMentoria">
+                    <div style="width: 100%; height: 1%; color: white; font-size: 128px; font-family: Balthazar; font-weight: 400; word-wrap: break-word; margin-top: -8rem;">“</div>
+                        <div class="textoDepoimentoMentoria">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="detalheOQueDizem quadroDetalhe06">
+                    <div class="imagemEDadosDepoenteMentoria" style="margin-left: 50%;">
+                        <img class="imgDepoenteMentoria" src="/lib/img/apps/mentoria/imgDepoenteQuadro01.png" />
+                        <div class="dadosDepoenteMentoria">
+                            <div class="nomeDepoimentoMentoria">Bruno P Siqueira</div>
+                            <div class="cargoDepoimentoMentoria">Gerente de Setor</div>
+                            <div class="dependenciaDepoimentoMentoria">Ditec - XXXX</div>
+                        </div>
+                    </div>
+                                
+                    <div class="quadroDepoimentoMentoria">
+                    <div style="width: 100%; height: 1%; color: white; font-size: 128px; font-family: Balthazar; font-weight: 400; word-wrap: break-word; margin-top: -8rem;">“</div>
+                        <div class="textoDepoimentoMentoria">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+            <label for="slide4"></label>
+            <label for="slide5"></label>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="../lib/js/jquery.3.7.1.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery.3.7.1.min.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery-ui.1.13.3.js"></script>
+<body>
+    <div style="display: flex;">
+        <p>PF</p>
+        <label class="switch">
+            <input id="chavePfPj" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <p>PJ</p>
+    </div>
+    <div id="pf" style="background-color: #570010; display: block; width: 250px; height: 250px;">
+
+    </div>
+    <div id="pj" style="background-color: #0057fe; display: block; width: 250px; height: 250px; display: none;">
+
+    </div>
+
+    <input id="selecionaData" type="date">
+      
+    <script>
+        $('#chavePfPj').on('change', function(){
+            var check = $('#chavePfPj').is(":checked");
+            if(check == true){
+                $('#pj').css('display', 'block');
+                $('#pf').css('display', 'none');
+            } else {
+                $('#pf').css('display', 'block');
+                $('#pj').css('display', 'none');
+            }
+        });
+        
+        $(function() {
+            // $("#datepicker").datepicker({
+            // });
+
+            $("#selecionaData").datepicker("option", "dateFormat", "dd-mm-yy");
+
+            // $("#input").click(function(){
+            //     $("#datepicker").datepicker({
+            //         maxDate: '2024-06-01'
+            //     });
+                    
+            // });
+
+            $('#selecionaData').on('change', function(){
+                alert($('#selecionaData').val());
+            });
+        });
+
+    </script>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2D37F5;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+    </style>
+</body>
+</html>

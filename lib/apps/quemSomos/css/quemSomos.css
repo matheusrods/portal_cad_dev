@@ -1,0 +1,482 @@
+.squadsFuncionarios{
+    background: white;
+}
+
+.funcisSquads {
+    cursor:pointer;
+    flex: 1 1 0;
+    color: #49494F;
+    font-size: 24px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    word-wrap: break-word
+}
+
+.nossasEquipes {
+    width: 100%;
+    height: auto;
+    padding: 32px 8px 32px 8px;
+    background: #F0F2F4;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* gap: 16px; */
+    display: inline-flex
+}
+
+.temosVagas {
+    width: 100%;
+    height: auto;
+    /* padding: 0px 8px 64px 8px; */
+    background: #F0F2F4;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    display: inline-flex;
+}
+
+.divSquad {
+    width: 50%;
+    padding: 8px 24px;
+    /* box-shadow: -5px 0px #000; */
+    background: white;
+    /* border-radius: 16px; */
+    border-bottom: 1px solid #F0F2F4;
+    justify-content: center;
+    align-items: center;
+}
+
+.divSquad:hover {
+    box-shadow: -5px 0px #ccc;
+}
+
+button[class*=botaoSetaSquad] {
+    width: 32px;
+    height: 32px;
+    border-radius: 99px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.classSquads {
+    display:none;
+    height: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+    /* background: #f0f2f4; */
+    background: white;
+    border-radius: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.funciSquad {
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    justify-content: center;
+    padding-bottom: 8px;
+}
+
+.detalhesFunci {
+    height: auto;
+    width: 25vh;
+    padding: 5px 8px;
+    background: #f0f2f4;
+    border-radius: 16px;
+    flex-direction: column;
+    gap: 8px;
+    margin: 1vh 1vh 0vh 1vh;
+    box-shadow: 4px 4px 4px #aaa;
+}
+
+.detalheNomeFunci {
+    align-self: stretch;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.detalheCargoFunci {
+    align-self: stretch;
+    text-align: center;
+    color: black;
+    font-size: 13px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+}
+
+.detalheFunciTop {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+}
+
+.detalheFunciBottom {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    display: flex
+}
+
+.detalheFunciFoto {
+    width: 95px;
+    height: 95px;
+    background: #D9D9D9;
+    border-radius: 9999px
+}
+
+.detalheFunciFotoPerfil {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.abreHumanograma {
+    text-decoration: none;
+    display: contents;
+}
+
+.gerenteSquad {
+    display: contents;
+}
+
+.detalheGerente {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    background: #F0F2F4;
+    border-radius: 16px;
+    width: 25vh;
+    box-shadow: 4px 4px 4px #aaa;
+    padding: 5px;
+}
+
+.nossasEquipes {
+    width: 100%;
+    height: auto;
+    /* padding: 64px 8px 64px 8px; */
+    padding: 32px 8px 32px 8px;
+    background: #F0F2F4;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: inline-flex;
+}
+
+.descricaoQuemSomos {
+    width: 100%;
+    height: auto;
+    /* padding: 64px 8px 64px 8px; */
+    background: #FFF;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: inline-flex;
+}
+
+.textoDescricaoQuemSomos {
+    width: 55%;
+    /* padding: 4rem 0rem 4rem 0rem; */
+
+    /* Nova altura de início de texto após mudança da foto de capa */
+    padding: 8rem 0rem 4rem 0rem;
+}
+
+.divSetor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4vh;
+}
+
+.nomeSetor {
+    font-family: BancoDoBrasilTextos;
+    font-weight: 700;
+}
+
+.divSetoresSquads {
+    width: 100%;
+    color: #49494F;
+    font-size: 32px;
+    font-family: BancoDoBrasilTextos;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 2rem;
+    margin-left: 50vw;
+}
+
+.descricaoSquad {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.tituloNossasEquipes {
+    width: 100%;
+    color: #49494F;
+    font-size: 48px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.descricaoSetor {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.tituloTemosVagas {
+    width: 60%;
+    text-align: center;
+    color: #49494F;
+    font-size: 48px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word
+}
+
+.descricaoTemosVagas {
+    width: 50%;
+    color: #49494F;
+    font-size: 18px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.apresentacaoTemosVagas {
+    width: 100%;
+    height: auto;
+    /* padding: 64px 8px 64px 8px; */
+    padding: 32px 8px 32px 8px;
+    background: #FFF;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    display: inline-flex;
+}
+
+.descricaoAtividadesVagas {
+    width: 100%;
+    height: 100%;
+    padding-top: 32px;
+    /* padding-bottom: 32px; */
+    background: #F0F2F4;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    display: inline-flex;
+}
+
+.quadroDadosVagas{
+    width: 19rem; 
+    height: 13rem; 
+    background: white; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    border-radius: 16px; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center; 
+    /* gap: 8px;  */
+    display: inline-flex;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.dadosVaga{
+    display: grid;  
+    align-content: stretch; 
+    justify-content: space-evenly; 
+    padding-left:10px;  
+    align-items: start; 
+    justify-items: start;
+    /* line-height: 190%; */
+}
+
+
+.quadroVagas {
+    background: #FFF;
+    width: 100%;
+    /* display: inline-block; */
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 64px;
+}
+
+.descCargo{
+    color: #49494F; 
+    font-size: 26px; 
+    height: 40%; 
+    width: 80%; 
+    font-family: BancoDoBrasil Textos; 
+    font-weight: 700; 
+    word-wrap: break-word;
+    line-height: 120%; 
+}
+
+.codVaga{
+    text-align: center; 
+    color: black; 
+    font-size: 13px; 
+    height: 30%; 
+    font-family: BancoDoBrasil Textos; 
+    font-weight: 300; 
+    word-wrap: break-word;
+}
+
+.qtdVagas{
+    text-align: center; 
+    color: #49494F; 
+    font-size: 160px; 
+    font-family: BancoDoBrasil Textos; 
+    font-weight: 700; 
+    word-wrap: break-word;
+}
+
+.quadroVagasQuantidade {
+    width:60%;
+    gap: 16px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  
+}
+
+
+/* novo layout do cabeçalho do "quem somos?" após mudança da foto*/
+/* .textoFotoQuemSomos {
+    font-family: BancoDoBrasilTitulos;
+    color:#FFFFFF;
+    position: absolute;
+    padding-top: 5rem;
+    font-size: 8rem;
+    letter-spacing: -11px;
+    font-weight: bold;
+} */
+
+.textoFotoQuemSomos {
+    font-family: BancoDoBrasilTitulos;
+    color: #FFFFFF;
+    position: absolute;
+    padding-top: 30rem;
+    font-size: 11rem;
+    letter-spacing: -11px;
+    font-weight: bold;
+    text-shadow: 0 0 20px #050505;
+}
+
+.quadroInscreva {
+    width: 54rem;
+    height: 50px;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #FCFC30;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.conteudoQuadroInscreva {
+    width: 54rem;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1600px) {
+    div.textoFotoQuemSomos {
+        padding-top: 24rem;
+        font-size: 10rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    div.textoFotoQuemSomos {
+        padding-top: 23rem;
+        font-size: 9rem;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    div.textoFotoQuemSomos {
+        padding-top: 21rem;
+        font-size: 8.5rem;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    div.textoFotoQuemSomos {
+        padding-top: 20rem;
+        font-size: 8rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    div.textoFotoQuemSomos {
+        padding-top: 18rem;
+        font-size: 7.5rem;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    div.textoFotoQuemSomos {
+        padding-top: 16.5rem;
+        font-size: 7rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    div.textoFotoQuemSomos {
+        padding-top: 15rem;
+        font-size: 6.5rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    div.textoFotoQuemSomos {
+        padding-top: 13rem;
+        font-size: 6rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    div.textoFotoQuemSomos {
+        display: none;
+    }
+}

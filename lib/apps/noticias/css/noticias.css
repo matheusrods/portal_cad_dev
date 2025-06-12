@@ -1,0 +1,324 @@
+.textoFotoNoticias {
+    font-family: BancoDoBrasilTitulos;
+    color:#FFFFFF;
+    position: absolute;
+    padding-top: 5rem;
+    font-size: 8rem;
+    letter-spacing: -11px;
+    font-weight: bold;
+}
+
+.campoPesquisaNoticias {
+    display: -webkit-box;
+}
+
+.barraPesquisa {
+    width: 50rem;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    display: inline-flex;
+    border-bottom: 1px solid #B4B9C1;
+}
+
+.botoesPesquisaLimpaNoticias {
+    display: -webkit-box;
+}
+
+.botaoLimpaPesquisa, .botaoCampoPesquisa {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    margin-left: 8px;
+}
+
+.pesquisaNoticias {
+    color: #6C7077;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    background-color: #F0F2F4;
+    border: none;
+}
+
+.inputCampoPesquisa {
+    flex: 1 1 0;
+    background-color: #F0F2F4;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    border: none;
+}
+
+.textoBotoesCampoPesquisa {
+    text-align: center;
+    color: #3354FD;
+    font-size: 12px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.inputCampoPesquisa:focus {
+    /* border: none; */
+    border: 1px solid #49494F;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputCampoPesquisa:focus::placeholder {
+    color: transparent;
+}
+
+.botoesFiltroTema {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.abreDivNestNoticia {
+    display:none;
+}
+
+.divNoticia {
+    width: 24rem;
+    height: 32rem;
+    background: #F0F2F4;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    margin: 0.3rem;
+}
+
+.abrirNoticia {
+    padding: 9px 16px 9px 16px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin: 1rem 0 0 12rem;
+}
+
+.containerNoticias {
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#paginaNoticias {
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 64px 0px;
+    background: #FAFAFB;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    display: inline-flex;
+}
+
+.fotoCapaNoticia {
+    width: 24rem;
+    height: 15rem;
+    padding: 1rem 1rem 0 0;
+    flex-direction: column;
+    align-items: flex-end;
+    display: flex;
+    background-size: cover;
+}
+
+.tagNoticia {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #FDF429;
+    border-radius: 999px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.textoTagNoticia {
+    text-align: center;
+    color: #111214;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.tituloSubtituloNoticia {
+    height: 20rem;
+    align-self: stretch;
+    height: 84px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    display: flex;
+}
+
+.tituloNoticia{
+    align-self: stretch;
+    color: #111214;
+    font-size: 22px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    line-height: 27.50px;
+    word-wrap: break-word;
+}
+
+.subtituloNoticia {
+    align-self: stretch;
+    color: #6C7077;
+    font-size: 16px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    line-height: 25.60px;
+    word-wrap: break-word;
+}
+
+.textoNoticia {
+    align-self: stretch;
+    height: 196px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: flex;
+}
+
+@media screen and (max-width: 1600px) {
+    .abreDivNestNoticia {
+        font-size: 0.9rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divNoticia {
+        width: 22rem;
+    }
+
+    .tagNoticia {
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .abreDivNestNoticia {
+        font-size: 0.7rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+    
+    .divNoticia {
+        width: 20rem;
+    }
+
+    .tagNoticia {
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .abreDivNestNoticia {
+        font-size: 0.6rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divNoticia {
+        width: 18rem;
+    }
+
+    .tagNoticia {
+        margin-right: 6rem;
+    }
+
+    .abrirNoticia {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .abreDivNestNoticia {
+        font-size: 0.5rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divNoticia {
+        width: 15rem;
+    }
+
+    .tagNoticia {
+        display: none;
+    }
+
+    .abrirNoticia {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .abreDivNestNoticia {
+        font-size: 0.4rem;
+        overflow-x: visible;
+    }
+    .divNoticia {
+        width: 12rem;
+    }
+
+    .tagNoticia {
+        display: none;
+    }
+
+    .abrirNoticia {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    div.textoFotoNoticias {
+        font-size: 48px;
+        letter-spacing: -6px;
+    }
+}
+@media screen and (max-width: 600px) {
+    div.textoFotoNoticias {
+        display: none;
+    }
+}

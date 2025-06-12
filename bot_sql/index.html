@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Com DADO</title>
+    <link rel="stylesheet" type="text/css" href="css/chatbot.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql-formatter/4.0.2/sql-formatter.min.js"></script>
+    
+</head>
+<body>
+    <h1>Faça sua pergunta</h1>
+    <div class="input-container">
+        <textarea id="inputField" placeholder="Digite sua mensagem aqui" rows="3"></textarea>
+        <button id="sendButton">Enviar</button>
+    </div>
+    <h2>Resposta:</h2>
+    <div id="loadingIndicator" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    <div id="outputAntes"></div>
+    <div class="code-container">
+        <pre><code id="codeBlock"></code></pre>
+        <pre id="outputEntre"></pre>
+        <button id="copyButton">Copiar</button>
+    </div>
+    <div id="outputDepois"></div>
+
+    <script>
+        // Função para substituir palavras entre ** por <strong>
+        function replaceBold(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+
+        // Enviar requisição POST
+        document.getElementById('sendButton').addEventListener('click', function () {
+            // Mostrar o spinner de carregamento
+            document.getElementById('loadingIndicator').style.display = 'block';
+            // Limpar resposta anterior
+            document.getElementById('outputAntes').textContent = '';
+            document.getElementById('outputEntre').textContent = '';
+            document.getElementById('outputDepois').textContent = '';
+            // Ocultar o contêiner do código ao enviar uma nova pergunta
+            document.querySelector('.code-container').style.display = 'none';
+    
+            const input = document.getElementById('inputField').value;
+            const data = {
+                data: {
+                    input: input,
+                    context: {}
+                }
+            };
+    
+            fetch('http://acs-assist-bot-cad-sql.nia.hm.bb.com.br/acs/llms/agent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const content = data.data.context.messages[1].content;
+                    const formattedContent = replaceBold(content);
+    
+                    const delimitadores = [
+                        { tipo: 'SQL', inicio: '```sql', fim: '\n```\n\n' },
+                        { tipo: 'PySpark', inicio: '```python', fim: '\n```\n\n' }
+                    ];
+    
+                    let encontrouCodigo = false;
+    
+                    delimitadores.forEach(delimitador => {
+                        if (formattedContent.includes(delimitador.inicio) && formattedContent.includes(delimitador.fim)) {
+                            const parteAntes = formattedContent.split(delimitador.inicio)[0];
+                            const parteEntre = formattedContent.split(delimitador.inicio)[1].split(delimitador.fim)[0];
+                            const parteDepois = formattedContent.split(delimitador.fim)[1];
+    
+                            // Formatar o código baseado no tipo
+                            let formattedCode = parteEntre;
+                            if (delimitador.tipo === 'SQL') {
+                                formattedCode = sqlFormatter.format(parteEntre); // Formatar SQL
+                            }
+    
+                            // Adicionar o conteúdo dividido aos elementos correspondentes
+                            document.getElementById('outputAntes').innerHTML = parteAntes;
+                            document.getElementById('outputEntre').textContent = formattedCode;
+                            document.getElementById('outputDepois').innerHTML = parteDepois;
+                            encontrouCodigo = true;
+                            // Mostrar o contêiner do código após receber a resposta
+                            document.querySelector('.code-container').style.display = 'block';
+                        }
+                    });
+    
+                    if (!encontrouCodigo) {
+                        // Se nenhum código for encontrado, exibir a resposta completa
+                        document.getElementById('outputAntes').innerHTML = formattedContent;
+                        document.querySelector('.code-container').style.display = 'none';
+                    }
+    
+                    // Copiar conteúdo de outputEntre
+                    document.getElementById('copyButton').addEventListener('click', function () {
+                        const outputEntreText = document.getElementById('outputEntre').textContent;
+                        navigator.clipboard.writeText(outputEntreText).then(() => {
+                            console.log('Conteúdo copiado!');
+                        }).catch(err => {
+                            console.error('Erro ao copiar:', err);
+                        });
+                    });
+    
+                    // Ocultar o spinner de carregamento
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Ocultar o indicador de carregamento mesmo se houver um erro
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                });
+        });
+    </script>
+</body>
+</html>

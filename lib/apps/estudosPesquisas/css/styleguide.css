@@ -1,0 +1,208 @@
+:root {
+    --textsoft: rgba(108, 112, 119, 1);
+    --borderdefault: rgba(180, 185, 193, 1);
+    --backgroundneutraldefault: rgba(244, 245, 247, 1);
+    --input-regular-font-family: "BancoDoBrasil Textos", Helvetica;
+    --input-regular-font-weight: 400;
+    --input-regular-font-size: 16px;
+    --input-regular-letter-spacing: 0.08px;
+    --input-regular-line-height: 112.5%;
+    --input-regular-font-style: normal;
+    --button-label-small-font-family: "BancoDoBrasil Titulos", Helvetica;
+    --button-label-small-font-weight: 700;
+    --button-label-small-font-size: 12px;
+    --button-label-small-letter-spacing: 0.06px;
+    --button-label-small-line-height: 112.5%;
+    --button-label-small-font-style: normal;
+    --button-label-large-font-family: "BancoDoBrasil Titulos", Helvetica;
+    --button-label-large-font-weight: 700;
+    --button-label-large-font-size: 16px;
+    --button-label-large-letter-spacing: 0.08px;
+    --button-label-large-line-height: 112.5%;
+    --button-label-large-font-style: normal;
+    --label-x-small-font-family: "BancoDoBrasil Textos", Helvetica;
+    --label-x-small-font-weight: 500;
+    --label-x-small-font-size: 12px;
+    --label-x-small-letter-spacing: 0.06px;
+    --label-x-small-line-height: 112.5%;
+    --label-x-small-font-style: normal;
+    --button-label-small-LC-font-family: "BancoDoBrasil Titulos", Helvetica;
+    --button-label-small-LC-font-weight: 700;
+    --button-label-small-LC-font-size: 12px;
+    --button-label-small-LC-letter-spacing: 0.06px;
+    --button-label-small-LC-line-height: 112.5%;
+    --button-label-small-LC-font-style: normal;
+    --title-regular-font-family: "BancoDoBrasil Titulos", Helvetica;
+    --title-regular-font-weight: 700;
+    --title-regular-font-size: 22px;
+    --title-regular-letter-spacing: 0px;
+    --title-regular-line-height: 125%;
+    --title-regular-font-style: normal;
+    --paragraph-regular-extended-font-family: "BancoDoBrasil Textos", Helvetica;
+    --paragraph-regular-extended-font-weight: 400;
+    --paragraph-regular-extended-font-size: 16px;
+    --paragraph-regular-extended-letter-spacing: 0px;
+    --paragraph-regular-extended-line-height: 160.0000023841858%;
+    --paragraph-regular-extended-font-style: normal;
+    --button-label-regular-font-family: "BancoDoBrasil Titulos", Helvetica;
+    --button-label-regular-font-weight: 700;
+    --button-label-regular-font-size: 14px;
+    --button-label-regular-letter-spacing: 0.07px;
+    --button-label-regular-line-height: 112.5%;
+    --button-label-regular-font-style: normal;
+    --collection-1-gestao: initial;
+    --collection-1-UX: initial;
+    --collection-1-DEV: initial;
+    --color-tokens-text-soft: var(--color-tokens-shades-on-surface-600);
+    --color-tokens-text-on-primary: var(--color-tokens-shades-secondary-600);
+    --color-tokens-text-default: var(--color-tokens-shades-on-surface-900);
+    --color-tokens-text-on-secondary: var(--color-tokens-shades-secondary-600);
+    --color-tokens-border-default: var(--color-tokens-shades-on-surface-400);
+    --color-tokens-shades-on-surface-600: rgba(108, 112, 119, 1);
+    --color-tokens-shades-secondary-600: rgba(51, 84, 253, 1);
+    --color-tokens-shades-on-surface-900: rgba(17, 18, 20, 1);
+    --color-tokens-shades-on-surface-400: rgba(180, 185, 193, 1);
+    --color-tokens-button-primary-default: var(--color-tokens-shades-primary-300);
+    --color-tokens-button-secondary-default: var(--color-tokens-shades-secondary-200);
+    --color-tokens-specific-brand-focus: var(--color-tokens-shades-primary-300);
+    --color-tokens-shades-primary-300: rgba(253, 244, 41, 1);
+    --color-tokens-shades-secondary-200: rgba(228, 236, 255, 1);
+    --color-tokens-background-neutral-default: var(--color-tokens-shades-surface-100);
+    --color-tokens-shades-surface-100: rgba(240, 242, 244, 1);
+    --color-tokens-shades-highlight-600: rgba(22, 83, 253, 1);
+    --color-tokens-shades-secondary-000: rgba(253, 254, 255, 1);
+    --color-tokens-shades-on-surface-000: rgba(254, 254, 254, 1);
+    --color-tokens-shades-on-surface-200: rgba(229, 231, 235, 1);
+    --color-tokens-shades-primary-500: rgba(219, 200, 0, 1);
+    --color-tokens-shades-secondary-500: rgba(83, 121, 255, 1);
+    --color-tokens-shades-surface-500: rgba(136, 141, 149, 1);
+    --color-tokens-button-primary-hover: var(--color-tokens-shades-primary-400);
+    --color-tokens-shades-primary-400: rgba(240, 227, 0, 1);
+    --color-tokens-shades-primary-600: rgba(150, 133, 0, 1);
+    --color-tokens-text-on-inverted: var(--color-tokens-shades-on-surface-900);
+    --color-tokens-text-disabled: var(--color-tokens-shades-on-surface-400);
+    --color-tokens-button-secondary-disabled: var(--color-tokens-shades-on-surface-200);
+    --color-tokens-shades-on-surface-500: rgba(136, 141, 149, 1);
+    --color-tokens-button-secondary-hover: var(--color-tokens-shades-secondary-300);
+    --color-tokens-shades-secondary-300: rgba(187, 209, 255, 1);
+  }
+  
+  /*
+  
+  To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+  
+  <body data-collection-1-mode="ativo">
+      <!-- the rest of your content -->
+  </body>
+  
+  You can apply the theme on any DOM node, not just the `body`
+  
+  */
+  
+  [data-collection-1-mode="ativo"] {
+    --collection-1-gestao: initial;
+    --collection-1-UX: initial;
+    --collection-1-DEV: initial;
+  }
+  
+  [data-collection-1-mode="desativo"] {
+    --collection-1-gestao: none;
+    --collection-1-UX: none;
+    --collection-1-DEV: none;
+  }
+  
+  [data-color-tokens-mode="serotonina"] {
+    --color-tokens-text-soft: var(--color-tokens-shades-on-surface-600);
+    --color-tokens-text-on-primary: var(--color-tokens-shades-secondary-600);
+    --color-tokens-text-default: var(--color-tokens-shades-on-surface-900);
+    --color-tokens-text-on-secondary: var(--color-tokens-shades-secondary-600);
+    --color-tokens-shades-on-surface-600: rgba(108, 112, 119, 1);
+    --color-tokens-shades-secondary-600: rgba(51, 84, 253, 1);
+    --color-tokens-shades-on-surface-900: rgba(17, 18, 20, 1);
+    --color-tokens-shades-on-surface-400: rgba(180, 185, 193, 1);
+    --color-tokens-button-primary-default: var(--color-tokens-shades-primary-300);
+    --color-tokens-button-secondary-default: var(--color-tokens-shades-secondary-200);
+    --color-tokens-specific-brand-focus: var(--color-tokens-shades-primary-300);
+    --color-tokens-shades-primary-300: rgba(253, 244, 41, 1);
+    --color-tokens-shades-secondary-200: rgba(228, 236, 255, 1);
+    --color-tokens-background-neutral-default: var(--color-tokens-shades-surface-100);
+    --color-tokens-shades-surface-100: rgba(240, 242, 244, 1);
+    --color-tokens-shades-highlight-600: rgba(22, 83, 253, 1);
+    --color-tokens-shades-secondary-000: rgba(253, 254, 255, 1);
+    --color-tokens-shades-on-surface-000: rgba(254, 254, 254, 1);
+    --color-tokens-shades-on-surface-200: rgba(229, 231, 235, 1);
+    --color-tokens-shades-primary-500: rgba(219, 200, 0, 1);
+    --color-tokens-shades-secondary-500: rgba(83, 121, 255, 1);
+    --color-tokens-shades-surface-500: rgba(136, 141, 149, 1);
+    --color-tokens-button-primary-hover: var(--color-tokens-shades-primary-400);
+    --color-tokens-shades-primary-400: rgba(240, 227, 0, 1);
+    --color-tokens-shades-primary-600: rgba(150, 133, 0, 1);
+    --color-tokens-text-on-inverted: var(--color-tokens-shades-on-surface-900);
+    --color-tokens-button-secondary-disabled: var(--color-tokens-shades-on-surface-200);
+    --color-tokens-shades-on-surface-500: rgba(136, 141, 149, 1);
+    --color-tokens-shades-secondary-300: rgba(187, 209, 255, 1);
+  }
+  
+  [data-color-tokens-mode="corporativo"] {
+    --color-tokens-text-soft: var(--color-tokens-shades-on-surface-600);
+    --color-tokens-text-on-primary: var(--color-tokens-shades-secondary-600);
+    --color-tokens-text-default: var(--color-tokens-shades-on-surface-900);
+    --color-tokens-text-on-secondary: var(--color-tokens-shades-secondary-600);
+    --color-tokens-shades-on-surface-600: rgba(102, 112, 125, 1);
+    --color-tokens-shades-secondary-600: rgba(0, 95, 150, 1);
+    --color-tokens-shades-on-surface-900: rgba(0, 21, 39, 1);
+    --color-tokens-shades-on-surface-400: rgba(170, 181, 194, 1);
+    --color-tokens-button-primary-default: var(--color-tokens-shades-primary-300);
+    --color-tokens-button-secondary-default: var(--color-tokens-shades-secondary-200);
+    --color-tokens-specific-brand-focus: var(--color-tokens-shades-primary-300);
+    --color-tokens-shades-primary-300: rgba(252, 248, 42, 1);
+    --color-tokens-shades-secondary-200: rgba(222, 232, 244, 1);
+    --color-tokens-background-neutral-default: var(--color-tokens-shades-surface-100);
+    --color-tokens-shades-surface-100: rgba(242, 244, 248, 1);
+    --color-tokens-shades-highlight-600: rgba(0, 56, 87, 1);
+    --color-tokens-shades-secondary-000: rgba(250, 251, 253, 1);
+    --color-tokens-shades-on-surface-000: rgba(252, 253, 254, 1);
+    --color-tokens-shades-on-surface-200: rgba(230, 234, 238, 1);
+    --color-tokens-shades-primary-500: rgba(214, 202, 0, 1);
+    --color-tokens-shades-secondary-500: rgba(63, 124, 178, 1);
+    --color-tokens-shades-surface-500: rgba(135, 141, 149, 1);
+    --color-tokens-button-primary-hover: var(--color-tokens-shades-primary-400);
+    --color-tokens-shades-primary-400: rgba(233, 226, 0, 1);
+    --color-tokens-shades-primary-600: rgba(159, 144, 0, 1);
+    --color-tokens-text-on-inverted: var(--color-tokens-shades-on-surface-900);
+    --color-tokens-button-secondary-disabled: var(--color-tokens-shades-on-surface-200);
+    --color-tokens-shades-on-surface-500: rgba(127, 138, 152, 1);
+    --color-tokens-shades-secondary-300: rgba(203, 218, 234, 1);
+  }
+  
+  [data-color-tokens-mode="dark-mode"] {
+    --color-tokens-text-soft: var(--color-tokens-shades-on-surface-200);
+    --color-tokens-text-on-primary: var(--color-tokens-shades-highlight-600);
+    --color-tokens-text-default: var(--color-tokens-shades-on-surface-000);
+    --color-tokens-text-on-secondary: var(--color-tokens-shades-secondary-000);
+    --color-tokens-shades-on-surface-600: rgba(38, 38, 38, 1);
+    --color-tokens-shades-secondary-600: rgba(58, 84, 154, 1);
+    --color-tokens-shades-on-surface-900: rgba(8, 8, 8, 1);
+    --color-tokens-shades-on-surface-400: rgba(66, 66, 66, 1);
+    --color-tokens-button-primary-default: var(--color-tokens-shades-primary-500);
+    --color-tokens-button-secondary-default: var(--color-tokens-shades-secondary-500);
+    --color-tokens-specific-brand-focus: var(--color-tokens-shades-primary-500);
+    --color-tokens-shades-primary-300: rgba(251, 246, 157, 1);
+    --color-tokens-shades-secondary-200: rgba(144, 164, 218, 1);
+    --color-tokens-background-neutral-default: var(--color-tokens-shades-surface-500);
+    --color-tokens-shades-surface-100: rgba(102, 102, 102, 1);
+    --color-tokens-shades-highlight-600: rgba(52, 99, 212, 1);
+    --color-tokens-shades-secondary-000: rgba(235, 238, 255, 1);
+    --color-tokens-shades-on-surface-000: rgba(214, 214, 214, 1);
+    --color-tokens-shades-on-surface-200: rgba(143, 143, 143, 1);
+    --color-tokens-shades-primary-500: rgba(249, 242, 108, 1);
+    --color-tokens-shades-secondary-500: rgba(70, 101, 185, 1);
+    --color-tokens-shades-surface-500: rgba(41, 41, 41, 1);
+    --color-tokens-button-primary-hover: var(--color-tokens-shades-primary-600);
+    --color-tokens-shades-primary-400: rgba(250, 244, 132, 1);
+    --color-tokens-shades-primary-600: rgba(253, 244, 41, 1);
+    --color-tokens-text-on-inverted: var(--color-tokens-shades-on-surface-600);
+    --color-tokens-button-secondary-disabled: var(--color-tokens-shades-on-surface-500);
+    --color-tokens-shades-on-surface-500: rgba(51, 51, 51, 1);
+    --color-tokens-shades-secondary-300: rgba(109, 152, 254, 1);
+}  

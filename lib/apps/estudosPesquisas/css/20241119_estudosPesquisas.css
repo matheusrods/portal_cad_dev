@@ -1,0 +1,968 @@
+#paginaEstudosPesquisas {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #00ffe0;
+}
+
+.paginaPrincipalEstudos {
+    background-color: #00ffe0;
+}
+
+.conteudoEstudos {
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0;
+    background-color: #00ffe0;
+    top: -1rem;
+}
+
+.campoPesquisaNoticias {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.barraPesquisa {
+    width: 50rem;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    display: inline-flex;
+    border-bottom: 1px solid #B4B9C1;
+    position: relative;
+}
+
+.inputCampoPesquisaEstudos {
+    flex: 1 1 0;
+    background-color: #F0F2F4;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    border: none;
+}
+
+.inputCampoPesquisaEstudos:focus {
+    /* border: none; */
+    border: 1px solid #49494F;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputCampoPesquisaEstudos:focus::placeholder {
+    color: transparent;
+}
+
+.botoesPesquisaLimpaNoticias {
+    display: -webkit-box;
+}
+
+.botaoLimpaPesquisaEstudo,
+.botaoCampoPesquisaEstudo,
+.botaoAdicionaEstudo {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    margin-left: 8px;
+}
+
+.textoBotoesCampoPesquisa {
+    text-align: center;
+    color: #3354FD;
+    font-size: 12px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.botoesPesquisaLimpaPesquisaPesquisas {
+    display: inline-flex;
+}
+
+.divisaoTemas {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 1rem;
+}
+
+.botoesFiltroTemaEstudo {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.abreDivNestEstudos {
+    display:none;
+    justify-content: center;
+    align-items: center;
+}
+
+.quadroConteudos {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    /* width: 80%; */
+}
+
+.divEstudo {
+    width: 23rem;
+    height: 35rem;
+    background: #F0F2F4;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    margin: 0.3rem;
+}
+
+.fotoCapaEstudo {
+    width: 23rem;
+    height: 15rem;
+    padding: 1rem 1rem 0 0;
+    flex-direction: column;
+    align-items: flex-end;
+    display: flex;
+    background-size: contain;
+}
+
+.tagEstudo {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #FDF429;
+    border-radius: 999px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 2%;
+}
+
+.textoTagEstudo {
+    text-align: center;
+    color: #111214;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.abrirEstudo {
+    width: 8rem;
+    padding: 9px 16px 9px 16px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin: 4rem 0 0 12rem;
+}
+
+.textoEstudo {
+    align-self: stretch;
+    height: 196px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: flex;
+}
+
+.tituloSubtituloEstudo {
+    height: 20rem;
+    align-self: stretch;
+    height: 84px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    display: flex;
+}
+
+.subtituloEstudo {
+    align-self: stretch;
+    color: #6C7077;
+    font-size: 16px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    line-height: 25.60px;
+    word-wrap: break-word;
+}
+
+.tituloEstudo {
+    align-self: stretch;
+    color: #111214;
+    font-size: 22px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    line-height: 27.50px;
+    word-wrap: break-word;
+}
+
+.temasEstudos {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.quadroConteudoEstudos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 10px;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.cabecalhoEstudos {
+    width: 100%;
+    height: 6rem;
+    display: inline-flex;
+    position: relative;
+    background-color: #465eff;
+    top: -1rem;
+}
+
+.cabecalhoPesquisas {
+    width: 100%;
+    height: 6rem;
+    display: inline-flex;
+    position: relative;
+    background-color: #00ffe0;
+    top: -1rem;
+}
+
+.pesquisas {
+    position: relative;
+    width: 50%;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    font-size: 72px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.estudos {
+    position: relative;
+    width: 50%;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    font-size: 72px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+
+
+/*
+
+TRECHO COM CSS DA ABA DE PESQUISAS
+
+*/
+
+.paginaPrincipalPesquisas {
+    background-color: #465eff;
+}
+
+.conteudoPesquisas {
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0;
+    background-color: #465eff;
+    top: -1rem;
+}
+
+.campoPesquisaNoticias {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.barraPesquisa {
+    width: 50rem;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    display: inline-flex;
+    border-bottom: 1px solid #B4B9C1;
+    position: relative;
+}
+
+.inputCampoPesquisaPesquisas {
+    flex: 1 1 0;
+    background-color: #F0F2F4;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    border: none;
+}
+
+.inputCampoPesquisaPesquisas:focus {
+    /* border: none; */
+    border: 1px solid #49494F;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputCampoPesquisaPesquisas:focus::placeholder {
+    color: transparent;
+}
+
+.botoesPesquisaLimpaNoticias {
+    display: -webkit-box;
+}
+
+.botaoLimpaPesquisaPesquisa,
+.botaoCampoPesquisaPesquisa,
+.botaoAdicionaPesquisa {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    margin-left: 8px;
+}
+
+.textoBotoesCampoPesquisa {
+    text-align: center;
+    color: #3354FD;
+    font-size: 12px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.botoesPesquisaLimpaEstudoPesquisas {
+    display: inline-flex;
+}
+
+.botoesFiltroTemaPesquisa {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.abreDivNestPesquisas {
+    display:none;
+    justify-content: center;
+    align-items: center;
+}
+
+.divPesquisa {
+    width: 23rem;
+    height: 35rem;
+    background: #F0F2F4;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    margin: 0.3rem;
+}
+
+.fotoCapaPesquisa {
+    width: 23rem;
+    height: 15rem;
+    padding: 1rem 1rem 0 0;
+    flex-direction: column;
+    align-items: flex-end;
+    display: flex;
+    background-size: contain;
+}
+
+.tagPesquisa {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #FDF429;
+    border-radius: 999px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.textoTagPesquisa {
+    text-align: center;
+    color: #111214;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.abrirPesquisa {
+    width: 8rem;
+    padding: 9px 16px 9px 16px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin: 4rem 0 0 12rem;
+}
+
+.textoPesquisa {
+    align-self: stretch;
+    height: 196px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: flex;
+}
+
+.tituloSubtituloPesquisa {
+    height: 20rem;
+    align-self: stretch;
+    height: 84px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    display: flex;
+}
+
+.subtituloPesquisa {
+    align-self: stretch;
+    color: #6C7077;
+    font-size: 16px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    line-height: 25.60px;
+    word-wrap: break-word;
+}
+
+.tituloPesquisa {
+    align-self: stretch;
+    color: #111214;
+    font-size: 22px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    line-height: 27.50px;
+    word-wrap: break-word;
+}
+
+.temasPesquisas {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.quadroConteudoPesquisas {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 10px;
+    position: relative;
+    margin-top: 2rem;
+}
+
+/* TRECHO CSS PARA A PÁGINA DE UPLOAD */
+
+input[type="file"] {
+    display: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+.modal-incluir-estudo {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.divEsquerda, .divDireita {
+    width: 50%;
+    display: inline-flex;
+}
+
+.divEsquerda {
+    float: left;
+}
+
+.divDireita {
+    float: right;
+}
+
+.divTextAreaDescricao {
+    display: flex;
+    flex-direction: column;
+    width: 344px;
+    height: 138px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 127px;
+    left: 1px;
+}
+
+.label {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    color: rgba(17, 18, 20, 1);
+    font-size: 16px;
+    font-style: normal;
+}
+
+#textAreaDescricao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+    overflow: hidden;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 1%;
+}
+
+.inputDescricao {
+    position: relative;
+    flex-grow: 1;
+    border: none;
+    background: none;
+    flex: 1;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 0;
+}
+
+.contaCaracteresTitulo, .contaCaracteresDescricao, .textDicaTag {
+    position: relative;
+    align-self: stretch;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+.divTags {
+    position: relative;
+    font-family: BancoDoBrasil Textos;
+    display: flex;
+    flex-direction: row;
+    width: 328px;
+    align-items: flex-start;
+    gap: 8px;
+    top: 284px;
+    left: 1px;
+}
+
+.divTextAreaTitulo {
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.labelTitulo {
+    align-self: stretch;
+    color: rgba(17, 18, 20, 1);
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 112.5%;
+    font-style: normal
+}
+
+#textAreaTitulo {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    flex: 1;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 0;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+    overflow: hidden;
+    padding: 1%;
+}
+
+.divUploadPdf {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+    top: 0;
+}
+
+.labelUploadDownload {
+    align-self: stretch;
+    color: rgba(108, 112, 119, 1);
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 112.5%;
+    font-style: normal
+}
+
+.divConteudoUpload {
+    align-items: center;
+    padding: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: rgba(254, 254, 254, 1);;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px dashed;
+    border-color: rgba(180, 185, 193, 1);
+    display: flex;
+    gap: 8px;
+}
+
+.iconeUploadPdfPng {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgba(235, 242, 255, 1);
+    border-radius: 8px;
+}
+
+.divTextoUploadDownload {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.divTextoUploadDownload01 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: BancoDoBrasil Textos;
+    color: rgba(17, 18, 20, 1);
+    font-size: 14px;
+    text-align: center;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal
+}
+
+.textoArquivoPng, .textoArquivoPdf, .textoArquivoPpt {
+    position: relative;
+    width: fit-content;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 12px;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.divDownloadPpt {
+    flex-direction: column;
+    width: 320px;
+    align-items: flex-start;
+    position: absolute;
+    top: 423px;
+    left: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.divBotaoDownloadPpt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: #dff33d;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.divUploadPng {
+    flex-direction: column;
+    width: 320px;
+    align-items: flex-start;
+    position: absolute;
+    top: 93px;
+    left: 406px;
+    display: flex;
+    gap: 8px;
+}
+
+.divPreviewCapa {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    position: relative;
+    margin: 12rem 1.5rem;
+}
+
+.textoPreview {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 14px;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.btnEnviar {
+    align-self: flex-end;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.limitaAltura {
+    max-height: 42rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+.tagEstudo {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #FDF429;
+    border-radius: 999px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1600px) {
+    .abreDivNestEstudos, .abreDivNestPesquisas {
+        font-size: 0.9rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divEstudo, .divPesquisa {
+        width: 22rem;
+    }
+
+    .tagEstudo, .tagPesquisa {
+        margin-right: 1rem;
+    }
+
+    .abrirEstudo, .abrirPesquisa {
+        margin: 5rem 0 0 11rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .abreDivNestEstudos, .abreDivNestPesquisas {
+        font-size: 0.7rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+    
+    .divEstudo, .divPesquisa {
+        width: 20rem;
+    }
+
+    .tagEstudo, .tagPesquisa {
+        margin-right: 7rem;
+    }
+
+    .abrirEstudo, .abrirPesquisa {
+        margin: 2rem 0 0 7rem;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .abrirEstudo, .abrirPesquisa {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .abreDivNestEstudos, .abreDivNestPesquisas {
+        font-size: 0.6rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divEstudo, .divPesquisa {
+        width: 18rem;
+    }
+
+    .tagEstudo, .tagPesquisa {
+        margin-right: 9rem;
+    }
+
+    .estudos, .pesquisas {
+        font-size: 68px;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .abreDivNestEstudos, .abreDivNestPesquisas {
+        font-size: 0.5rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divEstudo, .divPesquisa {
+        width: 15rem;
+    }
+
+    .tagEstudo, .tagPesquisa {
+        display: none;
+    }
+
+    .abrirEstudo, .abrirPesquisa {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .abreDivNestEstudos, .abreDivNestPesquisas {
+        font-size: 0.4rem;
+        overflow-x: visible;
+    }
+    .divEstudo, .divPesquisa {
+        width: 12rem;
+    }
+
+    .tagEstudo, .tagPesquisa {
+        display: none;
+    }
+
+    .abrirEstudo, .abrirPesquisa {
+        display: none;
+    }
+}

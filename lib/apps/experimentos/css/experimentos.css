@@ -1,0 +1,841 @@
+.cabecalhoExperimentos {
+    position: relative;
+    /* Adicionado */
+}
+
+.abasCabecalhoExperimentos {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 56rem;
+    height: 126px;
+}
+
+.abasCabecalhoExperimentos .abaAdicionarExperimentos {
+    position: absolute;
+    width: 468px;
+    left: 442px;
+    height: 126px;
+    top: 0;
+}
+
+.abasCabecalhoExperimentos .abaConsultarExperimentos {
+    position: absolute;
+    width: 468px;
+    left: 0;
+    height: 126px;
+    top: 0;
+    z-index: 2;
+}
+
+.abasCabecalhoExperimentos .divConsultarExperimentos {
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    width: 466px;
+    background-color: #465eff;
+    border-radius: 100px 100px 0px 0px;
+    position: relative;
+    height: 126px;
+}
+
+.abasCabecalhoExperimentos .divTextoConsultarExperimentos {
+    position: relative;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 48px;
+    text-align: center;
+}
+
+.abasCabecalhoExperimentos .divAdicionarExperimentos {
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    width: 466px;
+    background-color: #62bee7;
+    border-radius: 100px 100px 0px 0px;
+    position: relative;
+    height: 126px;
+}
+
+.abasCabecalhoExperimentos .divTextoAdicionarExperimentos {
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 48px;
+    text-align: center;
+
+}
+
+
+
+.textoFotoExperimentos {
+    font-family: BancoDoBrasilTitulos;
+    color: #FFFFFF;
+    position: absolute;
+    padding-top: 5rem;
+    font-size: 8rem;
+    letter-spacing: -11px;
+    font-weight: bold;
+}
+
+.campoPesquisaExperimentos {
+    display: -webkit-box;
+    
+}
+
+.barraPesquisa {
+    width: 50rem;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    display: inline-flex;
+    border-bottom: 1px solid #B4B9C1;
+}
+
+.botoesPesquisaLimpaExperimentos {
+    display: -webkit-box;
+}
+
+.botaoLimpaPesquisa,
+.botaoCampoPesquisa {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    margin-left: 8px;
+}
+
+.pesquisaExperimentos {
+    color: #6C7077;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    background-color: #F0F2F4;
+    border: none;
+}
+
+.inputCampoPesquisa {
+    flex: 1 1 0;
+    background-color: #F0F2F4;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    border: none;
+}
+
+.textoBotoesCampoPesquisa {
+    text-align: center;
+    color: #3354FD;
+    font-size: 12px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.inputCampoPesquisa:focus {
+    /* border: none; */
+    border: 1px solid #49494F;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputCampoPesquisa:focus::placeholder {
+    color: transparent;
+}
+
+.botoesFiltroTema {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.abreDivNestExperimento {
+    display: none;
+}
+
+.divExperimento {
+    width: 24rem;
+    height: 37rem;
+    background: #F0F2F4;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    margin: 0.3rem;
+}
+
+.abrirExperimento {
+    padding: 9px 16px 9px 16px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin: 7rem 0 0 12rem;
+}
+
+.containerExperimentos {
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 2%;
+}
+
+#paginaExperimentos {
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 64px 0px;
+    background: #465EFF;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    display: inline-flex;
+}
+
+.fotoCapaExperimento {
+    width: 24rem;
+    height: 15rem;
+    padding: 1rem 1rem 0 0;
+    flex-direction: column;
+    align-items: flex-end;
+    display: flex;
+    background-size: cover;
+}
+
+.tagExperimento {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #FDF429;
+    border-radius: 999px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.1rem;
+}
+
+.textoTagExperimento {
+    text-align: center;
+    color: #111214;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.tituloSubtituloExperimento {
+    height: 20rem;
+    align-self: stretch;
+    height: 84px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    display: flex;
+}
+
+.tituloExperimento {
+    align-self: stretch;
+    color: #111214;
+    font-size: 22px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    line-height: 27.50px;
+    word-wrap: break-word;
+}
+
+.subtituloExperimento {
+    align-self: stretch;
+    color: #6C7077;
+    font-size: 16px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    line-height: 25.60px;
+    word-wrap: break-word;
+}
+
+.textoExperimento {
+    align-self: stretch;
+    height: 196px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: flex;
+}
+
+.divPassoEsquerda {
+    width: 45%;
+    height: auto;
+    position: relative;
+    left: 5%;
+}
+
+.divPassoDireita {
+    width: 55%;
+    height: auto;
+    position: relative;
+    left: 60%;
+}
+
+.numeroIndicaPassoExperimento {
+    position: relative;
+    color: white;
+    font-size: 96px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+.tituloPassoExperimento {
+    width: 70%;
+    font-size: 36px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 800;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+/* CSS para o modal de upload */
+input[type="file"] {
+    display: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+.modal-incluir-experimento {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.divEsquerdaExperimentos, .divDireitaExperimentos {
+    width: 50%;
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.divEsquerdaExperimentos {
+    float: left;
+    flex-direction: column;
+}
+
+.divDireitaExperimentos {
+    float: right;
+}
+
+.divTextAreaDescricao {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    height: 138px;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.label {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    color: rgba(17, 18, 20, 1);
+    font-size: 16px;
+    font-style: normal;
+}
+
+#textAreaDescricao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+    overflow: hidden;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 1%;
+}
+
+.inputDescricao {
+    position: relative;
+    flex-grow: 1;
+    border: none;
+    background: none;
+    flex: 1;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 0;
+}
+
+.contaCaracteresTitulo, .contaCaracteresDescricao, .textDicaTag {
+    position: relative;
+    align-self: stretch;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+.divTagsExperimentos {
+    position: relative;
+    font-family: BancoDoBrasil Textos;
+    display: flex;
+    flex-direction: row;
+    width: 328px;
+    align-items: flex-start;
+    gap: 8px;
+    /* top: 284px;
+    left: 1px; */
+}
+
+.divTextAreaTitulo {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.labelTitulo {
+    align-self: stretch;
+    color: rgba(17, 18, 20, 1);
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 112.5%;
+    font-style: normal
+}
+
+#textAreaTitulo {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    flex: 1;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 0;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+    overflow: hidden;
+    padding: 1%;
+}
+
+.divUploadPdfExperimentos {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-family: BancoDoBrasil Textos;
+    width: 90%;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.labelUploadDownloadExperimentos {
+    align-self: stretch;
+    color: rgba(108, 112, 119, 1);
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 112.5%;
+    font-style: normal
+}
+
+.divConteudoUploadExperimentos {
+    align-items: center;
+    padding: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: rgba(254, 254, 254, 1);;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px dashed;
+    border-color: rgba(180, 185, 193, 1);
+    display: flex;
+    gap: 8px;
+}
+
+.iconeUploadPdfPng {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgba(235, 242, 255, 1);
+    border-radius: 8px;
+}
+
+.divTextoUploadDownload {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.divTextoUploadDownload01 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: BancoDoBrasil Textos;
+    color: rgba(17, 18, 20, 1);
+    font-size: 14px;
+    text-align: center;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal
+}
+
+.textoArquivoPng, .textoArquivoPdfExperimentos, .textoArquivoPpt {
+    position: relative;
+    width: fit-content;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 12px;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.divResultadoExperimentoPositivo, .divResultadoExperimentoNegativo {
+    align-self: stretch;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 4px;
+    border: 1px #B4B9C1 solid;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    /* display: inline-flex; */
+}
+
+.checkboxResultadoExperimento{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-family: BancoDoBrasil Textos;
+    width: 90%;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.divUploadPngExperimentos {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    position: relative;
+    display: flex;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.divPreviewCapaExperimentos {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    position: relative;
+    margin-top: 3rem;
+}
+
+.textoPreview {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 14px;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.divBotoesAdicionarEstudosPesquisas {
+    display: inline-flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 100%;
+    z-index: 3;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.btnEnviarExperimentos {
+    width: 5rem;
+    height: 3rem;
+    align-self: flex-end;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnLimparExperimentos {
+    background-color: rgb(56, 83, 255, 1) !important;
+    color: white;
+    width: 5rem;
+    height: 3rem;
+}
+
+.btnLimparExperimentos:hover {
+    background-color: rgb(3, 3, 150, 1) !important;
+    color: white;
+}
+
+.limitaAltura {
+    max-height: 42rem;
+}
+
+/* Fim do trecho para estilo do modal de upload */
+
+@media screen and (max-width: 1600px) {
+    .abreDivNestExperimento {
+        font-size: 0.9rem;
+        height: auto;
+        padding: 0px;
+        /* margin-top: 2%; */
+        overflow-x: visible;
+    }
+
+    .divExperimento {
+        width: 22rem;
+    }
+
+    .fotoCapaExperimento {
+        width: 22rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .abreDivNestExperimento {
+        font-size: 0.7rem;
+        height: auto;
+        padding: 0px;
+        /* margin-top: 2%; */
+        overflow-x: visible;
+    }
+
+    .divExperimento {
+        width: 20rem;
+    }
+
+    .fotoCapaExperimento {
+        width: 20rem;
+    }
+
+    /* .tagExperimento {
+        margin-right: 3rem;
+    } */
+}
+
+@media screen and (max-width: 1350px) {
+    .abreDivNestExperimento {
+        font-size: 0.6rem;
+        height: auto;
+        padding: 0px;
+        /* margin-top: 2%; */
+        overflow-x: visible;
+    }
+
+    .divExperimento {
+        width: 18rem;
+    }
+
+    .fotoCapaExperimento {
+        width: 18rem;
+    }
+
+    /* .tagExperimento {
+        margin-right: 6rem;
+    } */
+
+    .abrirExperimento {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .abreDivNestExperimento {
+        font-size: 0.5rem;
+        height: auto;
+        padding: 0px;
+        /* margin-top: 2%; */
+        overflow-x: visible;
+    }
+
+    .divExperimento {
+        width: 15rem;
+    }
+
+    .fotoCapaExperimento {
+        width: 15rem;
+    }
+
+    .tagExperimento {
+        display: none;
+    }
+
+    .abrirExperimento {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .abreDivNestExperimento {
+        font-size: 0.4rem;
+        overflow-x: visible;
+        /* margin-top: 2%; */
+    }
+
+    .divExperimento {
+        width: 12rem;
+    }
+
+    .fotoCapaExperimento {
+        width: 12rem;
+    }
+
+    .tagExperimento {
+        display: none;
+    }
+
+    .abrirExperimento {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    div.textoFotoExperimentos {
+        font-size: 48px;
+        letter-spacing: -6px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.textoFotoExperimentos {
+        display: none;
+    }
+}
+
+/* CSS para os chips dentro da página de inserção de experimentos */
+
+.chip{
+    display: inline-flex;
+    flex-direction: row;
+    background-color: #e5e5e5;
+    border: none;
+    cursor: default;
+    height: 24px;
+    outline: none;
+    padding: 0;
+    font-size: 14px;
+    white-space: nowrap;
+    align-items: center;
+    border-radius: 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.chip-content{
+    cursor: inherit;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    white-space: nowrap;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.chip-svg{
+    color: #999999;
+    cursor: pointer;
+    height: auto;
+    margin: 4px 4px 4px -12px;
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 24px;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.chip-svg:hover{
+    color: #666666;
+}

@@ -1,0 +1,681 @@
+.fonteDegrade {
+    /* background: -webkit-linear-gradient(#fff, #999); */
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #f6f6f6, #eeeeee, #e5e5e5, #d1d1d1, #bebebe, #ababab, #999999);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fonteDegradeAnalytics {
+    /* background: -webkit-linear-gradient(#fff, #999); */
+    background-image: linear-gradient(to bottom, #fff, #fff, #fff, #fff, #fff, #f6f6f6, #eee, #e5e5e5, #d1d1d1, #bebebe, #ababab, #999999, #999999, #999999, #999999, #999999);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calendarioGrandesNumeros {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-left: 1.7rem;
+    flex-direction: column;
+}
+
+.calendarioTrocaData {
+    width: 4rem;
+    height: 75px;
+    background: linear-gradient(180deg, white 0%, #A6A6A6 100%);
+    border-radius: 9px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.conteudoAnalytics {
+    width: 100%;
+    height: 2272px;
+    background: #002D4B;
+    /*margin-top: 10rem;*/
+}
+
+.dadosTodosQuadros {
+    /* width: 470px; */
+    width: 99%;
+    height: 395px;
+    position: absolute;
+}
+
+.textoDetalhesAnalytics {
+    line-height: 36px;
+    text-align: center;
+    width: 100%;
+}
+
+.overflowQuadroInterno {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.efeitoAnalytics {
+    z-index: 3;
+    /* margin-left: 12.5%;
+    margin-right: 12.5%; */
+    /*width: 25%;*/
+    width: 24.8%;
+}
+
+.divDesabilitada{
+    pointer-events: none;
+    opacity: 0.05;
+}
+
+.dadosLinha1 {
+    top: 67px;
+}
+.dadosLinha2 {
+    top: 470px;
+}
+.dadosLinha3 {
+    top: 873px;
+}
+
+.dadosColuna1 {
+    /* left: 8px; */
+    left: 12.5%;
+}
+.dadosColuna2 {
+    /* left: 486px; */
+    left: 37.5%;
+}
+.dadosColuna3 {
+    /* left: 964px; */
+    left: 62.5%;
+}
+
+.cabeçalhoTextoAcumuladoAnalytics {
+    left: 100px;
+    /* left: 25%; */
+    top: 40px;
+    position: absolute;
+    font-size: 20px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin: 14px 0 0 -14px;
+    line-height: 1;
+}
+
+.textoAcumuladoAnalytics {
+    left: 67px;
+    top: 88px;
+    position: absolute;
+    text-align: center;
+}
+
+.span1AcumuladoAnalytics {
+    /* font-size: 20px; */
+    font-size: 1rem;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.span2AcumuladoAnalytics {
+    /* font-size: 40px; */
+    font-size: 2rem;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.efeitoAnalyticsEfeitos {
+    animation: bounceOutDown 0.25s forwards;
+}
+
+.efeitoAnalyticsEfeitoSobe {
+    animation: bounceInUp 0.25s forwards;
+}
+
+.tituloDadosResumo {
+    letter-spacing: -4px;
+}
+
+.detalhesDadosResumo {
+    letter-spacing: -1px;
+    line-height: 10%;
+}
+
+@keyframes bounceOutDown {
+    0% {
+        height: 395px;
+        top: 0px;
+    }
+    
+    /*5% {
+        top: -20px;
+    }
+
+    10% {
+        top: -15px;
+    }
+
+    15% {
+        top: -10px;
+    }*/
+
+    100% {
+        height: 10px;
+        top: 385px;
+    }
+}
+
+@keyframes bounceInUp {
+    0% {
+        height: 10px;
+        top: 395px;
+    }
+    /* 5% {
+        height: 10px;
+        top: 405px;
+    }
+    80% {
+        height: 395px;
+        top: 0px;
+    }
+    85% {
+        height: 415px;
+        top: -20px;
+    }
+    90% {
+        height: 395px;
+        top: 0px;
+    }
+    95% {
+        height: 415px;
+        top: -20px;
+    } */
+
+    100% {
+        height: 395px;
+        top: 0px;
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    .textoDetalhesAnalytics {
+        span {
+            font-size: 24px !important;
+        }
+    }
+    
+    .detalhesDadosResumo {
+        font-size: 24px !important;
+    }
+
+    .tituloDadosResumo {
+        font-size: 56px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .span1AcumuladoAnalytics {
+        font-size: 0.8rem;
+    }
+    .span2AcumuladoAnalytics {
+        font-size: 1.8rem;
+    }
+    .imgAcumulado {
+        width: 60%;
+    }
+    .textoDetalhesAnalytics {
+        span {
+            font-size: 20px !important;
+        }
+    }
+    .iconeResponsivo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .span1AcumuladoAnalytics {
+        font-size: 0.6rem;
+    }
+    .span2AcumuladoAnalytics {
+        font-size: 1.6rem;
+    }
+    .tituloDadosResumo {
+        font-size: 48px !important;
+    }
+    .detalhesDadosResumo {
+        font-size: 24px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .span1AcumuladoAnalytics {
+        font-size: 0.5rem;
+    }
+    .span2AcumuladoAnalytics {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .textoDetalhesAnalytics {
+        span {
+            font-size: 16px !important;
+        }
+    }
+    .span1AcumuladoAnalytics {
+        font-size: 0.3rem;
+    }
+    .span2AcumuladoAnalytics {
+        font-size: 1.3rem;
+    }
+}
+
+/* Estilos do botão de seleção para os dados de PF e PJ */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2D37F5;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#ui-datepicker-div {
+    z-index: 3;
+}
+
+
+
+
+/*CSS referente a área dos painéis*/
+.campoPesquisaAnalytics {
+    display: -webkit-box;
+    /* display: inline-flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;*/
+}
+
+.barraPesquisa{
+    width: 50rem;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    display: inline-flex;
+   
+}
+
+.botoesPesquisaLimpaPaineis {
+    display: -webkit-box;
+}
+
+.botaoLimpaPesquisa, .botaoCampoPesquisa {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background: #FDF429;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    margin-left: 8px;
+    height: 2.5rem;
+}
+
+.inputCampoPesquisa {
+    flex: 1 1 0;
+    background-color: #F0F2F4;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    border: none;
+}
+
+.textoBotoesCampoPesquisa {
+    text-align: center;
+    color: #3354FD;
+    font-size: 12px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.inputCampoPesquisa:focus {
+    /* border: none; */
+    border: 0.5px solid #49494F;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputCampoPesquisa:focus::placeholder {
+    color: transparent;
+}
+
+.BotoesFiltroTag{
+    display: inline-flex;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    gap: 0.5%;
+}
+
+.abreDivNestPainel {
+     display:none; 
+    margin-top: 2rem;
+}
+
+.divisaotags{
+    display: inline-flex;
+    gap:8px;
+    margin-top: 1rem;
+}
+
+.containerAreaPaineis{
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.containerPaineis{
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.divPainel {
+    width: 24rem;
+    height: 34rem;
+    background: #F0F2F4;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    margin: 0.3rem;
+}
+
+.abrirPainel {
+    padding: 9px 16px 9px 16px;
+    background: #9747FF;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin-left: 1.8rem;
+    margin-top: 0.25rem;
+}
+
+.displayPaineis{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    /* width: 80%; */
+    /* display: inline; */
+    justify-content: center;
+}
+
+.fotoCapaPainel{
+    width: 24rem;
+    height: 15rem;
+    padding: 1rem 1rem 0 0;
+    flex-direction: column;
+    align-items: flex-end;
+    display: flex;
+    background-size: cover;
+}
+
+.tagPainel {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #9747FF;
+    border-radius: 999px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.18rem;
+    height: 1.5rem;
+}
+
+.textoTagPainel {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    line-height: 13.50px;
+    letter-spacing: 0.06px;
+    word-wrap: break-word;
+}
+
+.tituloPainel{
+    align-self: stretch;
+    color: #111214;
+    font-size: 22px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    line-height: 27.50px;
+    word-wrap: break-word;
+    margin-top: -1rem;
+    margin-bottom: 1.05rem;
+}
+
+.subtituloPainel {
+    align-self: stretch;
+    color: #6C7077;
+    font-size: 16px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    line-height: 25.60px;
+    word-wrap: break-word;
+}
+
+.textoPainel {
+    align-self: stretch;
+    height: 196px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: flex;
+    line-height: 1.3rem;
+}
+
+.tituloSubtituloPainel {
+    height: 20rem;
+    align-self: stretch;
+    height: 84px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    display: flex;
+}
+
+/* Adicionado por Albert em 14/11/2024 para regularizar a responsividade em resoluções mais baixas */
+/* Alterações baseadas nas existentes na página de notícias */
+
+@media screen and (max-width: 1600px) {
+    .abreDivNestPainel {
+        font-size: 0.9rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divPainel {
+        width: 22rem;
+    }
+
+    .tagPainel {
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .abreDivNestPainel {
+        font-size: 0.7rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+    
+    .divPainel {
+        width: 20rem;
+    }
+
+    .tagPainel {
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .abreDivNestPainel {
+        font-size: 0.8rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divPainel {
+        width: 18rem;
+    }
+
+    .tagPainel {
+        margin-right: 6rem;
+    }
+
+    .abrirPainel {
+        display: none;
+    }
+
+    .divisaotags {
+        gap: 0px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .abreDivNestPainel {
+        font-size: 0.5rem;
+        height: auto;
+        padding: 0px;
+        overflow-x: visible;
+    }
+
+    .divPainel {
+        width: 15rem;
+    }
+
+    .tagPainel {
+        display: none;
+    }
+
+    .abrirPainel {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .abreDivNestPainel {
+        font-size: 0.4rem;
+        overflow-x: visible;
+    }
+    .divPainel {
+        width: 12rem;
+    }
+
+    .tagPainel {
+        display: none;
+    }
+
+    .abrirPainel {
+        display: none;
+    }
+}

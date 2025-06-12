@@ -1,0 +1,330 @@
+/* Fonte BancoDoBrasilTextos */
+@font-face { font-family: BancoDoBrasilTextos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasilTextos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasilTextos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasilTextos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-BoldIt.ttf');}
+
+/* Fonte BancoDoBrasilTitulos */
+@font-face { font-family: BancoDoBrasilTitulos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasilTitulos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-BoldIt.ttf');}
+
+/* Fonte BancoDoBrasilTextos */
+@font-face { font-family: BancoDoBrasil Textos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasil Textos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasil Textos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasil Textos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-BoldIt.ttf');}
+
+/* Fonte BancoDoBrasilTitulos */
+@font-face { font-family: BancoDoBrasil Titulos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasil Titulos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasil Titulos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasil Titulos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-BoldIt.ttf');}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+}
+
+.bootbox.modal {
+    overflow:hidden !important;
+}
+
+.bootbox .modal-header .close { 
+    position: absolute;
+    right: 15px; 
+}
+
+.modal {
+    direction:rtl;
+    overflow-y: auto;
+}
+
+.modal .modal-dialog {
+    direction:ltr;
+}
+
+.modal-open {
+    overflow:auto;
+}
+
+header.header {
+    background-color:#465EFF;
+    position: fixed;
+    top:0; 
+    left:0;
+    width: 100%;
+    height: 4rem;
+    z-index: 10;
+}
+
+main {
+    padding: 0px;
+}
+
+.topFooter {
+    font-family: BancoDoBrasilTextos;
+    /* background-color: #002D4B; */
+    background-color: #465EFF;
+    color: #FFFFFF;
+    height: 9rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textoRodape {
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 16px;
+}
+
+.bottomFooter {
+    font-family: BancoDoBrasilTextos;
+    font-weight: bold;
+    color: #465EFF;
+    background-color: #00FFE0;
+}
+
+.topFooter p {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.bottomFooter p {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.imgQrCode {
+    height: 6rem;
+}
+
+#logoHome {
+    display: inline-flex;
+    align-items: flex-end;
+    width: 15%;
+    height: 4rem;
+}
+
+#logoHome:after {
+    content: "";
+    background: white;
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    height: 60%;
+    width: 1px;
+}
+
+#menuHeader {
+    display: inline-flex;
+    width: 64%;
+    height: 4rem;
+    padding-left: 3rem;
+}
+
+#perfilHeader {
+    display: inline-flex;
+    width: 20%;
+    height: 4rem;
+    float: right;
+}
+
+.fotoPerfil {
+    height: auto;
+    width: 3.5rem;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin-right: 15px;
+    display: inline-flex;
+}
+
+.divCabecalho {
+    color: white;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    justify-content: center;
+    width: auto;
+}
+
+.divCabecalho:hover {
+    font-weight: bold;
+    margin: 0px;
+}
+
+.divCabecalho:hover .textoMenuCabecalho {
+    color: #FFFFFF !important;
+}
+
+.Clicar {
+    cursor: pointer;
+}
+
+.botaoHome {
+    margin-right: auto;
+    text-decoration:none;
+    color: yellow;
+    font-weight: bold;
+    font-family: BancoDoBrasilTextos;
+}
+
+.botaoPerfil {
+    margin-right: 10px;
+    margin-left: auto;
+    margin-top: 0.2rem;
+}
+
+#submenuCabecalho {
+    font-family: BancoDoBrasilTextos;
+    position: fixed;
+    display: none;
+    z-index: 5;
+    background-color: #FEFEFE;
+    width: 100%;
+    margin-top: 4rem;
+    opacity: 90%;
+    height: 6.5rem;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+#container{
+    position: absolute;
+    margin-top: 4rem;
+    margin-right: 1vh;
+    width: 100%;
+}
+
+.iconeAtalhoCabecalho {
+    width: 20px;
+}
+
+.itensCabecalho {
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 35rem; */
+    width: auto;
+    height: 20px;
+    margin-top: 5.3rem;
+    background: #00FFE0;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    box-shadow: 0px 8px 12px -2px rgba(0, 0, 0, 0.2);
+}
+
+.atalhosCabecalho {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+    margin-top: 1rem;
+}
+
+.divElementosCabecalho {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 0px 8px 12px -2px rgba(0, 0, 0, 0.2);
+}
+
+.logoCadCabecalho {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    display: inline-flex;
+}
+
+/* a[title]:hover:after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 0;
+} */
+
+@media screen and (max-width: 1600px) {
+    span.textoPortalDoCad {
+        font-size: 0.9rem;
+    }
+    div.divCabecalho {
+        font-size: 0.9rem;
+    }
+    div#menuHeader {
+        padding-left: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    span.textoPortalDoCad {
+        font-size: 0.7rem;
+    }
+    div.divCabecalho {
+        font-size: 0.7rem;
+    }
+    div#menuHeader {
+        padding-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    span.textoPortalDoCad {
+        font-size: 0.6rem;
+    }
+    div.divCabecalho {
+        font-size: 0.6rem;
+    }
+    div#menuHeader {
+        padding-left: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    span.textoPortalDoCad {
+        display: none;
+    }
+    div#logoHome {
+        width: 12%;
+    }
+    div#logoHome::after {
+        left: 12%
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    li.nomeFunciCabecalho {
+        display: none;
+    }
+    div.divNomeFunciCabecalho{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.atalhosCabecalho{
+        display: none;
+    }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="../lib/js/jquery.3.7.1.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery.3.7.1.min.js"></script>
+    <style>
+        html, body{
+            height: 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .shadow{
+            font: 80px sans-serif;
+            text-shadow: -100px 200px 69px rgba(0,0,0,0.2);
+
+            background: -webkit-linear-gradient(#fff, #999);
+            background-clip: border-box;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .shadow::after{
+            content: "Analytics";
+            display: block;
+            /* color: rgba(#999,.15); */
+            background: -webkit-linear-gradient(#999, #fff);
+            transform: rotate3d(1, 0, 0, 180deg) scale(1, 3) skew(-180deg, 0deg);
+            margin: 23px 0 0 0px;
+            background-clip: border-box;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+    
+    <body>
+        <span class="shadow">Analytics</span>
+    </body>
+</html>

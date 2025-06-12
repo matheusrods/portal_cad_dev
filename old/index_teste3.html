@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <script type="text/javascript" src="../lib/js/jquery.3.7.1.js"></script>
+  <script type="text/javascript" src="../lib/js/jquery.3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(function(){
+          $('.efeitoAnalytics').on("mouseenter",function() {
+              var idInfo = $(this).attr('attr-idInfo');
+              var estaAberto = $(this).attr('attr-estaAberto');
+              $(".bounceAnalytics"+idInfo).addClass('efeitoAnalyticsEfeitos');
+              $(this).attr('attr-estaAberto', '1');
+          });
+
+          $('.efeitoAnalytics').on("mouseleave",function() {
+              var idInfo = $(this).attr('attr-idInfo');
+              var estaAberto = $(this).attr('attr-estaAberto');
+              $(".bounceAnalytics"+idInfo).removeClass('efeitoAnalyticsEfeitos');
+              $(".bounceAnalytics"+idInfo).addClass('efeitoAnalyticsEfeitoSobe');
+              $(this).attr('attr-estaAberto', '0');
+              setTimeout(function () {
+                  $(".bounceAnalytics"+idInfo).removeClass('efeitoAnalyticsEfeitoSobe');
+              }, 500);
+          });
+      });
+    });
+
+
+  </script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TESTE HTML</title>
+<style>
+    .primeiraLinhaDadosAnalytics {
+        display: flex;
+        justify-content: space-between; /* Isso distribui o espaço horizontalmente */
+        align-items: center; /* Isso centraliza verticalmente */
+        width: 100%;
+    }
+
+    .dadosSubJornadasAnalytics {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centraliza verticalmente o conteúdo da DIV */
+        align-items: center; /* Centraliza horizontalmente o conteúdo da DIV */
+        width: 50%; /* Ajuste a largura conforme necessário */
+    }
+
+    .colunaDireitaPrimeiraLinhaAnalytics {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centraliza verticalmente o conteúdo da DIV */
+        align-items: center; /* Centraliza horizontalmente o conteúdo da DIV */
+        width: 50%; /* Ajuste a largura conforme necessário */
+    }
+
+    .totalUsuariosOptInAnalytics, .totalTransacoesDisponiveisAnalytics {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centraliza verticalmente o conteúdo da DIV */
+        align-items: center; /* Centraliza horizontalmente o conteúdo da DIV */
+        width: 100%; /* Ajuste a largura conforme necessário */
+    }
+</style>
+</head>
+<body>
+    <div class="primeiraLinhaDadosAnalytics">
+        <div class="dadosSubJornadasAnalytics">
+            <img style="width: 10%; " src="/lib/img/apps/analytics/imgSubJornadas.png">
+            <div style="width: 100%; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
+                <div style="text-align: center; color: #EFEFEF; font-size: 64px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">
+                    8157
+                </div>
+                <div style="color: #EFEFEF; font-size: 16px; font-family: BancoDoBrasil Titulos; font-weight: 400; word-wrap: break-word;width: 105%;">
+                    SUB-JORNADAS<br>DISPONÍVEIS
+                </div>
+            </div>
+        </div>
+    
+        <div class="colunaDireitaPrimeiraLinhaAnalytics">
+            <div class="totalUsuariosOptInAnalytics">
+                <div style="text-align: center; color: #EFEFEF; font-size: 64px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">
+                    +41Mi
+                </div>
+                <div style="color: #EFEFEF; font-size: 16px; font-family: BancoDoBrasil Titulos; font-weight: 400; word-wrap: break-word;text-align: center;">
+                    41.237.066 USUÁRIOS <br>COM OPT-IN
+                </div>
+            </div>
+            <div class="totalTransacoesDisponiveisAnalytics">
+                <div style="text-align: center; color: #EFEFEF; font-size: 64px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">
+                    133
+                </div>
+                <div style="color: #EFEFEF; font-size: 16px; font-family: BancoDoBrasil Titulos; font-weight: 400; word-wrap: break-word;text-align: center;">
+                    TRANSAÇÕES <br>DISPONÍVEIS
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

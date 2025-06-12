@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout com 3 Divs</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .left, .right {
+            width: 50%;
+            border: 1px solid #000; /* Apenas para visualização */
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+        }
+        .left .top, .left .bottom {
+            flex: 1;
+            border: 1px solid #000; /* Apenas para visualização */
+            position: relative; /* Necessário para posicionamento absoluto dos elementos internos */
+        }
+        .extra-container {
+            display: flex;
+            width: 100%;
+        }
+        .extra1, .extra2 {
+            width: 50%;
+            border: 1px solid #000; /* Apenas para visualização */
+            box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+        }
+        .full-width {
+            width: 100%;
+            border: 1px solid #000; /* Apenas para visualização */
+            box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+        }
+        .content {
+            position: absolute;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .content div {
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left, .right, .extra1, .extra2 {
+                width: 100%;
+            }
+            .content {
+                position: static;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="top">
+                <div class="content">
+                    <div style="color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800">01.</div>  
+                    <div style="color: #072C60; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase">Definição do Objetivo e do critério de sucesso</div>
+                    <div style="color: #072C60; font-family: BancoDoBrasil Textos">
+                        <span style="font-size: 24px; font-weight: 800">Meta do teste:</span>
+                        <span style="font-size: 24px; font-weight: 400"> Determine claramente o que você deseja alcançar com o experimento.<br></span>
+                        <span style="font-size: 24px; font-style: italic; font-weight: 300">Ex: aumento da taxa de conversão, aumento na quantidade de acionamentos da transação, melhoria na satisfação do usuário, etc.</span>
+                    </div>
+                    <div style="color: #072C60; font-family: BancoDoBrasil Textos">
+                        <span style="font-size: 24px; font-weight: 800">KPIs:</span>
+                        <span style="font-size: 24px; font-weight: 400"> Identifique as métricas-chave de desempenho (Key Performance Indicators) que serão usadas para avaliar o sucesso do seu experimento.<br></span>
+                        <span style="font-size: 24px; font-style: italic; font-weight: 300">Ex: quantidade de acessos, nota de satisfação, taxa de conversão, etc.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">Coluna Esquerda Inferior</div>
+        </div>
+        <div class="right">Coluna Direita</div>
+    </div>
+    <div class="extra-container">
+        <div class="extra1">Nova Coluna 1</div>
+        <div class="extra2">Nova Coluna 2</div>
+    </div>
+    <div class="full-width">Nova Div com Largura Total</div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout com 3 Divs</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .left, .right {
+            width: 50%;
+            border: 1px solid #000; /* Apenas para visualização */
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+        }
+        .left .top, .left .bottom {
+            flex: 1;
+            border: 1px solid #000; /* Apenas para visualização */
+            position: relative; /* Necessário para posicionamento absoluto dos elementos internos */
+        }
+        .extra-container {
+            display: flex;
+            width: 100%;
+        }
+        .extra1, .extra2 {
+            width: 50%;
+            border: 1px solid #000; /* Apenas para visualização */
+            box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+        }
+        .full-width {
+            width: 100%;
+            border: 1px solid #000; /* Apenas para visualização */
+            box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+        }
+        .content {
+            position: absolute;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .content div {
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left, .right, .extra1, .extra2 {
+                width: 100%;
+            }
+            .content {
+                position: static;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="top">
+                <div class="content">
+                    <div style="color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800">01.</div>  
+                    <div style="color: #072C60; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase">Definição do Objetivo e do critério de sucesso</div>
+                    <div style="color: #072C60; font-family: BancoDoBrasil Textos">
+                        <span style="font-size: 24px; font-weight: 800">Meta do teste:</span>
+                        <span style="font-size: 24px; font-weight: 400"> Determine claramente o que você deseja alcançar com o experimento.<br></span>
+                        <span style="font-size: 24px; font-style: italic; font-weight: 300">Ex: aumento da taxa de conversão, aumento na quantidade de acionamentos da transação, melhoria na satisfação do usuário, etc.</span>
+                    </div>
+                    <div style="color: #072C60; font-family: BancoDoBrasil Textos">
+                        <span style="font-size: 24px; font-weight: 800">KPIs:</span>
+                        <span style="font-size: 24px; font-weight: 400"> Identifique as métricas-chave de desempenho (Key Performance Indicators) que serão usadas para avaliar o sucesso do seu experimento.<br></span>
+                        <span style="font-size: 24px; font-style: italic; font-weight: 300">Ex: quantidade de acessos, nota de satisfação, taxa de conversão, etc.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">Coluna Esquerda Inferior</div>
+        </div>
+        <div class="right">Coluna Direita</div>
+    </div>
+    <div class="extra-container">
+        <div class="extra1">Nova Coluna 1</div>
+        <div class="extra2">Nova Coluna 2</div>
+    </div>
+    <div class="full-width">Nova Div com Largura Total</div>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div style="width: 50%; height: 629px; position: relative">
+  <div style="width: 222px; height: 105px; left: 127px; top: 59px; position: absolute; color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800">01.</div>  
+  <div style="width: 544px; height: 79px; left: 127px; top: 177px; position: absolute; color: #072C60; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase">Definição do Objetivo e do critério de sucesso</div>
+  <div style="width: 759px; height: 104px; left: 127px; top: 291px; position: absolute; color: #072C60; font-family: BancoDoBrasil Textos">
+      <span style="font-size: 24px; font-weight: 800">Meta do teste:</span>
+      <span style="font-size: 24px; font-weight: 400"> Determine claramente o que você deseja alcançar com o experimento.<br></span>
+      <span style="font-size: 24px; font-style: italic; font-weight: 300">Ex: aumento da taxa de conversão, aumento na quantidade de acionamentos da transação, melhoria na satisfação do usuário, etc.</span>
+    </div>
+    
+    <div style="width: 759px; height: 130px; left: 127px; top: 427px; position: absolute; color: #072C60; font-family: BancoDoBrasil Textos">
+      <span style="font-size: 24px; font-weight: 800">KPIs:</span>
+      <span style="font-size: 24px; font-weight: 400"> Identifique as métricas-chave de desempenho (Key Performance Indicators) que serão usadas para avaliar o sucesso do seu experimento.<br></span>
+      <span style="font-size: 24px; font-style: italic; font-weight: 300">Ex: quantidade de acessos, nota de satisfação, taxa de conversão, etc.</span>
+    </div>
+  </div>
+  
+  <div style="width: 50%; position: absolute; left: 903px; top: 0px;">
+    <div style="width: 960px; height: 1316px; left: 57px; position: absolute">
+      <div style="width: 405px; height: 24px; position: absolute; background: rgba(253, 244, 41, 0.88); border-radius: 3px; top: 436px; left: 138px;"></div>
+      <div style="width: 464px; height: 22px; position: absolute; background: rgba(253, 244, 41, 0.88); border-radius: 3px; top: 462px; left: 138px;"></div>
+      <div style="width: 299px; height: 22px; position: absolute; background: rgba(253, 244, 41, 0.88); border-radius: 3px; top: 486px; left: 138px;"></div>
+      <div style="width: 475px; height: 71px; position: absolute; color: #465EFF; font-size: 20px; font-family: BancoDoBrasil Textos; font-style: italic; font-weight: 400; line-height: 22.60px; word-wrap: break-word; top: 436px; left: 145px;">💡 Evite testar duas ou mais modificações simultaneamente, pois isso pode influenciar no resultado do seu experimento</div>
+    </div>
+    <div style="width: 627px; height: 42px; position: absolute; color: white; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase; word-wrap: break-word; top: 230px; left: 195px;">Preparação do experimento</div>
+    <div style="width: 631px; height: 122px; position: absolute; color: white; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 800; word-wrap: break-word; top: 301px; left: 195px;">
+      <span>Escolha a variável:</span>
+      <span style="font-weight: 400;">Decida o que será testado.<br></span>
+      <span style="font-weight: 300; font-style: italic;">Ex: a linguagem do chatbot, a personalização da jornada, o uso de um componente visual, a disposição dos botões, etc.</span>
+    </div>
+    <div style="width: 631px; height: 467px; position: absolute; color: white; font-size: 24px; font-family: BancoDoBrasil Textos; line-height: 24px; word-wrap: break-word; top: 537px; left: 195px;">
+      <span style="font-weight: 700;">Versões A e B:</span>
+      <span style="font-weight: 400;">Crie duas versões da variável escolhida.<br><br>A versão "A" pode ser a versão atual ou uma versão controle, e a versão "B" será a alternativa ou a versão modificada.<br><br></span>
+      <span style="font-weight: 700;">Público do experimento:</span>
+      <span style="font-weight: 400;">Defina os grupos que serão o público do experimento.<br><br></span>
+      <span style="font-weight: 300; font-style: italic;">Ex: 100% dos usuários que acessam a jornada de consulta de saldo (80% estarão no grupo de controle e 20% estarão acessando o experimento)<br><br></span>
+      <span style="font-weight: 700;">Período do experimento:</span>
+      <span style="font-weight: 300;">Defina por quanto tempo o experimento será conduzido. O período deve ser suficientemente longo para capturar uma amostra representativa de interações.<br><br></span>
+      <span style="font-weight: 400;">Realize a documentação da UX na tarefa de UX no GenTI</span>
+    </div>
+    <div style="width: 222px; height: 105px; position: absolute; color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800; word-wrap: break-word; top: 112px; left: 184px;">02.</div>
+    <div style="width: 567px; height: 72px; position: absolute; top: 1033px; left: 195px;">
+      <div style="width: 513px; height: 25px; position: absolute; background: rgba(253, 244, 41, 0.88); border-radius: 3px; top: 0px; left: 0px;"></div>
+      <div style="width: 556px; height: 23px; position: absolute; background: rgba(253, 244, 41, 0.88); border-radius: 3px; top: 26px; left: 0px;"></div>
+      <div style="width: 567px; height: 22px; position: absolute; background: rgba(253, 244, 41, 0.88); border-radius: 3px; top: 50px; left: 0px;"></div>
+      <div style="width: 542px; height: 71px; position: absolute; color: #465EFF; font-size: 20px; font-family: BancoDoBrasil Textos; font-style: italic; font-weight: 400; word-wrap: break-word; top: 0px; left: 11px;">💡 Todas as características do experimento (objetivo, métrica de sucesso, variável analisada, público e período do experimento) devem ser incluídas na história no GenTI.</div>
+    </div>
+  </div>
+  
+  
+  <div class="divDica03" style="width: 960px; height: 740px; position: relative">
+    <div style="position: absolute; width: 334px; height: 26px; left: 558px; top: 483px; background: rgba(253, 244, 41, 0.88); border-radius: 3px"></div>
+    <div style="position: absolute; width: 631px; height: 26px; left: 256px; top: 527px; background: rgba(253, 244, 41, 0.88); border-radius: 3px"></div>
+    <div style="position: absolute; width: 509px; height: 26px; left: 376px; top: 553px; background: rgba(253, 244, 41, 0.88); border-radius: 3px"></div>
+    <div style="position: absolute; left: 127px; top: 260px; color: white; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; line-height: 24px">Realize a implementação do diálogo no NIA.<br><br>Para segregar os públicos podem ser utilizadas as funções abaixo:</div>
+    <div style="position: absolute; left: 580px; top: 483px; color: #465EFF; font-size: 22px; font-family: BancoDoBrasil Textos; font-style: italic; font-weight: 400; line-height: 22px">gera um número entre 0 e 19</div>
+    <div style="position: absolute; left: 244px; top: 526px; text-align: right; color: #465EFF; font-size: 22px; font-family: BancoDoBrasil Textos; font-style: italic; font-weight: 400; line-height: 24px">gera uma variável dizendo se haverá experimentação, com a proporção de 50% de chance para cada cenário</div>
+    <div style="position: absolute; left: 127px; top: 69px; color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800">03.</div>
+    <div style="position: absolute; left: 127px; top: 187px; color: #072C60; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase">implementação</div>
+  </div>
+  
+  <div class="divDica04" style="width: 999px; height: 631px; position: relative">
+    <div style="position: absolute; width: 727px; height: 25px; left: 124px; top: 342px; background: rgba(253, 244, 41, 0.88); border-radius: 3px"></div>
+    <div style="position: absolute; width: 718px; height: 25px; left: 119px; top: 367px; background: rgba(253, 244, 41, 0.88); border-radius: 3px"></div>
+    <div style="position: absolute; left: 127px; top: 59px; color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800">04.</div>
+    <div style="position: absolute; left: 127px; top: 177px; color: #072C60; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase">Coleta de dados e curadoria</div>
+    <div style="position: absolute; left: 127px; top: 273px; color: #072C60; font-size: 24px; font-family: BancoDoBrasil Textos">
+      <span style="font-weight: 700">Coleta de Dados e Curadoria:</span> solicite via abertura de tarefa no GenTI a coleta de dados ou curadoria do experimento.
+    </div>
+    <div style="position: absolute; left: 124px; top: 427px; color: #072C60; font-size: 24px; font-family: BancoDoBrasil Textos">
+      <span style="font-weight: 700">Interpretação dos Resultados:</span> Analise os resultados e verifique se eles permitem obter as informações da meta do teste
+    </div>
+    <div style="position: absolute; left: 127px; top: 342px; color: #072C60; font-size: 22px; font-family: BancoDoBrasil Textos; font-style: italic; font-weight: 400; line-height: 23px">💡Seja o mais específico possível e dê a maior quantidade de detalhes possíveis para ajudar quem vai obter esses dados a ser mais assertivo</div>
+  </div>
+  
+  <div class="divDica05" style="width: 962px; height: 631px; position: relative">
+    <div style="position: absolute; left: 129px; top: 59px; color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800">05.</div>
+    <div style="position: absolute; left: 129px; top: 177px; color: #072C60; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase">documentação</div>
+    <div style="position: absolute; left: 129px; top: 273px; color: #072C60; font-size: 24px; font-family: BancoDoBrasil Textos">Registre todo o processo, os resultados e as conclusões em um relatório detalhado. Já disponibilizamos um modelo para você preencher e facilitar o trabalho 😉</div>
+    <div style="position: absolute; left: 285px; top: 392px; width: 553px; height: 160px; background: #DFF33D; border-radius: 6px">
+      <div style="position: absolute; left: 60px; top: 40px; color: #465EFF; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 500">Baixar o modelo de documento para registrar o experimento</div>
+    </div>
+  </div>
+  
+  
+  <div class="divDica06" style="width: 1920px; height: 992px; position: relative">
+    <div style="position: absolute; left: 148px; top: 240px; color: white; font-size: 36px; font-family: BancoDoBrasil Titulos; font-weight: 800; text-transform: uppercase;">publicação</div>
+    <div style="position: absolute; left: 148px; top: 311px; color: white; font-size: 24px; font-family: BancoDoBrasil Textos;">
+      <span style="font-weight: 800;">Para cadastrar o experimento você terá que colocar:<br><br></span>
+      <span style="font-weight: 800;">Título: </span> Dê um título para o seu experimento<br><br>
+      <span style="font-weight: 800;">Descrição:</span> Descreva resumidamente sobre o que é seu experimento e qual o objetivo dele<br><br>
+      <span style="font-weight: 800;">Arquivo PDF: </span> Inclua o arquivo com todos os detalhes <br><br>
+      <span style="font-weight: 800;">Capa: </span> Serve pra identificar seu experimento na lista<br><br>
+      <span style="font-weight: 800;">Tags:</span> Utilizadas para o filtro na busca de experimentos<br><br>
+      <span style="font-weight: 800;">Resultado:</span> Informe se o experimento atingiu o objetivo
+    </div>
+    <div style="position: absolute; left: 137px; top: 122px; color: white; font-size: 96px; font-family: BancoDoBrasil Textos; font-weight: 800;">06.</div>
+    <div style="position: absolute; left: 165px; top: 675px; width: 553px; height: 160px; background: #DFF33D; border-radius: 6px;">
+      <div style="position: absolute; left: 83px; top: 35px; color: #465EFF; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 500;">Clique aqui para publicar seu experimento na página</div>
+    </div>
+  </div> -->

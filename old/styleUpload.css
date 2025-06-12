@@ -1,0 +1,475 @@
+input[type="file"] {
+    display: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+.modal-incluir-estudo {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.divEsquerda, .divDireita {
+    width: 50%;
+    display: inline-flex;
+}
+
+.divEsquerda {
+    float: left;
+}
+
+.divDireita {
+    float: right;
+}
+
+.divTextAreaDescricao {
+    display: flex;
+    flex-direction: column;
+    width: 344px;
+    height: 138px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 127px;
+    left: 1px;
+}
+
+.label {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    color: rgba(17, 18, 20, 1);
+    font-size: 16px;
+    font-style: normal;
+}
+
+#textAreaDescricao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+    overflow: hidden;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 1%;
+}
+
+.input {
+    display: flex;
+    align-items: flex-start;
+    gap: 1px;
+    padding: 8px 16px 0px;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+}
+
+.inputDescricao {
+    position: relative;
+    flex-grow: 1;
+    border: none;
+    background: none;
+    flex: 1;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 0;
+}
+
+.text-area-resize {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 11px;
+    background-color: rgba(240, 242, 244, 1);
+}
+
+.drag-icon {
+    position: relative;
+    width: 6px;
+    height: 11px;
+    top: 2px;
+    left: 334px;
+    transform: rotate(33.25deg);
+}
+
+.rectangle {
+    height: 7px;
+    top: 3px;
+    left: 4px;
+    position: absolute;
+    width: 1px;
+    background-color: rgba(136, 141, 149, 1);
+    transform: rotate(11.75deg);
+}
+
+.div {
+    height: 11px;
+    top: 0;
+    left: 1px;
+    position: absolute;
+    width: 1px;
+    background-color: rgba(136, 141, 149, 1);
+    transform: rotate(11.75deg);
+}
+
+.space {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(240, 242, 244, 1);
+}
+
+.border-botton {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(180, 185, 193, 1);
+}
+
+.contaCaracteresTitulo, .contaCaracteresDescricao, .textDicaTag {
+    position: relative;
+    align-self: stretch;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+.tag-field-large {
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 284px;
+    left: 1px;
+}
+
+.group-2 {
+    background-color: rgba(240, 242, 244, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px 16px 15px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+}
+
+.content-2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.tag-default {
+    display: inline-flex;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 4px 4px 8px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: rgba(56, 83, 255, 1);
+    border-radius: 24px;
+}
+
+.text-wrapper {
+    width: fit-content;
+    color: rgba(253, 254, 255, 1);
+    white-space: nowrap;
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 14px;
+    
+    line-height: 112.5%;
+    font-style: normal
+}
+
+.clear {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+
+.cursor {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 2px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.cursor-2 {
+    position: relative;
+    align-self: stretch;
+    width: 1.5px;
+    background-color: rgba(45, 55, 245, 1);
+}
+
+.input-text {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 22px;
+    line-height: 125%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.border-botton-2 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(45, 55, 245, 1);
+}
+
+.divTextAreaTitulo {
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.labelTitulo {
+    align-self: stretch;
+    color: rgba(17, 18, 20, 1);
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 112.5%;
+    font-style: normal
+}
+
+.textAreaTitulo {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    flex: 1;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 18px;
+    font-style: normal;
+    padding: 0;
+    background-color: rgba(240, 242, 244, 1);
+    border-radius: 4px 4px 0px 0px;
+    overflow: hidden;
+    padding: 1%;
+}
+
+.divUploadPdf {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 0;
+    left: 406px;
+}
+
+.labelUploadDownload {
+    align-self: stretch;
+    color: rgba(108, 112, 119, 1);
+    position: relative;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 112.5%;
+    font-style: normal
+}
+
+.divConteudoUpload {
+    align-items: center;
+    padding: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: rgba(254, 254, 254, 1);;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px dashed;
+    border-color: rgba(180, 185, 193, 1);
+    display: flex;
+    gap: 8px;
+}
+
+.iconeUploadPdfPng {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgba(235, 242, 255, 1);
+    border-radius: 8px;
+}
+
+.divTextoUploadDownload {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.divTextoUploadDownload01 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: BancoDoBrasil Textos;
+    color: rgba(17, 18, 20, 1);
+    font-size: 14px;
+    text-align: center;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal
+}
+
+.textoArquivoPng, .textoArquivoPdf, .hint-text-2 {
+    position: relative;
+    width: fit-content;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 12px;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.file-upload-2 {
+    flex-direction: column;
+    width: 320px;
+    align-items: flex-start;
+    position: absolute;
+    top: 423px;
+    left: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.file-upload-button-2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: #dff33d;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.divUploadPng {
+    flex-direction: column;
+    width: 320px;
+    align-items: flex-start;
+    position: absolute;
+    top: 93px;
+    left: 406px;
+    display: flex;
+    gap: 8px;
+}
+
+.divPreviewCapa {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    position: absolute;
+    top: 186px;
+    left: 406px;
+}
+
+.textoPreview {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    color: rgba(108, 112, 119, 1);
+    font-size: 14px;
+    line-height: 112.5%;
+    white-space: nowrap;
+    font-style: normal;
+}
+
+.btnEnviar {
+    align-self: flex-end;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

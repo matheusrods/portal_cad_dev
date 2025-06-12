@@ -1,0 +1,1261 @@
+/* ===============================
+   1) Registrar a fonte BancoDoBrasil Textos
+   =============================== */
+@font-face {
+  font-family: "BancoDoBrasil Textos";
+  src: url("../fonts/BancoDoBrasil-Textos.woff2") format("woff2"),
+       url("../fonts/BancoDoBrasil-Textos.woff") format("woff"),
+       url("../fonts/BancoDoBrasil-Textos.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===============================
+   2) Aplicar a fonte globalmente
+   =============================== */
+html, body {
+  font-family: "BancoDoBrasil Textos", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+/*===========================================
+  RESET BÁSICO
+===========================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'BancoDoBrasil Textos';
+  background-color: #0a0a23;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* Container genérico */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+html, body {
+  font-family: "BancoDoBrasil Textos";
+}
+
+/*===========================================
+  1. HEADER
+===========================================*/
+.site-header {
+  background-color: #2650C2; /* Azul vibrante do topo */
+  padding: 0.75rem 0;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .logo img {
+  height: 40px;
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.main-nav a:hover {
+  opacity: 0.8;
+}
+.btn-launch {
+  background-color: #fff;
+  color: #2650C2;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-launch:hover {
+  opacity: 0.9;
+}
+
+/*===========================================
+  2. HERO
+===========================================*/
+.hero {
+  margin-top: 64px; 
+  background: linear-gradient(150deg, #2643C6 0%, #01011E 100%);
+  padding: 3rem 0 1rem;        
+  position: relative;
+  overflow: hidden;
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  color: #FFF;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-style: normal;
+  letter-spacing: -3.6px;
+  font-family: "BancoDoBrasil Titulos";
+}
+.hero-text p {
+  margin-top: 1rem;
+  font-size: 24px;
+  color: #e0e0e0;
+}
+.hero-text .navegue-label {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #9cf4ff;
+  font-weight: 600;
+}
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.tabs .tab {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: none;
+  padding: 0.75rem 1rem;
+  color: #ccc;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.tabs .tab.active {
+  background-color: #4D7FFF;  /* cor exata do Figma para aba selecionada */
+  color: #fff;
+}
+.tabs .tab:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.hero-image img {
+  display: block;
+  max-width: 683px;
+  width: 100%;
+  /* margin-bottom: -60px; */
+  position: relative;
+  z-index: 10;
+}
+
+/*===========================================
+  3. SESSÃO: CONCEITOS BÁSICOS
+===========================================*/
+.section {
+  padding: 4rem 0;
+}
+.conceitos {
+  background-color: #01011E;
+  padding: 2rem 0 4rem;  /* 2rem no topo, 4rem no fundo */
+}
+.conceitos h2 {
+  font-size: 2.25rem;       /* ligeiramente maior, conforme Figma */
+  line-height: 1.2;
+  font-weight: 700;
+  color: #4D7FFF;           /* azul vibrante */
+  margin-bottom: 1rem;      /* espaço abaixo do título */
+}
+.conceitos p {
+  color: #ddd;
+  margin-bottom: 2rem;
+  font-size: 19px;          /* ajuste fino se necessário */
+}
+
+/* CARD DE VÍDEO */
+.video-card {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.video-wrapper video,
+.video-wrapper img {
+  width: 100%;
+  display: block;
+}
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.play-overlay svg {
+  width: 40px;
+  height: 40px;
+}
+
+/*===========================================
+  4. SESSÃO: PRINCIPAIS MÉTRICAS
+===========================================*/
+.metricas {
+  background-color: #01011E;
+}
+.metricas h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4D7FFF;
+  margin-bottom: 1rem;
+}
+.metricas p {
+  color: #ddd;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+.metricas .subtitulo-grid {
+  margin: 2rem 0 1rem;
+  font-size: 1rem;
+  color: #9cf4ff;
+  font-weight: 600;
+}
+
+/* GRID DE CARDS COM THUMBNAIL E PLAY */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.card-painel {
+  background-color: #202041;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.card-painel:hover {
+  transform: translateY(-4px);
+}
+.thumb-wrapper {
+  position: relative;
+}
+.thumb-wrapper img {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.card-title {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+
+/* CARD DECORATIVO (gráfico 3D, etc.) */
+.card-icon-decorativo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-icon-decorativo img {
+  width: 100%;
+  max-width: 200px;
+  opacity: 0.8;
+}
+
+/*===========================================
+  5. SESSÃO: RECURSOS
+===========================================*/
+.recursos {
+  background-color: #0a0a23;
+}
+.recursos h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4D7FFF;
+  margin-bottom: 1rem;
+}
+.recursos p {
+  color: #ddd;
+  margin-bottom: 1.5rem;
+}
+.grid-recursos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.card-recurso {
+  background: linear-gradient(135deg, #2643C6 0%, #4D7FFF 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.recurso-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1rem;
+}
+.recurso-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.recurso-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.btn-acessar {
+  display: inline-block;
+  background-color: #fff;
+  color: #2643C6;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-acessar:hover {
+  opacity: 0.9;
+}
+
+/* BOTÃO PRÓXIMO MÓDULO */
+.proximo-modulo {
+  text-align: center;
+}
+.btn-proximo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #4D7FFF;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.btn-proximo span {
+  display: block;
+  font-size: 0.85rem;
+}
+.btn-proximo:hover {
+  background-color: #3657c8;
+}
+.icon-arrow-next {
+  width: 20px;
+  height: 20px;
+}
+
+/*===========================================
+  6. FOOTER
+===========================================*/
+.site-footer {
+  background-color: #2650C2;
+  padding: 2rem 0;
+}
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.footer-container .qr img {
+  width: 80px;
+  height: 80px;
+}
+.footer-container .contato p {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+.footer-container .contato h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-image {
+    margin-bottom: 2rem;
+  }
+  .main-nav ul {
+    display: none; /* exemplo, caso queira um ícone de menu mobile */
+  }
+}
+@media (max-width: 600px) {
+  .tabs {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .tabs .tab {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+  .grid-cards,
+  .grid-recursos {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+#homeCabecalho{
+    width:100%;
+    height:35rem;
+    background: linear-gradient(180deg, #8F82C7 0%, #463F61 100%);
+    display: inline-flex;
+    flex-direction: row;
+
+}
+
+#cabecalhoEsquerdo{
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#imgBarrasCabecalho{
+    width: 60%;
+}
+#cabecalhoDireito{
+    width:50%;
+}
+
+#idDivImgBot{
+    height:35rem;
+}
+#divTextoCabecalho{
+    height:100%;
+    width: 40%;
+    align-content: center;
+}
+
+.tituloCabecalho{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 37.08px */
+    letter-spacing: -2.16px;
+}
+
+.tituloCabecalhoNegrito{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%;
+    letter-spacing: -2.16px;
+}
+
+.txtCabecalho{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+/*SETOR DOS ASSISTENTES DIGITAIS*/
+
+#divAssistentesDigitais{
+    width: 100%;
+    height: 897px;
+    position: relative;
+    flex-shrink: 0;
+    aspect-ratio: 641.67/897.00;
+    background-image: url("/lib/img/apps/home/fundoAssistentesDigitais_compressed.png");
+    z-index: 2;
+}
+
+#divSuperiorAsstDig{
+    width:100%;
+    height: 50%;
+    
+}
+
+
+#divInferiorAsstDig{
+    width:100%;
+    height: 50%;
+    display: inline-flex;
+    align-items: flex-end;
+    
+}
+
+#divImgCelular{
+    margin-left: 22%;
+    margin-right: 3%;
+}
+
+#divTxtTituloAssDigSuperior{
+    width: 42em;
+    margin-left: 20%;
+    padding-top: 5%;
+}
+
+#divTxtAssDigi{
+    width: 90%;
+}
+.tituloAsstDig{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 41.2px */
+    letter-spacing: -2.4px;
+}
+
+
+.tituloNegritoAsstDig{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%;
+    letter-spacing: -2.16px;
+}
+
+
+.txtAssDigi{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+.txtAssDigiNegrito{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 103%;
+    letter-spacing: -0.4px;
+}
+
+#divBalaoDialogoVerde{
+
+    width: 44rem;
+    height: fit-content;
+    position: absolute;
+    border-radius: 41px;
+    background: #2AB740;
+    bottom: 45px;
+    padding: 35px;
+    
+    /*Tipografia*/
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+.setaLateralBalao{
+    width: 0;
+    height: 0;
+    border-right: 20px solid #2AB740;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+    position: relative;
+    bottom: 160px;
+    left: -19px;
+    z-index: 4;
+    }
+
+.txtBalaoNegrito{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 103%;
+    letter-spacing: -0.4px;
+    }
+
+
+/*SETOR AVISOS DA ECOA*/    
+
+.divAvisosEcoa{
+        width: 100%;
+        height: 684px;
+        display: inline-flex;
+        justify-content: center;
+        background-image: url("/lib/img/apps/home/fundoAvisosEcoa.png");
+        background-size:100% 100%; 
+        background-repeat: no-repeat;
+
+    }
+
+.divCentralConteudoEcoa{
+        width:73%;   
+        padding: 5%;
+    }
+
+    
+.divSuperiorConteudoEcoa{
+    height: 30%;
+    margin-bottom: 5%;
+}
+
+
+.divSuperiorLinhaSuperiorConteudoEcoa{
+        height: fit-content;
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        
+}
+
+.tituloAvisoEcoa{
+    width: 311px;
+    color: var(--Cinza, #646464);
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%; /* 37.08px */
+    letter-spacing: -2.16px;
+}
+
+.subtituloAvisoEcoa{
+    width: 652px;
+    height: 75px;
+    padding-top: 3%;
+    flex-shrink: 0;
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+.btnAzulContainer{
+    display: inline-flex;
+    height: 41px;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background-color:  #E0E9FF;
+    
+    /*Tipografia*/
+    color: var(--text-on-secondary, #465EFF);
+    text-align: center;
+    /* Button/Label Small */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 13.5px */
+    letter-spacing: 0.06px;
+    text-transform: uppercase;
+}
+
+/*Carrossel*/
+/* .carrossel-container{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+
+
+#wrapper {
+    width: 100%;
+    position: relative;
+  }
+  
+  #carrossel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  
+  #carrossel::-webkit-scrollbar {
+    height: 0;
+  }
+  
+  #prev,
+  #next {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 8px;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  #prev {
+    top: 50%;
+    left: -80;
+    transform: translate(50%, -50%);
+    display: none;
+  }
+  
+  #next {
+    top: 50%;
+    right: -80;
+    transform: translate(-50%, -50%);
+  }
+  
+  #content {
+    display: grid;
+    grid-gap: 42px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+  }
+  
+
+
+.chevronCarrossel{
+    height: 4em;
+    width: 4em;
+
+}
+.divAviso{
+
+    display: flex;
+    width: 35rem;
+    height: 304px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;  
+    border-radius: 41px;
+    background: rgba(41, 41, 41, 0.80);
+}
+
+.dataAvisoEcoa{
+    flex: 1 0 0;
+    color: #F6FCFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+}
+
+.nomeAviso{
+    flex-shrink: 0;
+    color: #F6FCFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.16px;
+}
+
+.divCentralizaEcoa{
+    width:100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+
+.btnVerMaisEcoa{
+    display: flex;
+    width: 120px;
+    padding: 13px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    color: var(--Fundo-bolha, #F9F9F9);
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+
+/*SETOR REPORTS*/
+
+
+.areaReportDestaques{
+    /* background-image: url("/lib/img/apps/home/fundoDivDestaques.svg"); */
+    background: linear-gradient(180deg, #03426C 4.04%, #002D4B 100%);
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    padding: 35px 57px;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.divItemReport{
+    width: 25%;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 30px 18px;
+    /* flex: 1 0 0; */
+    align-self: stretch;
+    flex-wrap: wrap; 
+    /* background-color: #465EFF; */
+}
+
+.divCabecalhoItemReport{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    flex: 1 0 0;
+    padding-bottom: 30px;
+}
+
+/*linhas dos cabeçalhos*/
+#cabecalhoDestaqueReport{
+    border-bottom: 3px solid #CBA7F1;
+}
+
+#cabecalhoTrendingReport{
+    border-bottom: 3px solid #00FFFF;
+}
+
+#cabecalhoIndisponibilidadeReport{
+    border-bottom: 3px solid #FF0059;
+}
+
+.imgIconItemReport{
+    width:auto;
+}
+
+.tituloItemReport{
+    color: #FFF;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.16px;
+}
+
+.negritoTxtItemReport{
+    color: #F2F2F2;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.divTxtItemReport{
+    color: #F2F2F2;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.linkReport{
+    color: #F2F2F2;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+/*Fim área report*/
+
+/*SETOR RESUMO ÁREAS DO PORTAL*/
+
+#resumoAreasPortal{
+    width: 100%;
+    height: 44rem;
+    background: #E8E8E8;
+    display: inline-flex;
+    justify-content: center;
+}
+
+/*menu*/
+
+.nestMenu{
+    background: linear-gradient(2deg, #03426C 4.04%, #002D4B 4%);
+    height: 51px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+
+}
+
+
+#menuAreaPortal{
+    display: flex;
+    width: 1065px;
+    height: 35px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 30px 0px 0px;
+    /* background: var(--background-default, #FEFEFE); */
+    /* box-shadow: 0px 4px 16.5px 0px #000; */
+
+}
+
+.itemMenuAreas{
+    display: flex;
+    height: 100%;
+    width:18%;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-default, #FEFEFE);
+    
+}
+
+#menuPesquisas{
+    border-radius: 30px 0px 0px 0px;
+    background: #465EFF;   
+}
+
+.itemMenuSelecionado{
+    color: var(--Fundo-bolha, #F9F9F9);
+    text-align: center;
+
+    /* Button/Label Regular */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+.itemMenuNaoSelecionado{
+    color: var(--Texto-bot, #000);
+    text-align: center;
+    padding-left: 5px;
+    /* Button/Label Regular */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+.itemMenuAreas:hover{
+    background-color: #F0F2F4 !important ;
+}
+
+
+#menuCopilotos{
+    border-radius: 0px 30px 0px 0px;
+}
+
+/*área pesquisas*/
+
+#areaPesquisas{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoPesquisas.png");
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+#areaRecursos{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoRecursos.png");
+    display: none;
+
+}
+
+#areaExperimentacoes{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoExperimentacoes.png");
+    display: none;
+}
+
+#areaPaineis{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoPaineis.png");
+    display: none;
+}
+
+#areaEstudos{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoEstudos.png");
+    display: none;
+}
+
+#areaCopilotos{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoCopilotos.png");
+    display: none;   
+}
+
+
+ /*SETOR PESQUISAS*/
+
+ .hdivPesquisa{
+    width: 25rem;
+    height: 30rem;
+    display: flex;
+    /* padding: 32px; */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    background-color: #F0F2F4;
+    flex-shrink: 0;
+    border-radius: 8px;
+    
+ }
+ .hmolduraPesquisa{
+    width: fit-content;
+    height: fit-content;
+    flex-shrink: 0;
+    background-color: white;
+    border: 12px solid white;
+    border-radius: 8px;
+ }
+ .hcapaPesquisa{
+    height:16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: stretch;
+    background-size: contain;
+    border-radius: 8px 8px 0px 0px;
+    
+ }
+
+ .htituloPesquisa{
+    color: var(--text-default, #111214);
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+ }
+
+ .hsubtituloPesquisa{
+    color: var(--text-soft, #6C7077);
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+ }
+
+ .hAreaTxtPesquisa{
+    padding: 15px;
+ }
+
+ .conceitos-wrapper {
+  position: relative;
+}
+
+/* Ícone de gráfico (à esquerda, cerca de 10% da largura, e levemente abaixo do topo do vídeo) */
+.conceitos-wrapper .icon-chart {
+  position: absolute;
+  left: -11%;     
+  top: 440px;    
+  z-index: 5;
+}
+.conceitos-wrapper .icon-chart img {
+  width: 209px;  /* se preferir, aumente levemente o tamanho para 130px */
+  height: auto;
+}
+
+/* Ícone de foguete (à direita, próximo à borda do vídeo) */
+.conceitos-wrapper .icon-rocket {
+  position: absolute;
+  right: -6%;           
+  top: 121px;          
+  z-index: 5;
+}
+.conceitos-wrapper .icon-rocket img {
+  width: 168px;        /* largura do ícone foguete (ajuste conforme necessário) */
+  height: auto;
+}
+ 
+
+/* ==============================
+   GLOSSÁRIO
+   ============================== */
+
+/* 1) Container geral */
+.glossario-box {
+  border: 2px solid #4D7FFF;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* 2) Escondendo o checkbox nativo */
+.glossario-box input[type="checkbox"] {
+  display: none;
+}
+
+/* 3) Header clicável */
+.glossario-box .glossario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #2643C6;
+  cursor: pointer;
+}
+.glossario-box .glossario-header span {
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+/* ícone de seta */
+.glossario-box .glossario-header .icon-arrow {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+/* gira a seta ao abrir */
+.glossario-box input[type="checkbox"]:checked + .glossario-header .icon-arrow {
+  transform: rotate(180deg);
+}
+
+/* 4) Conteúdo colapsável */
+.glossario-content {
+  display: flex;
+  gap: 2rem;
+  background: linear-gradient(135deg, #2643C6 0%, #1A1A8A 100%);
+  overflow: hidden;
+  max-height: 0;
+  padding: 0 1.5rem;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+/* quando o checkbox estiver marcado, expande */
+.glossario-box input[type="checkbox"]:checked
+  + .glossario-header
+  + .glossario-content {
+  max-height: 1000px;    /* um valor alto o suficiente */
+  padding: 1.5rem;
+}
+
+/* 5) Duas colunas */
+.glossario-content .col-esquerda,
+.glossario-content .col-direita {
+  flex: 1;
+}
+
+/* 6) Estilo de definição */
+.glossario-content dt {
+  color: #fff;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.glossario-content dd {
+  color: #fff;
+  margin: 0.25rem 0 1.25rem;
+  line-height: 1.5;
+}

@@ -1,0 +1,1009 @@
+.cabecalhoMentoria {
+    width: 100%;
+    height: auto;
+    left: 0px;
+    top: -1px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: url(https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png);
+    background-repeat: repeat;
+    z-index: 2;
+}
+
+.tituloImagemCabecalhoMentoria{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imgCabecalhoMentoria {
+    max-width: 100%;
+    top: 8%;
+    position: relative;
+    transform: rotate(2.67deg) scale(0.95);
+    /* transform-origin: 0 0;
+    left: 55%; */
+}
+
+.textoBotoesCabecalho {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 25%;
+    left: 20%;
+    width: 50%;
+}
+
+.tituloCabecalhoMentoria {
+    width: 100%;
+}
+
+.tituloCabecalhoMentoria, .botoesCabecalhoMentoria {
+    position: relative;
+    top: 30%;
+    margin-bottom: 20px;
+}
+
+.tituloCabecalhoMentoria span {
+    display: block;
+}
+
+.botoesCabecalhoMentoria {
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.imagemRoboCabecalhoMentoria {
+    width: 50%;
+}
+
+.botaoSolicitarMentoria, .botaoSaberMaisMentoria, .linkBotaoSaberMaisMentoria {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+}
+
+.linkBotaoSaberMaisMentoria {
+    border: 1px #FCFC30 solid;
+    text-decoration: none;
+}
+
+.botaoSolicitarMentoria, .botaoSolicitarImersao {
+    background: #FCFC30;
+    padding: 10px 20px;
+    border-radius: 14px;
+    text-decoration:none;
+}
+
+.textoSolicitarAgora, .textoSolicitarImersao {
+    color: #735CC6;
+    font-size: 24px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* .botaoSaberMaisMentoria {
+    border: 1px #FCFC30 solid;
+} */
+
+.textoSaberMais {
+    position: relative;
+    text-align: center;
+    color: #FCFC30;
+    font-size: 24px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.quadroDescricaoImersaoMentoria {
+    width: 33.33333%;
+    margin-left: 2%;
+}
+
+.descricaoImersaoCabecalhoMentoria {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.tituloDescricaoImersaoMentoria {
+    color: #FCFC30;
+    font-size: 48px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 500;
+    line-height: 100px;
+    word-wrap: break-word;
+    letter-spacing: -3px;
+}
+
+.textoDescricaoImersaoMentoria {
+    color: white;
+    font-size: 32px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    word-wrap: break-word;
+    letter-spacing: -2px;
+    line-height: 100%;
+}
+
+.primeiraLinhaQuadrosDescricaoMentoria, .segundaLinhaQuadrosDescricaoMentoria {
+    display: inline-flex;
+    width: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.separadorDeLinhasMentoria {
+    width: 100%;
+    display: inline-flex;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.linhaVerticalDescricaoImersaoMentoria {
+    border-left: 1px solid #FFFFFF;
+    /* margin: 1% 1% 0% 2%; */
+    margin: 1% 1% -4% 2%;
+}
+
+.linhaHorizontalDescricaoImersaoMentoria {
+    border-top: 1px solid #FFFFFF;
+    margin: 5% 2%;
+    width: 33%;
+}
+
+.transicaoCabecalhoTemasMentoria {
+    display: flex;
+    position: relative;
+    height: 300px;
+    background: url('/lib/img/apps/mentoria/faixaTransicao01.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    margin-top: -3px;
+}
+
+#temasImersao {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: url('/lib/img/apps/mentoria/fundoTemas.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    padding: 20px;
+}
+
+.tituloSubtituloTemaMentoria {
+    width: 80%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.tituloTemaMentoria {
+    color: #FCFC30;
+    font-size: 96px;
+    font-family: 'BancoDoBrasil Titulos', sans-serif;
+    font-weight: 700;
+}
+
+.quadroSubtitulosTemaMentoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.subtituloTemaMentoria {
+    color: #FCFC30;
+    font-size: 32px;
+    font-family: 'BancoDoBrasil Titulos', sans-serif;
+    font-weight: 700;
+    margin-bottom: -10%;
+}
+
+.descricaoTemaMentoria {
+    width: 75%;
+    display: inline-flex;
+    color: white;
+    font-size: 32px;
+    font-family: 'BancoDoBrasil Textos', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    max-width: 80%;
+    margin: 20px 0;
+    background: rgba(217, 217, 217, 0.24);
+    border-radius: 17px;
+    padding: 28px;
+}
+
+.imagemDescricaoTemaMentoria {
+    width: 100%;
+    max-width: 441px;
+    height: auto;
+    border-radius: 17px;
+}
+
+.textoDescricaoTemaMentoria {
+    margin: 0 3%;
+}
+
+.temaClicadoMentoria{
+    border-style: solid;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom-color: #00EBD0;
+}
+
+.visible {
+    display: inline-flex;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2, opacity 2s linear;
+}
+
+.transicaoTemasProvaSocialMentoria {
+    display: flex;
+    position: relative;
+    height: 300px;
+    background: url('/lib/img/apps/mentoria/faixaTransicao02.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    margin-top: -3px;
+}
+
+.provaSocial {
+    width: 100.1%;
+    height: auto;
+    left: 0px;
+    position: relative;
+    background: url(https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png);
+    margin-top: -3%;
+}
+
+.tituloPassaramPorAquiMentoria {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FCFC30;
+    font-size: 96px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.linhaVerticalMentoria {
+    border-left: 3px solid #465EFF;
+    height: 12rem;
+    margin: 5% 5%;
+}
+
+.imagensPassaramPorAquiMentoria {
+    width: 100%;
+    padding-left: 208px;
+    left: 0px;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+    background: #83FFEA;
+    box-shadow: 1px 1px 37px 5px rgba(0, 0, 0, 0.75);
+}
+
+.logoBBAzulMentoria {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tituloOQueDizemSobreMentoria {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FCFC30;
+    font-size: 96px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.quemPassouMentoria {
+    width: 15%;
+    position: relative;
+    margin: 2% 0;
+}
+
+.dadosQuemPassouMentoria {
+    position: relative;
+    text-align: center;
+    color: #465EFF;
+    font-size: 36px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.oQueDizemSobreMentoria{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.quadroOQueDizemSobreMentoria {
+    width: 100%;
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 69px;
+    border-radius: 17px;
+}
+
+.nomeDepoimentoMentoria {
+    width: 271px;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.imagemDepoimentoMentoria {
+    width: 315px;
+    height: 128px;
+    position: relative;
+    background: #6FDDE8;
+    border-top-left-radius: 17px
+}
+
+.cargoDepoimentoMentoria {
+    width: 271px;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.dependenciaDepoimentoMentoria {
+    width: 271px;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 300;
+    word-wrap: break-word;
+}
+
+.quadroDepoimentoMentoria {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 830px;
+    height: auto;
+    position: relative;
+    background: rgba(217, 217, 217, 0.62);
+    border-radius: 0 17px 17px 0;
+}
+
+.inicioCitacaoDepoimentoMentoria {
+    width: 100%;
+    color: white;
+    font-size: 128px;
+    font-family: Balthazar;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-top: -4rem;
+}
+
+.textoDepoimentoMentoria {
+    display: flex;
+    text-align: center;
+    width: 383px;
+    position: relative;
+    color: white;
+    font-size: 32px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 400;
+    margin-top: -15rem;
+}
+
+.imgDepoenteMentoria {
+    width: 315px;
+    height: 369px;
+    position: relative;
+    border-top-left-radius: 17px;
+}
+
+.dadosDepoenteMentoria {
+    width: 315px;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #6FDDE8;
+    border-radius: 0 0 0 17px;
+    padding: 5%;
+}
+
+.detalheOQueDizem {
+    width: 40%;
+    height: auto;
+    position: relative;
+    display: flex;
+    margin: 0 30%;
+    box-shadow: 1px 1px 37px 5px rgba(0, 0, 0, 0.75);
+    border-radius: 17px;
+}
+
+.slides {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    border-radius: 17px 0px 0px 0px;
+}
+
+.navigation {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    bottom: 20%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 9%;
+}
+
+.navigation label {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.botao_Carousel{
+    display: none;
+}
+
+.tituloProfessoresMentoria {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FCFC30;
+    font-size: 96px;
+    font-family: BancoDoBrasil Titulos;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.professoresMentoria {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: url(https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png);
+    background-repeat: repeat;
+}
+
+.imagensProfessoresMentoria {
+    display: inline-flex;
+    gap: 0.5%;
+}
+
+.imgQuadroBioMentoria {
+    width: 350px;
+    height: 350px;
+    border-radius: 33px;
+}
+
+.textoBioProfessorMentoria{
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    display: inline-flex;
+    float: right;
+}
+
+.carrossel {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.carrossel-track {
+    display: flex;
+    width: 100%;
+    animation: scroll 60s linear infinite;
+    animation-play-state: running;
+}
+
+.carrossel-track:hover {
+    animation-play-state: paused !important;
+}
+
+.carrossel-item {
+    min-width: 20%; /* Ajuste conforme necessário */
+    margin: 0 10px; /* Espaçamento entre as imagens */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-10% * 40));
+    }
+}
+
+.modalBiografiaMentoria {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-bio-professores {
+    position: relative;
+    display: flex;
+    margin: 10% auto;
+    border: 1px solid #888;
+    width: 70%;
+    height: auto;
+    background: linear-gradient(90deg, #525252 0%, black 100%);
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px 1px #aaa;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 1% 0% 0% 96%;
+}
+
+.close:hover,
+.close:focus {
+    color: #ccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fotoTextoBiografiaMentoria {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #525252 0%, black 100%);
+    box-shadow: 0px 0px 1px rgba(24, 24, 27, 0.04);
+    flex-direction: row;
+    border-radius: 8px;
+    align-self: stretch;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    display: flex;
+    padding: 2% 5% 5% 5%;
+}
+
+.nomeProfessorMentoria {
+    width: 100%;
+    color: #FCFC30;
+    font-size: 36px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    text-align: left;
+}
+
+.biografiaProfessorMentoria {
+    width: 100%;
+    color: white;
+    font-size: 24px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
+    text-align: left;
+}
+
+.transicaoProfessoresRodapeMentoria {
+    display: flex;
+    position: relative;
+    height: 300px;
+    background: url('/lib/img/apps/mentoria/faixaTransicao03.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    margin-top: -3px;
+}
+
+
+.fimPagina {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 5%;
+    background: url(/lib/img/apps/mentoria/fundoTemas.png), linear-gradient(90deg, #525252 0%, black 100%);
+}
+
+.imgRoboRodape {
+    max-width: 100%;
+    /* width: 100%; */
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+.textosRodapeMentoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4%;
+}
+
+.texto01Rodape, .texto02Rodape {
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    color: #FCFC30;
+    font-family: 'BancoDoBrasil Titulos';
+}
+
+.botaoSolicitarImersao {
+    width: 50%;
+}
+
+/* @media only screen and (max-width: 1800px) {
+    html {
+        zoom: 0.4;
+    }
+} */
+
+
+
+@media only screen and (max-width: 1700px) {
+    /*.tituloTema {
+        font-size: 48px;
+    }
+    .subtitulo {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 24px;
+    }*/
+    /* html {
+        zoom: 0.95;
+    } */
+
+    html {
+        zoom: 0.5;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    /*.tituloTema {
+        font-size: 48px;
+    }
+    .subtitulo {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 24px;
+    }*/
+    html {
+        zoom: 0.5;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    /*.tituloTema {
+        font-size: 48px;
+    }
+    .subtitulo {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 24px;
+    }*/
+    html {
+        zoom: 0.6;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    /*.tituloTema {
+        font-size: 48px;
+    }
+    .subtitulo {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 24px;
+    }*/
+    /* html {
+        zoom: 0.8;
+    } */
+    html {
+        zoom: 0.7;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    /*.tituloTema {
+        font-size: 48px;
+    }
+    .subtitulo {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 24px;
+    }*/
+    /* html {
+        zoom: 0.75;
+    } */
+     html{
+        zoom: 0.6;
+     }
+}
+
+@media only screen and (max-width: 1200px) {
+    /*.tituloTema {
+        font-size: 48px;
+    }
+    .subtitulo {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 24px;
+    }*/
+    /* html {
+        zoom: 0.7;
+    } */
+    html {
+        zoom: 0.5;
+    }
+}
+
+@media (max-width: 1600px) {
+    .imagemRoboCabecalhoMentoria {
+        scale: 0.9;
+    }
+
+    .imgCabecalhoMentoria {
+        left: 50%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .imgCabecalhoMentoria {
+        left: 40%;
+    }
+}
+
+
+
+.formularioDiv01{
+    display: flex; 
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+}
+
+/*Formulário da mentoria*/
+
+
+.formularioSolicitacaoMentoria{
+    width: 100%; 
+    height: 100%; 
+    /* background: url('https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png') repeat; */
+    /* background-repeat: repeat;
+    background-size: cover;
+    background-image: url('https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png');  */
+    /* position: fixed; */
+}
+body {
+    background: url('https://cad.bb.com.br/lib/img/apps/mentoria/fundoMentoria.png') repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+/* #formularioImersao{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} */
+
+.textoFormulario{
+    color: #FCFC30;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.16px;
+    padding-bottom: 3%;
+}
+.textareaFormImersao{
+    border-radius: 9px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.btnVoltarForm{
+    width: 35%;
+    height: 64.072px;
+    flex-shrink: 0;
+
+    border-radius: 14px;
+    border: 1px solid #FCFC30;
+    background-color: transparent;
+    
+    /*tipografia*/
+    color: #FCFC30;
+    text-align: center;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.92px;
+}
+
+.btnContinuarForm{
+    width: 40%;
+    height: 64.072px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px solid #FCFC30;
+    background: #FCFC30;
+    
+    /*tipografia*/
+    color: #735CC6;
+    text-align: center;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.92px;
+}
+
+/* .paginaFormularioImersao{
+    display: none;
+} */
+
+.botaoSelecionado {
+    background: #0040F0;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+}
+
+textarea{
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+
+}
+
+.radioBtnSimNao{
+    font-family: "BancoDoBrasil Textos";
+    color: #FCFC30;
+    font-size: 18px;
+    font-weight: 560;
+    margin-right: 15%;
+    
+}
+
+#radioBtnFormulario{
+    color: #FCFC30;
+    width:3%;
+    height: 18;
+    
+}
+
+.RadioNumBtnFormulario{
+    font-family: "BancoDoBrasil Textos";
+    color: #FCFC30;
+    font-size: 18px;
+    font-weight: 560;
+    margin-right: 10%;
+}
+
+.checkboxBtnForm{
+    font-family: "BancoDoBrasil Textos";
+    color: #FCFC30;
+    font-size: 18px;
+    font-weight: 560;
+    margin-right: 3%;
+}
+
+.qualDependenciaImersao {
+    width: 45%;
+    height: auto;
+    position: relative;
+    border: 1px #FCFC30 solid;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.qualFormato {
+    width: 45%;
+    height: auto;
+    position: relative;
+    border: 1px #FCFC30 solid;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+}
