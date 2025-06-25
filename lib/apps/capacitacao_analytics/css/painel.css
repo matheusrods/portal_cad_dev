@@ -238,7 +238,12 @@ html, body {
   margin-bottom: 1rem;
 }
 .metricas p {
-  color: #ddd;
+  color: #fff;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+.metricas-p {
+  color: #000000;
   max-width: 800px;
   margin-bottom: 1.5rem;
 }
@@ -257,7 +262,7 @@ html, body {
   margin-bottom: 3rem;
 }
 .card-painel {
-  background-color: #202041;
+  background-color: #d4d4e5;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -297,25 +302,25 @@ html, body {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: #000; 
   text-align: center;
 }
 
 /* CARD DECORATIVO (gráfico 3D, etc.) */
 .card-icon-decorativo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  left: -11%;     
+  top: 440px;    
+  z-index: 5;
 }
 .card-icon-decorativo img {
-  width: 100%;
-  max-width: 200px;
-  opacity: 0.8;
+  width: 209px;
+  height: auto;
 }
 
 /*===========================================
   5. SESSÃO: RECURSOS
 ===========================================*/
+
 .recursos {
   background-color: #0a0a23;
 }
@@ -336,27 +341,39 @@ html, body {
   margin-bottom: 3rem;
 }
 .card-recurso {
+  position: relative;
   background: linear-gradient(135deg, #2643C6 0%, #4D7FFF 100%);
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
-  position: relative;
   overflow: hidden;
 }
 .recurso-icon {
-  width: 40px;
-  height: 40px;
   margin: 0 auto 1rem;
+  width: 48px;
+  height: 48px;
 }
-.recurso-icon svg {
+.recurso-icon img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 .recurso-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 1rem;
+}
+.plus-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  pointer-events: none;
+  /* opcional: um pequeno drop-shadow */
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.3));
 }
 .btn-acessar {
   display: inline-block;
@@ -374,31 +391,45 @@ html, body {
 
 /* BOTÃO PRÓXIMO MÓDULO */
 .proximo-modulo {
-  text-align: center;
+  text-align: right;
+  margin-top: 2rem;
 }
 .btn-proximo {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   background-color: #4D7FFF;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 8px;
+  text-decoration: none;
+}
+.proximo-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.proximo-texto .linha1 {
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  text-decoration: none;
-  transition: background-color 0.2s;
 }
-.btn-proximo span {
-  display: block;
+.proximo-texto .linha2 {
   font-size: 0.85rem;
+  color: #fff;
+  opacity: 0.9;
 }
-.btn-proximo:hover {
-  background-color: #3657c8;
+.proximo-icone {
+  width: 32px;
+  height: 32px;
+  background-color: #FADA49;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.icon-arrow-next {
-  width: 20px;
-  height: 20px;
+.proximo-icone .icon-arrow-next {
+  width: 16px;
+  height: 16px;
 }
 
 /*===========================================
@@ -1165,7 +1196,7 @@ html, body {
   z-index: 5;
 }
 .conceitos-wrapper .icon-chart img {
-  width: 209px;  /* se preferir, aumente levemente o tamanho para 130px */
+  width: 209px;
   height: auto;
 }
 
@@ -1181,81 +1212,1430 @@ html, body {
   height: auto;
 }
  
-
 /* ==============================
    GLOSSÁRIO
    ============================== */
 
-/* 1) Container geral */
+/* container + fundo */
 .glossario-box {
-  border: 2px solid #4D7FFF;
+  position: relative;
+  margin: 2rem 0;
+  /* borda azul igual ao SVG */
+  border: 1px solid #0BABFB;
   border-radius: 8px;
   overflow: hidden;
-  margin: 2rem 0;
+  /* gradiente idêntico ao seu SVG: esquerdo escuro, logo passa a transparente */
+  background-image: linear-gradient(
+    90deg,
+    #270DA3 0%,
+    #270DA3 21.9503%,     /* stop igual ao offset 0.219503 do SVG */
+    rgba(48,20,135,0) 100%
+  );
 }
 
-/* 2) Escondendo o checkbox nativo */
-.glossario-box input[type="checkbox"] {
+/* esconde o checkbox */
+#toggle-glossario {
   display: none;
 }
 
-/* 3) Header clicável */
-.glossario-box .glossario-header {
+/* header */
+.glossario-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background-color: #2643C6;
   cursor: pointer;
+  background-color: #2643C6;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 1;
 }
-.glossario-box .glossario-header span {
+.glossario-header span {
   color: #fff;
   font-size: 1.125rem;
   font-weight: 600;
 }
-/* ícone de seta */
-.glossario-box .glossario-header .icon-arrow {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
-}
-/* gira a seta ao abrir */
-.glossario-box input[type="checkbox"]:checked + .glossario-header .icon-arrow {
-  transform: rotate(180deg);
+
+/* toggle-icon: sempre temos duas barras disponíveis */
+.toggle-icon .bar-horizontal,
+.toggle-icon .bar-vertical {
+  display: block;
 }
 
-/* 4) Conteúdo colapsável */
+/* --- controle de conteúdo --- */
+/* fechado: não checked → colapsa */
+#toggle-glossario:not(:checked)
+  + .glossario-header
+  + .glossario-content {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+/* aberto: checked → expande */
+#toggle-glossario:checked
+  + .glossario-header
+  + .glossario-content {
+  max-height: 1000px;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+/* conteúdo sempre sobre o fundo */
 .glossario-content {
   display: flex;
   gap: 2rem;
-  background: linear-gradient(135deg, #2643C6 0%, #1A1A8A 100%);
-  overflow: hidden;
-  max-height: 0;
-  padding: 0 1.5rem;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-/* quando o checkbox estiver marcado, expande */
-.glossario-box input[type="checkbox"]:checked
-  + .glossario-header
-  + .glossario-content {
-  max-height: 1000px;    /* um valor alto o suficiente */
-  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* 5) Duas colunas */
-.glossario-content .col-esquerda,
-.glossario-content .col-direita {
+/* colunas e definições */
+.col-esquerda, .col-direita { flex: 1; }
+dl dt { margin-top:1rem; color:#fff; font-weight:600; }
+dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
+
+/* --- controle do ícone + / – --- */
+/* por padrão, carga inicial com checked → mostra “–” */
+#toggle-glossario:checked 
+  + .glossario-header 
+  .bar-vertical {
+  display: none !important;
+}
+
+/* quando fechar (não checked) → mostra “+” */
+#toggle-glossario:not(:checked) 
+  + .glossario-header 
+  .bar-vertical {
+  display: block !important;
+}
+
+/* ===== Glossário Conceitos Básicos ===== */
+#toggle-glossario-basico:not(:checked) + .glossario-header + .glossario-content {
+  max-height:0; padding:0;
+}
+#toggle-glossario-basico:checked + .glossario-header + .glossario-content {
+  max-height:1000px; padding:1.5rem;
+}
+#toggle-glossario-basico:checked + .glossario-header .bar-vertical {
+  display:none; /* mostra “–” */
+}
+
+/* ===== Glossário Métricas ===== */
+#toggle-glossario-metricas:not(:checked) + .glossario-header + .glossario-content {
+  max-height:0; padding:0;
+}
+#toggle-glossario-metricas:checked + .glossario-header + .glossario-content {
+  max-height:1000px; padding:1.5rem;
+}
+#toggle-glossario-metricas:checked + .glossario-header .bar-vertical {
+  display:none; /* mostra “–” */
+}
+
+
+.metricas .glossario-box {
+  /* já tinha margin:2rem 0; aqui vamos ajustar só o bottom */
+  margin-bottom: 3rem;
+}
+
+.metricas .subtitulo-grid {
+  margin: 0;    /* remove aquele margin-top padrão */
+  margin-bottom: 1rem; /* só um espaçozinho até o glossário */
+}
+
+/* ----------------------------------
+   GRID DE CARDS COM ÍCONE LATERAL
+   ---------------------------------- */
+.grid-cards {
+  display: grid;
+  /* 3 colunas flexíveis para os cards + 1 coluna para o ícone */
+  grid-template-columns: repeat(3, minmax(240px, 1fr)) auto;
+  /* deixa quebras de linha só depois de 3 items */
+  grid-auto-rows: auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* garante que cada card tenha altura suficiente */
+.card-painel {
+  /* opcional: força altura uniforme */
+  height: 260px;
+}
+
+/* posicione o ícone no final, ocupando as 2 linhas */
+.card-icon-decorativo {
+  grid-column: 4;      /* coluna do ícone */
+  grid-row: 1 / span 2;/* ocupa duas linhas */
+  align-self: center;  /* alinha verticalmente ao centro */
+  justify-self: center;/* centraliza horizontalmente */
+  /* ajuste o tamanho do ícone conforme sua necessidade */
+  width: 160px;
+}
+
+.grid-cards .card-painel .card-title {
+  color: #000 !important;
+}
+
+
+/* container do ícone principal */
+.recurso-icon {
+  position: relative;       /* para posicionar o + dentro */
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+}
+
+/* imagem do painel */
+.recurso-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ícone de “+” no cartão “Todos os Painéis” */
+.recurso-icon .plus-icon {
+  position: absolute;
+  top: 0;
+  right: -8px;    /* ajusta pra ficar encostado na borda direita */
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+
+
+/* ==============================
+   SESSÃO: EXPLORANDO DADOS
+   ============================== */
+.explorando {
+  position: relative;
+  background-color: #01011E;
+  padding: 4rem 0;
+}
+.explorando h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4D7FFF;
+  margin-bottom: 0.5rem;
+}
+.explorando .expl-text {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+.decorative-planet {
+  position: absolute;
+  top: 2rem;
+  right: 5%;
+  z-index: 2;
+
+  /* faz com que o container encolha conforme a viewport */
+  width: 20vw;         /* ocupa 20% da largura da viewport */
+  max-width: 160px;    /* nunca maior que 160px */
+  min-width: 80px;     /* nunca menor que  80px */
+}
+
+.decorative-planet img {
+  display: block;
+  width: 100%;         /* enche o container */
+  height: auto;
+}
+.explorando .row.explor-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.sql-box, .courses-list {
+  background: rgba(41,41,41,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.sql-box h3, .courses-list h3 {
+  color: #4D7FFF;
+  margin-bottom: 1rem;
+}
+.sql-box ul, .courses-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+.sql-box ul li::before {
+  content: "✔";
+  margin-right: .5rem;
+  color: #0BABFB;
+}
+.sql-summary {
+  margin-top: 1rem;
+  color: #fff;
+}
+.subsecao {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4D7FFF;
+  margin-top: 3rem;
+  margin-bottom: .75rem;
+}
+
+.bases-wrapper {
+  display: flex;
+  margin: 2rem 0 3rem;      /* espaçamento acima e abaixo */
+}
+
+.bases-text {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.bases-content .subsecao {
+  margin: 0 0 0.5rem;      /* remove margin-top extra */
+}
+
+.bases-content .expl-text {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* faz o texto (que está fora do grid) ficar acima do cartão */
+
+/* posiciona o card BigData na segunda linha, coluna 2 */
+.bigdata-box {
+  display: flex;
+  align-items: center;
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 600px;        /* opcional: limita largura pra ficar igual ao mockup */
+}
+
+.bigdata-text {
+  flex: 1;
+}
+.bigdata-text h3 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: .75rem;
+}
+.bigdata-text p {
+  color: #E0E0E0;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.bigdata-illustration {
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+.bigdata-illustration img {
+  width: 140px;
+  height: auto;
+}
+
+
+
+
+.aplicacoes-bigdata {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.aplicacoes-bigdata .decorative-icon img {
+  width: 200px;
+}
+.aplicacoes-bigdata .cards-app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.card-app {
+  background: rgba(41,41,41,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.card-app h4 { color: #fff; margin-bottom: .5rem; }
+.card-app p { color: #ddd; font-size: .9rem; }
+.grid-regulamentacoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.grid-regulamentacoes .pequena { height: auto; }
+.recursos.explorando .grid-recursos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.proximo-modulo { text-align: right; margin-top: 2rem; }
+.proximo-modulo .btn-proximo {
+  background-color: #4D7FFF;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.proximo-texto .linha1 { display: block; color: #fff; font-size: .9rem; }
+.proximo-texto .linha2 { display: block; color: #fff; font-size: 1.1rem; font-weight: 600; }
+
+.explorando .sql-box {
+  flex: 1;
+  background: rgba(48,20,135,0.3);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.explorando .sql-box h3 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+/* lista com ícones de check */
+.explorando {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.explorando .sql-box ul li {
+  position: relative;
+  padding-left: 2rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.explorando .sql-box ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;       /* alinhe verticalmente como desejar */
+  width: 16px;       /* ajuste ao tamanho real do seu ícone */
+  height: 16px;
+  background: url('../img/icon-check.png') no-repeat center/contain;
+}
+/* resumo embaixo */
+.explorando .sql-summary {
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* caixa “Cursos Recomendados” */
+.explorando .courses-list {
+  flex: 1;
+  background: rgba(48,20,135,0.3);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.explorando .courses-list h3 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.explorando .courses-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.explorando .courses-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  color: #000000 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.explorando .courses-list li:last-child {
+  border-bottom: none;
+}
+.explorando .courses-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  background: url('../img/icon-cursos.png') no-repeat center/contain;
+}
+
+/* ————— Explorando Dados / SQL ————— */
+.explorando {
+  position: relative;
+  background-color: #01011E;
+  padding: 4rem 0;
+}
+
+/* planeta no canto superior direito */
+.decorative-planet {
+  position: absolute;
+  top: 2rem;
+  right: 6%;
+  z-index: 1;
+}
+.decorative-planet img {
+  width: 140px;
+  height: auto;
+}
+
+/* título e texto */
+.explorando .expl-text {
+  color: #FFFFFF;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+/* container SQL + Cursos */
+.explorando .explor-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.explorando .explor-row > div {
+  width: 100%;
+}
+
+/* caixa SQL */
+.sql-box {
+  flex: 1;
+  background: rgba(26,20,63, 0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.sql-box h3 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.sql-box ul {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.8rem; /* espaço pra imagem */
+}
+.sql-box ul li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: #E0E0E0;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.sql-box ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 1rem;
+  height: 1rem;
+  background: url('../img/check-icon.svg') no-repeat center/contain;
+}
+.sql-summary {
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* caixa Cursos Recomendados */
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+.courses-list h3 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.courses-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.courses-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #FFFFFF;
+  color: #2643C6;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.2s;
+}
+.courses-list li:hover {
+  background: #f0f4ff;
+}
+/* ícone à esquerda do texto (reutilize o mesmo icon_recursos.png ou um SVG específico) */
+.courses-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url('../img/icon-cursos.png') no-repeat center/contain;
+}
+
+.course-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1rem;
+}
+
+
+.explorando .decorative-planet {
+  position: absolute;
+  top: 2rem;
+  right: 5rem; 
+  z-index: 1;
+}
+
+.explorando .decorative-planet img {
+  width: 228px;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .decorative-planet {
+    width: 30vw;       /* ocupa mais espaço proporcional, mas ainda responsivo */
+    max-width: 120px;
+    top: 1rem;
+    right: 3%;
+  }
+}
+
+@media (max-width: 480px) {
+  .decorative-planet {
+    display: none;     /* esconde em celulares muito pequenos */
+  }
+}
+
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* EXPANDIR SEÇÃO “Explorando Dados” PARA 2 COLUNAS FIXAS           */
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#explorando-dados .row.explor-row {
+  /* matamos o flex do Bootstrap e viramos grid */
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2rem !important;
+  margin: 0 0 3rem !important;  /* neutraliza as margin do .row e coloca sua margin */
+  padding: 0 !important;        /* neutraliza padding se houver */
+}
+
+/* bootstrap .row adiciona gutters negativos — cancelamos */
+#explorando-dados .row.explor-row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* matamos as regras de .col-md-6 (width:50%) */
+#explorando-dados .explor-row > [class*="col-"] {
+  flex: none !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* garantimos que cada célula grid ocupe 100% do seu track */
+#explorando-dados .explor-row > * {
+  width: 100% !important;
+}
+
+
+.explorando .explor-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.explorando .explor-row > div {
+  width: 100%;
+}
+
+/* — título centralizado acima da seção — */
+.aplicacoes-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #4D7FFF;
+  margin: 0 auto 2rem;
+}
+
+/* — wrapper: grid com ícone fixo + cards responsivos — */
+.aplicacoes-bigdata {
+  display: grid;
+  grid-template-columns: auto 1fr;  /* col1: largura do ícone; col2: cards */
+  gap: 2rem;
+  align-items: start;
+  max-width: 1000px;      /* ajuste conforme seu container */
+  margin: 0 auto 3rem;    /* centraliza e dá espaçamento abaixo */
+}
+
+/* largura fixa para o ícone 3D */
+.aplicacoes-bigdata .decorative-icon {
+  position: absolute;
+  left: 51px;
+}
+.aplicacoes-bigdata .decorative-icon img {
+  display: block;
+  width: 250px;  /* ajuste pro tamanho do seu PNG */
+  height: auto;
+}
+
+/* grid interna dos cards: 2 colunas */
+.aplicacoes-bigdata .cards-app {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* estilos dos próprios cards (já existentes, apenas certifique-se) */
+.card-app {
+  background: rgba(48,20,135,0.3);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.card-app h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.card-app p {
+  color: #ddd;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+
+/* dentro do seu bloco .aplicacoes-bigdata ou no final do arquivo */
+.card-app {
+  position: relative;
+  background: rgba(41,41,41,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1rem;
+  /* garante que o flex no h4 funcione */
+  display: flex;
+  flex-direction: column;
+}
+
+/* faz o título virar um flex com o ícone */
+.card-app h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;      /* espaço entre ícone e texto */
+  margin-bottom: 0.75rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* dimensiona o ícone */
+.card-app-icon {
+  width: 1.25rem;    /* 20px */
+  height: 1.25rem;
+  flex-shrink: 0;    /* não encolhe */
+}
+
+/* 1) Wrapper geral: centraliza e limita largura */
+.aplicacoes-wrapper {
+  max-width: 1000px;        /* ou o valor que você quiser */
+  margin: 0 auto 3rem;      /* centralizado horizontalmente */
+}
+
+/* 2) Título, centralizado */
+.aplicacoes-title {
+  text-align: center;
+  color: #4D7FFF;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* 3) Grid principal: ícone + cards */
+.aplicacoes-bigdata {
+  display: grid;
+  grid-template-columns: auto 1fr;  /* ícone à esquerda, cards à direita */
+  gap: 2rem;
+  align-items: start;
+}
+
+/* largura fixa para o ícone 3D grande */
+.aplicacoes-bigdata .decorative-icon img {
+  width: 250px;  /* ajuste conforme o PNG */
+  height: auto;
+}
+
+/* 4) Grid interno dos cards */
+.cards-app {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+}
+
+/* 5) Cada card */
+.card-app {
+  position: relative;
+  background: rgba(41,41,41,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 6) Ícone dentro do card, antes do título */
+.card-app-icon {
+  width: 24px;   /* ou o tamanho do seu PNG */
+  height: 24px;
+  margin-bottom: 0.5rem;
+}
+
+/* 7) Título do card em azul */
+.card-app h4 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 8) Texto do card */
+.card-app p {
+  color: #E0E0E0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 1) Mesma cor de fundo dos outros cards (como o SQL e Cursos) */
+.aplicacoes-bigdata .cards-app .card-app {
+  background: rgba(26, 20, 63, 0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* 2) Título em azul vibrante */
+.aplicacoes-bigdata .cards-app .card-app h4 {
+  color: #4D7FFF;
+  margin-bottom: 0.5rem;
+}
+
+/* 3) Texto em branco suave */
+.aplicacoes-bigdata .cards-app .card-app p {
+  color: #E0E0E0;
+  font-size: 0.9rem;
+}
+
+.explorando .aplicacoes-wrapper > .aplicacoes-title {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 25px;
+}
+
+/* =========================
+   CSS: adicionar em painel.css
+   ========================= */
+
+/* Section Visualização */
+.visualizacao {
+  background-color: #01011E;
+  position: relative;
+  padding: 4rem 0;
+}
+.visualizacao-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4D7FFF;
+  margin-bottom: 0.5rem;
+}
+.visualizacao-subtitle {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.visualizacao-tools-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.tool-box {
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.tool-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.tool-header .tool-icon {
+  width: 32px;
+  height: 32px;
+}
+.tool-header h3 {
+  color: #4D7FFF;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.tool-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tool-box li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fff;
+  color: #2643C6;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.2s;
+}
+.tool-box li:hover {
+  background: #f0f4ff;
+}
+.tool-box li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  background: url('../img/icon-cursos.png') no-repeat center/contain;
+}
+
+.visualizacao-note {
+  color: #ddd;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.visualizacao-video-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.video-thumb {
+  position: relative;
+}
+.video-thumb img {
+  width: 100%;
+  display: block;
+}
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  padding: 0.75rem;
+}
+
+/* GRID RESPONSIVO PARA OS CARDS */
+.visualizacao-resources-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* ESTILO DO CARD */
+.resource-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: rgba(26, 20, 63, 0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ÍCONE NO TOPO */
+.resource-box img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1rem;
+}
+
+/* TÍTULO */
+.resource-box h4 {
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* DESCRIÇÃO */
+.resource-box p {
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+/* BOTÃO */
+.resource-box .btn-acessar {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #FFFFFF;
+  color: #2643C6;
+  padding: 0.75rem 0;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+.resource-box .btn-acessar:hover {
+  background-color: #f0f4ff;
+}
+
+
+/* Próximo módulo já existe no CSS global */
+
+
+/* container geral da sessão */
+.engenharia-dados { position: relative; background: #01011E; padding: 4rem 0; }
+.engenharia-dados .section-title { color: #4D7FFF; font-size: 2rem; margin-bottom:1rem; }
+.engenharia-dados .expl-text { color: #FFFFFF; max-width:800px; margin-bottom:2rem; }
+
+/* 1) Row “O que é” */
+.engenharia-dados .explor-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+.engenharia-dados .sql-box {
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.engenharia-dados .sql-box h3 { color: #4D7FFF; margin-bottom: 1rem; }
+.engenharia-dados .sql-box p { color: #E0E0E0; line-height:1.6; }
+.engenharia-dados .decorative-planet img { max-width:200px; width:100%; }
+
+/* 2) Responsabilidades */
+.responsibilities {
+  margin: 2rem 0;
+}
+.responsibilities dt {
+  display: flex;
+  align-items: flex-start;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+.responsibilities dt .num {
+  display: inline-block;
+  font-family: "BancoDoBrasil Titulos", sans-serif;
+  font-size: 1.5rem;
+  color: #4D7FFF;
+  margin-right: 1rem;
+}
+.responsibilities dd {
+  margin: 0 0 1.5rem 3.5rem;
+  color: #CCCCCC;
+  line-height: 1.6;
+}
+
+/* 3) Grid de cursos */
+.grid-dual-courses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.courses-list {
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.courses-list h4 {
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.courses-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.courses-list li {
+  background: #FFFFFF;
+  color: #2643C6;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.2s;
+}
+.courses-list li:hover { background: #f0f4ff; }
+
+/* 4) Recursos/Downloads */
+.visualizacao-resources-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.resource-box {
+  background: linear-gradient(135deg,#2643C6 0%,#4D7FFF 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+.resource-box img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+.resource-box h4 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.resource-box .btn-acessar {
+  display: inline-block;
+  background: #FFFFFF;
+  color: #2643C6;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.resource-box .btn-acessar:hover {
+  opacity: 0.9;
+}
+
+/* pequenos ajustes responsivos */
+@media (max-width: 768px) {
+  .engenharia-dados .explor-row { grid-template-columns: 1fr; }
+  .grid-dual-courses { grid-template-columns: 1fr; }
+  .visualizacao-resources-row { grid-template-columns: 1fr; }
+}
+
+
+.eng-data-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  background: linear-gradient(135deg, #2643C6 0%, #4D7FFF 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.eng-data-text {
   flex: 1;
 }
 
-/* 6) Estilo de definição */
-.glossario-content dt {
-  color: #fff;
+.eng-data-text h3 {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
-  margin-top: 1rem;
 }
-.glossario-content dd {
-  color: #fff;
-  margin: 0.25rem 0 1.25rem;
+
+.eng-data-text p {
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* imagem sempre no tamanho certo, sem distorcer */
+.eng-data-image {
+  flex-shrink: 0;
+}
+.eng-data-image img {
+  display: block;
+  max-width: 260px; /* ajuste conforme necessário */
+  width: 100%;
+  height: auto;
+}
+
+
+/* cada termo+descrição */
+/* título e intro */
+.responsibilities-title {
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+}
+.responsibilities-intro {
+  text-align: center;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* container de definições */
+.responsibilities {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* cada termo+descrição */
+.responsibilities dt,
+.responsibilities dd {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* remover linha do último item */
+.responsibilities dt:last-of-type,
+.responsibilities dd:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* estilo do número */
+.responsibilities dt {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  font-size: 1rem;
+}
+.responsibilities dt .num {
+  flex-shrink: 0;
+  color: #4D7FFF;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* descrição alinhada com o texto do título (sem número) */
+.responsibilities dd {
+  margin: 0 0 0 calc(1.5rem + 1rem); /* desloca até ficar abaixo do texto, não do número */
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
   line-height: 1.5;
+}
+
+
+/* Título */
+.etl-title {
+  color: #4D7FFF;
+  margin-bottom: 1rem;
+}
+
+
+.etl-box {
+  background: linear-gradient(135deg, #2643C6, #0a0a23);
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.etl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  position: relative;
+  padding-right: 180px;
+  align-items: stretch;
+}
+
+.etl-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px; /* opcional: evita que fique muito pequeno */
+  overflow: visible; /* ← permite conteúdo extrapolar se necessário */
+  height: 100%;
+}
+
+.etl-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.etl-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.etl-number {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4D7FFF;
+}
+.etl-desc {
+  font-size: 0.875rem;
+  color: #333;
+  margin: 0;
+}
+
+.etl-illustration {
+  position: absolute;
+  right: -60px; /* ajusta o ícone decorativo mais para fora */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.etl-illustration img {
+  width: 160px;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .etl-grid {
+    grid-template-columns: 1fr;
+    padding-right: 0;
+  }
+
+  .etl-illustration {
+    position: static;
+    transform: none;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.workshop-title {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #0B0B33; /* ou a cor de fundo real do site */
+}
+
+body > * {
+    margin-bottom: 0;
+}
+
+#tab-content {
+    margin: 0;
+    padding: 0;
+}
+
+
+.explorando-dados { position: relative; background: #01011E; padding: 4rem 0; }
+.explorando-dados .section-title { color: #4D7FFF; font-size: 2rem; margin-bottom:1rem; }
+.engenharia-dados .expl-text { color: #FFFFFF; max-width:800px; margin-bottom:2rem; }
+
+/* 1) Row “O que é” */
+.explorando-dados .explor-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+.explorando-dados .sql-box {
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.explorando-dados .sql-box h3 { color: #4D7FFF; margin-bottom: 1rem; }
+.explorando-dados .sql-box p { color: #E0E0E0; line-height:1.6; }
+.explorando-dados .decorative-planet img { max-width:200px; width:100%; }
+
+.explorando-dados .expl-text {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+
+.visualizacao-dados { position: relative; background: #01011E; padding: 4rem 0; }
+.visualizacao-dados .section-title { color: #4D7FFF; font-size: 2rem; margin-bottom:1rem; }
+.visualizacao-dados .expl-text { color: #FFFFFF; max-width:800px; margin-bottom:2rem; }
+
+/* 1) Row “O que é” */
+.visualizacao-dados .explor-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+.visualizacao-dados .sql-box {
+  background: rgba(26,20,63,0.6);
+  border: 1px solid #4D7FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.visualizacao-dados .sql-box h3 { color: #4D7FFF; margin-bottom: 1rem; }
+.visualizacao-dados .sql-box p { color: #E0E0E0; line-height:1.6; }
+.visualizacao-dados .decorative-planet img { max-width:200px; width:100%; }
+
+.visualizacao-dados .expl-text {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 2rem;
 }
