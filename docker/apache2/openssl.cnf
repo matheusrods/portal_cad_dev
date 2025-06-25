@@ -1,0 +1,24 @@
+[req]
+default_bits= 2048
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = req_distinguished_name
+[req_distinguished_name]
+countryName = BR
+countryName_default = BR
+stateOrProvinceName = Distrito Federal
+stateOrProvinceName_default = Distrito Federal
+localityName = Brasilia
+localityName_default = Brasilia
+organizationName = Banco do Brasil S.A.
+organizationName_default = Banco do Brasil S.A.
+organizationalUnitName = DITEC
+organizationalUnitName_default = DITEC
+commonName = cad.desenv.bb.com.br
+commonName_default = cad.desenv.bb.com.br
+commonName_max = 64
+[req_ext]
+basicConstraints = CA:FALSE
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = cad.desenv.bb.com.br

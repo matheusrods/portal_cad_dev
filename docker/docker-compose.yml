@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portal-cad
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html:cached
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_DATABASE: cad
+      DB_USERNAME: cad_user
+      DB_PASSWORD: 12345
+      SITE_ROOT: /var/www/html
+      CHARSET: utf8mb4
+
+  db:
+    image: mysql:8.0
+    container_name: portal-dbcad
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cad
+      MYSQL_USER: cad_user
+      MYSQL_PASSWORD: 12345
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db_data:
