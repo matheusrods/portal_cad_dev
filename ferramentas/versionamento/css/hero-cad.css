@@ -1,0 +1,86 @@
+.hero-cad {
+    width: 100%;
+    background: #4E9BF3;
+    padding: 0;
+    margin: 0;
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-cad-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.hero-cad-text {
+    flex: 1 1 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 480px;
+}
+
+.hero-cad-img {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero-cad-img img {
+    max-height: 500px;
+    min-height: 250px;
+    width: auto;
+    object-fit: contain;
+    margin-right: -60px;
+    margin-left: 40px;
+    display: block;
+}
+
+.hero-cad-title {
+    font-family: BancoDoBrasil Titulos, Arial, sans-serif;
+    font-size: 88px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.05;
+    color: #fff;
+    letter-spacing: -9px;
+}
+
+.hero-cad-subtitle {
+    font-family: BancoDoBrasil Titulos, Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0;
+}
+
+
+@media (max-width: 900px) {
+    .hero-cad-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 8px;
+        text-align: center;
+    }
+
+    .hero-cad-text {
+        align-items: center;
+        min-width: 0;
+    }
+
+    .hero-cad-img img {
+        margin: 32px 0 0 0;
+        max-height: 200px;
+    }
+}

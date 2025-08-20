@@ -1,7 +1,8 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -23,14 +24,21 @@ Class funcoes {
         $this->mat = $_SESSION['matricula'];
     }
 
-    public function consultaEstudos(){
+    public function consultaEstudos($limite = 6){
         $mat = $_SESSION['matricula'];
         $db = New Database('estudosPesquisas');
+
+        $limitSql = '';
+        if ($limite > 0) {
+            $limitSql = ' LIMIT ' . intval($limite);
+        }
+
         $query = "SELECT * FROM estudosPesquisas.estudosPesquisas a
                     LEFT JOIN estudosPesquisas.temas b ON a.tema = b.id
                     WHERE a.tipo = 'estudos'
                     AND a.ativo = 1 
-                    ORDER BY dtEstudoPesquisa DESC, idEstudo DESC;";
+                    ORDER BY dtEstudoPesquisa DESC, idEstudo DESC
+                    $limitSql;";
 
         try{
             $execQuery = $db->DbGetAll($query);
@@ -61,28 +69,10 @@ Class funcoes {
                         $idEstudo = '0'.$idEstudo;
                     }
 
-                    $montaEstudos = $montaEstudos.$abreDivNestEstudos.'
-                        <div class="divEstudo">
-                            <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.pdf" target="_blank" style="text-decoration: none;">
-                                <div class="fotoCapaEstudo" style="background-image: url(https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.png);">
-                                    <div class="tagEstudo">
-                                        <div class="textoTagEstudo">'.$execQuery[$j]['temas'].'</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="textoEstudo" style="align-self: stretch; height: 196px; padding: 32px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-                                <div class="tituloSubtituloEstudo">
-                                    <div class="tituloEstudo">'.$execQuery[$j]['titulo'].'</div>
-                                    <div class="subtituloEstudo">'.$execQuery[$j]['subtitulo'].'</div>
-                                </div>
-                                <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.pdf" target="_blank" style="text-decoration: none; margin-top: 4rem;">
-                                    <div class="abrirEstudo" attr-idEstudo="'.$execQuery[$j]['idEstudo'].'">
-                                        <div style="text-align: center; color: #3354FD; font-size: 12px; font-family: BancoDoBrasil Titulos; font-weight: 700; text-transform: uppercase; line-height: 13.50px; letter-spacing: 0.06px; word-wrap: break-word">Ver Estudo</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    '.$fechaDivNestEstudos;
+                    ob_start();
+                    include $_SERVER["DOCUMENT_ROOT"]."/lib/apps/estudosPesquisas/cards/Estudos/cardEstudos.php";
+                    $montaEstudos .= ob_get_clean();
+
                 }
                 $retorno = array();
                 $retorno["status"] = 1;
@@ -102,17 +92,28 @@ Class funcoes {
     }
 
     // Função que consulta as Pesquisas
-    public function consultaPesquisas(){
+    public function consultaPesquisas($limite = 6){
         $mat = $_SESSION['matricula'];
         $db = New Database('estudosPesquisas');
+
+        $limitSql = '';
+        if ($limite > 0) {
+            $limitSql = ' LIMIT ' . intval($limite);
+        }
+
         $query = "SELECT * FROM estudosPesquisas.estudosPesquisas a
                     LEFT JOIN estudosPesquisas.temas b ON a.tema = b.id
                     WHERE a.tipo = 'pesquisas'
                     AND a.ativo = 1 
-                    ORDER BY dtEstudoPesquisa DESC, idEstudo DESC;";
+                    ORDER BY dtEstudoPesquisa DESC, idEstudo DESC
+                     $limitSql;";
+
+                    //  var_dump($query);exit;
 
         try{
             $execQuery = $db->DbGetAll($query);
+
+            // print_r( $execQuery);exit;
             
             if($execQuery > 0){
                 $montaPesquisas = '';
@@ -139,29 +140,11 @@ Class funcoes {
                     if($idPesquisa < 10){
                         $idPesquisa = '0'.$idPesquisa;
                     }
+                    
+                    ob_start();
+                    include $_SERVER["DOCUMENT_ROOT"]."/lib/apps/estudosPesquisas/cards/Pesquisas/cardPesquisas.php";
+                    $montaPesquisas .= ob_get_clean();
 
-                    $montaPesquisas = $montaPesquisas.$abreDivNestPesquisas.'
-                        <div class="divPesquisa">
-                            <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.pdf" target="_blank" style="text-decoration: none;">
-                                <div class="fotoCapaPesquisa" style="background-image: url(https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.png);">
-                                    <div class="tagPesquisa">
-                                        <div class="textoTagPesquisa">'.$execQuery[$j]['temas'].'</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="textoPesquisa" style="align-self: stretch; height: 196px; padding: 32px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-                                <div class="tituloSubtituloPesquisa">
-                                    <div class="tituloPesquisa">'.$execQuery[$j]['titulo'].'</div>
-                                    <div class="subtituloPesquisa">'.$execQuery[$j]['subtitulo'].'</div>
-                                </div>
-                                <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.pdf" target="_blank" style="text-decoration: none; margin-top: 4rem;">
-                                    <div class="abrirPesquisa" attr-idPesquisa="'.$execQuery[$j]['idPesquisa'].'">
-                                        <div style="text-align: center; color: #3354FD; font-size: 12px; font-family: BancoDoBrasil Titulos; font-weight: 700; text-transform: uppercase; line-height: 13.50px; letter-spacing: 0.06px; word-wrap: break-word">Ver Pesquisa</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    '.$fechaDivNestPesquisas;
                 }
                 $retorno = array();
                 $retorno["status"] = 1;
@@ -233,9 +216,10 @@ Class funcoes {
             
             if($execQueryMontaSelect){
                 $montaSelect = '<div class="selectTemas"><select id="temaSelecionadoSelect" tabindex=3><option value="0">Selecione o tema:</option>';
-                
+                $temasArray = [];
                 for($i = 0; $i < sizeof($execQueryMontaSelect); $i++){
                     $montaSelect = $montaSelect.'<option value="'.$execQueryMontaSelect[$i]["id"].'">'.$execQueryMontaSelect[$i]["temas"].'</option>';
+                    $temasArray[] = $execQueryMontaSelect[$i]["temas"];
                 }
                 
                 $retornoSelect = $montaSelect.'</select></div>';
@@ -246,309 +230,13 @@ Class funcoes {
             $retornoSelect = "<p style='font-size: 16px; font-weight: bold;'>Não foi possível consultar os temas de ".$tipoUpload.". Não será possível gravar sua solicitação neste momento. Informe à equipe responsável o caminho a seguir: " . $arquivoLog."</p>";
         }
 
-        $resposta = array();
-        $resposta['status'] = 1;
-        $resposta['mensagem'] = '
-            <div class="modal-incluir-estudo" attr-tipoUpload="'.$tipoUpload.'">
-                <div class="divEsquerda">
-                    <div class="divTextAreaTitulo">
-                        <label class="labelTitulo" for="textAreaTitulo">Título</label>
-                        <textarea id="textAreaTitulo" maxlength=50 placeholder="Título" type="text" onkeyup="contaCaracteresTitulo(this)" tabindex=1></textarea>
-                        <p class="contaCaracteresTitulo">50 caracteres restantes</p>
-                    </div>
-                    <div class="divTextAreaDescricao">
-                        <label class="label" for="textAreaDescricao">Descrição</label>
-                        <textarea id="textAreaDescricao" maxlength=120 placeholder="Descrição" type="text" onkeyup="contaCaracteresDescricao(this)" tabindex=2></textarea>
-                        <p class="contaCaracteresDescricao">120 caracteres restantes</p>
-                    </div>
-                    <div class="divTags">
-                        <div class="divSelectTemas" style="display: inline-flex; flex-direction: column;">
-                            <div class="labelTags">Temas</div>
-                                '.$retornoSelect.'
-                        </div>
-                        <div class="divInputPeríodo" style="display: inline-flex; flex-direction: column;">
-                            <label for="periodoEstudoPesquisa">Mês de referência:</label>
-                            <input type="month" id="periodoEstudoPesquisa" name="periodoEstudoPesquisa" max="'.date("Y-m").'" style="height: 1.4rem;" tabindex=4>
-                        </div>
-                    </div>
-                    <div class="divDownloadPpt">
-                        <div class="labelUploadDownload">Download do modelo PPT</div>
-                        <div class="divBotaoDownloadPpt">
-                            <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/templateEstudosPesquisas.pptx">
-                                <i class="fa-solid fa-download" style="color: rgb(56, 83, 255,1);"></i>
-                            </a>
-                            <div class="divTextoUploadDownload">
-                                <div class="divTextoUploadDownload01">Baixar Arquivo</div>
-                                <div class="textoArquivoPpt">2MB</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="divDireita">
-                    <div class="divUploadPdf">
-                        <label class="labelUploadDownload">Adicionar PDF</label>
-                        <div class="divConteudoUpload">
-                            <label class="iconeUploadPdfPng" for="uploadPdf">
-                                <input id="uploadPdf" type="file" accept=".pdf">
-                                <i class="fas fa-upload fa-lg Clicar" style="color: rgb(56, 83, 255,1);" tabindex=5></i>
-                            </label>
-                            <div class="divTextoUploadDownload">
-                                <div class="divTextoUploadDownload01">Enviar arquivo PDF</div>
-                                <span class="textoArquivoPdf">Máximo: 100MB</span>
-                            </div>
-                            <i id="checkPdf" class="fa-solid fa-check" style="color: rgb(56, 83, 255,1); display: none;"></i>
-                        </div>
-                    </div>
-
-                    <div class="divUploadPng">
-                        <label class="labelUploadDownload">Adicionar capa do card</label>
-                        <div class="divConteudoUpload">
-                            <label class="iconeUploadPdfPng" for="uploadPng">
-                                <input id="uploadPng" type="file" accept=".png">
-                                <i class="fas fa-upload fa-lg Clicar" style="color: rgb(56, 83, 255,1);" tabindex=6></i>
-                            </label>
-                            <div class="divTextoUploadDownload">
-                                <div class="divTextoUploadDownload01">Enviar arquivo PNG</div>
-                                <span class="textoArquivoPng">Melhor formato 16x10</span>
-                            </div>
-                            <i id="checkPng" class="fa-solid fa-check" style="color: rgb(56, 83, 255,1); display: none;"></i>
-                        </div>
-                    </div>
-                
-                    <div class="divPreviewCapa">
-                        <div class="textoPreview">Preview da capa</div>
-                        <!-- <img id="preview" src="#" alt="Preview da capa" style="display: none; max-width: 20rem; min-width: 20rem; max-height: 12rem;"/> -->
-                        <img id="preview" src="/lib/apps/estudosPesquisas/arquivos/capaPreview.png" alt="Preview da capa" style="display: none; max-width: 19.9rem; min-width: 19.9rem; max-height: 12rem;"/>
-                    </div>
-                    <div class="divBotoesAdicionarEstudosPesquisas" style="display: flex; justify-content: flex-end; gap: 1rem; width: 100%; z-index: 3;">
-                        <button class="btn btnLimpar" style="margin: 28rem 1rem 28rem -13rem; background-color: rgb(56, 83, 255, 1); color: white; width: 5rem; height: 3rem;" tabindex="8">
-                            Limpar
-                        </button>
-                        <button class="btn btn-success btnEnviar" attr-qualBotao="'.$tipoUpload.'" style="margin: 28rem 2rem 28rem 0rem; width: 5rem; height: 3rem;" tabindex=7>
-                            Enviar
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-            
-            <script>
-                var isFirefox = typeof InstallTrigger !== "undefined";
-                
-                if(isFirefox === true){
-                    $("#periodoEstudoPesquisa").datepicker({
-                        maxDate: "-1D",
-                        dateFormat: "yy-mm"
-                    });
-                }
-                
-                $(".btnLimpar").on("click", function(){
-                    $("#textAreaTitulo").val("");
-                    $("#textAreaDescricao").val("");
-                    $("#temaSelecionadoSelect").val("0");
-                    $("#periodoEstudoPesquisa").val("");
-                    $("#uploadPdf").val("");
-                    $("#uploadPng").val("");
-                    $(".textoArquivoPdf").text("Máximo: 100MB");
-                    $(".textoArquivoPng").text("Melhor formato 16x10");
-                    $("#checkPdf").css("display","none");
-                    $("#checkPng").css("display","none");
-                    $("#preview").css("display","none");
-                    $("#preview").attr("src","/lib/apps/estudosPesquisas/arquivos/capaPreview.png");
-                });
-
-                // Upload PDF de estudo/pesquisa
-                $("#uploadPdf").on("change", function(){
-                    const [file] = uploadPdf.files;
-                    console.log(uploadPdf.files);
-                    if (file) {
-                        $("#checkPdf").css("display", "block");
-                        $(".textoArquivoPdf").html("");
-                        $(".textoArquivoPdf").html(file.name);
-                    }
-                });
-
-                // Upload PNG da capa de estudo/pesquisa
-                $("#uploadPng").on("change", function(){
-                    const [file] = uploadPng.files;
-                    // console.log(uploadPng.files);
-                    // Mostrar a miniatura do arquivo selecionado
-                    if (file) {
-                        preview.src = URL.createObjectURL(file)
-                        $("#preview").css("display", "block");
-                        $("#checkPng").css("display", "block");
-                        $(".textoArquivoPng").html("");
-                        $(".textoArquivoPng").html(file.name);
-                    }
-                });
-
-                // Conta caracteres faltantes do título
-                function contaCaracteresTitulo(val) {
-                    var len = val.value.length;
-                    if (len > 50) {
-                        val.value = val.value.substring(-1, 50);
-                    } else {
-                        $(".contaCaracteresTitulo").text(50 - len+" caracteres restantes");
-                    }
-                };
-                
-                // Conta caracteres faltantes da descrição
-                function contaCaracteresDescricao(val) {
-                    var len = val.value.length;
-                    if (len > 120) {
-                        val.value = val.value.substring(-1, 120);
-                    } else {
-                        $(".contaCaracteresDescricao").text(120 - len+" caracteres restantes");
-                    }
-                };
-
-                $(".btnEnviar").click(function () {
-                    var caminhoupload = "https://cad.bb.com.br/lib/class/uploadNovo.php";
-                    var formData = new FormData();
-                    
-                    formData.append("titulo", ($("#textAreaTitulo").val().replace(/[\\\']/g, \'"\')));
-                    formData.append("descricao", ($("#textAreaDescricao").val().replace(/[\\\']/g, \'"\')));
-                    formData.append("idTema", $("#temaSelecionadoSelect").val());
-                    formData.append("dtEstudoPesquisa", $("#periodoEstudoPesquisa").val());
-                    formData.append("tipoDocumento", $(".btnEnviar").attr("attr-qualBotao"));
-                    formData.append("pdf", $("#uploadPdf")[0].files[0]);
-                    formData.append("png", $("#uploadPng")[0].files[0]);
-                    
-                    var mensagemErro = "Necessário: <br><br>";
-                    var contaErros = 0;
-                    
-                    
-                    
-                    if(($("#textAreaTitulo").val()).length == 0){
-                        mensagemErro = mensagemErro+"-Preencher Título;<br>";
-                        contaErros = ++contaErros;
-                    }
-
-                    if(($("#textAreaDescricao").val()).length == 0){
-                        mensagemErro = mensagemErro+"-Preencher Descrição;<br>";
-                        contaErros = ++contaErros;
-                    }
-                    
-                    if(($("#temaSelecionadoSelect").val()) == 0){
-                        mensagemErro = mensagemErro+"-Selecionar Tema;<br>";
-                        contaErros = ++contaErros;
-                    }
-
-                    if(($("#periodoEstudoPesquisa").val()).length == 0){
-                        mensagemErro = mensagemErro+"-Preencher mês de referência;<br>";
-                        contaErros = ++contaErros;
-                    }
-
-                    if($("#uploadPdf")[0].files.length == 0){
-                        mensagemErro = mensagemErro+"-Anexar arquivo PDF de '.$tipoUpload.';<br>";
-                        contaErros = ++contaErros;
-                    } else {
-                        var ehFormatoPdf = ($("#uploadPdf")[0].files[0].name).slice(-3);
-                        var ehFormatoPdfMinusculo = ehFormatoPdf.toLowerCase();
-
-                        if(ehFormatoPdfMinusculo != "pdf" || ehFormatoPdfMinusculo == undefined){
-                            mensagemErro = mensagemErro+"-Selecionar o arquivo de '.$tipoUpload.' no formato correto (PDF);<br>";
-                            contaErros = ++contaErros;
-                        }
-                    }
-                    
-                    if($("#uploadPng")[0].files.length == 0){
-                        mensagemErro = mensagemErro+"-Anexar arquivo PNG da capa;<br>";
-                        contaErros = ++contaErros;
-                    } else {
-                        var ehFormatoPng = ($("#uploadPng")[0].files[0].name).slice(-3);
-                        var ehFormatoPngMinusculo = ehFormatoPng.toLowerCase();
-                    
-                        if(ehFormatoPngMinusculo != "png" || ehFormatoPngMinusculo == undefined){
-                            mensagemErro = mensagemErro+"-Selecionar o arquivo da capa no formato correto (PNG);<br>";
-                            contaErros = ++contaErros;
-                        }
-                    }
-
-                    mensagemErro = mensagemErro.substring(0, mensagemErro.length-5)+".";
-                    
-                    if(contaErros == 0){
-                        $.ajax({
-                            url: caminhoupload,
-                            type: "POST",
-                            data: formData,
-                            contentType: false,
-                            processData: false,
-                            success: function(retorno) {
-                                bootbox.hideAll();
-                                var retornoJson = JSON.parse(retorno);
-                                if (retornoJson.status == 1) {
-                                    bootbox.dialog({
-                                        backdrop: true,
-                                        onEscape: function() {},
-                                        closeButton: true,
-                                        size: "medium",
-                                        title: "Sucesso!",
-                                        message: "<div>"+retornoJson.mensagem+"</div>",
-                                        buttons: {
-                                            confirm: {
-                                                label: "Fechar",
-                                                className: "btn-success",
-                                            }
-                                        },
-                                    });
-                                    $(".botaoLimpaPesquisa'.$tipoUploadMaiuscula.'").click();
-                                } else {
-                                    // Se não conseguir pesquisar, exibe a mensagem de erro
-                                    bootbox.dialog({
-                                        backdrop: true,
-                                        onEscape: function() {},
-                                        closeButton: true,
-                                        size: "medium",
-                                        title: "Erro!",
-                                        message: "<div>"+retornoJson.mensagem+"</div>",
-                                        buttons: {
-                                            confirm: {
-                                                label: "Fechar",
-                                                className: "btn-danger",
-                                            }
-                                        }
-                                    });
-                                }
-                            },
-                            error: function (retorno) {
-                                bootbox.dialog({
-                                    backdrop: true,
-                                    onEscape: function() {},
-                                    closeButton: true,
-                                    size: "medium",
-                                    title: "Erro!",
-                                    message: "<div><p>"+retorno.mensagem+"<br><br> Erro: L429 - class_estudosPesquisas.php</p></div>",
-                                    buttons: {
-                                        confirm: {
-                                            label: "Fechar",
-                                            className: "btn-danger",
-                                        }
-                                    }
-                                });
-                            }
-                        });
-                    } else {
-                        bootbox.dialog({
-                            backdrop: true,
-                            onEscape: function() {},
-                            // closeButton: true,
-                            size: "medium",
-                            title: "Atenção",
-                            message: "<div>"+mensagemErro+"</div>",
-                            buttons: {
-                                confirm: {
-                                    label: "Fechar",
-                                    className: "btn-warning",
-                                }
-                            }
-                        });
-                        return false;
-                    }
-                });
-            </script>
-        ';
+        ob_start();
+        include $_SERVER["DOCUMENT_ROOT"]."/lib/apps/estudosPesquisas/modal/modalAdicionarEstudo.php";
+        $html = ob_get_clean();
+        $resposta = [
+            'status' => 1,
+            'mensagem' => $html
+        ];
         return $resposta;
     }
 

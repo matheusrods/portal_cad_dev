@@ -9,11 +9,12 @@ if(!isset($_SESSION)){
     session_start();
 }
 $mat = strtolower($_SESSION['matricula']);
-$data = $_POST['data'];
-$idTema = $_POST['idTema'];
-$textoDigitado = $_POST['textoDigitado'];
-$qualOpcao = $_POST['qualOpcao'];
-$tipoUpload = $_POST['tipoUpload'];
+
+$data         = $_POST['data']         ?? null;
+$idTema       = $_POST['idTema']       ?? null;
+$textoDigitado= $_POST['textoDigitado']?? null;
+$qualOpcao    = $_POST['qualOpcao']    ?? null;
+$tipoUpload   = $_POST['tipoUpload']   ?? null;
 
 if($idTema <> null){
     $idTemaString = implode(",", $idTema);

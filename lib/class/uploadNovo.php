@@ -21,8 +21,12 @@ $tipoDocumento = $_POST['tipoDocumento'];
 
 $db = new Database('estudosPesquisas');
 
-$dataPorEscrito = strftime('%h/%Y', strtotime($dtEstudoPesquisa));
-$dataPorEscritoEditada = ucfirst($dataPorEscrito);
+$data = DateTime::createFromFormat('Y-m', $dtEstudoPesquisa);
+$mesesPtBr = [
+    1 => 'Jan', 2 => 'Fev', 3 => 'Mar', 4 => 'Abr', 5 => 'Mai', 6 => 'Jun',
+    7 => 'Jul', 8 => 'Ago', 9 => 'Set', 10 => 'Out', 11 => 'Nov', 12 => 'Dez'
+];
+$dataPorEscritoEditada = $mesesPtBr[(int)$data->format('n')] . '/' . $data->format('Y');
 
 $query = "INSERT INTO `estudosPesquisas`.`estudosPesquisas` (`titulo`, `subtitulo`, `tema`, `dtEstudoPesquisa`, `tipo`) VALUES ('".$titulo." - ".$dataPorEscritoEditada."', '".$descricao."', '".$idTema."', '".$dtEstudoPesquisa."-01', '".$tipoDocumento."');";
 
@@ -61,18 +65,21 @@ try{
                         $retorno['status'] = 1;
                         $retorno['mensagem'] = "<p style='font-size: 16px;'>".$mensagemSucesso."</p>";
                     } else {
+                        var_dump('opa1');exit;
                         $informacoesErro = "Erro: Arquivo " . $execQueryUltimoId[0]["idEstudo"].".png não encontrado em ".$pngDestination."\n\nSintoma: Registrou o estudo/pesquisa no BD, subiu o arquivo PDF mas não o arquivo PNG.\n\nSolução: verificar pasta dos arquivos para confirmar ausência do arquivo PNG. Em caso positivo, incluir manualmente o arquivo ou excluir registro do banco de dados e o arquivo PDF.";
                         $arquivoLog = $geraLog->geraLogExcecao("estudosPesquisas", "paginaAdicionaEstudoPesquisa", $informacoesErro, $mat);
                         $retorno['status'] = 0;
                         $retorno['mensagem'] = "<p style='font-size: 16px;'>Não foi possível gravar as informações neste momento. Informe à equipe responsável o caminho a seguir: " . $arquivoLog."</p>";
                     }
                 } else {
+                    var_dump('opa2');exit;
                     $informacoesErro = "Erro: Arquivo " . $execQueryUltimoId[0]["idEstudo"].".pdf não encontrado em ".$pdfDestination."\n\nSintoma: Registrou o estudo/pesquisa no BD, mas não subiu nenhum arquivo.\n\nSolução: verificar pasta dos arquivos para confirmar ausência dos mesmos. Em caso positivo, incluir manualmente os arquivos ou excluir registro do banco de dados.";
                     $arquivoLog = $geraLog->geraLogExcecao("estudosPesquisas", "paginaAdicionaEstudoPesquisa", $informacoesErro, $mat);
                     $retorno['status'] = 0;
                     $retorno['mensagem'] = "<p style='font-size: 16px;'>Não foi possível gravar as informações neste momento. Informe à equipe responsável o caminho a seguir: " . $arquivoLog."</p>";
                 }
             } else {
+                var_dump('opa3');exit;
                 $informacoesErro = "Erro: Gravou no BD mas não capturou o último registro e não subiu nenhum arquivo. \n\n Query:" . $queryUltimoId ."\n\nSintoma: Registrou o estudo/pesquisa no BD, mas não subiu nenhum arquivo.\n\nSolução: verificar pasta dos arquivos para confirmar ausência dos mesmos. Em caso positivo, incluir manualmente os arquivos ou excluir registro do banco de dados.";;
                 $arquivoLog = $geraLog->geraLogExcecao("estudosPesquisas", "paginaAdicionaEstudoPesquisa", $informacoesErro, $mat);
                 $retorno['status'] = 0;
@@ -81,6 +88,7 @@ try{
             }
 
         } catch(Exception $e) {
+            var_dump('opa4');exit;
             $informacoesErro = "Erro: " . $e . "\n\n\$query:" . $queryUltimoId . "\n\nSintoma: Gravou os dados de ".$tipoDocumento.", mas não conseguiu fazer upload dos arquivos.\n\nSolução: consultar na tabela 'estudosPesquisas.estudosPesquisas' o ID do último registro, verificar a pasta dos arquivos para confirmar ausência dos mesmos (os arquivos devem ter o nome 'nº_do_ID.pdf' e 'nº_do_ID.png' (por exemplo, para o ID 01, os arquivos são 01.pdf e 01.png). Caso os arquivos realmente não estejam na pasta, incluir manualmente os arquivos ou excluir o registro do banco de dados.";
             $arquivoLog = $geraLog->geraLogExcecao("estudosPesquisas", "paginaAdicionaEstudoPesquisa", $informacoesErro, $mat);
             $retorno['status'] = 0;
@@ -88,6 +96,7 @@ try{
             // return json_encode($retorno);
         }
     } else {
+        var_dump('opa5');exit;
         $informacoesErro = "Erro: Não inseriu os dados da pesquisa/estudo no BD nem fez upload dos arquivos. \n\n Query:" . $query;
         $arquivoLog = $geraLog->geraLogExcecao("estudosPesquisas", "paginaAdicionaEstudoPesquisa", $informacoesErro, $mat);
         $retorno['status'] = 0;
@@ -95,6 +104,7 @@ try{
         // return json_encode($retorno);
     }
 } catch(Exception $e){
+   var_dump($e->getMessage());exit;
     $informacoesErro = "Erro: " . $e . "\n\n\$query: " . $query . "\n\nSintoma: Não gravou nenhuma informação: nem no Banco de Dados nem subiu os arquivos.\n\nSolução: nada específico pois a variedade de falhas que podem ocorrer neste ponto é vasta.\n\nSugestões: verificar o erro apresentado nas linhas acima (em \$informacoesAdicionais e \$query), se houve indisponibilidade temporária do servidor, tentar efetuar novo registro acompanhando o Inspetor de Rede do browser.";
     $arquivoLog = $geraLog->geraLogExcecao("estudosPesquisas", "paginaAdicionaEstudoPesquisa", $informacoesErro, $mat);
     $retorno['status'] = 0;

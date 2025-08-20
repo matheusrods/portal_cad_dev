@@ -1,0 +1,453 @@
+/* ===== Layout geral ===== */
+.versionamento-wrap {
+    max-width: 1100px;
+    margin: 34px;
+    padding: 0
+}
+
+.exibir_teste {
+    color: #2D37F5
+}
+
+/* ===== Cards / inputs ===== */
+.tv-card {
+    background: #fff;
+    border: 1px solid #e7ecf4;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 14px 0
+}
+
+.tv-grid-2 {
+    display: grid;
+    gap: 14px
+}
+
+@media (min-width: 900px) {
+    .tv-grid-2 {
+        grid-template-columns:1fr 1fr
+    }
+}
+
+.tv-field {
+    display: flex;
+    flex-direction: column
+}
+
+.tv-label {
+    font-weight: 600;
+    color: #374151;
+    margin: 4px 0 6px
+}
+
+.tv-input, .tv-select {
+    width: 100%;
+    height: 44px;
+    border: 1.5px solid #e3e7f0;
+    border-radius: 10px;
+    background: #fbfcfe;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s
+}
+
+.tv-input:focus, .tv-select:focus {
+    border-color: #4f7cff;
+    box-shadow: 0 0 0 3px rgba(79, 124, 255, .15);
+    background: #fff
+}
+
+.tv-select--sm {
+    height: 38px
+}
+
+.tv-error {
+    color: #b91c1c;
+    font-size: .86rem;
+    margin-top: 6px
+}
+
+/* ===== Botão (padrão BB) ===== */
+#botaoAnaliseVersao.tv-btn {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 42px;
+    padding: 10px 24px;
+    border: 0;
+    border-radius: 6px;
+    background: #ffeb00;
+    color: #465EFF;
+    font: 700 14px/1 'Open Sans', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: auto;
+    min-width: 190px;
+    transition: background .2s
+}
+
+#botaoAnaliseVersao.tv-btn:hover {
+    background: #ffe500
+}
+
+.tv-btn__spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, .2);
+    border-top-color: #111;
+    animation: spin .9s linear infinite
+}
+
+.tv-btn.is-loading .tv-btn__spinner {
+    display: inline-block
+}
+
+.tv-btn.is-loading .tv-btn__text {
+    opacity: 0
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+/* ===== Resultado da Análise ===== */
+#analysis-result.tv-card {
+    background: #f7fbff;
+    border: 1px solid #e6eef6;
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    max-width: 100%
+}
+
+#analysis-result .tv-result-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 12px
+}
+
+#analysis-result .tv-result-ic {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #edf2ff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center
+}
+
+#analysis-result .tv-title {
+    margin: 0;
+    font: 700 16px/1.2 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    color: #0f172a
+}
+
+#analysis-result p {
+    margin: 6px 0;
+    font: 14px/1.55 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    color: #6b7280
+}
+
+#total-diferencas, #total-erros {
+    font-weight: 600;
+    color: #0f172a
+}
+
+/* loader */
+.tv-resp-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0 14px
+}
+
+.tv-ring__ring {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(65, 84, 255, .15);
+    border-top-color: #4154ff;
+    border-radius: 50%;
+    animation: tvspin 1s linear infinite
+}
+
+.tv-ring__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4154ff;
+    position: relative;
+    top: 8px;
+    margin-bottom: -8px
+}
+
+@keyframes tvspin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+/* ===== Acordeão ===== */
+.tv-accordion {
+    margin: 16px 0
+}
+
+.tv-acc-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eef2ff;
+    border: 1px solid #dfe7ff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 700;
+    color: #334155;
+    cursor: pointer
+}
+
+.tv-acc-caret {
+    transition: transform .2s;
+    color: #4154ff
+}
+
+.tv-acc-btn[aria-expanded="false"] + .tv-acc-body {
+    display: none
+}
+
+.tv-acc-btn[aria-expanded="true"] .tv-acc-caret {
+    transform: rotate(180deg)
+}
+
+.tv-acc-body {
+    background: #fff;
+    border: 1px solid #e7ecf4;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    padding: 14px
+}
+
+/* ===== Filtro (label em cima + select logo abaixo) ===== */
+#acc-body .tv-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 12px
+}
+
+#acc-body .tv-filter {
+    position: relative;
+    width: 100%;
+    max-width: 360px
+}
+
+#tv-filtro.tv-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 44px;
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    background: #F3F6FB;
+    font-weight: 500;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s
+}
+
+#tv-filtro.tv-select:focus {
+    border-color: #CAD5F7;
+    box-shadow: 0 0 0 3px rgba(70, 104, 255, .15);
+    background: #fff
+}
+
+#acc-body .tv-filter::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translateY(-50%) rotate(45deg);
+    border-right: 2px solid #6B7280;
+    border-bottom: 2px solid #6B7280;
+    pointer-events: none
+}
+
+/* ===== Colunas: alinhadas às laterais ===== */
+.versionamento-wrap #result-section {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px
+}
+
+.versionamento-wrap #result-section .results {
+    flex: 1 1 0;
+    max-width: 48%
+}
+
+@media (max-width: 900px) {
+    .versionamento-wrap #result-section {
+        flex-direction: column;
+        gap: 16px
+    }
+
+    .versionamento-wrap #result-section .results {
+        max-width: 100%
+    }
+}
+
+/* títulos das colunas */
+.tv-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    background: #fff;
+    border: 1px solid #e6ecf5;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 6px 0 12px
+}
+
+.tv-sub-ic {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #edf1ff;
+    align-items: center;
+    justify-content: center
+}
+
+/* ===== Painéis e linhas ===== */
+.expansion-panel {
+    border: 0;
+    background: transparent;
+    margin-bottom: 10px
+}
+
+.expansion-header {
+    padding: 0;
+    background: transparent
+}
+
+.expansion-content {
+    display: none;
+    padding: 10px 0 0
+}
+
+.expansion-content.open {
+    display: block
+}
+
+/* Linha “pill” (como no figma) */
+.tv-row {
+    background: #f4f6f9;
+    border: 1px solid #e7ecf4;
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px
+}
+
+.tv-row__left {
+    font-weight: 600;
+    color: #111827
+}
+
+.tv-row__left b {
+    font-weight: 700
+}
+
+.tv-row__icbtn {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    line-height: 0;
+    cursor: pointer
+}
+
+/* ícones de status */
+.tv-ic--ok, .tv-ic--err {
+    width: 18px;
+    height: 18px;
+    display: inline-block
+}
+
+.tv-ic--ok svg, .tv-ic--err svg {
+    display: block
+}
+
+/* conteúdo (mensagens) */
+.message-bubble {
+    background: #eef7ff;
+    border: 1px solid #dbe7ff;
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    color: #0f172a
+}
+
+.error-message {
+    margin-top: 6px;
+    color: #7f1d1d;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    padding: 8px 10px
+}
+
+/* lista de erros gerais */
+.tv-errors .error-details {
+    background: #fff7ed;
+    border: 1px solid #ffedd5;
+    color: #7c2d12;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-top: 8px
+}
+
+/* ===== Input-section em 1 coluna (como aprovado) ===== */
+#input-section.tv-card {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 0 12px
+}
+
+#input-section .tv-grid-2 {
+    display: grid;
+    grid-template-columns:1fr !important;
+    gap: 14px
+}
+
+/* campos específicos */
+#nVersaoTab, #tx-type {
+    width: 360px;
+    max-width: 100%
+}
+
+#custom-inputs {
+    width: 100%
+}

@@ -1,0 +1,111 @@
+:root {
+    --page-max: 1280px;
+}
+
+.main-card {
+    background: #fff;
+    border-radius: 18px;
+    max-width: var(--page-max);
+    width: min(96vw, var(--page-max));
+    margin: -48px auto 0 auto;
+    padding: 0 0 0px 0;
+    min-height: 220px;
+    position: relative;
+    z-index: 2;
+    flex: 1 0 auto;
+}
+
+.tab-buttons {
+    display: flex;
+    background: #fff;
+    border-radius: 18px 18px 0 0;
+    padding: 0 36px;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    gap: 24px;
+    border-bottom: 2px solid #e7eaf4;
+    box-shadow: none;
+}
+
+.tab-button {
+    font-family: BancoDoBrasil Titulos, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 22px 0 12px 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    position: relative;
+    border-radius: 0;
+    transition: color 0.2s;
+    box-shadow: none;
+    margin-right: 32px;
+    margin-bottom: -2px;
+}
+
+.tab-button:last-child {
+    margin-right: 0;
+}
+
+.tab-button.active {
+    color: #2257D7;
+    border-bottom: 3px solid #2257D7;
+    background: none;
+    z-index: 1;
+}
+
+main {
+    padding: 0 36px;
+    margin-top: 0;
+}
+
+.tab {
+    display: none;
+    padding-top: 0;
+}
+
+.tab > * {
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    .main-card {
+        max-width: 100%;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .tab-buttons {
+        padding: 0 8px;
+        gap: 10px;
+        border-radius: 0;
+    }
+
+    main {
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-card {
+        padding-bottom: 0;
+    }
+
+    .tab-button {
+        font-size: 13px;
+        padding: 14px 0 10px 0;
+        margin-right: 6px;
+    }
+}
+
+.tab-buttons {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
