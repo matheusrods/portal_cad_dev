@@ -4,9 +4,7 @@
 // ini_set('display_startup_errors', 1);
 
 // Força o início da sessão
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 
 // Importação de arquivos de funções de banco de dados e de gravação de log
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
@@ -20,9 +18,9 @@ Class funcoes {
 
     // Função padrão do PHP para declaração de variáveis que serão utilizadas em outras funções
     public function __construct(){
-        // if(!isset($_SESSION)){
-        //     session_start();
-        // }
+        if(!isset($_SESSION)){
+            session_start();
+        }
         $mat = $_SESSION['matricula'];
         $caminhoLogErro = $this->caminhoLogErro = $_SERVER["DOCUMENT_ROOT"] . "/log/log_erros";
     }
@@ -33,12 +31,9 @@ Class funcoes {
 
         $db = New Database('cad');
         $query = "SELECT * FROM cad.squads WHERE idSetor = 4 ORDER BY squad ASC;";
-
-        $retorno = array();
         
         try{
-            
-            $execQuery   = $db->DbGetAll($query);
+            $execQuery = $db->DbGetAll($query);
             
             if($execQuery){
                 $retorno = array();

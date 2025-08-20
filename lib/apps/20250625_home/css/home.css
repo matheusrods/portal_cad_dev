@@ -1,0 +1,1477 @@
+/*SETOR CABEÇALHO DA PÁGINA*/
+
+#homeCabecalho{
+    width:100%;
+    height:35rem;
+    background: linear-gradient(180deg, #8F82C7 0%, #463F61 100%);
+    display: inline-flex;
+    flex-direction: row;
+
+}
+
+#cabecalhoEsquerdo{
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#imgBarrasCabecalho{
+    width: 60%;
+}
+#cabecalhoDireito{
+    width:50%;
+}
+
+#idDivImgBot{
+    height:35rem;
+}
+#divTextoCabecalho{
+    height:100%;
+    width: 40%;
+    align-content: center;
+}
+
+.tituloCabecalho{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 37.08px */
+    letter-spacing: -2.16px;
+}
+
+.tituloCabecalhoNegrito{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%;
+    letter-spacing: -2.16px;
+}
+
+.txtCabecalho{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+
+/*CARROSSEL INFINITO*/
+.slider{
+    height:39px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #B4B9C1;
+    background: #FFF;
+    display: flex;
+
+
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-260px * 8)); }
+}
+
+
+.slide-track {
+    display: flex;
+    animation: scroll 40s linear infinite;
+    display: flex;
+    /* width: calc(260px * 8); */
+
+}
+
+
+
+.slideGrandesNumeros{
+    width:312px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    border-right: 1px solid #B4B9C1;
+
+}
+
+.categoriaGrandesNumeros{
+    color: #ABABAB;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 24.72px */
+    letter-spacing: -1.44px;
+}
+
+.valorGrandesNumeros{
+    color: #727272;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 103%; /* 24.72px */
+    letter-spacing: -1.44px;
+}
+
+.variacaoPositivaGrandesNumeros{
+    color: #09B600;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 103%; /* 16.48px */
+    letter-spacing: -0.96px;
+}
+
+.variacaoNegativaGrandesNumeros{
+    color: #B64600;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 103%; /* 16.48px */
+    letter-spacing: -0.96px;
+}
+
+
+
+
+
+
+
+
+/*SETOR DOS ASSISTENTES DIGITAIS*/
+
+#divAssistentesDigitais{
+    width: 100%;
+    height: 897px;
+    position: relative;
+    flex-shrink: 0;
+    aspect-ratio: 641.67/897.00;
+    background-image: url("/lib/img/apps/home/fundoAssistentesDigitais_compressed.png");
+    z-index: 2;
+}
+
+#divSuperiorAsstDig{
+    width:100%;
+    height: 50%;
+    
+}
+
+
+#divInferiorAsstDig{
+    width:100%;
+    height: 50%;
+    display: inline-flex;
+    align-items: flex-end;
+    
+}
+
+#divImgCelular{
+    margin-left: 22%;
+    margin-right: 3%;
+}
+
+#divTxtTituloAssDigSuperior{
+    width: 42em;
+    margin-left: 20%;
+    padding-top: 5%;
+}
+
+#divTxtAssDigi{
+    width: 90%;
+}
+.tituloAsstDig{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 41.2px */
+    letter-spacing: -2.4px;
+}
+
+
+.tituloNegritoAsstDig{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%;
+    letter-spacing: -2.16px;
+}
+
+
+.txtAssDigi{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+.txtAssDigiNegrito{
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 103%;
+    letter-spacing: -0.4px;
+}
+
+#divBalaoDialogoVerde{
+
+    width: 44rem;
+    height: fit-content;
+    position: absolute;
+    border-radius: 41px;
+    background: #2AB740;
+    bottom: 45px;
+    padding: 35px;
+    
+    /*Tipografia*/
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+.setaLateralBalao{
+    width: 0;
+    height: 0;
+    border-right: 20px solid #2AB740;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+    position: relative;
+    bottom: 160px;
+    left: -19px;
+    z-index: 4;
+    }
+
+.txtBalaoNegrito{
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 103%;
+    letter-spacing: -0.4px;
+    }
+
+
+/*SETOR AVISOS DA ECOA*/    
+
+.divAvisosEcoa{
+        width: 100%;
+        height: 684px;
+        display: inline-flex;
+        justify-content: center;
+        background-image: url("/lib/img/apps/home/fundoAvisosEcoa.png");
+        background-size:100% 100%; 
+        background-repeat: no-repeat;
+
+    }
+
+.divCentralConteudoEcoa{
+        width:73%;   
+        padding: 5%;
+    }
+
+    
+.divSuperiorConteudoEcoa{
+    height: 30%;
+    margin-bottom: 5%;
+}
+
+
+.divSuperiorLinhaSuperiorConteudoEcoa{
+        height: fit-content;
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        
+}
+
+.tituloAvisoEcoa{
+    width: 311px;
+    color: var(--Cinza, #646464);
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%; /* 37.08px */
+    letter-spacing: -2.16px;
+}
+
+.subtituloAvisoEcoa{
+    width: 652px;
+    height: 75px;
+    padding-top: 3%;
+    flex-shrink: 0;
+    color: #646464;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 103%; /* 20.6px */
+    letter-spacing: -0.4px;
+}
+
+.btnAzulContainer{
+    display: inline-flex;
+    height: 41px;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background-color:  #E0E9FF;
+    
+    /*Tipografia*/
+    color: var(--text-on-secondary, #465EFF);
+    text-align: center;
+    /* Button/Label Small */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 13.5px */
+    letter-spacing: 0.06px;
+    text-transform: uppercase;
+}
+
+/*Carrossel*/
+/* .carrossel-container{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+
+
+#wrapper {
+    width: 100%;
+    position: relative;
+  }
+  
+  #carrossel {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  
+  #carrossel::-webkit-scrollbar {
+    height: 0;
+  }
+  
+  #prev,
+  #next {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 8px;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  #prev {
+    top: 50%;
+    left: -80;
+    transform: translate(50%, -50%);
+    display: none;
+  }
+  
+  #next {
+    top: 50%;
+    right: -110;
+    transform: translate(-50%, -50%);
+  }
+  
+  #content {
+    display: grid;
+    grid-gap: 42px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+    justify-content: start;
+  }
+  
+
+
+.chevronCarrossel{
+    height: 4em;
+    width: 4em;
+
+}
+.divAviso{
+
+    display: flex;
+    width: 35rem;
+    height: 304px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;  
+    border-radius: 41px;
+    background: rgba(41, 41, 41, 0.80);
+}
+
+.dataAvisoEcoa{
+    flex: 1 0 0;
+    color: #F6FCFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+}
+
+.nomeAviso{
+    flex-shrink: 0;
+    color: #F6FCFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.16px;
+}
+
+.divCentralizaEcoa{
+    width:100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+
+.btnVerMaisEcoa{
+    display: flex;
+    width: 120px;
+    padding: 13px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    color: var(--Fundo-bolha, #F9F9F9);
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+
+.modalAdicionaAviso{
+    width: 100%;
+    height: fit-content;
+    display: inline-flex;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 41px;
+    background: #FFF;
+    padding:5%;
+    
+}
+
+.formAdicionarAviso{
+    width: 95%;
+    height:70%;
+}
+
+
+.divTituloFormulario{
+    width:100%;
+    color: var(--text-default, #111214);
+
+    /* Label/Regular */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 112.5%; /* 18px */
+    letter-spacing: 0.08px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.subtituloForm{
+    color: var(--text-soft, #6C7077);
+
+    /* Caption/Regular */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.196px;
+    margin-top: 1%;
+}
+
+.itemFormularioEcoa{
+   color: var(--text-default, #111214);
+    /* Label/Small */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+}
+
+.divInputFormEcoa{
+    display: flex;
+    height: 39px;
+    width:35rem;
+    padding: 8px 16px 7px 16px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 4px 4px 0px 0px;
+    background: var(--background-neutral-default, #F0F2F4);
+    border-bottom: 1px solid #B4B9C1;
+    margin-top:1.5%;
+    margin-bottom: 4%;;
+}
+
+.inputFormEcoa{
+    width: 100%;
+    flex: 1 0 0;
+    color: var(--text-soft, #6C7077);
+    background: var(--background-neutral-default, #F0F2F4);
+    font-family: "BancoDoBrasil Textos";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+    letter-spacing: 0.08px;
+    border: none;
+}
+
+
+.txtAreaEcoa{
+    width: 100%;
+    display: flex;
+    padding: 8px 16px 0px 16px;
+    align-items: flex-start;
+    gap: 1px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 4px 4px 0px 0px;
+    border: none;
+    background: var(--background-neutral-default, #F0F2F4);
+    color: var(--text-soft, #6C7077);
+    margin-top:1.5%;
+}
+
+.areaBotoesFormEcoa{
+    width: 100%;
+    height: 10rem;
+    gap: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+
+}
+
+.btnLimparEcoa{
+    display: flex;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background: var(--button-critical-soft-default, #FFEBEC);
+    color: var(--text-critical, #E3111F);
+    text-align: center;
+
+    /* Button/Label Small */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 13.5px */
+    letter-spacing: 0.06px;
+    text-transform: uppercase;
+}
+
+
+.btnCadastrarEcoa{
+    display: flex;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background: var(--button-primary-default, #FCFC30);
+    color: var(--text-on-primary, #465EFF);
+    text-align: center;
+
+    /* Button/Label Small */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 13.5px */
+    letter-spacing: 0.06px;
+    text-transform: uppercase;
+}
+
+#idDataAvisoEcoa, #idHorárioAvisoEcoa{
+     flex: 1 1 0;
+    background-color: #F0F2F4;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    word-wrap: break-word;
+    border: none;
+}
+
+.contador{
+    color: var(--text-soft, #6C7077);
+
+    /* Caption/Regular */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.196px;
+}    
+
+.divSuperiorConsultaAviso{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+
+.spanTituloConsultaAviso{
+    align-self: stretch;
+    color: var(--Cinza, #646464);
+    font-family: "BancoDoBrasil Textos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 103%; /* 37.08px */
+    letter-spacing: -2.16px;
+}
+
+.spanTxtDataHorarioAviso{
+    color: var(--text-soft, #6C7077);
+
+    /* Caption/Regular */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.196px;
+}
+
+.spanNumDataHorarioAviso{
+    color: var(--text-soft, #6C7077);
+
+    /* Caption/Regular */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 112.5%;
+    letter-spacing: 0.196px;
+}
+
+.divInferiorConsultaAviso{
+    height:20rem;
+    padding-top: 5%;
+
+    /*tipografia*/
+    color: #646464;
+
+    /* Caption/Regular */
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.196px;
+}
+
+.carregaImagens{
+    display: none;
+    background-image:url("/lib/img/apps/home/fundoPesquisas.png"),  url("/lib/img/apps/home/fundoRecursos.png"), url("/lib/img/apps/home/fundoEstudos.png");
+}
+/*SETOR REPORTS*/
+
+.linhaDivisoriaReport{
+    height: 100%;
+    width:2px;
+    background-color: #144B71;
+}
+
+.areaReportDestaques{
+    /* background-image: url("/lib/img/apps/home/fundoDivDestaques.svg"); */
+    background: linear-gradient(180deg, #03426C 4.04%, #002D4B 100%);
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    padding: 35px 57px;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+.divItemReport{
+    width: 25%;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 30px 18px;
+    /* flex: 1 0 0; */
+    align-self: stretch;
+    flex-wrap: wrap; 
+    /* background-color: #465EFF; */
+}
+
+.divCabecalhoItemReport{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    flex: 1 0 0;
+    padding-bottom: 30px;
+}
+
+/*linhas dos cabeçalhos*/
+#cabecalhoDestaqueReport{
+    border-bottom: 3px solid #CBA7F1;
+}
+
+#cabecalhoTrendingReport{
+    border-bottom: 3px solid #00FFFF;
+}
+
+#cabecalhoIndisponibilidadeReport{
+    border-bottom: 3px solid #FF0059;
+}
+
+.imgIconItemReport{
+    width:auto;
+}
+
+.tituloItemReport{
+    color: #FFF;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.16px;
+}
+
+.negritoTxtItemReport{
+    color: #F2F2F2;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.divTxtItemReport{
+    color: #F2F2F2;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.linkReport{
+    color: #F2F2F2;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+/*Fim área report*/
+
+/*SETOR RESUMO ÁREAS DO PORTAL*/
+
+#resumoAreasPortal{
+    width: 100%;
+    height: 44rem;
+    background: #E8E8E8;
+    display: inline-flex;
+    justify-content: center;
+}
+
+/*menu*/
+
+.nestMenu{
+    background: linear-gradient(2deg, #03426C 4.04%, #002D4B 4%);
+    height: 51px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+
+}
+
+
+#menuAreaPortal{
+    display: flex;
+    width: 1065px;
+    height: 35px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 30px 0px 0px;
+    /* background: var(--background-default, #FEFEFE); */
+    /* box-shadow: 0px 4px 16.5px 0px #000; */
+
+}
+
+.itemMenuAreas{
+    display: flex;
+    height: 100%;
+    width:18%;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-default, #FEFEFE);
+    
+}
+
+.itemMenuAreasEmFoco{
+    display: flex;
+    height: 100%;
+    width:18%;
+    justify-content: center;
+    align-items: center;
+}
+
+#menuPesquisas{
+    border-radius: 30px 0px 0px 0px;
+    background: #465EFF;   
+}
+
+.itemMenuSelecionado{
+    color: var(--Fundo-bolha, #F9F9F9);
+    text-align: center;
+
+    /* Button/Label Regular */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+.itemMenuNaoSelecionado{
+    color: var(--Texto-bot, #000);
+    text-align: center;
+    padding-left: 5px;
+    /* Button/Label Regular */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+.itemMenuAreas:hover{
+    background-color: #F0F2F4 !important ;
+}
+
+
+
+#menuCopilotos{
+    border-radius: 0px 30px 0px 0px;
+}
+
+/*área pesquisas*/
+
+#areaPesquisas{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoPesquisas.png");
+    
+    
+}
+
+.nestPesquisas, .nestRecursos, .nestExperimentacoes, .nestPaineis, .nestEstudos{
+    width:100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 5rem;
+}
+
+.nestRecursos, .nestExperimentacoes, .nestPaineis, .nestEstudos{
+    width:100%;
+    display: none;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 5rem;
+}
+
+
+
+#areaRecursos{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoRecursos.png");
+    display: none;
+    /* flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px; */
+
+}
+
+#areaExperimentacoes{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoExperimentacoes.png");
+    display: none;
+    /*flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px; */
+}
+
+#areaPaineis{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoPaineis.png");
+    display: none;
+    /*flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px; */
+}
+
+#areaEstudos{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoEstudos.png");
+    display: none;
+    /* flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px; */
+}
+
+#areaCopilotos{
+    width:100%;
+    background-image: url("/lib/img/apps/home/fundoCopilotos.png");
+    display: none;   
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+
+
+ .hdivArea{
+    width: 25rem;
+    height: 32rem;
+    display: flex;
+    /* padding: 32px; */
+    flex-direction: column;
+    align-items: flex-start;
+    /* gap: 16px; */
+    align-self: stretch;
+    background-color: #F0F2F4;
+    flex-shrink: 0;
+    border-radius: 8px;
+    
+ }
+
+ #hdivCopiloto{
+    height:28rem;
+ }
+ .hmolduraArea{
+    width: fit-content;
+    height: fit-content;
+    flex-shrink: 0;
+    background-color: white;
+    border: 12px solid white;
+    border-radius: 8px;
+ }
+ .hcapaArea{
+    height:16rem;
+    width:25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: stretch;
+    background-size: contain;
+    border-radius: 8px 8px 0px 0px;
+    
+ }
+
+ .hcapaAreaCopilotos{
+    height:16rem;
+    width:25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: stretch;
+    background-size: contain;
+    border-radius: 8px 8px 0px 0px;
+    align-items: center;
+}
+ .htituloArea{
+    color: var(--text-default, #111214);
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+ }
+
+ .hsubtituloArea{
+    color: var(--text-soft, #6C7077);
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+ }
+
+ .hAreaTxt{
+    padding: 15px;
+ }
+ 
+ .rodapeDivAreas{
+    width:100%;
+    height: 20em;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 10px;
+    padding-bottom:10px;
+}
+ 
+
+ .btnAcessaDetalhe{
+    width:95px;
+    display: flex;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background: var(--button-primary-default, #FDF429);
+    /*tipografia*/
+    color: var(--text-on-primary, #3354FD);
+    text-align: center;
+
+    /* Button/Label Small */
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 13.5px */
+    letter-spacing: 0.06px;
+    text-transform: uppercase;
+ }
+
+ .hTemaTag{
+    display: flex;
+    height: 24px;
+    padding: 0px 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    background: var(--specific-brand-focus, #FDF429);
+
+    /*Tipografia*/
+
+    color: var(--text-default, #111214);
+    text-align: center;
+
+    font-family: "BancoDoBrasil Textos";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 112.5%; /* 13.5px */
+    letter-spacing: 0.06px;
+ }
+ 
+ .verTodosAreaNest{
+    width:100%;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right:13.5%;
+    padding-top:1.25rem;
+    color: var(--Fundo-bolha, #F9F9F9);
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%; /* 15.75px */
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+.btnVertodosArea{
+    display: flex;
+    width:120px;
+    padding:13px 10px;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    border: 2px solid white;
+    border-radius: 8px;
+}
+.spanVertodosArea{
+
+    /* margin-right: 6px; */
+    width: 82px;
+    flex-shrink: 0;
+    color: var(--Fundo-bolha, #F9F9F9);
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 112.5%;
+    letter-spacing: 0.07px;
+    text-transform: uppercase;
+}
+
+
+/*SETOR FERRAMEMTAS*/
+
+
+.areaFerramentas{
+    width: 100%;
+    height: 874px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    background-image: url("/lib/img/apps/home/fundoFerramentas.png");
+}
+
+.divMenuCategoriasFerramentas{
+    display: inline-flex;
+    gap:5rem;
+}
+
+.divCategoriasFerramentasMenu{
+    /* display: flex;*/
+    align-items: center;
+    /*gap: 267px;
+    align-self: stretch;
+    padding-left: 18rem;*/
+    padding-top: 7rem; 
+    width:100%;
+    display: inline-flex;
+    gap:267px;
+    justify-content: center;
+    
+}
+.spanFerramentasTituloMenu{
+    color: var(--Cinza, #646464);
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.16px;
+    }
+
+.spanMenuCategoriasFerramentas{
+    
+    color: #646464;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -2.16px;
+    border-bottom: 3px solid #C7BDBD;
+}
+
+#titMenuPlataforma{
+    border-bottom: 3px solid #019EFF;
+}
+.nestFerramentas{
+    /* padding-left: 18rem; */
+    padding-top: 9rem;
+    width:80%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap:48px 32px;
+}
+
+.divFerramenta{
+    width: fit-content;
+    height: 15rem;
+    flex-shrink: 0;
+    border-radius: 22px;
+    /* border: 3px solid #019EFF; */
+    background: #FFF;
+    padding-top: 6.5px; 
+    padding-left:10px;
+    padding-right: 10px;
+}
+
+
+.divTituloFerramenta{
+    width:100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #646464;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.88px;
+    gap:8px;
+}
+.divNestDescricaoFerramenta{
+    width:100%;
+    height:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.descricaoFerramenta{
+    width: 290px;
+    height: fit-content;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: #F4F1F1;
+    backdrop-filter: blur(2px);
+    /* margin-top:5%; */
+    padding:4%;
+
+    /*tipografia*/
+
+    color: #6C7077;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.divSessaoPlataformas{
+    display: block;
+    border: 3px solid #019EFF;
+}
+
+.divSessaoDesenvolvimento{
+    display: none;
+    border: 3px solid #FF6E91;
+}
+
+.divSessaoAtivo{
+    display: none;
+    border: 3px solid #735CC6;
+}
+
+.divSessaoPortais{
+    display: none;
+    border: 3px solid #00EBD0;
+}
+
+/*CONTROLE RESPONSIVIDADE*/
+
+ 
+@media screen and (max-width: 1740px) {
+        
+    .divAviso{
+        
+        width: 32.5rem;
+    
+    }
+
+    #content{
+        grid-gap: 30px;
+    }
+
+    .nestFerramentas{
+            width:95%;
+    }
+}
+
+@media screen and (max-width: 1530px) {
+        
+    .divAviso{
+        
+        width: 28.5rem;
+    
+    }
+
+    #content{
+        grid-gap: 25px;
+    }
+
+    .hdivArea, .hcapaArea{
+        width:20rem;
+    }
+    
+    .htituloArea{
+        font-size: 20px;
+    }
+
+    .nestFerramentas{
+            width:95%;
+    }
+
+     .divCategoriasFerramentasMenu{
+        padding-left:5rem;
+        
+        }
+}
+
+
+    @media screen and (max-width: 1300px) {
+        
+        #divBalaoDialogoVerde{
+        
+            width: 35rem;
+        
+        }
+
+        .divAviso{
+        
+            width: 23.5rem;
+        
+        }
+
+        .divTxtItemReport{
+            font-size: 20px;
+        }
+
+        .linkReport
+        {
+            font-size: 20px;
+        }
+
+        .hcapaArea, .hcapaArea{
+            height:14rem;
+        }
+        .descricaoFerramenta{
+            width:210px;
+        }
+
+        .nestFerramentas{
+            width:95%;
+        }
+
+        .divTituloFerramenta{
+            font-size: 40px;
+        }
+
+        .divCategoriasFerramentasMenu{
+            padding-left:5rem;
+            gap:100px;
+
+        }
+    }
+    
+
+    @media screen and (max-width: 1200px) {
+        
+        #divBalaoDialogoVerde{
+        
+            width: 25rem;
+        
+        }
+
+        .divAviso{
+        
+            width: 20rem;
+        
+        }
+        
+        .hdivArea, .hcapaArea{
+            width:18rem;
+        }
+
+        .spanFerramentasTituloMenu{
+            font-size:28px;
+        }
+
+        .spanMenuCategoriasFerramentas{
+            font-size: 28px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+        
+       .tituloItemReport{
+        
+            font-size: 28px;
+        
+        }
+
+        .imgIconItemReport{
+        
+            width:20%;
+        
+        }
+    }

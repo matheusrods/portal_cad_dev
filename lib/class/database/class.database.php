@@ -1,61 +1,26 @@
 <?php
 
 class Database extends Conexao {
+	public $erro = "";
+	function __construct($database = "cad"){
 
-	 /** @var mysqli */
-    public $connection;
-    public $erro = "";
-	// function __construct($database = "cad"){
-
-	// 	$hostName = $this->server;
-	// 	$username = $this->user;
-	// 	$password = $this->pass;
-	// 	$this->connection = new mysqli($hostName, $username, $password, $database);
-	// 	// $this->connection->set_charset("utf8");
-	// 	$this->connection->set_charset("utf8mb4");
-	// 	if (mysqli_connect_errno()) {
+		$hostName = $this->server;
+		$username = $this->user;
+		$password = $this->pass;
+		$this->connection = new mysqli($hostName, $username, $password, $database);
+		// $this->connection->set_charset("utf8");
+		$this->connection->set_charset("utf8mb4");
+		if (mysqli_connect_errno()) {
 			
-	// 		$erroCod = mysqli_errno();
-	// 		$erroName = mysqli_connect_error();
+			$erroCod = mysqli_errno();
+			$erroName = mysqli_connect_error();
 
-	// 		header("Location: https://cad.bb.com.br/erroDB.php?erroCod=".$erroCod."&erroNome=".$erroName);
+			header("Location: https://cad.bb.com.br/erroDB.php?erroCod=".$erroCod."&erroNome=".$erroName);
 
 			
-	// 		exit();
-	// 	}
-	// }
-
-	/**
-     * Constrói a conexão TCP usando host + porta.
-     *
-     * @param string $database
-     * @throws mysqli_sql_exception
-     */
-    public function __construct($database = null) {
-        // Se foi passado outro DB, use; senão use o default da Conexao
-        $dbName = $database ?: $this->database;
-
-        // Conecta via TCP (host diferente de "localhost" força TCP)
-        $this->connection = new mysqli(
-            $this->server,
-            $this->user,
-            $this->pass,
-            $dbName,
-            $this->port
-        );
-
-        // Charset
-        $this->connection->set_charset(CHARSET);
-
-        // Tratamento de erro
-        if ($this->connection->connect_errno) {
-            // opcional: log, header redirect, etc
-            throw new \mysqli_sql_exception(
-                $this->connection->connect_error,
-                $this->connection->connect_errno
-            );
-        }
-    }
+			exit();
+		}
+	}
 	
 	
 	

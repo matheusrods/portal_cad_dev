@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="img/robo.png" alt="Robô CAD">
+                <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/robo.png" alt="Robô CAD">
             </div>
         </div>
     </section>
@@ -118,12 +118,14 @@
 
             <!-- IMAGEM 3D: Gráfico (à esquerda do vídeo) -->
             <div class="icon-chart">
-            <img src="img/grafico.png" alt="Ícone Gráfico 3D">
+            <!-- <img src="img/grafico.png" alt="Ícone Gráfico 3D"> -->
+            <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/grafico.png" alt="Ícone Gráfico 3D">
             </div>
 
             <!-- IMAGEM 3D: Foguete (à direita do vídeo) -->
             <div class="icon-rocket">
-            <img src="img/icone-rocket.png" alt="Ícone Foguete">
+            <!-- <img src="img/icone-rocket.png" alt="Ícone Foguete"> -->
+            <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icone-rocket.png" alt="Ícone Foguete">
             </div>
 
             <!-- VÍDEO -->
@@ -196,7 +198,9 @@
                 ?>
                 <div class="card-painel">
                     <div class="thumb-wrapper">
-                        <img src="img/thumb_paineis.png" alt="<?= $titulo ?>">
+                        <!-- <img src="img/thumb_paineis.png" alt="<?= $titulo ?>">     -->
+                        <img src="https://<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/thumb_paineis.png" alt="<?= $titulo ?>">
+                        
                         <div class="play-icon">
                             <svg viewBox="0 0 100 100">
                                 <polygon points="40,30 70,50 40,70" fill="#fff"/>
@@ -208,7 +212,9 @@
                 <?php endforeach; ?>
                 <!-- ÍCONE DECORATIVO (gráfico 3D) -->
                 <div class="card-icon-decorativo">
-                    <img src="img/icone-grafico-3d.png" alt="Gráfico 3D">
+                    <!-- <img src="img/icone-grafico-3d.png" alt="Gráfico 3D"> -->
+                    <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icone-grafico-3d.png" alt="Gráfico 3D">
+                    
                 </div>
             </div>
         </div>

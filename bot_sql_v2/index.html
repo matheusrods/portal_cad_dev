@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Com DADO</title>
+    <link rel="stylesheet" type="text/css" href="css/chatbot.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql-formatter/4.0.2/sql-formatter.min.js"></script>
+    
+</head>
+<body>
+    <h1>Faça sua pergunta</h1>
+    <div class="input-container">
+        <textarea id="inputField" placeholder="Digite sua mensagem aqui" rows="3"></textarea>
+        <button id="sendButton">Enviar</button>
+    </div>
+    <h2>Resposta:</h2>
+    <div id="loadingIndicator" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    <div id="outputAntes"></div>
+    <div class="code-container">
+        <pre><code id="codeBlock"></code></pre>
+        <pre id="outputEntre"></pre>
+        <button id="copyButton">Copiar</button>
+    </div>
+    <div id="outputDepois"></div>
+
+    <script>
+        // Função para substituir palavras entre ** por <strong>
+        function replaceBold(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+
+        // Enviar requisição POST
+        document.getElementById('sendButton').addEventListener('click', function () {
+            // Mostrar o spinner de carregamento
+            document.getElementById('loadingIndicator').style.display = 'block';
+            // Limpar resposta anterior
+            document.getElementById('outputAntes').textContent = '';
+            document.getElementById('outputEntre').textContent = '';
+            document.getElementById('outputDepois').textContent = '';
+            // Ocultar o contêiner do código ao enviar uma nova pergunta
+            document.querySelector('.code-container').style.display = 'none';
+    
+            const input = document.getElementById('inputField').value;
+            const data = {
+                data: {
+                    input: input,
+                    context: {}
+                }
+            };
+    
+            fetch('http://acs-assist-bot-cad-sql.nia.hm.bb.com.br/acs/llms/agent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const content = data.data.context.messages[1].content;
+                    const formattedContent = replaceBold(content);
+    
+                    const delimitadores = [
+                        { tipo: 'SQL', inicio: '```sql', fim: '\n```\n\n' },
+                        { tipo: 'PySpark', inicio: '```python', fim: '\n```\n\n' }
+                    ];
+    
+                    let encontrouCodigo = false;
+    
+                    delimitadores.forEach(delimitador => {
+                        if (formattedContent.includes(delimitador.inicio) && formattedContent.includes(delimitador.fim)) {
+                            const parteAntes = formattedContent.split(delimitador.inicio)[0];
+                            const parteEntre = formattedContent.split(delimitador.inicio)[1].split(delimitador.fim)[0];
+                            const parteDepois = formattedContent.split(delimitador.fim)[1];
+    
+                            // Formatar o código baseado no tipo
+                            let formattedCode = parteEntre;
+                            if (delimitador.tipo === 'SQL') {
+                                formattedCode = sqlFormatter.format(parteEntre); // Formatar SQL
+                            }
+    
+                            // Adicionar o conteúdo dividido aos elementos correspondentes
+                            document.getElementById('outputAntes').innerHTML = parteAntes;
+                            document.getElementById('outputEntre').textContent = formattedCode;
+                            document.getElementById('outputDepois').innerHTML = parteDepois;
+                            encontrouCodigo = true;
+                            // Mostrar o contêiner do código após receber a resposta
+                            document.querySelector('.code-container').style.display = 'block';
+                        }
+                    });
+    
+                    if (!encontrouCodigo) {
+                        // Se nenhum código for encontrado, exibir a resposta completa
+                        document.getElementById('outputAntes').innerHTML = formattedContent;
+                        document.querySelector('.code-container').style.display = 'none';
+                    }
+    
+                    // Copiar conteúdo de outputEntre
+                    document.getElementById('copyButton').addEventListener('click', function () {
+                        const outputEntreText = document.getElementById('outputEntre').textContent;
+                        navigator.clipboard.writeText(outputEntreText).then(() => {
+                            console.log('Conteúdo copiado!');
+                        }).catch(err => {
+                            console.error('Erro ao copiar:', err);
+                        });
+                    });
+    
+                    // Ocultar o spinner de carregamento
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Ocultar o indicador de carregamento mesmo se houver um erro
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                });
+        });
+    </script>
+
+<h1>Índice do Vídeo</h1>
+<ul>
+    <li><a href="#" onclick="setVideoTime(0)">Introdução</a></li>
+    <li><a href="#" onclick="setVideoTime(90)">Capítulo 1</a></li>
+    <li><a href="#" onclick="setVideoTime(225)">Capítulo 2</a></li>
+    <li><a href="#" onclick="setVideoTime(300)">Conclusão</a></li>
+</ul>
+
+<iframe id="video" width="560" height="315" src="https://banco365-my.sharepoint.com/:v:/g/personal/rgenuino_bb_com_br/EfH1uMT8VlhNmEl1LCYNsZ0BqiR5z6b7HFFP-6-ZZM5aZQ?e=TtML7M" frameborder="0" allowfullscreen></iframe>
+<div class="divVideoFazapFigmaUx" style="padding-right: 47px;">
+    <iframe id="video" width="560" height="315" src="https://banco365-my.sharepoint.com/personal/jvdcamargo_bb_com_br/_layouts/15/stream.aspx?id=%2Fpersonal%2Fjvdcamargo%5Fbb%5Fcom%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FTreinamento%20Figma%20para%20o%20CAD%20%28online%29%20%2D%20Jo%C3%A3o%2D20240610%5F130356%2DGrava%C3%A7%C3%A3o%20de%20Reuni%C3%A3o%2Emp4&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&amp;ga=1&amp;referrer=StreamWebApp%2EWeb&amp;referrerScenario=AddressBarCopied%2Eview%2Ee63c2e44%2Ddc86%2D4019%2D9e5c%2D95461712ab05" target="_blank">
+    </iframe><div style="width: 657px; height: 313px; position: relative">
+        <img style="width: 657px; height: 313px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 47px" src="https://cad.bb.com.br/lib/img/apps/ux/fazapFigma2024.png">
+        <div style="width: 96px; height: 96px; left: 281px; top: 108.36px; position: absolute; background: rgba(217, 217, 217, 0.70); box-shadow: 0px 0px 17px 11px rgba(255, 255, 255, 0.50); border-radius: 9999px; border: 7px white solid">
+
+        </div>
+    </div>
+</a>
+</div>
+<script>
+    function setVideoTime(seconds) {
+        var video = document.getElementById('video');
+        video.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[' + seconds + ', true]}', '*');
+    }
+</script>
+</body>
+</html>

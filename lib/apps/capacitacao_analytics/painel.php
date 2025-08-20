@@ -85,7 +85,7 @@
     </header>
 
     <!-- HERO / BANNER PRINCIPAL -->
-    <section class="hero">
+    <!-- <section class="hero">
         <div class="container hero-container">
             <div class="hero-text">
                 <h1>Conheça tudo sobre<br>Inteligência Analítica</h1>
@@ -99,12 +99,53 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="img/robo.png" alt="Robô CAD">
+                <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/robo.png" alt="Robô CAD">
             </div>
         </div>
+    </section> -->
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h1>Conheça tudo sobre<br>Inteligência Analítica</h1>
+                <p>Agora vou te mostrar um pouco de <strong>como a nossa dependência funciona</strong> e tudo o que você precisa saber nesse primeiro contato!</p>
+            </div>
+            <div class="hero-image">
+                    <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>" alt="Robô CAD">
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <p class="navegue-label">Navegue aqui 👇</p>
+            <button class="tab active" data-tab="painel-metricas">1. Painéis &amp; Métricas</button>
+            <button class="tab" data-tab="explorando-dados">2. Explorando Dados</button>
+            <button class="tab" data-tab="visualizacao-dados">3. Visualização de Dados</button>
+            <button class="tab" data-tab="engenharia-dados">4. Engenharia de dados</button>
+        </div>
+    
+        <script>
+
+            document.querySelectorAll('.tab').forEach(button => {
+                button.addEventListener('click', function() {
+                    const activeTab = document.querySelector('.tab.active');
+                    if (activeTab) {
+                        activeTab.classList.remove('active');
+                    }
+                    this.classList.add('active');
+                });
+            });
+        </script>
+    </section>
+</body>
+</html>
+```
     </section>
 
-    <div id="tab-content"></div>
+    <div id="tab-content">
+        <div class="divSections">
+
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

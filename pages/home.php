@@ -1,6 +1,6 @@
 <?php
 
-// ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 
 include $_SERVER["DOCUMENT_ROOT"]."/pages/montaCabecalho.php";
 
@@ -99,7 +99,7 @@ $class = new cabecalho();
                 //     echo '<div class="natal" style="background-image: url(http://cad.bb.com.br/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -0.5rem -5rem;"></div>';
                 // }
 
-                include_once $_SERVER["DOCUMENT_ROOT"]."/lib/apps/quemSomos/app/quemSomos.php";
+                include_once $_SERVER["DOCUMENT_ROOT"]."/lib/apps/home/app/home.php";
             ?>
         </div>
     </main>

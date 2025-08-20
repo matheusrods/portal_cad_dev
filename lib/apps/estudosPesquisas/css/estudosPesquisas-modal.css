@@ -1,0 +1,465 @@
+body, .modal-incluir-estudo {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  font-size: 16px;
+  background: #fff;
+}
+
+.modal-incluir-estudo {
+  display: flex;
+  gap: 48px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+  box-sizing: border-box;
+  min-height: 600px;
+  padding: 28px 24px 90px 24px; 
+  border-radius: 10px;
+  box-shadow: 0 4px 36px 0 rgba(80, 80, 100, 0.08);
+  position: relative;
+}
+
+.divEsquerda, .divDireita {
+  flex: 1 1 0;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Inputs */
+input, textarea {
+  border: 1.5px solid #E5E7EB;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #F5F6F8;
+  transition: border 0.2s;
+  color: #222;
+  padding: 0.9rem 1rem;
+  margin-top: 4px;
+}
+input:focus, textarea:focus {
+  border: 1.5px solid #3853FF;
+  background: #fff;
+}
+label {
+  font-weight: 600;
+  color: #181A20;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+input[type="date"], input[type="month"] {
+  padding-right: 2.4rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Dica de caracteres */
+.contaCaracteresTitulo, .contaCaracteresDescricao, .input-hint {
+  font-size: 0.92rem;
+  color: #9CA3AF;
+  margin: 0.12rem 0 0.45rem 0;
+  font-weight: 400;
+}
+
+/* Bloco de tags editáveis */
+.tags-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1.5px solid #B4B9C1;
+  border-radius: 8px;
+  background: #fff;
+  min-height: 48px;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.tags-input input[type=text] {
+  border: none !important;
+  background: transparent !important;
+  font-size: 1rem;
+  min-width: 100px;
+  outline: none;
+  padding: 0;
+}
+
+.tag-label {
+  background: #3853FF;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.25rem 1.1rem 0.25rem 0.7rem;
+  font-size: 0.97rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.tag-label .close {
+  font-weight: bold;
+  font-size: 1.12rem;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.input-hint {
+  font-size: 0.87rem;
+  color: #9CA3AF;
+  margin-top: 0.12rem;
+}
+
+.divDownloadPpt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 1.1rem;
+}
+
+.divBotaoDownloadPpt {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #F8FF74;
+  border-radius: 9px;
+  padding: 0.8rem 1.2rem;
+  width: fit-content;
+  margin-top: 0.22rem;
+}
+
+.divBotaoDownloadPpt a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.divBotaoDownloadPpt i {
+  font-size: 1.4rem;
+  color: #3853FF;
+}
+.divTextoUploadDownload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.divTextoUploadDownload01 {
+  font-size: 1.09rem;
+  color: #333;
+  font-weight: 500;
+}
+.textoArquivoPpt {
+  font-size: 0.98rem;
+  color: #555;
+}
+
+
+/* Upload área - card PDF/PNG */
+.divConteudoUpload {
+  align-items: flex-start;
+  padding: 8px 10px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px dashed #B4B9C1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 54px;
+  margin-bottom: 10px;
+}
+.iconeUploadPdfPng {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  background-color: #F4F8FF;
+  border-radius: 8px;
+  margin-right: 12px;
+  margin-bottom: 2px;
+  font-size: 1.35rem;
+  color: #3853FF;
+}
+.divTextoUploadDownload01 {
+  font-size: 1.07rem;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.textoArquivoPdf,
+.textoArquivoPng {
+  font-size: 0.93rem;
+  color: #777;
+  font-weight: 400;
+}
+
+/* Preview da capa */
+.divPreviewCapa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.divPreviewCapa img {
+  border-radius: 10px;
+  background: #F5F6F8;
+  width: 180px;
+  height: 120px;
+  object-fit: contain;
+  border: 1.5px solid #E5E7EB;
+}
+
+@media (max-width: 900px) {
+  .modal-incluir-estudo {
+    flex-direction: column;
+    gap: 0;
+    max-width: 98vw;
+    padding: 10px;
+  }
+}
+
+.modal-actions {
+  position: absolute;
+  right: 36px;
+  bottom: 28px;
+  display: flex;
+  gap: 18px;
+  z-index: 20;
+}
+
+.btnEnviar {
+  background: #F8FF2A;
+  color: #222;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 38px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(249, 255, 26, 0.18);
+  letter-spacing: 0.03em;
+}
+
+.btnLimpar {
+  background-color: #3853FF;
+  color: #fff;
+  font-weight: 500;
+  padding: 12px 34px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.18s;
+}
+
+.btnEnviar:hover {
+  background: #fff92a;
+}
+.btnLimpar:hover {
+  background-color: #2238b8;
+}
+
+@media (max-width: 900px) {
+  .modal-actions {
+    right: 10px;
+    bottom: 10px;
+    gap: 10px;
+  }
+}
+
+.divTextAreaTitulo,
+.divTextAreaDescricao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.divTextAreaTitulo textarea,
+.divTextAreaDescricao textarea {
+  width: 320px;
+  height: 56px;
+  background: #F5F6F8;
+  border-radius: 12px;
+  border: none;
+  resize: none;
+  font-size: 1.04rem;
+  color: #222;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  padding: 18px 16px;
+  font-family: inherit;
+  font-weight: 400;
+  box-shadow: 0 1px 2px rgba(80,80,80,0.04);
+  transition: border 0.18s, box-shadow 0.18s;
+}
+
+.divTextAreaTitulo textarea:focus,
+.divTextAreaDescricao textarea:focus {
+  outline: 2px solid #3853FF;
+  background: #fff;
+}
+
+.labelTitulo,
+.label {
+  font-weight: bold;
+  font-size: 1.07rem;
+  color: #181A20;
+  margin-bottom: 2px;
+}
+
+.contaCaracteresTitulo,
+.contaCaracteresDescricao {
+  font-size: 0.92rem;
+  color: #9CA3AF;
+  margin-top: 1px;
+  margin-left: 3px;
+  margin-bottom: 2px;
+  font-weight: 400;
+}
+
+
+.divTags {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 20px;
+  margin-top: 4px;
+  align-items: flex-end; /* Alinha os campos pela base */
+  flex-wrap: wrap;
+}
+.tags-field {
+  flex: 2 1 300px;
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+}
+.labelTags {
+  font-weight: bold;
+  font-size: 1.07rem;
+  color: #181A20;
+  margin-bottom: 6px;
+}
+.tags-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-radius: 8px;
+  background: #f5f6f8;
+  min-height: 48px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-bottom: 2px solid #585fff;
+  margin-bottom: 2px;
+}
+.tags-input input[type=text] {
+  border: none;
+  background: transparent;
+  font-size: 1.12rem;
+  outline: none;
+  color: #76797f;
+  min-width: 90px;
+  flex: 1;
+  padding: 6px 0 6px 6px;
+}
+.tag-label {
+  background: #3853ff;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.19rem 1.1rem 0.19rem 0.7rem;
+  font-size: 0.99rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 2px;
+}
+.tag-label .close {
+  font-weight: bold;
+  font-size: 1.13rem;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: color 0.2s;
+}
+.tag-label .close:hover {
+  color: #d0d3ff;
+}
+.input-hint {
+  font-size: 0.93rem;
+  color: #889;
+  margin-top: 2px;
+  margin-left: 1px;
+}
+
+/* Campo mês de referência */
+.divInputPeríodo {
+  flex: 1 1 210px;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  gap: 5px;
+}
+.divInputPeríodo label {
+  font-weight: 500;
+  font-size: 1.04rem;
+  color: #1e1e25;
+  margin-bottom: 2px;
+}
+.divInputPeríodo input[type="month"] {
+  border-radius: 7px;
+  background: #f5f6f8;
+  border: 1.5px solid #E5E7EB;
+  color: #181A20;
+  font-size: 1rem;
+  padding: 10px 12px;
+  outline: none;
+  transition: border .2s;
+}
+.divInputPeríodo input[type="month"]:focus {
+  border-color: #585fff;
+  background: #fff;
+}
+
+@media (max-width: 700px) {
+  .divTags { flex-direction: column; gap: 6px; }
+  .tags-field, .divInputPeríodo { min-width: unset; width: 100%; }
+}
+
+.tags-input {
+  position: relative;
+}
+
+.tag-suggestions {
+  position: absolute;
+  left: 0; right: 0; top: 110%;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(80,80,80,0.07);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+}
+
+.tag-suggestion {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #333;
+  font-size: 1rem;
+  transition: background .15s;
+}
+.tag-suggestion:hover, .tag-suggestion.active {
+  background: #eef1fd;
+}
+

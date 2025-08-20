@@ -4,9 +4,9 @@
 
 // Força o início da sessão
 session_start();
-if($_SESSION['matricula'] == 'F0285739'){
-    $_SESSION['DEPE'] = '11111111';
-}
+// if($_SESSION['matricula'] == 'F0285739'){
+//     $_SESSION['DEPE'] = '11111111';
+// }
 // insere as classes de conexão e interação com bancos de dados
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -47,10 +47,10 @@ class cabecalho{
             $exclusivoCad = "exclusivoCad IN (0, 1)";
         }
 
-        $db = new Database('cad');
+        $db = new Database('intranet');
 
         // Query que retorna os itens a serem montados no cabeçalho
-        $query = "SELECT * FROM cad.cabecalho_item WHERE ativo = 1 AND ".$emProducao." AND ".$exclusivoCad.";";
+        $query = "SELECT * FROM intranet.cabecalho_item WHERE ativo = 1 AND ".$emProducao." AND ".$exclusivoCad.";";
         // if($_SESSION['matricula'] == 'F02857391'){
         //     return $_SESSION["DEPE"];
         // }
@@ -101,11 +101,11 @@ class cabecalho{
         }
 
 
-        $db = new Database('cad');
+        $db = new Database('intranet');
         $queryItens = " SELECT 
                             distinct(vinculoItem) as vinculoItem
-                        FROM cad.cabecalho_subitem a
-                        LEFT JOIN cad.cabecalho_item b ON a.vinculoItem = b.id
+                        FROM intranet.cabecalho_subitem a
+                        LEFT JOIN intranet.cabecalho_item b ON a.vinculoItem = b.id
                         WHERE b.ativo = 1 AND a.ativo = 1 AND ".$exclusivoCad." AND ".$emProducao."
                         ORDER BY vinculoItem ASC;";
         // if($_SESSION['matricula'] == 'F0285739'){
@@ -118,8 +118,8 @@ class cabecalho{
             $queryCompleta = "
                     SELECT 
                         *
-                    FROM cad.cabecalho_subitem a
-                    LEFT JOIN cad.cabecalho_item b ON a.vinculoItem = b.id
+                    FROM intranet.cabecalho_subitem a
+                    LEFT JOIN intranet.cabecalho_item b ON a.vinculoItem = b.id
                     WHERE b.ativo = 1 AND a.ativo = 1 AND vinculoItem = ".$totalItens[$i]['vinculoItem']." AND ".$emProducao." AND ".$exclusivoCad."
                     ORDER BY vinculoItem ASC;";
             $execQuery = $db->DbGetAll($queryCompleta);

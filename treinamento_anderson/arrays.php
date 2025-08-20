@@ -1,5 +1,16 @@
 
+
+
+<div teste = "display: none;
+    margin-top: 0.5rem;
+    background-color:rgb(247, 44, 44);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;">
+    
+</div>
+
 <?php
+
 echo "<style>
     table, th, td{
         border: 1px solid black;
@@ -40,6 +51,7 @@ echo "<thead>";
 echo "</thead>";
 echo "<tbody>";
 //echo '<pre>';
+
 for($i = 0; $i < sizeof($execQuery); $i++) {
     echo "<tr><td>" . $execQuery[$i]['id'] . "</td><td>" . $execQuery[$i]['titulo'] . "</td>";
      if($execQuery[$i]['id'] % 2 == 0) {
@@ -49,8 +61,8 @@ for($i = 0; $i < sizeof($execQuery); $i++) {
     }
 
 }
-echo "</tbody>";
-echo "</table>";
+echo "</tbody>
+        </table>";
     
    
 

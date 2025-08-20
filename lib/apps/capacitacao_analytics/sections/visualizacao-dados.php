@@ -7,27 +7,31 @@ $cursosSpotfire = $class->consultaCursosSpotfire();
 $raw = $class->consultaRecursos('visualizacao_dados');
 
 $visRecursos = [];
-  if (!empty($raw['mensagem']) && $raw['status'] === 1) {
+if (!empty($raw['mensagem']) && $raw['status'] === 1) {
     $visRecursos = $raw['mensagem'];
-  }
+}
 
-  // mapeamentos para ícones e descrições
-  $icons = [
+// mapeamentos para ícones e descrições
+$icons = [
     'Power BI'                     => 'icon_powerbi_odbc.png',
     'Spotfire'                     => 'icon_spotfire_odbc.png',
     'Template de estrutura do CAD' => 'icon-download.png',
-  ];
-  $descs = [
+];
+$descs = [
     'Power BI'                     => 'Instalação do ODBC Hive',
     'Spotfire'                     => 'Instalação do ODBC Hive',
     'Template de estrutura do CAD' => 'Download do template',
-  ];
+];
 
-   $rawCard    = $class->consultaCards('visualizacao_dados');  // use o slug da sua rota
-    $cards      = [];
-    if (!empty($rawCard['mensagem']) && $rawCard['status'] === 1) {
-        $cards = $rawCard['mensagem'];
-    }
+$rawCard    = $class->consultaCards('visualizacao_dados');  // use o slug da sua rota
+
+$cards      = [];
+if (!empty($rawCard['mensagem']) && $rawCard['status'] === 1) {
+    $cards = $rawCard['mensagem'];
+}
+
+$host = $_SERVER['HTTP_HOST'];
+
 ?>
 
 
@@ -43,7 +47,7 @@ $visRecursos = [];
         <!-- Power BI -->
         <div class="tool-box">
             <div class="tool-header">
-            <img class="tool-icon" src="img/icon-powerbi.png" alt="Power BI">
+            <img class="tool-icon" src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon-powerbi.png" alt="Power BI">
             <h3>Power BI</h3>
             </div>
             <ul>
@@ -60,7 +64,7 @@ $visRecursos = [];
         <!-- Spotfire -->
         <div class="tool-box">
             <div class="tool-header">
-            <img class="tool-icon" src="img/icon-spotfire.png" alt="Spotfire">
+            <img class="tool-icon" src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon-spotfire.png" alt="Spotfire">
             <h3>Spotfire</h3>
             </div>
             <ul>
@@ -77,18 +81,20 @@ $visRecursos = [];
 
         <!-- 3) Link adicional -->
         <p class="visualizacao-note">Outros painéis estão disponíveis no portal DS: <a href="https://ds.intranet.bb.com.br/" target="_blank">https://ds.intranet.bb.com.br/</a></p>
-        <h2 class="visualizacao-title">Conectando bases de dados com Power BI e Spotfire</h2>
+        <h2 class="visualizacao-title">Conectando bases de dados com Power BI</h2>
         <div class="grid-regulamentacoes">
             <?php if (count($cards) > 0): ?>
-                <?php foreach ($cards as $c): ?>
+                <!-- <?php foreach ($cards as $c): ?>
                     <div class="card-painel pequena">
                         <div class="thumb-wrapper">
-                            <img src="<?= htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="Thumb do Card">
-                            <div class="play-icon">
-                                <svg viewBox="0 0 100 100">
-                                    <polygon points="40,30 70,50 40,70" fill="#fff"/>
-                                </svg>
-                            </div>
+                            <a target="_blank" href="<?= $c['url'] ?>">
+                                <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                                <div class="play-icon">
+                                    <svg viewBox="0 0 100 100">
+                                        <polygon points="40,30 70,50 40,70" fill="#fff"/>
+                                    </svg>
+                                </div>
+                            </a>                        
                         </div>
 
                         <?php if (!empty($c['url'])): ?>
@@ -101,7 +107,28 @@ $visRecursos = [];
                             <p class="card-title"><?= $c['name'] ?></p>
                         <?php endif; ?>
                     </div>
+                <?php endforeach; ?> -->
+
+                <?php foreach ($cards as $c): ?>
+                <div class="card-painel" attr-link='<?= $c['url_iframe'] ?>'>
+                    <div class="thumb-wrapper">
+                        <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 100 100">
+                                <polygon points="40,30 70,50 40,70" fill="#fff"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <?php if (!empty($c['url'])): ?>
+                    <div class="card-title abreVideo Clicar" attr-link="<?= htmlspecialchars($c['url']) ?>">
+                    <p class="card-title"><?= $c['name'] ?></p>
+                    </div>
+                    <?php else: ?>
+                    <p class="card-title"><?= $c['name'] ?></p>
+                    <?php endif; ?>
+                </div>
                 <?php endforeach; ?>
+
             <?php else: ?>
                 <p class="expl-text">Nenhum conteúdo disponível nesta seção.</p>
             <?php endif; ?>
@@ -118,7 +145,7 @@ $visRecursos = [];
                 $url     = !empty($r['url']) ? $r['url'] : '#';
                 ?>
                 <div class="resource-box">
-                    <img src="img/<?= $icon ?>" alt="<?= htmlspecialchars($name) ?>">
+                    <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/<?= $icon ?>" alt="<?= htmlspecialchars($name) ?>">
                     <h4><?= htmlspecialchars($name) ?></h4>
                     <?php if ($desc): ?>
                     <p><?= $desc ?></p>
@@ -136,18 +163,22 @@ $visRecursos = [];
             <?php endif; ?>
         </div>
 
-        <div class="proximo-modulo">
+        <div class="proximo-modulo Clicar" data-tab="engenharia-dados">
             <a href="#engenharia-dados" class="btn-proximo">
+            <!-- <a href="" class="btn-proximo"></a> -->
                 <div class="proximo-texto">
                 <span class="linha1">Ir para o Próximo Módulo</span>
                 <span class="linha2">Engenharia de Dados</span>
                 </div>
                 <div class="proximo-icone">
                 <svg viewBox="0 0 24 24" class="icon-arrow-next">
-                    <path d="M8 5l7 7-7 7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 5l7 7-7 7" stroke="#4668FF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 </div>
             </a>
         </div>    
+    </div>
+    <div class="icon-graphics">
+        <img src="/lib/apps/capacitacao_analytics/img/icone-graphics.png" alt="Ícone Foguete">
     </div>
 </section>

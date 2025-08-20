@@ -29,8 +29,8 @@ Class funcoes {
     public function consultaDepoimentosMentoria(){
         $mat = $_SESSION['matricula'];
 
-        $db = new Database('cad');
-        $query = "SELECT * FROM cad.depoimentos WHERE ativo = 1;";
+        $db = new Database('mentoria');
+        $query = "SELECT * FROM mentoria.depoimentos WHERE ativo = 1;";
                 
         try{
             $execQuery = $db->DbGetAll($query);
@@ -53,8 +53,8 @@ Class funcoes {
     public function consultaProfessoresMentoria(){
         $mat = $_SESSION['matricula'];
 
-        $db = new Database('cad');
-        $query = "SELECT * FROM cad.professoes WHERE ativo = 1 ORDER BY RAND();";
+        $db = new Database('mentoria');
+        $query = "SELECT * FROM mentoria.professoes WHERE ativo = 1 ORDER BY RAND();";
                 
         try{
             $execQuery = $db->DbGetAll($query);
@@ -77,8 +77,8 @@ Class funcoes {
     public function consultaBio($matricula){
         $mat = $_SESSION['matricula'];
 
-        $db = new Database('cad');
-        $query = "SELECT matricula, nome, bio FROM cad.professoes WHERE matricula = '".$matricula."';";
+        $db = new Database('mentoria');
+        $query = "SELECT matricula, nome, bio FROM mentoria.professoes WHERE matricula = '".$matricula."';";
         try{
             $execQuery = $db->DbGetAll($query);
             
@@ -112,7 +112,7 @@ Class funcoes {
     }
 
     public function gravaSolicitacao($matricula, $nome, $email, $dependencia, $necessidade, $publicoAlvo, $canais, $conteudos, $experienciaEquipe, $totalPessoas, $escalaConhecimento, $focoTemas, $formato){
-        $db = new Database('cad');
+        $db = new Database('mentoria');
         $query = "
             INSERT INTO `mentoria`.`solicitacao` (`dependencia`, `matricula`, `nome`, `email`, `necessidade`, `publicoAlvo`, `canais`, `conteudos`, `experienciaEquipe`, `totalPessoas`, `escalaConhecimento`, `focoTemas`, `formato`) 
                 VALUES ('".$dependencia."', '".$matricula."', '".$nome."', '".$email."', '".$necessidade."', '".$publicoAlvo."', '".$canais."', '".$conteudos."', '".$experienciaEquipe."', '".$totalPessoas."', '".$escalaConhecimento."', '".$focoTemas."', '".$formato."');";
@@ -136,8 +136,8 @@ Class funcoes {
     }
 
     public function consultaRegistro($matricula){
-        $db = New Database('cad');
-        $query = "SELECT * FROM cad.solicitacao ORDER BY timestamp DESC LIMIT 1;";
+        $db = New Database('mentoria');
+        $query = "SELECT * FROM mentoria.solicitacao ORDER BY timestamp DESC LIMIT 1;";
         try{
             $execQuery = $db->DbGetAll($query);
             

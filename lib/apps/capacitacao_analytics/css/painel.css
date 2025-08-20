@@ -97,11 +97,15 @@ html, body {
   2. HERO
 ===========================================*/
 .hero {
-  margin-top: 64px; 
+  /* margin-top: 64px; */
   background: linear-gradient(150deg, #2643C6 0%, #01011E 100%);
   padding: 3rem 0 1rem;        
   position: relative;
   overflow: hidden;
+
+  /*background-image: url(https://cad.desenv.bb.com.br/lib/apps/capacitacao_analytics/img/fundo_pagina.png);
+  background-size: cover;
+  background-repeat: no-repeat;*/
 }
 .hero-container {
   display: flex;
@@ -115,7 +119,8 @@ html, body {
 
 .hero-text h1 {
   color: #FFF;
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-size: 4rem;
   font-weight: 700;
   line-height: 1.2;
   font-style: normal;
@@ -127,31 +132,39 @@ html, body {
   font-size: 24px;
   color: #e0e0e0;
 }
-.hero-text .navegue-label {
+.tabs .navegue-label {
   margin-top: 2rem;
   font-size: 0.9rem;
-  color: #9cf4ff;
+  color: #fff;
   font-weight: 600;
+  margin-left: 19%;
+}
+.tab:first-of-type {
+  margin-left: 19%;
 }
 .tabs {
   display: flex;
   gap: 0.5rem;
   margin-top: 1.5rem;
+  display: contents;
 }
 .tabs .tab {
   background-color: rgba(255, 255, 255, 0.08);
   border: none;
-  padding: 0.75rem 1rem;
+  padding: 1.75rem 1rem;
   color: #ccc;
   font-weight: 600;
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
+
+  width: 16%;
 }
 .tabs .tab.active {
-  background-color: #4D7FFF;  /* cor exata do Figma para aba selecionada */
+  background-color: #5131EA;  /* cor exata do Figma para aba selecionada */
   color: #fff;
+  border: 1px solid #46C1FF;
 }
 .tabs .tab:hover {
   background-color: rgba(255, 255, 255, 0.15);
@@ -162,7 +175,7 @@ html, body {
   width: 100%;
   /* margin-bottom: -60px; */
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 
 /*===========================================
@@ -172,14 +185,14 @@ html, body {
   padding: 4rem 0;
 }
 .conceitos {
-  background-color: #01011E;
-  padding: 2rem 0 4rem;  /* 2rem no topo, 4rem no fundo */
+  /* background-color: #01011E; */
+  padding: 4rem 0 4rem;  /* 2rem no topo, 4rem no fundo */
 }
 .conceitos h2 {
   font-size: 2.25rem;       /* ligeiramente maior, conforme Figma */
   line-height: 1.2;
   font-weight: 700;
-  color: #4D7FFF;           /* azul vibrante */
+  color: #0BABFB;           /* azul vibrante */
   margin-bottom: 1rem;      /* espaço abaixo do título */
 }
 .conceitos p {
@@ -219,6 +232,7 @@ html, body {
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  opacity: 1;
 }
 .play-overlay svg {
   width: 40px;
@@ -229,12 +243,12 @@ html, body {
   4. SESSÃO: PRINCIPAIS MÉTRICAS
 ===========================================*/
 .metricas {
-  background-color: #01011E;
+  /* background-color: #01011E; */
 }
 .metricas h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #4D7FFF;
+  color: #0BABFB;
   margin-bottom: 1rem;
 }
 .metricas p {
@@ -250,7 +264,7 @@ html, body {
 .metricas .subtitulo-grid {
   margin: 2rem 0 1rem;
   font-size: 1rem;
-  color: #9cf4ff;
+  color: #0BABFB;
   font-weight: 600;
 }
 
@@ -262,7 +276,7 @@ html, body {
   margin-bottom: 3rem;
 }
 .card-painel {
-  background-color: #d4d4e5;
+  background-color: #f0f2f4;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -286,17 +300,19 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.5);
+  width: 85px;
+  height: 85px;
+  background: #3F3F3F;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #000;
+  margin-top: 5%;
 }
 .play-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 85px;
+  height: 85px;
 }
 .card-title {
   padding: 0.75rem 1rem;
@@ -322,12 +338,12 @@ html, body {
 ===========================================*/
 
 .recursos {
-  background-color: #0a0a23;
+  /* background-color: #0a0a23; */
 }
 .recursos h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #4D7FFF;
+  color: #0BABFB;
   margin-bottom: 1rem;
 }
 .recursos p {
@@ -342,7 +358,8 @@ html, body {
 }
 .card-recurso {
   position: relative;
-  background: linear-gradient(135deg, #2643C6 0%, #4D7FFF 100%);
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
+  border: 1px solid var(--status-nova, #0BABFB);
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
@@ -389,6 +406,13 @@ html, body {
   opacity: 0.9;
 }
 
+.icon-graphics {
+  position: absolute;
+  right: 5%;
+  top: 12%;
+  z-index: 5;
+}
+
 /* BOTÃO PRÓXIMO MÓDULO */
 .proximo-modulo {
   text-align: right;
@@ -402,6 +426,8 @@ html, body {
   padding: 1rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
+  pointer-events: none;
+  cursor: default;
 }
 .proximo-texto {
   display: flex;
@@ -460,6 +486,11 @@ html, body {
 }
 
 /* RESPONSIVIDADE */
+@media (max-width: 1400px) {
+  .tabs .tab {
+    font-size: 0.8rem;
+  }
+}
 @media (max-width: 900px) {
   .hero-container {
     flex-direction: column-reverse;
@@ -1228,7 +1259,7 @@ html, body {
   background-image: linear-gradient(
     90deg,
     #270DA3 0%,
-    #270DA3 21.9503%,     /* stop igual ao offset 0.219503 do SVG */
+    #301487 21.9503%,     /* stop igual ao offset 0.219503 do SVG */
     rgba(48,20,135,0) 100%
   );
 }
@@ -1288,6 +1319,7 @@ html, body {
 /* conteúdo sempre sobre o fundo */
 .glossario-content {
   display: flex;
+  background: linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%);
   gap: 2rem;
   position: relative;
   z-index: 1;
@@ -1297,6 +1329,9 @@ html, body {
 .col-esquerda, .col-direita { flex: 1; }
 dl dt { margin-top:1rem; color:#fff; font-weight:600; }
 dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
+
+table tr { margin-top:1rem; color:#fff; font-weight:600; }
+table td { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* --- controle do ícone + / – --- */
 /* por padrão, carga inicial com checked → mostra “–” */
@@ -1425,7 +1460,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 .explorando h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #4D7FFF;
+  color: #0BABFB;
   margin-bottom: 0.5rem;
 }
 .explorando .expl-text {
@@ -1457,6 +1492,11 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   gap: 2rem;
   margin-bottom: 3rem;
 }
+
+.sql-box .checkmark{
+  color: green;
+  font-size: 20px;
+}
 .sql-box, .courses-list {
   background: rgba(41,41,41,0.6);
   border: 1px solid #4D7FFF;
@@ -1483,14 +1523,14 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 .subsecao {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #4D7FFF;
-  margin-top: 3rem;
-  margin-bottom: .75rem;
+  color: #0BABFB;
+  margin: 3rem 0 .75rem 5.5rem;
 }
 
 .bases-wrapper {
   display: flex;
   margin: 2rem 0 3rem;      /* espaçamento acima e abaixo */
+  max-width: 92%;
 }
 
 .bases-text {
@@ -1498,7 +1538,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   font-size: 1rem;
   line-height: 1.6;
   max-width: 800px;
-  margin-bottom: 2rem;
+  margin: 0rem 0rem 2rem 5.5rem;
 }
 
 .bases-content .subsecao {
@@ -1515,20 +1555,21 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* posiciona o card BigData na segunda linha, coluna 2 */
 .bigdata-box {
-  display: flex;
-  align-items: center;
-  background: rgba(26,20,63,0.6);
-  border: 1px solid #4D7FFF;
-  border-radius: 8px;
-  padding: 1.5rem;
-  max-width: 600px;        /* opcional: limita largura pra ficar igual ao mockup */
+    display: flex;
+    align-items: center;
+    background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100%;
+    /* margin: 0rem 1rem; */
+    margin-left: 5.5rem;
 }
 
 .bigdata-text {
   flex: 1;
 }
 .bigdata-text h3 {
-  color: #4D7FFF;
+  color: #0BABFB;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: .75rem;
@@ -1544,7 +1585,8 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   flex-shrink: 0;
 }
 .bigdata-illustration img {
-  width: 140px;
+  /* width: 140px; */
+  width: 14rem;
   height: auto;
 }
 
@@ -1566,7 +1608,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   gap: 1rem;
 }
 .card-app {
-  background: rgba(41,41,41,0.6);
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%)) !important;
   border: 1px solid #4D7FFF;
   border-radius: 8px;
   padding: 1rem;
@@ -1606,7 +1648,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   padding: 1.5rem;
 }
 .explorando .sql-box h3 {
-  color: #4D7FFF;
+  color: #0BABFB;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -1643,13 +1685,13 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 /* caixa “Cursos Recomendados” */
 .explorando .courses-list {
   flex: 1;
-  background: rgba(48,20,135,0.3);
-  border: 1px solid #4D7FFF;
+  border: 1px solid var(--status-nova, #0BABFB);
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
   border-radius: 8px;
   padding: 1.5rem;
 }
 .explorando .courses-list h3 {
-  color: #4D7FFF;
+  color: #FFF;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -1720,15 +1762,15 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 /* caixa SQL */
 .sql-box {
   flex: 1;
-  background: rgba(26,20,63, 0.6);
-  border: 1px solid #4D7FFF;
+  border: 1px solid var(--status-nova, #0BABFB);
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
   border-radius: 8px;
   padding: 1.5rem;
   position: relative;
   z-index: 2;
 }
 .sql-box h3 {
-  color: #4D7FFF;
+  color: #0BABFB;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -1736,11 +1778,11 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 .sql-box ul {
   position: relative;
   margin-bottom: 0.5rem;
-  padding-left: 1.8rem; /* espaço pra imagem */
+  /* padding-left: 1.8rem; /* espaço pra imagem */
 }
 .sql-box ul li {
   position: relative;
-  padding-left: 1.75rem;
+  /* padding-left: 1.75rem; */
   color: #E0E0E0;
   margin-bottom: 0.75rem;
   line-height: 1.4;
@@ -1764,14 +1806,14 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 .courses-list {
   display: flex;
   flex-direction: column;
-  background: rgba(26,20,63,0.6);
-  border: 1px solid #4D7FFF;
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
+  border: 1px solid #0BABFB;
   border-radius: 8px;
   padding: 1.5rem;
   position: relative;
 }
 .courses-list h3 {
-  color: #4D7FFF;
+  color: #FFF;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -1885,7 +1927,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   text-align: center;
   font-size: 1.75rem;
   font-weight: 600;
-  color: #4D7FFF;
+  color: #0BABFB;
   margin: 0 auto 2rem;
 }
 
@@ -1976,7 +2018,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 /* 2) Título, centralizado */
 .aplicacoes-title {
   text-align: center;
-  color: #4D7FFF;
+  color: #0BABFB;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -2024,7 +2066,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* 7) Título do card em azul */
 .card-app h4 {
-  color: #4D7FFF;
+  color: #FFF;
   font-size: 1.125rem;
   font-weight: 600;
   margin: 0;
@@ -2040,7 +2082,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* 1) Mesma cor de fundo dos outros cards (como o SQL e Cursos) */
 .aplicacoes-bigdata .cards-app .card-app {
-  background: rgba(26, 20, 63, 0.6);
+  /* background: rgba(26, 20, 63, 0.6); */
   border: 1px solid #4D7FFF;
   border-radius: 8px;
   padding: 1rem;
@@ -2048,7 +2090,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* 2) Título em azul vibrante */
 .aplicacoes-bigdata .cards-app .card-app h4 {
-  color: #4D7FFF;
+  color: #FFF;
   margin-bottom: 0.5rem;
 }
 
@@ -2077,10 +2119,16 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   padding: 4rem 0;
 }
 .visualizacao-title {
-  font-size: 2rem;
+  /* font-size: 2rem;
   font-weight: 700;
   color: #4D7FFF;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem; */
+
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #0BABFB;
+  margin-bottom: 1rem;
 }
 .visualizacao-subtitle {
   color: #fff;
@@ -2094,8 +2142,8 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   margin-bottom: 2rem;
 }
 .tool-box {
-  background: rgba(26,20,63,0.6);
-  border: 1px solid #4D7FFF;
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
+  border: 1px solid #0BABFB;
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -2110,7 +2158,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   height: 32px;
 }
 .tool-header h3 {
-  color: #4D7FFF;
+  color: #FFF;
   font-size: 1.125rem;
   font-weight: 600;
 }
@@ -2180,12 +2228,12 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* ESTILO DO CARD */
 .resource-box {
+  border-radius: 8px;
+  border: 1px solid var(--status-nova, #0BABFB);
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: rgba(26, 20, 63, 0.6);
-  border: 1px solid #4D7FFF;
-  border-radius: 8px;
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -2237,8 +2285,14 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 
 /* container geral da sessão */
-.engenharia-dados { position: relative; background: #01011E; padding: 4rem 0; }
-.engenharia-dados .section-title { color: #4D7FFF; font-size: 2rem; margin-bottom:1rem; }
+.engenharia-dados { position: relative; /*background: #01011E;*/ padding: 4rem 0; }
+.engenharia-dados .section-title { /*color: #4D7FFF; font-size: 2rem; margin-bottom:1rem;*/
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #0BABFB;
+  margin-bottom: 1rem;
+}
 .engenharia-dados .expl-text { color: #FFFFFF; max-width:800px; margin-bottom:2rem; }
 
 /* 1) Row “O que é” */
@@ -2255,7 +2309,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   border-radius: 8px;
   padding: 1.5rem;
 }
-.engenharia-dados .sql-box h3 { color: #4D7FFF; margin-bottom: 1rem; }
+.engenharia-dados .sql-box h3 { color: #0BABFB; margin-bottom: 1rem; }
 .engenharia-dados .sql-box p { color: #E0E0E0; line-height:1.6; }
 .engenharia-dados .decorative-planet img { max-width:200px; width:100%; }
 
@@ -2263,7 +2317,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 .responsibilities {
   margin: 2rem 0;
 }
-.responsibilities dt {
+/* .responsibilities dt {
   display: flex;
   align-items: flex-start;
   font-weight: 600;
@@ -2274,14 +2328,51 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   display: inline-block;
   font-family: "BancoDoBrasil Titulos", sans-serif;
   font-size: 1.5rem;
-  color: #4D7FFF;
+  color: #0BABFB;
   margin-right: 1rem;
 }
 .responsibilities dd {
   margin: 0 0 1.5rem 3.5rem;
   color: #CCCCCC;
   line-height: 1.6;
+} */
+
+/*Layout com table ao invés de dd, dl e dt*/
+.responsibilities tr {
+    /* display: flex; */
+    align-items: flex-start;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+    /* border-bottom: 1px solid #FFF; */
+    height: 5rem;
 }
+.responsibilities tr .num {
+    /* display: inline-block; */
+    font-family: "BancoDoBrasil Titulos", sans-serif;
+    font-size: 1.5rem;
+    color: #0BABFB;
+    margin-right: 1rem;
+    width: 10%;
+}
+/* .responsibilities td {
+  margin: 0 0 1.5rem 3.5rem;
+  color: #CCCCCC;
+  line-height: 1.6;
+} */
+
+.descricaoResponsabilidades {
+  margin: 0 0 0 calc(1.5rem + 1rem);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: lighter;
+}
+.responsibilities tr:last-child {
+  display: none; /* Remove a borda do último tr */
+}
+
+
 
 /* 3) Grid de cursos */
 .grid-dual-courses {
@@ -2290,12 +2381,12 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   gap: 2rem;
   margin-bottom: 3rem;
 }
-.courses-list {
+/* .courses-list {
   background: rgba(26,20,63,0.6);
   border: 1px solid #4D7FFF;
   border-radius: 8px;
   padding: 1.5rem;
-}
+} */
 .courses-list h4 {
   color: #ffffff;
   font-size: 1.125rem;
@@ -2326,13 +2417,13 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   gap: 2rem;
   margin-top: 3rem;
 }
-.resource-box {
+/* .resource-box {
   background: linear-gradient(135deg,#2643C6 0%,#4D7FFF 100%);
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
   color: #FFFFFF;
-}
+} */
 .resource-box img {
   width: 48px;
   height: 48px;
@@ -2370,9 +2461,8 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-
-  background: linear-gradient(135deg, #2643C6 0%, #4D7FFF 100%);
-  border-radius: 12px;
+  background: var(--gradient-box, linear-gradient(90deg, #270DA3 21.95%, rgba(48, 20, 135, 0.00) 100%));
+  border-radius: 10px;
   padding: 2rem;
   margin-bottom: 3rem;
 }
@@ -2424,7 +2514,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* container de definições */
 .responsibilities {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -2453,7 +2543,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 }
 .responsibilities dt .num {
   flex-shrink: 0;
-  color: #4D7FFF;
+  color: #0BABFB;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
@@ -2470,13 +2560,14 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 
 /* Título */
 .etl-title {
-  color: #4D7FFF;
+  color: #0BABFB;
   margin-bottom: 1rem;
 }
 
 
 .etl-box {
-  background: linear-gradient(135deg, #2643C6, #0a0a23);
+  /* background: linear-gradient(135deg, #2643C6, #0a0a23); */
+  background: linear-gradient(135deg, rgba(38, 67, 198, 0.75), rgba(10, 10, 35, 0.6));
   padding: 2rem;
   border-radius: 8px;
   margin: 2rem 0;
@@ -2499,7 +2590,7 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   min-height: 120px; /* opcional: evita que fique muito pequeno */
   overflow: visible; /* ← permite conteúdo extrapolar se necessário */
   height: 100%;
@@ -2520,12 +2611,12 @@ dl dd { margin:0.25rem 0 1.25rem; color:#fff; line-height:1.5; }
 .etl-number {
   font-size: 1rem;
   font-weight: bold;
-  color: #4D7FFF;
+  color: #0BABFB;
 }
 .etl-desc {
   font-size: 0.875rem;
   color: #333;
-  margin: 0;
+  margin: 0 3rem;
 }
 
 .etl-illustration {
@@ -2574,13 +2665,23 @@ body > * {
 }
 
 #tab-content {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  background-image: url(https://cad.desenv.bb.com.br/lib/apps/capacitacao_analytics/img/fundo_pagina.png);
+  /* background-size: contain; */
+  background-repeat: repeat;
 }
 
 
-.explorando-dados { position: relative; background: #01011E; padding: 4rem 0; }
-.explorando-dados .section-title { color: #4D7FFF; font-size: 2rem; margin-bottom:1rem; }
+.explorando-dados { position: relative; /*background: #01011E;*/ padding: 4rem 0; }
+.explorando-dados .section-title { 
+  /* color: #0BABFB; font-size: 2rem; margin-bottom:1rem;  */
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #0BABFB;
+  margin-bottom: 1rem;
+}
 .engenharia-dados .expl-text { color: #FFFFFF; max-width:800px; margin-bottom:2rem; }
 
 /* 1) Row “O que é” */
@@ -2597,7 +2698,7 @@ body > * {
   border-radius: 8px;
   padding: 1.5rem;
 }
-.explorando-dados .sql-box h3 { color: #4D7FFF; margin-bottom: 1rem; }
+.explorando-dados .sql-box h3 { color: #FFF; margin-bottom: 1rem; }
 .explorando-dados .sql-box p { color: #E0E0E0; line-height:1.6; }
 .explorando-dados .decorative-planet img { max-width:200px; width:100%; }
 
@@ -2610,8 +2711,8 @@ body > * {
 }
 
 
-.visualizacao-dados { position: relative; background: #01011E; padding: 4rem 0; }
-.visualizacao-dados .section-title { color: #4D7FFF; font-size: 2rem; margin-bottom:1rem; }
+.visualizacao-dados { position: relative; /*background: #01011E;*/ padding: 4rem 0; }
+.visualizacao-dados .section-title { color: #0BABFB; font-size: 2rem; margin-bottom:1rem; }
 .visualizacao-dados .expl-text { color: #FFFFFF; max-width:800px; margin-bottom:2rem; }
 
 /* 1) Row “O que é” */
@@ -2628,7 +2729,7 @@ body > * {
   border-radius: 8px;
   padding: 1.5rem;
 }
-.visualizacao-dados .sql-box h3 { color: #4D7FFF; margin-bottom: 1rem; }
+.visualizacao-dados .sql-box h3 { color: #0BABFB; margin-bottom: 1rem; }
 .visualizacao-dados .sql-box p { color: #E0E0E0; line-height:1.6; }
 .visualizacao-dados .decorative-planet img { max-width:200px; width:100%; }
 
@@ -2638,4 +2739,8 @@ body > * {
   line-height: 1.6;
   max-width: 800px;
   margin-bottom: 2rem;
+}
+
+.bootboxGrande {
+  width: 120% !important;
 }

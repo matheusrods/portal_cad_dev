@@ -30,7 +30,7 @@ class disparaEmail {
 
         $db = new Database("mentoria");
         $query = "
-            SELECT * FROM cad.solicitacao ORDER BY timestamp desc LIMIT 1;
+            SELECT * FROM mentoria.solicitacao ORDER BY timestamp desc LIMIT 1;
         ";
 
         $result = $db->DbGetAll($query);

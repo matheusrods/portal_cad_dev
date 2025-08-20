@@ -38,7 +38,7 @@
             </p>
         </div>
         <div class="eng-data-image">
-            <img src="img/icone-eng-data.png" alt="Ilustração Engenharia de Dados">
+            <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icone-eng-data.png" alt="Ilustração Engenharia de Dados">
         </div>
     </div>
 
@@ -47,22 +47,27 @@
     <p class="responsibilities-intro">
     Aqui estão alguns dos principais aspectos e responsabilidades da Engenharia de Dados:
     </p>
-    <dl class="responsibilities">
+    <table class="responsibilities">
     <?php foreach($resp as $item): ?>
-        <dt>
-        <span class="num"><?= str_pad($item['ordem'],2,'0',STR_PAD_LEFT) ?></span>
-        <?= htmlspecialchars($item['titulo']) ?>
-        </dt>
-        <dd><?= htmlspecialchars($item['descricao']) ?></dd>
+        <tr>
+            <td class="num"><?= str_pad($item['ordem'],2,'0',STR_PAD_LEFT) ?></td>
+            <td style="width: 40%;"><?= htmlspecialchars($item['titulo']) ?></td>
+            <td class="descricaoResponsabilidades" style="width: 50%;"><?= htmlspecialchars($item['descricao']) ?></td>
+        </tr>
+        <tr style="height: 1px;">
+            <td class="linhaSeparadoraResponsabilidades" colspan="3">
+                <div style="height: 1px; background-color: white; opacity: 0.4; width: 100%; height: 1px;"></div>
+            </td>
+        </tr>
     <?php endforeach; ?>
-    </dl>
+    </table>
 
     <!-- 3) Cursos Sugeridos Alura -->
     <h3 class="subsecao">Cursos Sugeridos Alura</h3>
     <div class="grid-dual-courses">
       <!-- Python -->
       <div class="courses-list">
-        <img class="course-icon" src="img/icon_python.png" alt="Python">
+        <img class="course-icon" src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon_python.png" alt="Python">
         <h4>Cursos Python</h4>
         <ul>
           <?php foreach($cursosPy as $c): ?>
@@ -76,7 +81,7 @@
       </div>
       <!-- Spark -->
       <div class="courses-list">
-         <img class="course-icon" src="img/icon_spark.png" alt="Python">
+         <img class="course-icon" src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon_spark.png" alt="Python">
         <h4>Cursos Spark</h4>
         <ul>
           <?php foreach($cursosSp as $c): ?>
@@ -87,23 +92,37 @@
             </li>
           <?php endforeach; ?>
         </ul>
+      </div>
+    </div>
 
-        <div class="visualizacao-resources-row">
-          <div class="resource-box">
-            <img src="img/icon_recursos.png" alt="">
-            <h4>Documentação Spark</h4>
-            <a href="https://readthedocs.big.intranet.bb.com.br/integracoes/spark/"
-               class="btn-acessar" target="_blank"
-            >ACESSAR</a>
+    <div class="card-painel pequena" style="height: 185px; margin-top: 2rem; width: 50%; left: 25%;" attr-link='<iframe src="https://banco365-my.sharepoint.com/personal/rgenuino_bb_com_br/_layouts/15/embed.aspx?UniqueId=d6a6d02e-17f9-48b7-be65-9361fd6ff182&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="854" height="480" frameborder="0" scrolling="no" allowfullscreen title="tutorial_spark.mp4"></iframe>'>
+      <div class="thumb-wrapper">
+        <img src="https://cad.desenv.bb.com.br/lib/apps/capacitacao_analytics/img/jupyter-pyspark.png" alt="Realização de Consultas Hue/Hive">
+          <div class="play-icon" style="top: 25% !important;">
+              <svg viewBox="0 0 100 100">
+                  <polygon points="40,30 70,50 40,70" fill="#fff"></polygon>
+              </svg>
           </div>
-          <div class="resource-box">
-            <img src="img/icon-download.png" alt="">
-            <h4>Consultas Spark + SQL</h4>
-            <a href="<?= htmlspecialchars($cursosSp[3]['sql_url'] ?? '#') ?>"
-               class="btn-acessar" target="_blank"
-            >BAIXAR</a>
-          </div>
-        </div>
+      </div>
+      <p class="card-title">
+        Jupyter Notebook + Pyspark  configurando e usando
+      </p>
+    </div>
+
+    <div class="visualizacao-resources-row">
+      <div class="resource-box">
+        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon_recursos.png" alt="">
+        <h4>Documentação Spark</h4>
+        <a href="https://readthedocs.big.intranet.bb.com.br/integracoes/spark/" class="btn-acessar" target="_blank">
+          ACESSAR
+        </a>
+      </div>
+      <div class="resource-box AQUI">
+        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon-download.png" alt="">
+        <h4>Consultas Spark + SQL</h4>
+        <a href="<?= htmlspecialchars($cursosSp[3]['sql_url'] ?? 'https://banco365.sharepoint.com/:u:/s/CAD_DADOS/EVRXU-UcJORMmSkQx17muSQBsklpjlyXDxgs1Jcmd8Q_rg?e=bKaQ7p') ?>"
+            class="btn-acessar" target="_blank"
+        >BAIXAR</a>
       </div>
     </div>
 
@@ -116,7 +135,7 @@
             <?php foreach($workshops as $w): ?>
                 <a href="<?= htmlspecialchars($w['url'] ?? '#') ?>" target="_blank" class="etl-card" style="text-decoration: none;">
                     <div class="etl-header">
-                        <img src="img/icon-cursos.png" alt="Workshop">
+                        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon-cursos.png" alt="Workshop">
                         <span><?= htmlspecialchars($w['ordem']) ?>.</span>
                         <h4 class="workshop-title"><?= htmlspecialchars($w['titulo']) ?></h4>
                     </div>
@@ -125,7 +144,7 @@
             <?php endforeach; ?>
 
             <div class="etl-illustration">
-                <img src="img/icone-etl.png" alt="Ilustração ETL">
+                <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icone-etl.png" alt="Ilustração ETL">
             </div>
         </div>
     </div>
@@ -140,7 +159,7 @@
         $img = stripos($r['name'],'Primeira') !== false ? 'icon-download.png' : 'icon_recursos.png';
       ?>
         <div class="resource-box">
-          <img src="img/<?= $img ?>" alt="">
+          <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/<?= $img ?>" alt="">
           <h4><?= htmlspecialchars($r['name']) ?></h4>
           <a href="<?= htmlspecialchars($r['url'] ?? '#') ?>"
              class="btn-acessar" target="_blank"

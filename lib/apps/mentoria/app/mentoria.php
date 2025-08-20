@@ -1,16 +1,7 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
+if(!isset($_SESSION)){
     session_start();
-}
-
-if (!isset($_SESSION['matricula'])) {
-    $_SESSION['matricula']   = 'F0285739';
-    $_SESSION['nome']        = 'Albert Ferreira Rosa';
-    $_SESSION['cargo']       = 'Analista Tec Pleno';    // pode ser string, mas no banco espera INT
-    $_SESSION['MAIL']        = 'albert.rosa@bb.com.br';
-    $_SESSION['dependencia'] = '1901';
-    $_SESSION['ip']          = '10.10.10.10';
 }
 
 // ini_set("display_errors", E_ALL);

@@ -1,0 +1,295 @@
+/* Fonte BancoDoBrasilTextos */
+@font-face { font-family: BancoDoBrasilTextos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasilTextos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasilTextos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasilTextos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-BoldIt.ttf');}
+
+/* Fonte BancoDoBrasilTitulos */
+@font-face { font-family: BancoDoBrasilTitulos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Regular.ttf'); } 
+@font-face { font-family: BancoDoBrasilTitulos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Bold.ttf');}
+@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Italic.ttf');}
+@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-BoldIt.ttf');}
+
+body {
+    font-family: BancoDoBrasilTextos;;
+}
+
+#chatbot-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chat-open-button {
+    background-color: #4E71E5;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+#chat-open-button:hover {
+    background-color: #0A2D92;
+}
+
+#img-bot-tom {
+    padding-top: 25vh;
+    margin-right: 8%;
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 10%;
+}
+
+#textoBot {
+    color: #FFF;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -12%;
+    margin-bottom: 3%;
+}
+
+#chat-window {
+    width: 55%;
+    height: 95vh;
+    background-color: #E5F5FF;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 40%;
+}
+
+/* #chat-window.hidden {
+    display: block;
+} */
+
+#chat-header {
+    background-color: #FAFAFA;
+    display: flex;
+    padding: 24px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: 1px solid var(--Gray-20, #E2E8F0);
+}
+
+/* #chat-header button {
+    background: none;
+    border: none;
+    color: #5F5F5F;
+    font-size: 16px;
+    cursor: pointer;
+} */
+
+#btnLimparContexto {
+    background: #fff;
+    color: #465EFE;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: 0;
+    border: 1px solid #9FACFF;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.112px;
+}
+
+#chat-content {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #E5F5FF ;
+    border-bottom: 0px solid #ccc;
+}
+
+#chat-input-container {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: 2px solid var(--azul-emanalise, #4668FF);
+    background: var(--gray-0-white, #FFF);
+    border-radius: 24px;
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+
+    /* position: relative;
+    left: 0;
+    bottom: -50%;
+    border-top: 1px solid #ccc; */
+}
+
+#chat-input {
+    width: -webkit-fill-available;
+    flex-grow: 1;
+    background-color: #fefefe;
+    padding: 10px;
+    border: none; 
+    border-radius: 20px;   
+    margin-right: 10px;
+    font-size: 14px;
+    outline: none;
+    box-shadow: none;
+    resize: none;
+    /* impede que o próprio usuário altere o tamanho do textarea */
+    height:48px;
+    max-height: 300px;
+    overflow-y: auto !important;
+}
+
+#chat-disclaimer {
+    font-size: 10px;
+    background-color: #E5F5FF;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 2%;
+
+    /* position: relative;
+    left: 2%;
+    bottom: -50%; */
+}
+
+#contadorInputCaramelo {
+    margin: 0 1%;
+    color: #888;
+    font-size: 11.9px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-family: 'BancoDoBrasilTextos';
+}
+
+#send-message {
+    background-color: #4E71E5;
+    color: white;
+    border: none;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: -3rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    display: inline-block;
+    clear: both;
+    /* font-size: 12px; */
+    font-size: 18px;
+}
+
+.message.user {
+    background-color: #465EFE;
+    align-self: flex-end;
+    float: right;
+    border-bottom-right-radius: 0;
+    color: #F9F9F9;
+    padding: 12px;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.12px;
+}
+
+.message.bot {
+    background-color: #FFFFFF;
+    align-self: flex-start;
+    float: left;
+    box-sizing: border-box;
+    border-bottom-left-radius: 0;
+}
+
+.botaoSugestao {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.sugestao {
+    border-radius: 30px;
+    border: 1px solid #9FACFF;
+    background: #FFF;
+    cursor: pointer;
+    color: #465EFE;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.112px;
+    padding: 10px;
+
+}
+
+.botaoEnviar {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1750px) {
+    #img-bot-tom {
+        max-width: 85% !important;
+        max-height: 85% !important;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #chat-window {
+        height: 105vh !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #chat-window {
+        height: 130vh !important;
+    }
+
+    #img-bot-tom {
+        max-width: 70% !important;
+        max-height: 70% !important;
+    }
+}

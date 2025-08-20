@@ -4,7 +4,7 @@
 session_start();
 
 if($_SESSION["nome"] == ""){
-    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://pxl0hsp79002.dispositivos.bb.com.br/contingencia_analytics/#login/");
+    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.desenv.bb.com.br/contingencia_analytics/#login/");
 }
 
 include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";

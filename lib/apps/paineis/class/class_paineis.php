@@ -73,22 +73,29 @@ Class funcoes {
     }
 
     public function consultaPaineis($idTag = null){
-        $mat = $_SESSION['matricula'];
+        $mat = strtoupper($_SESSION['matricula']);
 
         if($idTag > 0){
             $filtroIdTag = "AND c.idTag in (".$idTag.")";
         }
 
         $db = New Database('paineis');
-        $query = "SELECT a.*, group_concat(c.nomeTag)as nomeTag
+        // $query = "SELECT a.*, group_concat(c.nomeTag)as nomeTag
+        //             FROM paineis.paineis a
+        //             LEFT JOIN paineis.paineis_tags b ON a.idPainel = b.idPainel
+        //             LEFT JOIN paineis.tags c ON b.idTag = c.idTag
+        //             WHERE a.ativo = 1 ".$filtroIdTag." 
+        //             group by idPainel
+        //             ORDER BY idPainel ASC;";
+        
+        $query = "SELECT a.*, group_concat(c.nomeTag) as nomeTag, d.matricula
                     FROM paineis.paineis a
                     LEFT JOIN paineis.paineis_tags b ON a.idPainel = b.idPainel
                     LEFT JOIN paineis.tags c ON b.idTag = c.idTag
+                    LEFT JOIN paineis.paineis_favoritos d ON a.idPainel = d.idPainel AND d.matricula = '".$mat."'
                     WHERE a.ativo = 1 ".$filtroIdTag." 
-                    group by idPainel
-                    ORDER BY idPainel ASC;";
-        
-                 
+                    group by a.idPainel
+                    ORDER BY d.idPainel DESC, a.idPainel ASC;";
 
         try{
             $execQuery = $db->DbGetAll($query);
@@ -104,8 +111,7 @@ Class funcoes {
                     FROM paineis.paineis a
                      LEFT JOIN paineis.paineis_tags b ON a.idPainel = b.idPainel
                      LEFT JOIN paineis.tags c ON b.idTag = c.idTag
-                     WHERE a.ativo = 1 AND a.idPainel = ".$execQuery[$j]['idPainel']." ;" ;
-
+                     WHERE a.ativo = 1 AND a.idPainel = ".$execQuery[$j]['idPainel'].";" ;
 
                     $abreDivNestPainel = '';
                     $fechaDivNestPainel = '';
@@ -131,6 +137,11 @@ Class funcoes {
                         $montaTags = $montaTags.'<div class="tagPainel"><div class="textoTagPainel">'.$execQuery2[$i]['nomeTag'].'</div></div>';
                     }
 
+                    $painelFavoritado = 'fa-regular';
+                    if($execQuery[$j]['matricula'] != null){
+                        $painelFavoritado = 'fa-solid';
+                    }
+
                     $montaPaineis = $montaPaineis.$abreDivNestPainel.'
                         <div class="divPainel">
                             <a href="'.$execQuery[$j]['link'].'" target="_blank" style="text-decoration: none;">
@@ -140,7 +151,7 @@ Class funcoes {
                             </a>
                             <div class="textoPainel" style="align-self: stretch; height: 196px; padding: 32px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
                                 <div class="tituloDescricaoPainel">
-                                    <div class="tituloPainel">'.$execQuery[$j]['titulo'].'</div>
+                                    <div class="tituloPainel">'.$execQuery[$j]['titulo'].' - <i class="favoritarPainel Clicar '.$painelFavoritado.' fa-star" aria-hidden="true" attr-idPainel="'.$execQuery[$j]['idPainel'].'"></i></div>
                                     <div class="descricaoPainel">'.$execQuery[$j]['descricao'].'</div>
                                 </div>
                             </div>    

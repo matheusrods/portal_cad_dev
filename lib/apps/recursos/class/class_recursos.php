@@ -104,7 +104,7 @@ Class funcoes {
                     $botaoEditarRecurso = '';
         
                     if($uorDep == '486362' || $uorDep == '486361'){
-                        $botaoEditarRecurso = '<i class="fa-solid fa-pen Clicar editarRecurso" aria-hidden="true" style="display: flex; align-items: center;" attr-idRecursoEditar="'.$execQuery[$j]['id'].'"></i>';
+                        $botaoEditarRecurso = '<i class="fa-solid fa-pen Clicar editarRecurso" aria-hidden="true" style="display: flex; align-items: center; margin-top: 2.5rem;" attr-idRecursoEditar="'.$execQuery[$j]['id'].'"></i>';
                     }
 
                     if(($execQuery[$j]['recursoAtivo']) == 0){

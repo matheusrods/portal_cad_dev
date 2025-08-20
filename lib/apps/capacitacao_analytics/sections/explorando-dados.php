@@ -16,6 +16,7 @@
     if (!empty($rawCard['mensagem']) && $rawCard['status'] === 1) {
         $cards = $rawCard['mensagem'];
     }
+    $host = $_SERVER['HTTP_HOST'];
 ?>
 
 <section id="explorando-dados" class="section explorando-dados">
@@ -23,7 +24,7 @@
 
         <!-- ícone planeta à direita -->
         <div class="decorative-planet">
-            <img src="img/icone-planeta.png" alt="Planeta">
+            <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icone-planeta.png" alt="Planeta">
         </div>
 
         <!-- 1) SQL -->
@@ -37,11 +38,11 @@
             <div class="sql-box">
             <h3>Com SQL, você pode realizar tarefas como:</h3>
             <ul>
-                <li>Consultar dados específicos</li>
-                <li>Inserir novos registros</li>
-                <li>Atualizar registros existentes</li>
-                <li>Excluir registros</li>
-                <li>Criar e modificar a estrutura das tabelas e outros objetos do banco de dados</li>
+                <li><span class="checkmark">&#10004;</span> Consultar dados específicos</li>
+                <li><span class="checkmark">&#10004;</span> Inserir novos registros</li>
+                <li><span class="checkmark">&#10004;</span> Atualizar registros existentes</li>
+                <li><span class="checkmark">&#10004;</span> Excluir registros</li>
+                <li><span class="checkmark">&#10004;</span> Criar e modificar a estrutura das tabelas e outros objetos do banco de dados</li>
             </ul>
             <p class="sql-summary">
                 Resumindo, SQL é essencial para trabalhar com dados de forma eficiente e organizada em sistemas de gerenciamento de bancos de dados como MySQL, PostgreSQL, SQL Server, entre outros.
@@ -93,7 +94,7 @@
             </p>
             </div>
             <div class="bigdata-illustration">
-            <img src="img/icone-bigdata.png" alt="Ilustração BigData">
+            <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icone-bigdata.png" alt="Ilustração BigData">
             </div>
         </div>
         </div>
@@ -103,29 +104,29 @@
             <h2 class="aplicacoes-title">Aplicações de Big Data em um Banco:</h2>
             <div class="aplicacoes-bigdata">
                 <div class="decorative-icon">
-                <img src="img/icone-cpu.png" alt="Ícone CPU">
+                <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icone-cpu.png" alt="Ícone CPU">
                 </div>
                 <div class="cards-app">
                 <div class="card-app">
-                    <img src="img/icon-analise-comportamento.png" class="card-app-icon" alt="">
+                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icon-analise-comportamento.png" class="card-app-icon" alt="">
                     <h4>Análise de Comportamento</h4>
                     <p>Coleta e análise de dados de transações, padrões de gasto, interações com o Bot, etc.
                     Criação de perfis de cliente para personalização de ofertas e serviços.</p>
                 </div>
                 <div class="card-app">
-                    <img src="img/deteccao_fraudes.png" class="card-app-icon" alt="">
+                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/deteccao_fraudes.png" class="card-app-icon" alt="">
                     <h4>Detecção de Fraudes</h4>
                     <p>Monitoramento em tempo real de transações para identificar atividades suspeitas.
                     Uso de algoritmos de aprendizado de máquina para reconhecer padrões de fraude.</p>
                 </div>
                 <div class="card-app">
-                    <img src="img/gestao_riscos.png" class="card-app-icon" alt="">
+                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/gestao_riscos.png" class="card-app-icon" alt="">
                     <h4>Gestão de Riscos</h4>
                     <p>Avaliação de riscos de crédito através da análise de dados financeiros históricos dos clientes.
                     Modelagem preditiva para prever inadimplência e outros riscos financeiros.</p>
                 </div>
                 <div class="card-app">
-                    <img src="img/operacoes.png" class="card-app-icon" alt="">
+                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/operacoes.png" class="card-app-icon" alt="">
                     <h4>Otimização de Operações</h4>
                     <p>Análise de dados operacionais para melhorar a eficiência e reduzir custos.
                     Previsão de demanda e otimização de recursos.</p>
@@ -141,15 +142,18 @@
 
         <div class="grid-regulamentacoes">
             <?php if (count($cards) > 0): ?>
-                <?php foreach ($cards as $c): ?>
+                <!-- <?php foreach ($cards as $c): ?>
                     <div class="card-painel pequena">
                         <div class="thumb-wrapper">
-                            <img src="<?= htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
-                            <div class="play-icon">
-                                <svg viewBox="0 0 100 100">
-                                    <polygon points="40,30 70,50 40,70" fill="#fff"/>
-                                </svg>
-                            </div>
+                            <a target="_blank" href="<?= $c['url'] ?>">
+                                <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                            
+                                <div class="play-icon">
+                                    <svg viewBox="0 0 100 100">
+                                        <polygon points="40,30 70,50 40,70" fill="#fff"/>
+                                    </svg>
+                                </div>
+                            </a>
                         </div>
                         <?php if (!empty($c['url'])): ?>
                             <p class="card-title">
@@ -161,7 +165,28 @@
                             <p class="card-title"><?= htmlspecialchars($c['name']) ?></p>
                         <?php endif; ?>
                     </div>
+                <?php endforeach; ?> -->
+
+                <?php foreach ($cards as $c): ?>
+                <div class="card-painel" attr-link='<?= $c['url_iframe'] ?>'>
+                    <div class="thumb-wrapper">
+                        <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 100 100">
+                                <polygon points="40,30 70,50 40,70" fill="#fff"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <?php if (!empty($c['url'])): ?>
+                    <div class="card-title abreVideo Clicar" attr-link="<?= htmlspecialchars($c['url']) ?>">
+                        <p class="card-title"><?= htmlspecialchars($c['name']) ?></p>
+                    </div>
+                    <?php else: ?>
+                    <p class="card-title"><?= htmlspecialchars($c['name']) ?></p>
+                    <?php endif; ?>
+                </div>
                 <?php endforeach; ?>
+                
             <?php else: ?>
                 <p class="expl-text">Nenhum conteúdo disponível nesta seção.</p>
             <?php endif; ?>
@@ -179,7 +204,7 @@
             <?php foreach ($recursos as $r): ?>
             <div class="card-recurso">
                 <div class="recurso-icon">
-                <img src="img/icon_recursos.png" alt="Ícone painel">
+                <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icon_recursos.png" alt="Ícone painel">
                 </div>
                 <p class="recurso-title"><?= htmlspecialchars($r['name']) ?></p>
                 <a href="<?= htmlspecialchars($r['url']) ?>" class="btn-acessar" target="_blank">ACESSAR</a>
@@ -192,19 +217,19 @@
 
 
         <!-- 6) Próximo módulo -->
-        <div class="proximo-modulo">
+        <div class="proximo-modulo Clicar" data-tab="visualizacao-dados">
             <a href="#visualizacao-dados" class="btn-proximo">
+            <!-- <a href="" class="btn-proximo"></a> -->
                 <div class="proximo-texto">
                 <span class="linha1">Ir para o Próximo Módulo</span>
                 <span class="linha2">Visualização de Dados</span>
                 </div>
                 <div class="proximo-icone">
                 <svg viewBox="0 0 24 24" class="icon-arrow-next">
-                    <path d="M8 5l7 7-7 7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 5l7 7-7 7" stroke="#4668FF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 </div>
             </a>
         </div>
-
     </div>
 </section>

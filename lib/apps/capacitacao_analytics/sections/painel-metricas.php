@@ -13,6 +13,7 @@
     if (!empty($rawCard['mensagem']) && $rawCard['status'] === 1) {
         $cards = $rawCard['mensagem'];
     }
+    $host = $_SERVER['HTTP_HOST'];
 ?>
 
 
@@ -30,21 +31,25 @@
 
         <!-- IMAGEM 3D: Gráfico (à esquerda do vídeo) -->
         <div class="icon-chart">
-        <img src="img/grafico.png" alt="Ícone Gráfico 3D">
+        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/grafico.png" alt="Ícone Gráfico 3D">
         </div>
 
         <!-- IMAGEM 3D: Foguete (à direita do vídeo) -->
         <div class="icon-rocket">
-        <img src="img/icone-rocket.png" alt="Ícone Foguete">
+        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icone-rocket.png" alt="Ícone Foguete">
         </div>
 
         <!-- VÍDEO -->
         <div class="video-card">
         <div class="video-wrapper">
-            <video controls poster="img/thumbnail-padrao.png">
+            <!-- <video controls poster="img/thumbnail-padrao.png">
             <source src="" type="video/mp4">
             Seu navegador não suporta a tag de vídeo.
-            </video>
+            </video> -->
+            <video controls poster="img/thumbnail-padrao.png">
+                    <source src="https://cad.desenv.bb.com.br/lib/apps/capacitacao_analytics/img/conceitos_dados_bot.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
             <div class="play-overlay">
             <svg viewBox="0 0 100 100">
                 <polygon points="40,30 70,50 40,70" fill="#fff"/>
@@ -143,9 +148,9 @@
         <div class="grid-cards">
             <?php if (count($cards) > 0): ?>
                 <?php foreach ($cards as $c): ?>
-                <div class="card-painel">
+                <div class="card-painel" attr-link='<?= $c['url_iframe'] ?>'>
                     <div class="thumb-wrapper">
-                        <img src="<?= htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                        <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
                         <div class="play-icon">
                             <svg viewBox="0 0 100 100">
                                 <polygon points="40,30 70,50 40,70" fill="#fff"/>
@@ -153,16 +158,16 @@
                         </div>
                     </div>
                     <?php if (!empty($c['url'])): ?>
-                        <a href="<?= htmlspecialchars($c['url']) ?>" class="card-title" target="_blank">
-                            <?= htmlspecialchars($c['name']) ?>
-                        </a>
-                    <?php else: ?>
+                    <div class="card-title abreVideo Clicar" attr-link="<?= htmlspecialchars($c['url']) ?>">
                         <p class="card-title"><?= htmlspecialchars($c['name']) ?></p>
+                    </div>
+                    <?php else: ?>
+                    <p class="card-title"><?= htmlspecialchars($c['name']) ?></p>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p class="expl-text">Nenhum card encontrado para este módulo.</p>
+            <p class="expl-text">Nenhum card encontrado para este módulo.</p>
             <?php endif; ?>
         </div>
     </div>
@@ -179,12 +184,12 @@
                 <?php foreach ($recursos as $r): ?>
                 <div class="card-recurso">
                     <div class="recurso-icon">
-                    <img src="img/icon_recursos.png" alt="Ícone painel">
+                    <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon_recursos.png" alt="Ícone painel">
                     </div>
 
                     <!-- ícone de “+” no recurso específico -->
                     <?php if ($r['name'] === 'Todos os Painéis'): ?>
-                    <img src="img/+.png" alt="Mais painéis" class="plus-icon">
+                    <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/+.png" alt="Mais painéis" class="plus-icon">
                     <?php endif; ?>
 
                     <p class="recurso-title"><?= htmlspecialchars($r['name']) ?></p>
@@ -205,15 +210,16 @@
         </div>
 
         <!-- BOTÃO PARA O PRÓXIMO MÓDULO -->
-        <div class="proximo-modulo">
+        <div class="proximo-modulo Clicar" data-tab="explorando-dados">
             <a href="#explorando-dados" class="btn-proximo">
+            <!-- <a href="" class="btn-proximo"></a> -->
                 <div class="proximo-texto">
                 <span class="linha1">Ir para o Próximo Módulo</span>
                 <span class="linha2">Explorando Dados</span>
                 </div>
                 <div class="proximo-icone">
                 <svg viewBox="0 0 24 24" class="icon-arrow-next">
-                    <path d="M8 5l7 7-7 7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 5l7 7-7 7" stroke="#4668FF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 </div>
             </a>
@@ -221,3 +227,22 @@
 
     </div>
 </section>
+
+<script>
+    $(".video-wrapper video").click(function() {
+        var overlay = $(this).siblings(".play-overlay");
+        if (overlay.css("opacity") === "0") {
+            overlay.css("opacity", "1");
+        } else {
+            overlay.css("opacity", "0");
+        }
+    });
+    
+    $('.video-wrapper video').on('play', function () {
+        $(this).closest('.video-wrapper').find('.play-overlay').css('opacity','0');
+    });
+
+    $('.video-wrapper video').on('pause', function () {
+        $(this).closest('.video-wrapper').find('.play-overlay').css('opacity','1');
+    });
+</script>

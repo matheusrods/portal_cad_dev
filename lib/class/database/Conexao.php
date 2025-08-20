@@ -1,6 +1,4 @@
 <?php
-
-$ignoreSession= true;
 if(!$ignoreSession){
 	if(!session_id()){
 	    session_start();
@@ -16,52 +14,19 @@ if(!$ignoreSession){
 // $senha = 'cad@1901';
 //$senha = $_SERVER['DB_PASSWORD'];
 
-define('DB_HOSTNAME', getenv('DB_HOST')       ?: 'db');
-define('DB_DATABASE', getenv('DB_DATABASE')   ?: 'cad');
-define('DB_USERNAME', getenv('DB_USERNAME')   ?: 'cad_user');
-define('DB_PASSWORD', getenv('DB_PASSWORD')   ?: '12345');
-define('DB_PORT',     getenv('DB_PORT')       ?: 3306);
-define('CHARSET',     getenv('CHARSET')       ?: 'utf8mb4');
-define('SITE_ROOT',   getenv('SITE_ROOT')     ?: '/var/www/html');
+define('DB_HOSTNAME',$_SERVER['DB_HOSTNAME']);
+define('DB_DATABASE',$_SERVER['DB_DATABASE']);
+define('DB_USERNAME',$_SERVER['DB_USERNAME']);
+define('DB_PASSWORD',$_SERVER['DB_PASSWORD']);
+define('SITE_ROOT',$_SERVER['SITE_ROOT']);
+define('CHARSET',$_SERVER['CHARSET']);
 
 class Conexao{
-   public $server   = DB_HOSTNAME;
-    public $user     = DB_USERNAME;
-    public $pass     = DB_PASSWORD;
-    public $database = DB_DATABASE;
-    public $port     = DB_PORT;
-
-	/**
-     * Instância única de PDO
-     * @var \PDO|null
-     */
-    private static ?\PDO $instance = null;
-
-    /**
-     * Retorna sempre a mesma instância de PDO
-     */
-    public static function getInstance(): \PDO
-    {
-        if (self::$instance === null) {
-            $dsn = sprintf(
-                'mysql:host=%s;port=%d;dbname=%s;charset=%s',
-                DB_HOSTNAME,
-                DB_PORT,
-                DB_DATABASE,
-                CHARSET
-            );
-            self::$instance = new \PDO(
-                $dsn,
-                DB_USERNAME,
-                DB_PASSWORD,
-                [
-                    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-                ]
-            );
-        }
-        return self::$instance;
-    }
+    public $server=DB_HOSTNAME;
+    public $user =DB_USERNAME;
+    public $pass=DB_PASSWORD;
+    public $database=DB_DATABASE;
+    public $query="";
 }
 require_once $_SERVER["DOCUMENT_ROOT"].'/lib/class/database/class.database.php';
 ?>

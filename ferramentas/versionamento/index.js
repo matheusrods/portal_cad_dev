@@ -10,15 +10,6 @@ function closeModal(obj) {
     obj.parentNode.querySelector('.modal').style.display = 'none';
 }
 
-// function detalharPasso(obj){
-//     obj.parentNode.parentNode.querySelector('.expansion-content').classList.toggle('open');
-//     if (obj.src === 'https://cad.bb.com.br/ferramentas/versionamento/imagens/seta_cima.png') {
-//         obj.src = 'imagens/seta_baixo.png';
-//     } else {
-//         obj.src = 'imagens/seta_cima.png';
-//     }
-// }
-
 function detalharPasso(el) {
     const passo = el.closest('.passoAPassoSessao');
     document.querySelectorAll('.passoAPassoSessao').forEach(p => {

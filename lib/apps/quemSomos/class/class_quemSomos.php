@@ -1,9 +1,7 @@
 <?php
 
 // ini_set('display_startup_errors', 1);
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -15,21 +13,15 @@ Class funcoes {
 
     // Função padrão do PHP para declaração de variáveis que serão utilizadas em outras funções
     public function __construct(){
-        // if(!isset($_SESSION)){
-        //     session_start();
-        // }
+        if(!isset($_SESSION)){
+            session_start();
+        }
         $mat = $_SESSION['matricula'];
         $caminhoLogErro = $this->caminhoLogErro = $_SERVER["DOCUMENT_ROOT"] . "/log/log_erros";
     }
 
     // Função que consulta os Setores ativos da CAD
     public function consultaSetores(){
-
-        $retorno = [
-            'mensagem' => '', 
-            'status'   => 0,
-        ];
-        
         $mat = $_SESSION['matricula'];
 
         $db = New Database('cad');
@@ -55,11 +47,6 @@ Class funcoes {
 
     // Função que consulta as Squads de cada Setor
     public function consultaSquads($idSetor){
-         $retorno = [
-            'mensagem' => '', 
-            'status'   => 0,
-        ];
-
         $mat = $_SESSION['matricula'];
 
         $db = New Database('cad');
@@ -102,11 +89,6 @@ Class funcoes {
 
     // Função que consulta os Funcis de cada Squad
     public function consultaFuncisSquads($idSquad){
-
-         $retorno = [
-           'mensagem' => '',  // ou string vazia, conforme sua convenção
-            'status'   => 0,
-        ];
         $mat = $_SESSION['matricula'];
 
         $db = New Database('cad');
@@ -146,11 +128,6 @@ Class funcoes {
 
     // Função que consulta as vagas disponíveis na CAD
     public function consultaVagas(){
-
-         $retorno = [
-            'mensagem' => '',  // ou string vazia, conforme sua convenção
-            'status'   => 0,
-        ];
         $mat = $_SESSION['matricula'];
 
         $db = New Database('cad');
@@ -176,7 +153,6 @@ Class funcoes {
 
     // Função que grava eventuais logs de erro de banco de dados em formato texto
     public function geraLogExcecao($nomeApp, $nomeFuncao, $informacoesAdicionais, $mat){
-
         $dateTime = date("Y-m-d")."_". date("H.i.s");
         $nomeArquivo = $dateTime . "_" . $mat . "_" . $nomeApp . "_" . $nomeFuncao .".txt";
         $caminhoArquivo = $this->caminhoLogErro . "/" . $nomeArquivo;
