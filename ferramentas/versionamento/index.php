@@ -2,12 +2,22 @@
 
 session_start();
 
-if($_SESSION["nome"] == ""){
-    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/ferramentas/versionamento/#login/");
-}
+require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
+$_SESSION['matricula'] ='F0285739';
+$_SESSION['nome'] = 'Albert Ferreira Rosa';
+$_SESSION['cargo'] = 'Analista Tec Pleno';
+$_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
+$_SESSION['dependencia'] = '1901';
+$_SESSION['ip'] = '10.10.10.10';
+
+
+// if($_SESSION["nome"] == ""){
+//     header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/ferramentas/versionamento/#login/");
+// }
+
+// include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
+// require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
 
 $class = new gravaLogAcesso();
 $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome'], $_SESSION['cargo'], $_SESSION['MAIL'], $_SESSION['dependencia'], 'Teste Versionamento', $_SESSION['ip']);

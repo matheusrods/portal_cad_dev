@@ -1,0 +1,39 @@
+# mysql/Dockerfile.db
+FROM mysql:8.0
+
+# (opcional) configs
+COPY conf.d/my.cnf /etc/mysql/conf.d/my.cnf
+
+# Copia os SQLs (e, se existir, o script) para a imagem
+COPY conf.d/initdb.d/ /docker-entrypoint-initdb.d/
+
+RUN set -eux; \
+    cd /docker-entrypoint-initdb.d; \
+    # normaliza EOL (CRLF->LF) em .sh/.sql na raiz e 1 nível abaixo
+    for f in *.sql *.sh */*.sql */*.sh; do \
+      [ -f "$f" ] && sed -i 's/\r$//' "$f" || true; \
+    done; \
+    \
+    # 1) Remover NO_AUTO_CREATE_USER e DEFINER de TODOS os .sql (raiz)
+    for f in *.sql; do \
+      [ -f "$f" ] && sed -i -E "s/(SET sql_mode\s*=\s*')([^']*)NO_AUTO_CREATE_USER,?([^']*)'/\1\2\3'/g" "$f" || true; \
+      [ -f "$f" ] && sed -i -E 's/CREATE DEFINER=`[^`]+`@`[^`]+`\s+(PROCEDURE|FUNCTION)/CREATE \1/g' "$f" || true; \
+    done; \
+    \
+    # 2) Ajustes só no *home_struct.sql (se existir)
+    HOME_SQL="$(ls -1 *home_struct.sql 2>/dev/null | head -n1 || true)"; \
+    if [ -n "$HOME_SQL" ] && [ -f "$HOME_SQL" ]; then \
+      sed -i -E 's/\bDROP TEMPORARY TABLE IF EXISTS\s+report\.([A-Za-z0-9_]+)/DROP TEMPORARY TABLE IF EXISTS \1/g' "$HOME_SQL"; \
+      sed -i -E 's/\bCREATE TEMPORARY TABLE\s+report\.([A-Za-z0-9_]+)\b/CREATE TEMPORARY TABLE \1/g' "$HOME_SQL"; \
+      sed -i -E 's/\breport\.(interacoesPf|interacoesPfOntem|usuariosPf|usuariosPfOntem|conversasPf|conversasPfOntem|notaMediaPf|notaMediaPfOntem|totalRao|totalRaoOntem|totalAtivosSA|totalAtivosSAOntem|totalCdc|totalCdcOntem|totalAtivosEnviados|totalAtivosEnviadosOntem)\b/\1/g' "$HOME_SQL"; \
+    fi; \
+    \
+    # Não remover o 90-restore-table-data.sh
+    rm -f 00-fix-sql.sh || true; \
+    \
+    # ===== Permissões recursivas =====
+    find . -type d -exec chmod 755 {} +; \
+    find . -type f -name '*.sh' -exec chmod 755 {} +; \
+    find . -type f \( -name '*.gz' -o -name '*.sql' -o -name '*.sql.gz' \) -exec chmod 644 {} +; \
+    chown -R mysql:mysql /docker-entrypoint-initdb.d
+

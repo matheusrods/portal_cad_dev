@@ -1,4 +1,4 @@
-FROM docker.binarios.intranet.bb.com.br/php:8.1-apache
+FROM php:8.1-apache
 
 # 1) instala extensões PHP (incluindo mysqli)
 RUN apt-get update \

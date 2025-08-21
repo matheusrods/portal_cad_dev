@@ -1,4 +1,5 @@
 <?php
+$ignoreSession= true;
 if(!$ignoreSession){
 	if(!session_id()){
 	    session_start();
@@ -8,19 +9,24 @@ if(!$ignoreSession){
 	}
 }
 
-// $server = 'localhost';
-// $server = '10.2.97.185';
-//$server = $_SERVER['DB_HOSTNAME'];
-// $senha = 'cad@1901';
-//$senha = $_SERVER['DB_PASSWORD'];
 
-define('DB_HOSTNAME',$_SERVER['DB_HOSTNAME']);
-define('DB_DATABASE',$_SERVER['DB_DATABASE']);
-define('DB_USERNAME',$_SERVER['DB_USERNAME']);
-define('DB_PASSWORD',$_SERVER['DB_PASSWORD']);
-define('SITE_ROOT',$_SERVER['SITE_ROOT']);
-define('CHARSET',$_SERVER['CHARSET']);
+function envv($k, $fallback = null) {
+    return $_SERVER[$k] ?? getenv($k) ?? $fallback;
+}
 
+// define('DB_HOSTNAME', envv('DB_HOST', envv('DB_HOSTNAME', 'db')));
+// define('DB_DATABASE', envv('DB_DATABASE', 'cad'));
+// define('DB_USERNAME', envv('DB_USERNAME', 'root'));
+// define('DB_PASSWORD', envv('DB_PASSWORD', 'rootpassword'));
+// define('SITE_ROOT',  envv('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] ?? '/var/www/html'));
+// define('CHARSET',    envv('CHARSET', 'utf8mb4'));
+
+define('DB_HOSTNAME', envv('DB_HOST', envv('DB_HOSTNAME', 'db')));
+define('DB_DATABASE', envv('DB_DATABASE', 'cad'));
+define('DB_USERNAME', envv('DB_USERNAME', 'root'));
+define('DB_PASSWORD', envv('DB_PASSWORD', 'rootpassword'));
+define('SITE_ROOT',  envv('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] ?? '/var/www/html'));
+define('CHARSET',    envv('CHARSET', 'utf8mb4'));
 class Conexao{
     public $server=DB_HOSTNAME;
     public $user =DB_USERNAME;

@@ -1,12 +1,19 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$_SESSION['matricula'] ='F0285739';
+$_SESSION['nome'] = 'Matheus Rodrigues';
+$_SESSION['cargo'] = 'Analista Tec Pleno';
+$_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
+$_SESSION['dependencia'] = '1901';
+$_SESSION['ip'] = '10.10.10.10';
 
-// Força o início da sessão
-session_start();
-// if($_SESSION['matricula'] == 'F0285739'){
-//     $_SESSION['DEPE'] = '11111111';
-// }
+if($_SESSION['matricula'] == 'F0285739'){
+    $_SESSION['DEPE'] = '11111111';
+}
+
 // insere as classes de conexão e interação com bancos de dados
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -48,6 +55,8 @@ class cabecalho{
         }
 
         $db = new Database('intranet');
+
+        $_SESSION["cod_uor"] = "532286,514424,532283,514416";
 
         // Query que retorna os itens a serem montados no cabeçalho
         $query = "SELECT * FROM intranet.cabecalho_item WHERE ativo = 1 AND ".$emProducao." AND (".$exclusivoCad." OR uorPermitida IN('".$_SESSION["cod_uor"]."'));";

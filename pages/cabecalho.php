@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER["DOCUMENT_ROOT"]."/pages/montaCabecalhoNovo.php";
+include $_SERVER["DOCUMENT_ROOT"]."/pages/montaCabecalho.php";
 
 $class = new cabecalho();
 

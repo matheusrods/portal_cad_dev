@@ -15,27 +15,27 @@ services:
     environment:
       DB_HOST: db
       DB_DATABASE: cad
-      DB_USERNAME: cad_user
-      DB_PASSWORD: 12345
+      DB_USERNAME: root
+      DB_PASSWORD: rootpassword
       SITE_ROOT: /var/www/html
       CHARSET: utf8mb4
-
+  
   db:
-    image: mysql:8.0
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile.db
     container_name: portal-dbcad
-    restart: unless-stopped
-    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: cad
-      MYSQL_USER: cad_user
-      MYSQL_PASSWORD: 12345
     volumes:
       - db_data:/var/lib/mysql
-      - ./docker/mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf:ro
-      - ./docker/mysql/initdb.d/:/docker-entrypoint-initdb.d/:ro
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-prootpassword"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
 
 volumes:
   db_data:
