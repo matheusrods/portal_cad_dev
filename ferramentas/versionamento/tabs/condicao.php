@@ -10,6 +10,15 @@
         </div>
     </div>
 
+    <div class="field">
+        <label class="tv-label" for="tx-type">Corpus:</label>
+        <select id="tx-type" class="tv-select">
+            <option value="" selected disabled>Selecione</option>
+            <option value="tx_whatsapp">PF</option>
+            <option value="tx_padrao">PJ</option>
+        </select>
+    </div>
+
     <!-- Dropzone -->
     <form action="" method="post" enctype="multipart/form-data" id="formUploadJson">
         <label class="dropzone" id="dropzone" for="fileJson">

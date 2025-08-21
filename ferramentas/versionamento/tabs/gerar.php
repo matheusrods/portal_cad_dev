@@ -97,6 +97,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
                 <label class="tv-label" for="nVersao">Numero da Versão</label>
                 <input id="nVersao" class="tv-input" placeholder="Ex: 0123">
             </div>
+
+            <div class="tv-field">
+                <label class="tv-label" for="tx-type">Corpus:</label>
+                <select id="tx-type" class="tv-select">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="tx_whatsapp">PF</option>
+                    <option value="tx_padrao">PJ</option>
+                </select>
+            </div>
+
             <div class="tv-field">
                 <label class="tv-label" for="tipoVersao">Tipo de versão</label>
                 <select id="tipoVersao" class="tv-select">
@@ -104,6 +114,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
                     <option value="programada">Programada</option>
                     <option value="excepcional">Excepcional</option>
                 </select>
+            </div>
+
+            <div class="tv-field" id="fieldAutorizacao" style="display:none;">
+                <label class="tv-label" for="autorizacao">Autorização</label>
+                <input id="autorizacao" class="tv-input" placeholder="Informe a autorização">
             </div>
         </div>
 
@@ -223,11 +238,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     }
 
     function updateButtonState() {
-        const v = document.getElementById('nVersao').value.trim();
-        const t = document.getElementById('tipoVersao').value.trim();
-        const f = input.files.length > 0;               // <— usa fileCsvGerar
+        const v  = document.getElementById('nVersao').value.trim();
+        const t  = document.getElementById('tipoVersao').value.trim();
+        const f  = input.files.length > 0; // já está pegando do fileCsvGerar
+        const a  = document.getElementById('autorizacao')?.value.trim() || ""; 
+        const precisaAut = (t === 'excepcional'); // só exige se o tipo for excepcional
+
         const btn = document.getElementById('btnRegistrar');
-        btn.disabled = !(v && t && f);
+        btn.disabled = !(v && t && f && (!precisaAut || a));
     }
 
     // contador de observação
@@ -530,4 +548,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
             m.hidden = true;
         }
     }
+
+    const tipoSelect = document.getElementById('tipoVersao');
+    const fieldAut   = document.getElementById('fieldAutorizacao');
+    const inputAut   = document.getElementById('autorizacao');
+
+    tipoSelect.addEventListener('change', () => {
+        if (tipoSelect.value === 'excepcional') {
+            fieldAut.style.display = 'block';
+        } else {
+            fieldAut.style.display = 'none';
+            inputAut.value = ''; // limpa se esconder
+        }
+        updateButtonState(); // atualiza validação do botão
+    });
 </script>
