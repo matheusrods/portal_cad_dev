@@ -7,7 +7,7 @@
     border-radius: 18px;
     max-width: var(--page-max);
     width: min(96vw, var(--page-max));
-    margin: -48px auto 0 auto;
+    margin: -48px auto 40px auto;
     padding: 0 0 0px 0;
     min-height: 220px;
     position: relative;
