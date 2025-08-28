@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         </div>
 
         <!-- Número / Tipo -->
-        <div class="tv-grid-2" style="margin-top: 6px">
+        <div class="tv-grid-2" style="margin-top: 30px">
             <div class="tv-field">
                 <label class="tv-label" for="nVersao">Numero da Versão</label>
                 <input id="nVersao" class="tv-input" placeholder="Ex: 0123">
@@ -120,21 +120,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
                 <label class="tv-label" for="autorizacao">Autorização</label>
                 <input id="autorizacao" class="tv-input" placeholder="Informe a autorização">
             </div>
+
+            <div class="tv-field">
+                <label class="tv-label" for="idConversa">ID da Conversa</label>
+                <input id="idConversa" class="tv-input tv-input" value="">
+            </div>
+    
+            <div class="tv-field">
+                <label class="tv-label" for="observacao">Observação</label>
+                <textarea id="observacao" class="tv-input" maxlength="500" rows="5" placeholder="Mensagem..."></textarea>
+                <small id="obsCount" class="tv-muted">500 caracteres restantes</small>
+            </div>
         </div>
 
-        <div class="tv-field">
-            <label class="tv-label" for="idConversa">ID da Conversa</label>
-            <input id="idConversa" class="tv-input tv-input" value="">
-        </div>
-
-        <div class="tv-field">
-            <label class="tv-label" for="observacao">Observação</label>
-            <textarea id="observacao" class="tv-input" maxlength="500" rows="5" placeholder="Mensagem..."></textarea>
-            <small id="obsCount" class="tv-muted">500 caracteres restantes</small>
-        </div>
 
         <!-- Dropzone da aba Gerar Versão -->
-        <div class="tv-field" style="margin-top: 12px">
+        <div class="tv-field" style="margin-top: 30px">
             <label
                     id="dropzone-gerar"
                     for="fileCsvGerar"

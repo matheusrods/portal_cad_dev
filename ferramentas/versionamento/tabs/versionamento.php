@@ -16,20 +16,20 @@
                 </select>
             </div>
 
-            <div class="field">
+            <div class="tv-field full-width">
                 <label class="tv-label" for="tx-type">Corpus:</label>
-                <select id="tx-type" class="tv-select">
+                <select id="tx-corpus" class="tv-select">
                     <option value="" selected disabled>Selecione</option>
                     <option value="tx_whatsapp">PF</option>
                     <option value="tx_padrao">PJ</option>
                 </select>
             </div>
-        </div>
 
-        <div class="tv-field">
-            <label class="tv-label" for="custom-inputs">Caso necessário, inclua inputs adicionais ao teste
-                padrão:</label>
-            <input type="text" id="custom-inputs" class="tv-input" placeholder="Digite os inputs separados por ;">
+            <div class="tv-field">
+                <label class="tv-label" for="custom-inputs">Caso necessário, inclua inputs adicionais ao teste
+                    padrão:</label>
+                <input type="text" id="custom-inputs" class="tv-input" placeholder="Digite os inputs separados por ;">
+            </div>
         </div>
 
         <button id="botaoAnaliseVersao" class="tv-btn" onclick="compararResultados()">

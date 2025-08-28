@@ -3,8 +3,8 @@
 
     <!-- Número da versão -->
     <div class="field">
-        <label for="nVersaoParenteses">Número da Versão</label>
-        <input type="text" id="nVersaoParenteses" class="field-input" placeholder="Ex: 0123">
+        <label class="tv-label"  for="nVersaoParenteses">Número da Versão</label>
+        <input type="text" id="nVersaoParenteses" class="tv-label" placeholder="Ex: 0123">
         <div id="erroVersao" class="mensagem-erro" style="display:none;">
             Preencha o número da versão!
         </div>
@@ -109,7 +109,7 @@
 
     <!-- Analisar Condição -->
     <div class="field mt32">
-        <label for="condicao">Analisar Condição</label>
+        <label class="tv-label" for="condicao">Analisar Condição</label>
         <textarea id="condicao" class="field-textarea" placeholder="Cole aqui a condição de entrada"></textarea>
         <p id="textoResultadoCondicao" style="display:none"></p>
     </div>

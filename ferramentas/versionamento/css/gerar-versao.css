@@ -452,3 +452,11 @@
   max-width: 360px;         /* igual Corpus e Tipo de versão */
 }
 
+
+/* .gerar-wrap .tv-field {
+  margin-bottom: 18px;
+} */
+
+.gerar-wrap .tv-field:last-child {
+  margin-bottom: 0; /* remove espaço extra no último */
+}

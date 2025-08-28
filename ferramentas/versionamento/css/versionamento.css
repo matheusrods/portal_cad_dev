@@ -18,6 +18,11 @@
     margin: 14px 0
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
 .tv-grid-2 {
     display: grid;
     gap: 14px
@@ -38,7 +43,7 @@
     font-weight: 700;
     color: #000000;
     margin: 4px 0 6px;
-    font-size: 0.95rem;
+    font-size: 17px;
 }
 
 
@@ -455,4 +460,16 @@
 #custom-inputs {
     width: 100%;
     background: #F3F5F8;
+}
+
+.tv-input, .tv-select {
+    width: 360px; /* mantém todos iguais */
+    max-width: 100%;
+    border: 1px solid #ccc;
+    background: #F3F5F8;
+}
+
+.tv-field.full-width {
+    margin-top: -15px;
+    grid-column: 1 / -1;
 }
