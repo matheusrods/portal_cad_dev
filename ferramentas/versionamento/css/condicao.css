@@ -35,9 +35,11 @@
 
 /* Dropzone */
 .dropzone {
-    display: block;
+    display: grid;
+    place-items: center;
     width: 100%;
     min-height: 260px;
+    box-sizing: border-box; 
     border: 2px dashed #d7dbe8;
     border-radius: 10px;
     background: #fff;
@@ -238,6 +240,10 @@
     background: #2563eb;
 }
 
+.ring-dot {
+    display: none;
+}
+
 @keyframes spin {
     to {
         transform: rotate(360deg);
@@ -405,6 +411,7 @@
 }
 
 #btnAvaliar:disabled {
+  margin-top: 16px;
   background-color: #f0f0f0;
   color: #999;
   cursor: not-allowed;
@@ -463,4 +470,21 @@
   color: #e53935; /* vermelho */
   font-size: 13px;
   margin-top: 4px;
+}
+
+/* Tamanhos iguais para Nº da Versão e Corpus — só nesta aba */
+.condicao-wrap .field-input,
+.condicao-wrap .tv-select {
+  width: 360px;        /* mesmo tamanho para ambos */
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Responsivo: em telas menores ocupar 100% */
+@media (max-width: 520px) {
+  .condicao-wrap .field-input,
+  .condicao-wrap .tv-select {
+    width: 100%;
+  }
 }

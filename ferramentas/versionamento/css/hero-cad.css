@@ -37,11 +37,11 @@
 }
 
 .hero-cad-img img {
-    max-height: 500px;
-    min-height: 250px;
+    max-height: 400px;
+    min-height: 264px;
     width: auto;
     object-fit: contain;
-    margin-right: -60px;
+    margin-right: -112px;
     margin-left: 40px;
     display: block;
 }

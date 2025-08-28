@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
             <div class="tv-field">
                 <label class="tv-label" for="tx-type">Corpus:</label>
-                <select id="tx-type" class="tv-select">
+                <select id="tx-type-gerar" class="tv-select">
                     <option value="" selected disabled>Selecione</option>
                     <option value="tx_whatsapp">PF</option>
                     <option value="tx_padrao">PJ</option>
@@ -198,6 +198,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
             </div>
 
             <div class="mc-row">
+                <div class="mc-label">Corpus:</div>
+                <div class="mc-value" id="mc-corpus">—</div>
+            </div>
+
+
+            <!-- Autorização (aparece só quando houver) -->
+            <div class="mc-row" id="mc-aut-wrap" style="display:none;">
+                <div class="mc-label">Autorização:</div>
+                <div class="mc-value" id="mc-aut">—</div>
+            </div>
+
+            <div class="mc-row">
                 <div class="mc-label">ID da Conversa:</div>
                 <div class="mc-value" id="mc-id">—</div>
             </div>
@@ -238,10 +250,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     }
 
     function updateButtonState() {
-        const v  = document.getElementById('nVersao').value.trim();
-        const t  = document.getElementById('tipoVersao').value.trim();
-        const f  = input.files.length > 0; // já está pegando do fileCsvGerar
-        const a  = document.getElementById('autorizacao')?.value.trim() || ""; 
+        const v = document.getElementById('nVersao').value.trim();
+        const t = document.getElementById('tipoVersao').value.trim();
+        const f = input.files.length > 0; // já está pegando do fileCsvGerar
+        const a = document.getElementById('autorizacao')?.value.trim() || "";
         const precisaAut = (t === 'excepcional'); // só exige se o tipo for excepcional
 
         const btn = document.getElementById('btnRegistrar');
@@ -338,6 +350,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         const obs = document.getElementById('observacao').value.trim();
         const fileIn = document.getElementById('fileCsvGerar');
         const file = fileIn.files?.[0];
+        const aut = document.getElementById('autorizacao')?.value.trim() || '';
+        const corpusEl = document.getElementById('tx-type-gerar');
+        let corpusLbl = '—';
+        if (corpusEl && corpusEl.value) {
+            corpusLbl = corpusEl.options[corpusEl.selectedIndex]?.text || '—';
+        }
+
 
         // Preenche a modal
         document.getElementById('mc-numero').textContent = versao || '—';
@@ -345,6 +364,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         document.getElementById('mc-tipo').textContent = tipoLabel || '—';
         document.getElementById('mc-id').textContent = id || '—';
         document.getElementById('mc-obs').textContent = obs || '—';
+        document.getElementById('mc-corpus').textContent = corpusLbl;
+
+        const autWrap = document.getElementById('mc-aut-wrap');
+        if (tipo === 'excepcional' && aut) {
+            autWrap.style.display = '';
+            document.getElementById('mc-aut').textContent = aut;
+        } else {
+            autWrap.style.display = 'none';
+            document.getElementById('mc-aut').textContent = '—';
+        }
 
         const link = document.getElementById('mc-arquivo');
         if (file) {
@@ -550,8 +579,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     }
 
     const tipoSelect = document.getElementById('tipoVersao');
-    const fieldAut   = document.getElementById('fieldAutorizacao');
-    const inputAut   = document.getElementById('autorizacao');
+    const fieldAut = document.getElementById('fieldAutorizacao');
+    const inputAut = document.getElementById('autorizacao');
 
     tipoSelect.addEventListener('change', () => {
         if (tipoSelect.value === 'excepcional') {

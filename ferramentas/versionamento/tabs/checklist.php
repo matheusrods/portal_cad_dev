@@ -10,10 +10,9 @@
         </div>
     </div>
 
-
-    <div class="tipo-versao-wrapper">
-        <label for="tipo-versao-select">Tipo de versão</label>
-        <select id="tipo-versao-select">
+    <div class="field">
+        <label class="tv-label" for="tx-type">Tipo de versão:</label>
+        <select id="tx-type" class="tv-select tipo_de_versao">
             <option value="" selected>Selecione</option>
             <option value="programada">Programada</option>
             <option value="excepcional">Excepcional</option>
@@ -466,7 +465,7 @@
         });
 
         // Conta o select preenchido (valor diferente de vazio)
-        const select = document.getElementById('tipo-versao-select');
+        const select = document.querySelector('.tipo_de_versao');
         if (select && select.value !== '') preenchidos++;
 
         // Calcula percentual
@@ -484,6 +483,6 @@
     document.querySelectorAll('.checklist-checkbox').forEach(cb => {
         cb.addEventListener('change', atualizarProgressoChecklist);
     });
-    document.getElementById('tipo-versao-select').addEventListener('change', atualizarProgressoChecklist);
+    document.querySelector('.tipo_de_versao').addEventListener('change', atualizarProgressoChecklist);
 
 </script>

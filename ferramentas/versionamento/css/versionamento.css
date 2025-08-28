@@ -444,10 +444,13 @@
 
 /* campos específicos */
 #nVersaoTab, #tx-type {
+    border: 1px solid #ccc;
     width: 360px;
-    max-width: 100%
+    max-width: 100%;
+    background: #F3F5F8;
 }
 
 #custom-inputs {
-    width: 100%
+    width: 100%;
+    background: #F3F5F8;
 }

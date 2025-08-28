@@ -28,6 +28,27 @@
     color: #111827;
 }
 
+#nVersao,
+#tx-type-gerar,
+#autorizacao,
+#tipoVersao {
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid #ccc;
+}
+
+
+#idConversa {
+    width: 500px;
+}
+
+#observacao {
+    border: 1px solid #ccc;
+    width: 100%;
+    min-height: 150px;
+}
+
+
 .gerar-wrap .tv-input::placeholder,
 .gerar-wrap textarea.tv-input::placeholder {
     color: #9AA3B2;
@@ -52,12 +73,8 @@
     overflow: auto;
 }
 
-/* Larguras parecidas com seu print */
-.gerar-wrap .tv-grid-2 input, .gerar-wrap .tv-grid-2 select {
-    width: 240px;
-}
-
 .gerar-wrap #idConversa {
+    border: 1px solid #ccc;
     width: 500px;
 }
 
@@ -75,43 +92,54 @@
 
 /* ===== Dropzone (EXCLUSIVA desta aba) ===== */
 .dropzone-gerar {
-    border: 2px dashed #d7deea;
-    border-radius: 14px;
-    background: #fafcff;
-    min-height: 140px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 8px;
+    place-items: center;
+    width: 100%;
+    min-height: 241px;
+    padding: 28px 18px;
+    box-sizing: border-box;
+    border: 2px dashed #d7dbe8;
+    border-radius: 12px;
+    background: #fff;
     cursor: pointer;
     transition: border-color .2s, background .2s;
 }
 
-.dropzone-gerar:hover, .dropzone-gerar:focus {
-    border-color: #b9c6ee;
-    background: #f7fbff;
+.dropzone-gerar:hover,
+.dropzone-gerar:focus {
+    border-color: #bfc6dd;
+    background: #fafbff; /* leve azul no hover */
 }
 
 .dropzone-gerar.dragover {
-    border-color: #6f8cff;
-    background: #f2f6ff;
+    border-color: #465EFF;
+    background: #f3f6ff;
 }
 
 .dz-icon-gerar {
-    font-size: 24px;
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #eef2ff; /* quadradinho azul claro atrás do ícone */
+    margin-bottom: 6px;
 }
 
 .dz-text-gerar b {
     display: block;
     text-align: center;
+    font-weight: 700;
     color: #111;
 }
+
 
 .dz-text-gerar small {
     display: block;
     text-align: center;
+    font-size: .95rem;
     color: #6b7280;
 }
 
@@ -308,7 +336,7 @@
 .tv-modal__box {
     position: relative;
     width: min(720px, 92vw);
-    margin: 8vh auto;
+    margin: 22vh auto;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
@@ -407,3 +435,20 @@
 .btn-yes:hover {
     filter: brightness(.98);
 }
+
+/* Garante que o container do campo é coluna */
+#fieldAutorizacao {
+  display: block;           /* ou flex com direção de coluna */
+}
+
+#fieldAutorizacao .tv-label {
+  display: block;
+  margin-bottom: 6px;       /* espaço entre o título e o input */
+}
+
+#autorizacao {
+  display: block;
+  width: 100%;
+  max-width: 360px;         /* igual Corpus e Tipo de versão */
+}
+

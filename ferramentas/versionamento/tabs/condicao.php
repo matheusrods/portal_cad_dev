@@ -31,8 +31,8 @@
                               fill="#4668FF"/>
                     </svg>
                 </div>
-                <div class="dropzone-title">Solte seus arquivos aqui ou clique para selecionar</div>
-                <div class="dropzone-sub">Escolha o arquivo JSON da versão</div>
+                <div class="dropzone-title">Escolha o arquivo JSON da versão</div>
+                <div class="dropzone-sub">Solte seus arquivos aqui ou clique para selecionar</div>
             </div>
             <input type="file" name="file" id="fileJson" accept=".json" hidden>
         </label>
