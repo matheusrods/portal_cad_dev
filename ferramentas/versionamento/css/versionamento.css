@@ -40,7 +40,6 @@
 }
 
 .tv-label {
-    font-weight: 700;
     color: #000000;
     margin: 4px 0 6px;
     font-size: 17px;
@@ -212,13 +211,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #eef2ff;
+    background: #f0f6ff;
     border: 1px solid #dfe7ff;
     border-radius: 10px;
     padding: 10px 14px;
     font-weight: 700;
-    color: #334155;
+    color: #174ec2;
     cursor: pointer
+}
+
+.tv-acc-btn:hover,
+.tv-acc-btn:focus {
+    background: #f0f6ff;
+    color: #174ec2;
 }
 
 .tv-acc-caret {

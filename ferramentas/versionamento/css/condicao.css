@@ -488,3 +488,8 @@
     width: 100%;
   }
 }
+
+#nVersaoParenteses {
+    width: 360px;
+    background: #F3F5F8
+}
