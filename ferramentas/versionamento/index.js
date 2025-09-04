@@ -839,3 +839,35 @@ function parseCSV(csvContent) {
     const data = rows.map(row => row.split(','));
     return data;
 }
+
+// ===============================
+// Controle do Tipo de Canal (PF / PJ)
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const chave = document.getElementById("chavePfPj");
+    if (!chave) return; // se não achou o switch, não faz nada
+
+    // sempre começa como PF
+    chave.checked = false;
+    aplicarTipoCanal("PF");
+
+    // troca PF <-> PJ ao mudar o switch
+    chave.addEventListener("change", () => {
+        aplicarTipoCanal(chave.checked ? "PJ" : "PF");
+    });
+});
+
+function aplicarTipoCanal(tipo) {
+    // procura todos os selects de Corpus nas abas
+    const corpusSelects = document.querySelectorAll(".corpus-select");
+    corpusSelects.forEach(sel => {
+        if (!sel) return;
+        if (tipo === "PF") {
+            sel.value = "tx_whatsapp";
+            sel.disabled = true;
+        } else {
+            sel.value = "tx_padrao";
+            sel.disabled = true;
+        }
+    });
+}

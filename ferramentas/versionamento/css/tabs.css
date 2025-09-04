@@ -109,3 +109,26 @@ main {
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
 }
+
+
+.conteudoTipoCanal {
+  display: flex;
+  align-items: center;
+  gap: 0;              
+  margin-left: 156px;     
+}
+
+.canal-titulo {
+  font-family: "BancoDoBrasil Textos", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;
+  margin-right: 4px;     
+}
+
+.canal-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2257D7;
+}

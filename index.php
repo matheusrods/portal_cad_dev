@@ -3,12 +3,12 @@
 
 session_start();
 
-// $_SESSION['matricula'] ='F0285739';
-// $_SESSION['nome'] = 'Albert Ferreira Rosa';
-// $_SESSION['cargo'] = 'Analista Tec Pleno';
-// $_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
-// $_SESSION['dependencia'] = '1901';
-// $_SESSION['ip'] = '10.10.10.10';
+$_SESSION['matricula'] ='F0285739';
+$_SESSION['nome'] = 'Albert Ferreira Rosa';
+$_SESSION['cargo'] = 'Analista Tec Pleno';
+$_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
+$_SESSION['dependencia'] = '1901';
+$_SESSION['ip'] = '10.10.10.10';
 
 if($_SESSION["nome"] == ""){
     header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.desenv.bb.com.br/#login/");

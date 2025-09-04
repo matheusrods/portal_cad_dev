@@ -4,20 +4,20 @@ session_start();
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
 
-// $_SESSION['matricula'] ='F0285739';
-// $_SESSION['nome'] = 'Albert Ferreira Rosa';
-// $_SESSION['cargo'] = 'Analista Tec Pleno';
-// $_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
-// $_SESSION['dependencia'] = '1901';
-// $_SESSION['ip'] = '10.10.10.10';
+$_SESSION['matricula'] ='F0285739';
+$_SESSION['nome'] = 'Albert Ferreira Rosa';
+$_SESSION['cargo'] = 'Analista Tec Pleno';
+$_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
+$_SESSION['dependencia'] = '1901';
+$_SESSION['ip'] = '10.10.10.10';
 
 
-if($_SESSION["nome"] == ""){
-    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/ferramentas/versionamento/#login/");
-}
+// if($_SESSION["nome"] == ""){
+//     header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/ferramentas/versionamento/#login/");
+// }
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
+// include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
+// require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
 
 $class = new gravaLogAcesso();
 $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome'], $_SESSION['cargo'], $_SESSION['MAIL'], $_SESSION['dependencia'], 'Teste Versionamento', $_SESSION['ip']);
@@ -75,6 +75,25 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
         <div class="tab-button" onclick="selectTab('condicao')">Teste de Condição</div>
         <div class="tab-button" onclick="selectTab('versionamento')">Teste de Versionamento</div>
         <div class="tab-button" onclick="selectTab('gerar')">Gerar Versão</div>
+
+        <div class="conteudoTipoCanal">
+            <span class="canal-titulo">Tipo de Canal:</span>
+
+            <div style="display: flex; margin-left: 3%;">
+                <div style="color: #465EFF; font-size: 25px; font-family: BancoDoBrasil Textos; font-weight: 500; line-height: 36px; letter-spacing: 0.16px; word-wrap: break-word">
+                    PF
+                </div>
+            
+                <label class="switch">
+                    <input id="chavePfPj" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            
+                <div style="color: #465EFF; font-size: 25px; font-family: BancoDoBrasil Textos; font-weight: 500; line-height: 36px; letter-spacing: 0.16px; word-wrap: break-word">
+                    PJ
+                </div>
+            </div>
+        </div>
     </nav>
     <main>
         <section class="tab active" id="checklist">

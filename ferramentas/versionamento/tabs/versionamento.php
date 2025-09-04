@@ -18,7 +18,7 @@
 
             <div class="tv-field full-width">
                 <label class="tv-label" for="tx-type">Corpus:</label>
-                <select id="tx-corpus" class="tv-select">
+                <select id="tx-corpus" class="tv-select corpus-select" disabled>
                     <option value="" selected disabled>Selecione</option>
                     <option value="tx_whatsapp">PF</option>
                     <option value="tx_padrao">PJ</option>

@@ -12,7 +12,7 @@
 
     <div class="field">
         <label class="tv-label" for="tx-type">Corpus:</label>
-        <select id="tx-type" class="tv-select">
+        <select id="tx-type" class="tv-select corpus-select" disabled>
             <option value="" selected disabled>Selecione</option>
             <option value="tx_whatsapp">PF</option>
             <option value="tx_padrao">PJ</option>

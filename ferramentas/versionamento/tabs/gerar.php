@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
             <div class="tv-field">
                 <label class="tv-label" for="tx-type">Corpus:</label>
-                <select id="tx-type-gerar" class="tv-select">
+                <select id="tx-type-gerar" class="tv-select corpus-select" disabled>
                     <option value="" selected disabled>Selecione</option>
                     <option value="tx_whatsapp">PF</option>
                     <option value="tx_padrao">PJ</option>
