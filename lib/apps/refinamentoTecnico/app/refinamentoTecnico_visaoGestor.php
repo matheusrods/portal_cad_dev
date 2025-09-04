@@ -435,7 +435,6 @@ $consultaSolicitacoes = $class->consultaSolicitacoes();
                                         <span class="textoAvisoTipoDisparo" id="faleComTextoAvisoJornadaPF">mensagem enviada de forma
                                             manual por meio do FaleCom</span>
                                     </div>
-                                    <!--<div class="setaBaixo"></div>-->
                                 </div>
                                 <label for="radioTemplateFaleCom">
                                     <input type="radio" id="radioTemplateFaleCom" name="detalhesDisparo" value="templateFaleCom" />

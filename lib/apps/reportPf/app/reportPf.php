@@ -1,0 +1,20 @@
+<?php
+
+session_start();
+
+if($_SESSION["nome"] == ""){
+    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.desenv.bb.com.br/tom_v2/#login/");
+}
+
+
+include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
+
+$class = new gravaLogAcesso();
+$gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome'], $_SESSION['cargo'], $_SESSION['MAIL'], $_SESSION['dependencia'], 'Report PF', $_SESSION['ip']);
+
+?>
+
+<div class="containerReportPf" style="width: 100%; background-size: contain; background-repeat: round; ">
+    <img src="/lib/apps/reportPf/img/reportPF.svg" style="width: 100%;" />
+</div>
