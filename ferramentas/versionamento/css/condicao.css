@@ -493,3 +493,10 @@
     width: 360px;
     background: #F3F5F8
 }
+
+.corpus-select:disabled {
+  background: #eee !important;   /* cinza claro */
+  color: #777 !important;        /* texto apagado */
+  border: 1px solid #ccc !important;
+  cursor: not-allowed;
+}

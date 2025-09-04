@@ -724,3 +724,11 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.corpus-select:disabled {
+  background-color: #eee;   /* fundo cinza claro */
+  color: #777;              /* texto mais apagado */
+  border: 1px solid #ccc;   /* borda discreta */
+  cursor: not-allowed;      /* cursor de bloqueado */
+  opacity: 1;               /* evita ficar "transparente demais" */
+}

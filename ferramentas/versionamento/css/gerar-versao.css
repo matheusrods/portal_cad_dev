@@ -460,3 +460,10 @@
 .gerar-wrap .tv-field:last-child {
   margin-bottom: 0; /* remove espaço extra no último */
 }
+
+.corpus-select:disabled {
+  background: #eee !important;   /* cinza claro */
+  color: #777 !important;        /* texto apagado */
+  border: 1px solid #ccc !important;
+  cursor: not-allowed;
+}

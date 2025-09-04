@@ -478,3 +478,10 @@
     margin-top: -15px;
     grid-column: 1 / -1;
 }
+
+.corpus-select:disabled {
+  background: #eee !important;   /* cinza claro */
+  color: #777 !important;        /* texto apagado */
+  border: 1px solid #ccc !important;
+  cursor: not-allowed;
+}
