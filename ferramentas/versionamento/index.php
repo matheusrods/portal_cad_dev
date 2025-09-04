@@ -79,19 +79,15 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
         <div class="conteudoTipoCanal">
             <span class="canal-titulo">Tipo de Canal:</span>
 
-            <div style="display: flex; margin-left: 3%;">
-                <div style="color: #465EFF; font-size: 25px; font-family: BancoDoBrasil Textos; font-weight: 500; line-height: 36px; letter-spacing: 0.16px; word-wrap: break-word">
-                    PF
-                </div>
-            
+            <div style="display: flex; margin-left: 3%; align-items: center; gap: 8px;">
+                <div class="canal-label canal-pf">PF</div>
+
                 <label class="switch">
-                    <input id="chavePfPj" type="checkbox">
-                    <span class="slider round"></span>
+                <input id="chavePfPj" type="checkbox">
+                <span class="slider round"></span>
                 </label>
-            
-                <div style="color: #465EFF; font-size: 25px; font-family: BancoDoBrasil Textos; font-weight: 500; line-height: 36px; letter-spacing: 0.16px; word-wrap: break-word">
-                    PJ
-                </div>
+
+                <div class="canal-label canal-pj">PJ</div>
             </div>
         </div>
     </nav>

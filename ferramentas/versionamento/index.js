@@ -871,3 +871,29 @@ function aplicarTipoCanal(tipo) {
         }
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const chave = document.getElementById("chavePfPj");
+  const pf = document.querySelector(".canal-pf");
+  const pj = document.querySelector(".canal-pj");
+
+  function atualizarCores() {
+    if (chave.checked) {
+      // switch ligado → PJ ativo
+      pf.classList.remove("active");
+      pf.classList.add("inactive");
+      pj.classList.remove("inactive");
+      pj.classList.add("active");
+    } else {
+      // switch desligado → PF ativo
+      pf.classList.remove("inactive");
+      pf.classList.add("active");
+      pj.classList.remove("active");
+      pj.classList.add("inactive");
+    }
+  }
+
+  atualizarCores(); // inicializa na carga da página
+  chave.addEventListener("change", atualizarCores);
+});
