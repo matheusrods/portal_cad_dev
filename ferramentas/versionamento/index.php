@@ -75,6 +75,7 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
         <div class="tab-button" onclick="selectTab('condicao')">Teste de Condição</div>
         <div class="tab-button" onclick="selectTab('versionamento')">Teste de Versionamento</div>
         <div class="tab-button" onclick="selectTab('gerar')">Gerar Versão</div>
+        <div class="tab-button" onclick="selectTab('historico')">Histórico</div>
 
         <div class="conteudoTipoCanal">
             <span class="canal-titulo">Tipo de Canal:</span>
@@ -104,15 +105,37 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
         <section class="tab" id="gerar">
             <?php include "tabs/gerar.php"; ?>
         </section>
+        <section class="tab" id="historico">
+            <?php include "tabs/historico.php"; ?>
+        </section>
+        <section class="tab" id="detalhes">
+            <?php include "tabs/detalhes.php"; ?>
+            <link rel="stylesheet" href="./css/detalhes.css">
+        </section>
     </main>
 </div>
 
 <script>
-    function selectTab(id) {
+
+    function selectTab(id, el = null) {
+        // limpa tudo
         document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
         document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        event.target.classList.add('active');
+
+        // ativa a aba clicada
+        const tab = document.getElementById(id);
+        if (tab) tab.classList.add('active');
+
+        if (el) {
+            el.classList.add('active');
+        }
+
+        // se for detalhes → adiciona classe no body
+        if (id === "detalhes") {
+            document.body.classList.add("detalhes-ativo");
+        } else {
+            document.body.classList.remove("detalhes-ativo");
+        }
     }
 
     function toggleContent(element) {
@@ -125,6 +148,14 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
             content.classList.add("open");
             icon.textContent = "▼";
         }
+    }
+
+    function selectDetalhesTab(id, el) {
+        document.querySelectorAll('.detalhes-tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.detalhes-tab-content').forEach(tab => tab.classList.remove('active'));
+
+        el.classList.add('active');
+        document.getElementById(`tab-${id}`).classList.add('active');
     }
 </script>
 <?php

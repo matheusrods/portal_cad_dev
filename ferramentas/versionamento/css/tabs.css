@@ -23,7 +23,7 @@
     position: relative;
     top: 0;
     z-index: 10;
-    gap: 24px;
+    gap: 12px;
     border-bottom: 2px solid #e7eaf4;
     box-shadow: none;
 }
@@ -115,7 +115,7 @@ main {
   display: flex;
   align-items: center;
   gap: 0;              
-  margin-left: 156px;     
+  margin-left: 101px;     
 }
 
 .canal-titulo {
