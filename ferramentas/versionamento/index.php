@@ -71,14 +71,14 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
 
 <div class="main-card">
     <nav class="tab-buttons">
-        <div class="tab-button active" onclick="selectTab('checklist')">Checklist</div>
-        <div class="tab-button" onclick="selectTab('condicao')">Teste de Condição</div>
-        <div class="tab-button" onclick="selectTab('versionamento')">Teste de Versionamento</div>
-        <div class="tab-button" onclick="selectTab('gerar')">Gerar Versão</div>
-        <div class="tab-button" onclick="selectTab('historico')">Histórico</div>
+        <div class="tab-button active" onclick="selectTab('checklist', this)">Checklist</div>
+        <div class="tab-button" onclick="selectTab('condicao', this)">Teste de Condição</div>
+        <div class="tab-button" onclick="selectTab('versionamento', this)">Teste de Versionamento</div>
+        <div class="tab-button" onclick="selectTab('gerar', this)">Gerar Versão</div>
+        <div class="tab-button" onclick="selectTab('historico', this)">Histórico</div>
 
         <div class="conteudoTipoCanal">
-            <span class="canal-titulo">Tipo de Canal:</span>
+            <span class="canal-titulo">Corpus:</span>
 
             <div style="display: flex; margin-left: 3%; align-items: center; gap: 8px;">
                 <div class="canal-label canal-pf">PF</div>

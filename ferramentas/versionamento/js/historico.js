@@ -78,7 +78,7 @@ function renderTabela() {
         tr.innerHTML = `
       <td>${item.versao}</td>
       <td>${item.responsavel}</td>
-      <td>${item.data}</td>
+      <td>${formatarData(item.data)}</td>
       <td>${item.hora}</td>
       <td>${item.motivo}</td>
       <td>${item.corpus}</td>
@@ -102,6 +102,12 @@ function renderTabela() {
     });
 }
 
+function formatarData(isoDate) {
+    if (!isoDate) return "";
+    const [ano, mes, dia] = isoDate.split("-");
+    return `${dia}/${mes}/${ano}`;
+}
+
 function abrirDetalhes(versao) {
     const dados = dadosHistorico.find(item => item.versao == versao);
     if (!dados) return;
@@ -115,7 +121,8 @@ function abrirDetalhes(versao) {
     // preenche os campos
     document.getElementById('detalhe-versao').textContent = dados.versao;
     document.getElementById('detalhe-responsavel').textContent = dados.responsavel;
-    document.getElementById('detalhe-data').textContent = dados.data;
+    document.getElementById('detalhe-data').textContent = formatarData(dados.data);
+    ;
     document.getElementById('detalhe-hora').textContent = dados.hora;
     document.getElementById('detalhe-motivo').textContent = dados.motivo;
     document.getElementById('detalhe-corpus').textContent = dados.corpus;
