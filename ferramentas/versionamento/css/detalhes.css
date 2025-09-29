@@ -138,14 +138,14 @@ body.detalhes-ativo .conteudoTipoCanal {
 
 .tarefa-card {
     display: grid;
-    grid-template-columns: 150px 1fr 150px;
+    grid-template-columns: 107px 1fr minmax(135px, auto);
     align-items: flex-start;
     background: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 6px;
     padding: 5px 10px;
     width: 89%;
-    max-width: 882px;
+    max-width: 867px;
     margin: 7px auto;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
@@ -188,7 +188,6 @@ body.detalhes-ativo .conteudoTipoCanal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
 }
 
 .status {
