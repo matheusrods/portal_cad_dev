@@ -52,8 +52,8 @@
 }
 
 .btn-limpar {
-    background: none;
-    border: none;
+    background: none !important;
+    border: none !important;
     padding: 0;
     cursor: pointer;
     align-items: center;

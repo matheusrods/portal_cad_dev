@@ -34,7 +34,7 @@
 
     <div class="detalhes-tab-content active" id="tab-tarefas">
         <div class="tarefa-card">
-            <div class="tarefa-col">
+            <div class="tarefa-col tarefa-title-col">
                 <strong class="detalhe-info-titulos">Tarefa</strong>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -57,7 +57,7 @@
         </div>
 
         <div class="tarefa-card">
-            <div class="tarefa-col">
+            <div class="tarefa-col tarefa-title-col">
                 <strong class="detalhe-info-titulos">Tarefa</strong>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -80,7 +80,7 @@
         </div>
 
         <div class="tarefa-card">
-            <div class="tarefa-col">
+            <div class="tarefa-col tarefa-title-col">
                 <strong class="detalhe-info-titulos">Tarefa</strong>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -103,7 +103,7 @@
         </div>
 
         <div class="tarefa-card">
-            <div class="tarefa-col">
+            <div class="tarefa-col tarefa-title-col">
                 <strong class="detalhe-info-titulos">Tarefa</strong>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -333,7 +333,7 @@
             <div class="conversa-linha">
                 <span class="conversa-label">Id conversa:</span>
                 <span class="conversa-texto">2324325438583475-78378654876544554456b-323reew2334234</span>
-                <span class="conversa-icone">
+                <span class="copy-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M15.75 0H5.625C4.38244 0 3.375 1.00744 3.375 2.25H4.5C4.5 1.62928 5.00484 1.125 5.625 1.125H15.75C16.3707 1.125 16.875 1.62928 16.875 2.25V12.375C16.875 12.9957 16.3707 13.5 15.75 13.5V14.625C16.9926 14.625 18 13.6176 18 12.375V2.25C18 1.00744 16.9926 0 15.75 0ZM12.375 3.375H2.25C1.00744 3.375 0 4.38244 0 5.625V15.75C0 16.9926 1.00744 18 2.25 18H12.375C13.6176 18 14.625 16.9926 14.625 15.75V5.625C14.625 4.38244 13.6176 3.375 12.375 3.375ZM13.5 15.75C13.5 16.3707 12.9957 16.875 12.375 16.875H2.25C1.62984 16.875 1.125 16.3707 1.125 15.75V5.625C1.125 5.00428 1.62984 4.5 2.25 4.5H12.375C12.9957 4.5 13.5 5.00428 13.5 5.625V15.75ZM3.375 7.875H11.25V6.75H3.375V7.875ZM3.375 10.125H11.25V9H3.375V10.125ZM3.375 12.375H11.25V11.25H3.375V12.375ZM3.375 14.625H7.875V13.5H3.375V14.625Z"
                       fill="#646464"/>
@@ -346,7 +346,7 @@
             <div class="conversa-linha">
                 <span class="conversa-label">Id conversa:</span>
                 <span class="conversa-texto">2324325438583475-78378654876544554456b-323reew2334234</span>
-                <span class="conversa-icone">
+                <span class="copy-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M15.75 0H5.625C4.38244 0 3.375 1.00744 3.375 2.25H4.5C4.5 1.62928 5.00484 1.125 5.625 1.125H15.75C16.3707 1.125 16.875 1.62928 16.875 2.25V12.375C16.875 12.9957 16.3707 13.5 15.75 13.5V14.625C16.9926 14.625 18 13.6176 18 12.375V2.25C18 1.00744 16.9926 0 15.75 0ZM12.375 3.375H2.25C1.00744 3.375 0 4.38244 0 5.625V15.75C0 16.9926 1.00744 18 2.25 18H12.375C13.6176 18 14.625 16.9926 14.625 15.75V5.625C14.625 4.38244 13.6176 3.375 12.375 3.375ZM13.5 15.75C13.5 16.3707 12.9957 16.875 12.375 16.875H2.25C1.62984 16.875 1.125 16.3707 1.125 15.75V5.625C1.125 5.00428 1.62984 4.5 2.25 4.5H12.375C12.9957 4.5 13.5 5.00428 13.5 5.625V15.75ZM3.375 7.875H11.25V6.75H3.375V7.875ZM3.375 10.125H11.25V9H3.375V10.125ZM3.375 12.375H11.25V11.25H3.375V12.375ZM3.375 14.625H7.875V13.5H3.375V14.625Z"
                       fill="#646464"/>

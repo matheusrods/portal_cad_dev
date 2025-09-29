@@ -39,7 +39,6 @@ body.detalhes-ativo .conteudoTipoCanal {
     font-weight: 500;
 }
 
-/* Card principal */
 .detalhes-card {
     background: #fff;
     border: 1px solid #e5e5e5;
@@ -50,11 +49,10 @@ body.detalhes-ativo .conteudoTipoCanal {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Info dentro do card */
 .detalhes-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 18px;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
@@ -145,8 +143,10 @@ body.detalhes-ativo .conteudoTipoCanal {
     background: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 6px;
-    padding: 14px 6px;
-    margin: 12px 83px;
+    padding: 5px 10px;
+    width: 89%;
+    max-width: 882px;
+    margin: 7px auto;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -182,15 +182,13 @@ body.detalhes-ativo .conteudoTipoCanal {
     border-left: 1px solid #ddd;
 }
 
+.tarefa-col.tarefa-title-col,
+.tarefa-col.status-col,
 .tarefa-col.nome-col {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 6px;
-}
-
-.status-col {
-    align-items: flex-end;
 }
 
 .status {
@@ -231,6 +229,18 @@ body.detalhes-ativo .conteudoTipoCanal {
     cursor: pointer;
     margin-left: 6px;
     font-size: 13px;
+    padding: 6px;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-icon:hover {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+    transform: scale(1.1);
 }
 
 .parenteses-resultados {
@@ -281,10 +291,6 @@ body.detalhes-ativo .conteudoTipoCanal {
     display: block;
     font-weight: 600;
     margin-bottom: 2px;
-}
-
-.copy-icon {
-    margin-left: 6px;
 }
 
 

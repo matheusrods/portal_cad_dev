@@ -76,31 +76,42 @@ function renderTabela() {
     paginaDados.forEach(item => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-      <td>${item.versao}</td>
-      <td>${item.responsavel}</td>
-      <td>${formatarData(item.data)}</td>
-      <td>${item.hora}</td>
-      <td>${item.motivo}</td>
-      <td>${item.corpus}</td>
-      <td class="icone-seta">
-        <svg class="btn-detalhe" data-versao="${item.versao}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 4 12 10 6 16"></polyline>
-        </svg>
-      </td>
-    `;
+          <td>${item.versao}</td>
+          <td>${item.responsavel}</td>
+          <td>${formatarData(item.data)}</td>
+          <td>${item.hora}</td>
+          <td>${item.motivo}</td>
+          <td>${item.corpus}</td>
+          <td class="icone-seta">
+            <svg class="btn-detalhe" data-versao="${item.versao}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 4 12 10 6 16"></polyline>
+            </svg>
+          </td>
+        `;
+
+        // clique na linha inteira
+        tr.addEventListener("click", (e) => {
+            // evita duplicar caso o clique seja na seta
+            if (e.target.closest(".btn-detalhe")) return;
+            abrirDetalhes(item.versao);
+        });
+
         tbody.appendChild(tr);
     });
 
     renderPaginacao(dados.length);
     atualizarInfo(dados.length);
 
+    // clique na seta (continua funcionando normalmente)
     document.querySelectorAll(".btn-detalhe").forEach(btn => {
         btn.addEventListener("click", e => {
+            e.stopPropagation(); // impede de acionar o clique do <tr>
             const versao = e.currentTarget.dataset.versao;
             abrirDetalhes(versao);
         });
     });
 }
+
 
 function formatarData(isoDate) {
     if (!isoDate) return "";

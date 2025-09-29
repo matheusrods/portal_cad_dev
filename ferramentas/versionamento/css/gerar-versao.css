@@ -1,4 +1,3 @@
-/* ===== Layout da página Gerar Versão ===== */
 .gerar-wrap {
     max-width: 1150px;
     margin: 34px auto;
@@ -9,14 +8,12 @@
     font-weight: 600;
 }
 
-/* Campos: uma coluna (Numero / Tipo) */
 .gerar-wrap .tv-grid-2 {
     display: grid;
     gap: 16px;
     grid-template-columns: 1fr;
 }
 
-/* Inputs / Select / Textarea com a mesma cara */
 .gerar-wrap .tv-input,
 .gerar-wrap .tv-select {
     height: 44px;
