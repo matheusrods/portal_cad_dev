@@ -188,6 +188,10 @@ body.detalhes-ativo .conteudoTipoCanal {
     display: flex;
     flex-direction: column;
     align-items: center;
+    white-space: nowrap;       
+    overflow: hidden;          
+    text-overflow: ellipsis;
+    font-size: 13px;
 }
 
 .status {
@@ -200,10 +204,12 @@ body.detalhes-ativo .conteudoTipoCanal {
 
 .status-pronta {
     color: #0a7d2c;
+    font-size: 13px;
 }
 
 .status-andamento {
     color: #d35400;
+    font-size: 13px;
 }
 
 
