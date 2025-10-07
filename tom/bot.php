@@ -1,10 +1,10 @@
 <?php
-    header('Access-Control-Allow-Origin: https://cad.bb.com.br');
+    header('Access-Control-Allow-Origin: https://cad.desenv.bb.com.br');
 
     $divLuzesNatal = '';
 
     if((date("Y-m-d")) <= "2024-12-31"){
-        $divLuzesNatal = '<div class="natal" style="background-image: url(https://cad.bb.com.br/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -1rem -5rem;"></div>';
+        $divLuzesNatal = '<div class="natal" style="background-image: url(https://cad.desenv.bb.com.br/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -1rem -5rem;"></div>';
     }
 ?>
 

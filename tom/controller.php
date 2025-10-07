@@ -15,7 +15,26 @@ Class funcoes {
         $mat = $_SESSION['matricula'];
     }
 
-    public function gravarConversa($idConversa, $idUsuario, $inputUsuario, $respostaBot, $contextoConversa){
+    public function consultaIdConversa(){
+        $mat = $_SESSION['matricula'];
+        $db = New Database('formacaoBots');
+        $query = "SELECT idConversa FROM logsBotsCad.logGuiaLinguagem WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 ORDER BY timestamp DESC LIMIT 1;";
+        
+        try {
+            $execQuery = $db->DbGetAll($query);
+            if($execQuery){
+                $retorno = $execQuery[0]['idConversa'];
+            }
+        } catch(Exception $e){
+            $informacoesErro = "Erro: " . $e . "\n\n\$query: " . $query;
+            $arquivoLog = $this->geraLogExcecao("Consulta Contexto Bot Guia Linguagem", "consultaIdConversa", $informacoesErro, $mat);
+            $retorno = "Erro ao gravar log. Arquivo: " . $arquivoLog." - Matricula: ".$mat;
+        } finally {
+            return ($retorno);
+        }
+    }
+
+    public function gravarConversa($idConversa, $idUsuario, $tipoInput, $inputUsuario, $respostaBot, $contextoConversa){
         $mat = $_SESSION['matricula'];
         $db = New Database('formacaoBots');
 
@@ -24,15 +43,15 @@ Class funcoes {
         $contextoConversa = addslashes($contextoConversa);
 
         $query = "
-            INSERT INTO `logsBotsCad`.`logGuiaLinguagem` (`idConversa`, `usuario`, `input`, `resposta_bot`, `contexto`) 
-                VALUES ('".$idConversa."', '".$mat."', '".$inputUsuario."', '".$respostaBot."', '".$contextoConversa."');";
+            INSERT INTO `logsBotsCad`.`logGuiaLinguagem` (`idConversa`, `usuario`, `tipoInput`, `input`, `resposta_bot`, `contexto`) 
+                VALUES ('".$idConversa."', '".$mat."', '".$tipoInput."', '".$inputUsuario."', '".$respostaBot."', '".$contextoConversa."');";
         try{
             $execQuery = $db->DbQuery($query);
             if($execQuery){
                 $retorno["mensagem"] = 'Sucesso';
             }
         } catch(Exception $e){
-            $informacoesErro = "Erro: " . $e . "\n\n\$query: " . $query;
+            $informacoesErro = "Erro: " . $e . "\n\n\$  : " . $query;
             $arquivoLog = $this->geraLogExcecao("Log Bot Guia Linguagem", "gravaConversa", $informacoesErro, $mat);
             $retorno = "Erro ao gravar log. Arquivo: " . $arquivoLog." - Matricula: ".$mat;
         } finally {
@@ -44,7 +63,7 @@ Class funcoes {
         $mat = $_SESSION['matricula'];
         $db = New Database('formacaoBots');
         $query = "
-            SELECT contexto FROM logsBotsCad.logGuiaLinguagem WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 ORDER BY timestamp DESC LIMIT 1;
+            SELECT contexto FROM logsBotsCad.logGuiaLinguagem WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 and tipoInput in ('Texto', 'Texto e Mídia') ORDER BY timestamp DESC LIMIT 1;
         ";
         try{
             $execQuery = $db->DbGetAll($query);
@@ -80,6 +99,29 @@ Class funcoes {
         }
     }
 
+    public function gravaCodigoResposta($nomeBot, $inputUsuario, $codResposta){
+        $mat = $_SESSION['matricula'];
+        $db = New Database('logsBotsCad');
+
+        $inputUsuarioTratado = addslashes($inputUsuario);
+        
+        $query = "INSERT INTO `logsBotsCad`.`logCodigosRespostas` (`nomeBot`, `matricula`, `input`, `codResposta`, `data`)
+                VALUES ('".$nomeBot."', '".$mat."', '".$inputUsuarioTratado."', '".$codResposta."', curdate());";
+        
+        try{
+            $execQuery = $db->DbQuery($query);
+            if($execQuery){
+                $retorno = 'Sucesso';
+            }
+        } catch(Exception $e){
+            $informacoesErro = "Erro: " . $e . "\n\n\$query: " . $query;
+            $arquivoLog = $this->geraLogExcecao("Log Bot Guia Linguagem", "gravaCodigoResposta", $informacoesErro, $mat);
+            $retorno = "Erro ao gravar log de código de erro. Arquivo: " . $arquivoLog." - Matricula: ".$mat;
+        } finally {
+            return $retorno;
+        }
+    }
+
     public function geraLogExcecao($nomeApp, $nomeFuncao, $informacoesAdicionais, $mat){
         $mat = $_SESSION['matricula'];
         $dateTime = date("Y-m-d")."_". date("H.i.s");
@@ -103,9 +145,12 @@ $class = new funcoes();
 $request = $_REQUEST["request"];
 $idConversa = $_POST["idConversa"];
 $idUsuario = $_POST["idUsuario"];
+$tipoInput = $_POST["tipoInput"];
 $inputUsuario = $_POST["inputUsuario"];
 $respostaBot = $_POST["respostaBot"];
 $contextoConversa = $_POST["contextoConversa"];
+$codResposta = $_POST['codResposta'];
+$nomeBot = $_POST['nomeBot'];
 
 if(!isset($_SESSION)){
     session_start();
@@ -114,7 +159,7 @@ $mat = strtolower($_SESSION['matricula']);
 
 switch($request){
     case "gravarConversa":
-        $retorno = $class->gravarConversa($idConversa, $idUsuario, $inputUsuario, $respostaBot, $contextoConversa);
+        $retorno = $class->gravarConversa($idConversa, $idUsuario, $tipoInput, $inputUsuario, $respostaBot, $contextoConversa);
         echo ($retorno);
     break;
 
@@ -123,8 +168,18 @@ switch($request){
         echo json_encode($retorno);
     break;
 
+    case "consultaIdConversa":
+        $retorno = $class->consultaIdConversa();
+        echo json_encode($retorno);
+    break;
+    
     case "zerarContexto":
         $retorno = $class->zerarContexto($idConversa)();
+        echo json_encode($retorno);
+    break;
+
+    case "gravaCodigoResposta":
+        $retorno = $class->gravaCodigoResposta($nomeBot, $inputUsuario, $codResposta);
         echo json_encode($retorno);
     break;
 }

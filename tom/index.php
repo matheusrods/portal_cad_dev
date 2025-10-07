@@ -1,10 +1,10 @@
 <?php
-// header('Access-Control-Allow-Origin: https://cad.bb.com.br');
+// header('Access-Control-Allow-Origin: https://cad.desenv.bb.com.br');
 // ini_set("display_errors", E_ALL);
 session_start();
 
 if($_SESSION["nome"] == ""){
-    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/tom/#login/");
+    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.desenv.bb.com.br/tom/#login/");
 }
 
 
@@ -29,7 +29,9 @@ if((date("Y-m-d")) <= "2024-12-31"){
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chatbot Guia de Linguagem</title>
+        <title>Tom</title>
+        <link href="../lib/img/img_bot/bot.ico" mce_href="../lib/img/img_bot/bot.ico" rel="icon">
+        <link href="../lib/img/img_bot/bot.ico" mce_href="../lib/img/img_bot/bot.ico" rel="shortcut icon">
 
         <!-- jQuery -->
         <script type="text/javascript" src="../lib/js/jquery.3.7.1.js"></script>
@@ -46,11 +48,14 @@ if((date("Y-m-d")) <= "2024-12-31"){
         <!-- JS da página -->
         <script type="text/javascript" src="index.js"></script>
 
+        <!-- JS Font Awesome -->
+        <script src="../lib/js/fontawesome.js"></script>
+
         <!-- CSS da página -->
         <link href="index.css" rel="stylesheet">
     </head>
 
-    <body style="background: #465EFE repeat center center; background-image: url('img/fundo fullzap.png'); background-size: 100%; max-width: 100%; overflow-x: hidden;">
+    <body style="background-image: url('img/BackgroundTom.png'); background-size: 100%; max-width: 100%; overflow-x: hidden;">
         <main>
             <div id="container" style="width: 100%; height: auto; position: relative;">
                 <?php include_once "bot.php"; ?>
