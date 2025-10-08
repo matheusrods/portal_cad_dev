@@ -19,7 +19,7 @@ Class funcoes {
         $mat = $_SESSION['matricula'];
         $db = New Database('formacaoBots');
         $query = "SELECT idConversa FROM logsBotsCad.logGuiaLinguagem WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 ORDER BY timestamp DESC LIMIT 1;";
-        
+        $retorno = array();
         try {
             $execQuery = $db->DbGetAll($query);
             if($execQuery){
@@ -65,6 +65,7 @@ Class funcoes {
         $query = "
             SELECT contexto FROM logsBotsCad.logGuiaLinguagem WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 and tipoInput in ('Texto', 'Texto e Mídia') ORDER BY timestamp DESC LIMIT 1;
         ";
+        $retorno = array();
         try{
             $execQuery = $db->DbGetAll($query);
             if($execQuery){
@@ -142,15 +143,15 @@ Class funcoes {
 }
 
 $class = new funcoes();
-$request = $_REQUEST["request"];
-$idConversa = $_POST["idConversa"];
-$idUsuario = $_POST["idUsuario"];
-$tipoInput = $_POST["tipoInput"];
-$inputUsuario = $_POST["inputUsuario"];
-$respostaBot = $_POST["respostaBot"];
-$contextoConversa = $_POST["contextoConversa"];
-$codResposta = $_POST['codResposta'];
-$nomeBot = $_POST['nomeBot'];
+$request = $_REQUEST["request"] ?? null;
+$idConversa = $_POST["idConversa"] ?? null;
+$idUsuario = $_POST["idUsuario"] ?? null;
+$tipoInput = $_POST["tipoInput"] ?? null;
+$inputUsuario = $_POST["inputUsuario"] ?? null;
+$respostaBot = $_POST["respostaBot"] ?? null;
+$contextoConversa = $_POST["contextoConversa"] ?? null;
+$codResposta = $_POST['codResposta'] ?? null;
+$nomeBot = $_POST['nomeBot'] ?? null;
 
 if(!isset($_SESSION)){
     session_start();

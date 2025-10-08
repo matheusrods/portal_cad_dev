@@ -1,14 +1,27 @@
 <?php
-// header('Access-Control-Allow-Origin: https://cad.desenv.bb.com.br');
-// ini_set("display_errors", E_ALL);
+
 session_start();
 
-if($_SESSION["nome"] == ""){
-    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.desenv.bb.com.br/tom/#login/");
-}
+require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+
+// header('Access-Control-Allow-Origin: ' . getBaseUrl());
+// ini_set("display_errors", E_ALL);
 
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
+$_SESSION['matricula'] ='F0285739';
+$_SESSION['nome'] = 'Albert Ferreira Rosa';
+$_SESSION['cargo'] = 'Analista Tec Pleno';
+$_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
+$_SESSION['dependencia'] = '1901';
+$_SESSION['ip'] = '10.10.10.10';
+
+// if($_SESSION["nome"] == ""){
+//     header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=" . getBaseUrl() . "/tom/#login/");
+// }
+
+
+// include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
 
 $class = new gravaLogAcesso();

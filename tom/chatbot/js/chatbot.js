@@ -45,7 +45,7 @@ $(document).ready(function () {
         $('#file-input').val('');
         $('#chat-input').val('');
         $('#chat-input').text('');
-        $('#preview').attr('src', 'https://cad.desenv.bb.com.br/tom/img/capaPreview.png');
+        $('#preview').attr('src', `${BASE_URL}/tom/img/capaPreview.png`);
         $('#preview').css('display', 'none');
         $('#contadorInputTom').text('2000 caracteres restantes');
     });
@@ -121,7 +121,7 @@ $(document).ready(function () {
         $('#file-input').attr('attr-conteudoImagem', '0');
         $('#file-input').val('');
         $('#chat-input').val('');
-        $('#preview').attr('src', 'https://cad.desenv.bb.com.br/tom/img/capaPreview.png');
+        $('#preview').attr('src', `${BASE_URL}/tom/img/capaPreview.png`);
         $('#preview').css('display', 'none');
         atualizarContador();
         var idConversa = $("#btnLimparContexto").attr('attr-idConversa');
@@ -158,7 +158,7 @@ $(document).ready(function () {
 
     // Função para enviar a mensagem
     function enviarMensagem() {
-        var caminhoController = 'https://cad.desenv.bb.com.br/tom/controller.php';
+        var caminhoController = `${BASE_URL}/tom/controller.php`;
         
         const inputElement = document.getElementById('chat-input');
         var message = inputElement.value.trim();
@@ -300,7 +300,7 @@ $(document).ready(function () {
     }
 
     function enviarMidiaMensagem(dadosBase64) {
-        var caminhoController = 'https://cad.desenv.bb.com.br/tom/controller.php';
+        var caminhoController = `${BASE_URL}/tom/controller.php`;
         
         var midia = dadosBase64;
 
@@ -511,7 +511,7 @@ $(document).ready(function () {
     }
 
     function enviarImagem(dadosBase64) {
-        var caminhoController = 'https://cad.desenv.bb.com.br/tom/controller.php';
+        var caminhoController = `${BASE_URL}/tom/controller.php`;
         
         var message = dadosBase64;
         
@@ -756,7 +756,7 @@ $(document).ready(function () {
 
     // Função para gravar as conversas em BD
     function gravarConversa(idConversa, idUsuario, tipoInput, inputUsuario, respostaBot, contextoConversa){
-        var caminhoController = 'https://cad.desenv.bb.com.br/tom/controller.php';
+        var caminhoController = `${BASE_URL}/tom/controller.php`;
         var respostaBotTratada = respostaBot.replace(/\\+/g, '\\');
         var contextoConversaTratada = contextoConversa.replace(/\\+/g, '\\');
         var botaoLimpaContexto = $("#btnLimparContexto").attr('attr-idConversa');
@@ -785,7 +785,7 @@ $(document).ready(function () {
     }
 
     function zerarContexto(idConversa){
-        var caminhoController = 'https://cad.desenv.bb.com.br/tom/controller.php';
+        var caminhoController = `${BASE_URL}/tom/controller.php`;
         $("#btnLimparContexto").attr('attr-idConversa', '');
         var nomeUsuario = $("#btnLimparContexto").attr('attr-nomeUsuario');
         $.ajax({
@@ -805,7 +805,7 @@ $(document).ready(function () {
 
     // Função para gravar os códigos de resposta da LLM em BD
     async function gravaCodigoResposta(nomeBot, inputUsuario, codResposta){
-        var caminhoController = 'https://cad.desenv.bb.com.br/tom/controller.php';
+        var caminhoController = `${BASE_URL}/tom/controller.php`;
         var inputUsuario = String(inputUsuario || '').replace(/\\+/g, '\\');
         
         $.ajax({
