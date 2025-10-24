@@ -1,15 +1,15 @@
 $(document).ready(function () {
-    
+
     // Abrir a janela do chat
     window.addEventListener("DOMContentLoaded", (event) => {
-        document.getElementById('divChamaBot').addEventListener('click', function() {
+        document.getElementById('divChamaBot').addEventListener('click', function () {
             document.getElementById('chat-window').classList.toggle('hidden');
         });
     });
 
     let base64 = '';
 
-    $('#send-message').on('click', function() {
+    $('#send-message').on('click', function () {
         // Converte os atributos para booleanos
         var temTexto = $('#chat-input').attr('attr-conteudoTexto') === '1';
         var temImagem = $('#file-input').attr('attr-conteudoImagem') === '1';
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
                 break;
 
-        
+
             case temTexto && !temImagem:
                 // console.log('enviarMensagem');
                 enviarMensagem();
@@ -74,16 +74,16 @@ $(document).ready(function () {
         // }
 
         atualizarContador();
-        
+
     });
 
     // Define a lista de frases dinâmicas que aparecerão ao carregar a página
     var placeholders = [
-        'O que você sabe fazer?', 
-        'Como posso pedir para revisar um texto?',    
-        'Como posso pedir para criar um texto?',    
-        'Quais os tipos de mensagens você pode ajudar?',    
-        'Reescreva de forma mais descontraída "O TEXTO"',    
+        'O que você sabe fazer?',
+        'Como posso pedir para revisar um texto?',
+        'Como posso pedir para criar um texto?',
+        'Quais os tipos de mensagens você pode ajudar?',
+        'Reescreva de forma mais descontraída "O TEXTO"',
         'Sobre emojis quais eu devo utilizar e quais não devo?',
         'Como posso escrever um texto mais acessível?'
     ];
@@ -98,9 +98,9 @@ $(document).ready(function () {
     index = (index + 1)
 
     // Altera o placeholder no intervalo de tempo definido na última linha deste bloco
-    setInterval(function() {
+    setInterval(function () {
         $('#chat-input').addClass('fade');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#chat-input').attr('placeholder', placeholders[index]);
             $('#chat-input').removeClass('fade');
             index = (index + 1) % placeholders.length;
@@ -108,14 +108,14 @@ $(document).ready(function () {
     }, 3000); // tempo de atualização do placeholder
 
     // Ao apontar o seletor do mouse dentro do elemento, esconde o placeholder
-    $('#chat-input').focus(function() {
+    $('#chat-input').focus(function () {
         $(this).attr('placeholder', '');
-    }).blur(function() {
+    }).blur(function () {
         $(this).attr('placeholder', placeholders[index]);
     });
 
     // Botão para limpeza de conversa e contexto
-    $('#btnLimparContexto').on('click', function(){
+    $('#btnLimparContexto').on('click', function () {
         $('textarea').css('height', '108px');
         $('#chat-input').attr('attr-conteudoTexto', '0');
         $('#file-input').attr('attr-conteudoImagem', '0');
@@ -125,7 +125,7 @@ $(document).ready(function () {
         $('#preview').css('display', 'none');
         atualizarContador();
         var idConversa = $("#btnLimparContexto").attr('attr-idConversa');
-        if(idConversa.length > 0){
+        if (idConversa.length > 0) {
             zerarContexto(idConversa);
         }
     });
@@ -140,32 +140,32 @@ $(document).ready(function () {
     });
 
     // Função para que seja incluida a borda azul abaixo do textarea quando está selecionada
-    $("#chat-input").on('focus', function(){
+    $("#chat-input").on('focus', function () {
         $("#chat-input-container").css("border-bottom", "2px solid #4668FF");
     });
 
-    $(document).on('click', function(e) {
+    $(document).on('click', function (e) {
         // Se o clique NÃO foi dentro do input
-        const cliqueInput = document.activeElement === document.getElementById('chat-input');    
+        const cliqueInput = document.activeElement === document.getElementById('chat-input');
         const cliqueForaInput = !$(e.target).is('#chat-input');
         const CliqueForaSugestao = !$(e.target).closest('.sugestao').length;
 
-        
+
         if (cliqueForaInput && CliqueForaSugestao && !cliqueInput) {
-        $("#chat-input-container").css('border-bottom', 'none');
+            $("#chat-input-container").css('border-bottom', 'none');
         }
     });
 
     // Função para enviar a mensagem
     function enviarMensagem() {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
-        
+
         const inputElement = document.getElementById('chat-input');
         var message = inputElement.value.trim();
         message = message.replace(/(?:\r\n|\r|\n)/g, '<br>');
         message = message.replace(/"/g, "'");
 
-        var contexto ='';
+        var contexto = '';
         var contextoNovo = '';
         var contextoTratado = '';
 
@@ -182,9 +182,9 @@ $(document).ready(function () {
             type: "GET",
             dataType: "JSON",
             dataSrc: "",
-            success: function(retorno) {
-                
-                if ((retorno === null ) || (retorno.length == 0)){
+            success: function (retorno) {
+
+                if ((retorno === null) || (retorno.length == 0)) {
                     contextoTratado = '{}';
                 } else {
                     contexto = JSON.stringify(retorno);
@@ -192,13 +192,13 @@ $(document).ready(function () {
                     contextoNovo = (contextoNovo.replace(/\\"/g, '\"'));
                     contextoTratado = contextoNovo.substring(1, contextoNovo.length - 1);
                 }
-                
-                const jsonBody = '{"data":{"input": "'+message+'", "context": '+contextoTratado+'}}';
+
+                const jsonBody = '{"data":{"input": "' + message + '", "context": ' + contextoTratado + '}}';
                 const jsonString = JSON.stringify(jsonBody);
                 const jsonBodyParsed = JSON.parse(jsonString);
                 // console.log(jsonBodyParsed);
                 exibirMensagem('Você', message, 'user');
-                exibirMensagem('Tom', '<div class="loader" attr-dataHora="'+Date.now()+'"><span></span><span></span><span></span></div>', 'bot');
+                exibirMensagem('Tom', '<div class="loader" attr-dataHora="' + Date.now() + '"><span></span><span></span><span></span></div>', 'bot');
                 verificarElemento(60000);
                 inputElement.value = '';
 
@@ -217,6 +217,101 @@ $(document).ready(function () {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 segundos
 
+                // MOCK LOCAL — substitui o fetch real quando não estiver na rede BB
+                if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+                    console.log('🔧 Mockando resposta da API Tom...');
+
+                    setTimeout(() => {
+                        $('.message.bot').last().remove();
+
+                        // Monta resposta simulada
+                        const hora = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
+                        const respBotMock = `
+                            Aqui está uma sugestão pra você:<br><br>
+                            "Os cartões do BB são pensados pra facilitar sua vida e oferecer vantagens incríveis.
+                            Com eles, você pode fazer compras no Brasil e no exterior, parcelar suas despesas e ainda
+                            acumular pontos pra trocar por produtos, serviços ou milhas. Além disso, tem opções de cartões
+                            com anuidade zero e benefícios exclusivos, como seguros e assistências."<br><br>
+                            Esta mensagem é uma sugestão. Antes de utilizar, analise o conteúdo 😉
+                            <span class="hora-msg" style="float: right; font-size: 12px; color: #777;">${hora}</span>
+                        `;
+
+                        // Bloco de feedback
+                        const feedbackHtml = `
+                            <div class="message bot" style="position: relative;">
+                                <strong>Tom:</strong> ${respBotMock}
+                                <div class="feedback-container" style="margin-top: 10px; font-size: 14px; color: #555;">
+                                    <span>Essa resposta te ajudou ?</span>
+                                    <button class="feedback-like" title="Sim" style="background:none;border:none;cursor:pointer;margin-left:8px;font-size:16px;">👍</button>
+                                    <button class="feedback-dislike" title="Não" style="background:none;border:none;cursor:pointer;margin-left:4px;font-size:16px;">👎</button>
+                                </div>
+                            </div>
+                        `;
+
+                        $('#chat-content').append(feedbackHtml);
+                        $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
+
+                        // --- Eventos dos botões de feedback ---
+                        $(document)
+                            .off('click', '.feedback-like, .feedback-dislike')
+                            .on('click', '.feedback-like, .feedback-dislike', function () {
+                                const isLike = $(this).hasClass('feedback-like');
+                                const mensagemBot = respBotMock;
+
+                                if (isLike) {
+                                    mostrarToastFeedback(
+                                        "Obrigado pelo seu feedback 😊",
+                                        "Fico feliz que a resposta te ajudou! Estou aqui para o que precisar"
+                                    );
+
+                                    // grava like no banco
+                                    gravaFeedbackTom(mensagemBot, '', 'like');
+                                } else {
+                                    // 👎 Abre a modal de feedback
+                                    $('#modal-feedback').removeClass('hidden');
+                                    $('#feedback-text').val('');
+                                    $('.char-count').text('500 caracteres restantes');
+                                }
+                            });
+
+                        // --- Eventos da modal ---
+                        $(document)
+                            .off('click', '.close-modal-feedback, .btn-skip')
+                            .on('click', '.close-modal-feedback, .btn-skip', function () {
+                                $('#modal-feedback').addClass('hidden');
+                            });
+
+                        $(document)
+                            .off('input', '#feedback-text')
+                            .on('input', '#feedback-text', function () {
+                                const restante = 500 - $(this).val().length;
+                                $('.char-count').text(`${restante} caracteres restantes`);
+                            });
+
+                        // --- Enviar feedback (dislike) ---
+                        $(document)
+                            .off('click', '.btn-send')
+                            .on('click', '.btn-send', function () {
+                                const comentario = $('#feedback-text').val().trim();
+                                const mensagemBot = respBotMock;
+
+                                $('#modal-feedback').addClass('hidden');
+
+                                mostrarToastFeedback(
+                                    "Obrigado pelo seu feedback 😊",
+                                    "Vamos analisar para melhorar a sua experiência ao utilizar o Tom"
+                                );
+
+                                // Grava dislike no banco
+                                gravaFeedbackTom(mensagemBot, comentario, 'dislike');
+                            });
+
+                    }, 1200);
+
+                    return;
+                }
+
+
                 fetch('https://acs-assist-bot-cad-guia.nia.servicos.bb.com.br/acs/llms/agent', {
                     method: 'POST',
                     headers: {
@@ -227,73 +322,73 @@ $(document).ready(function () {
                     body: jsonBodyParsed,
                     signal: controller.signal
                 })
-                .then(response => {
-                    clearTimeout(timeoutId);
-                    if (!response.ok) {
+                    .then(response => {
+                        clearTimeout(timeoutId);
+                        if (!response.ok) {
+                            $('.message.bot').last().remove();
+                            gravaCodigoResposta('Tom Textual', message, response.status);
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                            // Lança erro com o status e statusText
+                            throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                        }
+
+                        return response.json();
+
+                        // if (!response.ok) {
+                        //     $('.message.bot').last().remove();
+                        //     gravaCodigoResposta('Tom Textual', message, response.status);
+                        //     exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        //     // Lança erro com o status e statusText
+                        //     throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                        // }
+
+                        // return response.json();
+                    })
+
+                    .then(data => {
+                        const jsonString = (JSON.stringify(data));
+                        const jsonObject = JSON.parse(jsonString);
+                        const respBot = (jsonObject.data.output.text[0]);
+                        respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                        respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                        respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+                        respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
+                        respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
+
                         $('.message.bot').last().remove();
-                        gravaCodigoResposta('Tom Textual', message, response.status);
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                        // Lança erro com o status e statusText
-                        throw new Error(`Erro ${response.status}: ${response.statusText}`);
-                    }
-                    
-                    return response.json();
+                        exibirMensagem('Tom', respBotTachado, 'bot');
+                        $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
+                        setTimeout(function () {
+                            $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
+                        }, 150);
 
-                    // if (!response.ok) {
-                    //     $('.message.bot').last().remove();
-                    //     gravaCodigoResposta('Tom Textual', message, response.status);
-                    //     exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    //     // Lança erro com o status e statusText
-                    //     throw new Error(`Erro ${response.status}: ${response.statusText}`);
-                    // }
-                    
-                    // return response.json();
-                })
+                        contextoConversa = JSON.stringify(jsonObject.data.context);
+                        const idConversa = (jsonObject.data.context.conversation_id);
+                        const idUsuario = data.userId;
+                        const inputUsuario = message;
+                        const codResposta = data.status;
 
-                .then(data => {
-                    const jsonString = (JSON.stringify(data));
-                    const jsonObject = JSON.parse(jsonString);
-                    const respBot = (jsonObject.data.output.text[0]);
-                    respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                    respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                    respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
-                    respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
-                    respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
-                    
-                    $('.message.bot').last().remove();
-                    exibirMensagem('Tom', respBotTachado, 'bot');
-                    $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
-                    setTimeout(function(){
-                        $('#chat-content').animate({ scrollTop: $('#chat-content')[0].scrollHeight }, 'fast');
-                    }, 150);
-                    
-                    contextoConversa = JSON.stringify(jsonObject.data.context);
-                    const idConversa = (jsonObject.data.context.conversation_id);
-                    const idUsuario = data.userId;
-                    const inputUsuario = message;
-                    const codResposta = data.status;
+                        gravaCodigoResposta('Tom Textual', inputUsuario, codResposta);
+                        gravarConversa(idConversa, idUsuario, 'Texto', inputUsuario, respBotPulaLinha, contextoConversa);
+                    })
+                    .catch(error => {
+                        console.error('Erro enviarMensagem:', error);
+                        // gravaCodigoResposta('Tom Textual', message, codResposta);
+                        // $('.message.bot').last().remove();
+                        // exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
 
-                    gravaCodigoResposta('Tom Textual', inputUsuario, codResposta);
-                    gravarConversa(idConversa, idUsuario, 'Texto', inputUsuario, respBotPulaLinha, contextoConversa);
-                })
-                .catch(error => {
-                    console.error('Erro enviarMensagem:', error);
-                    // gravaCodigoResposta('Tom Textual', message, codResposta);
-                    // $('.message.bot').last().remove();
-                    // exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-
-                    if (error.name === 'AbortError') {
-                        console.error('Erro 1: ',error);
-                        gravaCodigoResposta('Tom Textual', message, '0');
-                        $('.message.bot').last().remove();
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    } else {
-                        console.error('Erro 2:', error);
-                        gravaCodigoResposta('Tom Textual', message, '0');
-                        $('.message.bot').last().remove();
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    }
-                });
+                        if (error.name === 'AbortError') {
+                            console.error('Erro 1: ', error);
+                            gravaCodigoResposta('Tom Textual', message, '0');
+                            $('.message.bot').last().remove();
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        } else {
+                            console.error('Erro 2:', error);
+                            gravaCodigoResposta('Tom Textual', message, '0');
+                            $('.message.bot').last().remove();
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        }
+                    });
                 retorno = null;
             }
         });
@@ -301,7 +396,7 @@ $(document).ready(function () {
 
     function enviarMidiaMensagem(dadosBase64) {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
-        
+
         var midia = dadosBase64;
 
         const inputElement = document.getElementById('chat-input');
@@ -309,14 +404,14 @@ $(document).ready(function () {
         message = message.replace(/(?:\r\n|\r|\n)/g, '<br>');
         message = message.replace(/"/g, "'");
 
-        exibirMensagem('Você', message+'<br><br><img src="'+midia+'" style="width: 200px; float: right;" />', 'user');
-        exibirMensagem('Tom', '<div class="loader" attr-dataHora="'+Date.now()+'"><span></span><span></span><span></span></div>', 'bot');
+        exibirMensagem('Você', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', 'user');
+        exibirMensagem('Tom', '<div class="loader" attr-dataHora="' + Date.now() + '"><span></span><span></span><span></span></div>', 'bot');
         verificarElemento(120000);
-        
-        var contexto ='';
+
+        var contexto = '';
         var contextoNovo = '';
         var contextoTratado = '';
-        
+
         $.ajax({
             aSync: false,
             url: caminhoController,
@@ -326,8 +421,8 @@ $(document).ready(function () {
             type: "GET",
             dataType: "JSON",
             dataSrc: "",
-            success: function(retorno) {
-                if ((retorno === null ) || (retorno.length == 0)){
+            success: function (retorno) {
+                if ((retorno === null) || (retorno.length == 0)) {
                     contextoTratado = '{"system": {"dialog_turn_counter": 0},"messages": []}';
                 } else {
                     contexto = JSON.stringify(retorno);
@@ -336,7 +431,7 @@ $(document).ready(function () {
                     contextoTratado = contextoNovo.substring(1, contextoNovo.length - 1);
                 }
 
-                const jsonBody = '{"data":{"input": "Extraia o conteúdo da imagem e resuma as principais informações", "images":["'+midia+'"],"context": '+contextoTratado+'}}';
+                const jsonBody = '{"data":{"input": "Extraia o conteúdo da imagem e resuma as principais informações", "images":["' + midia + '"],"context": ' + contextoTratado + '}}';
                 const jsonString = JSON.stringify(jsonBody);
                 const jsonBodyParsed = JSON.parse(jsonString);
 
@@ -354,157 +449,157 @@ $(document).ready(function () {
                     body: jsonBodyParsed,
                     signal: controller.signal
                 })
-                .then(response => {
-                    // console.log('then(response)');
-                    clearTimeout(timeoutId);
-                    if (!response.ok) {
-                        $('.message.bot').last().remove();
-                        gravaCodigoResposta('Tom Mídias', message+'<br><br><img src="'+midia+'" style="width: 200px; float: right;" />', response.status);
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                        // Lança erro com o status e statusText
-                        throw new Error(`Erro ${response.status}: ${response.statusText}`);
-                    }
-                    
-                    return response.json();
-                })
-                .catch(error => {
-                    if (error.name === 'AbortError') {
-                        console.error('Erro: ',error);
-                        gravaCodigoResposta('Tom Mídias', message+'<br><br><img src="'+midia+'" style="width: 200px; float: right;" />', error.status);
-                        $('.message.bot').last().remove();
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    } else {
-                        console.error('Erro:', error);
-                        gravaCodigoResposta('Tom Mídias', message+'<br><br><img src="'+midia+'" style="width: 200px; float: right;" />', error.status);
-                        $('.message.bot').last().remove();
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    }
-                })
-                .then(data => {                    
-                    const jsonString = (JSON.stringify(data));
-                    const jsonObject = JSON.parse(jsonString);
-                    const respBotMidia = (jsonObject.data.output.text[0]);
-                    respBotMidiaPulaLinha = respBotMidia.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                    respBotMidiaNegrito = respBotMidiaPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                    respBotMidiaItalico = respBotMidiaNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
-                    respBotMidiaItalico2 = respBotMidiaItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
-                    respBotMidiaTachado = respBotMidiaItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
-                    
-                    /* FAZER A PARTIR DAQUI O ENVIO DA MSG DE TEXTO */
-                    
-                    $.ajax({
-                        aSync: false,
-                        url: caminhoController,
-                        data: {
-                            request: 'consultarContexto'
-                        },
-                        type: "GET",
-                        dataType: "JSON",
-                        dataSrc: "",
-                        success: function(retorno) {
-                            
-                            if ((retorno === null ) || (retorno.length == 0)){
-                                contextoTratado = '{}';
-                            } else {
-                                contexto = JSON.stringify(retorno);
-                                contextoNovo = (contexto.replace(/\\"/g, '"'));
-                                contextoNovo = (contextoNovo.replace(/\\"/g, '\"'));
-                                contextoTratado = contextoNovo.substring(1, contextoNovo.length - 1);
-                            }
-                            
-                            const jsonBody = '{"data":{"input": "'+message+' '+respBotMidiaTachado+'", "context": '+contextoTratado+'}}';
-                            const jsonString = JSON.stringify(jsonBody);
-                            const jsonBodyParsed = JSON.parse(jsonString);
-                            inputElement.value = '';
-                            let inputUsuario = '';
-
-                            const controller = new AbortController();
-                            const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 segundos
-
-                            // Enviar a mensagem para a API Produção
-                            fetch('https://acs-assist-bot-cad-guia.nia.servicos.bb.com.br/acs/llms/agent', {
-                                method: 'POST',
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                },
-                                mode: 'cors',
-                                body: jsonBodyParsed,
-                                signal: controller.signal
-                            })
-                            .then(response => {
-                                clearTimeout(timeoutId);
-                                if (!response.ok) {
-                                    $('.message.bot').last().remove();
-                                    gravaCodigoResposta('Tom Texto acionado pós Mídia 1', message+' '+respBotMidiaTachado, response.status);
-                                    exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                                    // Lança erro com o status e statusText
-                                    // throw new Error(`Erro ${response.status}: ${response.statusText}`);
-                                    return false;
-                                }
-                                
-                                return response.json();
-                            })
-                            .catch(error => {
-                                if (error.name === 'AbortError') {
-                                    console.error('Erro: ',error);
-                                    gravaCodigoResposta('Tom Texto acionado pós Mídia 2', message+'<br><br><img src="'+midia+'" style="width: 200px; float: right;" />', error.status);
-                                    $('.message.bot').last().remove();
-                                    exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                                } else {
-                                    console.error('Erro:', error);
-                                    gravaCodigoResposta('Tom Texto acionado pós Mídia 3', message+'<br><br><img src="'+midia+'" style="width: 200px; float: right;" />', error.status);
-                                    $('.message.bot').last().remove();
-                                    exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                                }
-                            })
-                            .then(data => {
-                                const jsonString = (JSON.stringify(data));
-                                const jsonObject = JSON.parse(jsonString);
-                                const respBot = (jsonObject.data.output.text[0]);
-                                respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                                respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                                respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
-                                respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
-                                respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
-                                
-                                $('.message.bot').last().remove();
-                                exibirMensagem('Tom', respBotTachado, 'bot');
-                                $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
-                                setTimeout(function(){
-                                    $('#chat-content').animate({ scrollTop: $('#chat-content')[0].scrollHeight }, 'fast');
-                                }, 150);
-                                
-                                contextoConversa = JSON.stringify(jsonObject.data.context);
-                                const idConversa = (jsonObject.data.context.conversation_id);
-                                const idUsuario = data.userId;
-                                inputUsuario = message+' '+respBotMidiaTachado;
-                                const codResposta = data.status;
-                                
-                                gravarConversa(idConversa, idUsuario, 'Texto e Mídia', inputUsuario, respBotPulaLinha, contextoConversa);
-                                gravaCodigoResposta('Tom Texto acionado pós Mídia 4', inputUsuario, codResposta);
-                            })
-                            .catch(error => {
-                                console.error('Erro:', error);
-                                const codResposta = data.status;
-                                
-                                gravaCodigoResposta('Tom Texto acionado pós Mídia 5',  inputUsuario, codResposta);
-                                $('.message.bot').last().remove();
-                                exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                            });
-                            retorno = null;
+                    .then(response => {
+                        // console.log('then(response)');
+                        clearTimeout(timeoutId);
+                        if (!response.ok) {
+                            $('.message.bot').last().remove();
+                            gravaCodigoResposta('Tom Mídias', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', response.status);
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                            // Lança erro com o status e statusText
+                            throw new Error(`Erro ${response.status}: ${response.statusText}`);
                         }
-                    });
-                })
-                .catch(error => {
-                    // Captura o código de status do erro, se estiver na mensagem
-                    const statusMatch = error.message.match(/Erro (\d+):/);
-                    const codResposta = statusMatch ? parseInt(statusMatch[1]) : 0;
 
-                    gravaCodigoResposta('Tom Mídias antes do Texto', message+'<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', codResposta);
-                    $('.message.bot').last().remove();
-                    exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                });
+                        return response.json();
+                    })
+                    .catch(error => {
+                        if (error.name === 'AbortError') {
+                            console.error('Erro: ', error);
+                            gravaCodigoResposta('Tom Mídias', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', error.status);
+                            $('.message.bot').last().remove();
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        } else {
+                            console.error('Erro:', error);
+                            gravaCodigoResposta('Tom Mídias', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', error.status);
+                            $('.message.bot').last().remove();
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        }
+                    })
+                    .then(data => {
+                        const jsonString = (JSON.stringify(data));
+                        const jsonObject = JSON.parse(jsonString);
+                        const respBotMidia = (jsonObject.data.output.text[0]);
+                        respBotMidiaPulaLinha = respBotMidia.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                        respBotMidiaNegrito = respBotMidiaPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                        respBotMidiaItalico = respBotMidiaNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+                        respBotMidiaItalico2 = respBotMidiaItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
+                        respBotMidiaTachado = respBotMidiaItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
+
+                        /* FAZER A PARTIR DAQUI O ENVIO DA MSG DE TEXTO */
+
+                        $.ajax({
+                            aSync: false,
+                            url: caminhoController,
+                            data: {
+                                request: 'consultarContexto'
+                            },
+                            type: "GET",
+                            dataType: "JSON",
+                            dataSrc: "",
+                            success: function (retorno) {
+
+                                if ((retorno === null) || (retorno.length == 0)) {
+                                    contextoTratado = '{}';
+                                } else {
+                                    contexto = JSON.stringify(retorno);
+                                    contextoNovo = (contexto.replace(/\\"/g, '"'));
+                                    contextoNovo = (contextoNovo.replace(/\\"/g, '\"'));
+                                    contextoTratado = contextoNovo.substring(1, contextoNovo.length - 1);
+                                }
+
+                                const jsonBody = '{"data":{"input": "' + message + ' ' + respBotMidiaTachado + '", "context": ' + contextoTratado + '}}';
+                                const jsonString = JSON.stringify(jsonBody);
+                                const jsonBodyParsed = JSON.parse(jsonString);
+                                inputElement.value = '';
+                                let inputUsuario = '';
+
+                                const controller = new AbortController();
+                                const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 segundos
+
+                                // Enviar a mensagem para a API Produção
+                                fetch('https://acs-assist-bot-cad-guia.nia.servicos.bb.com.br/acs/llms/agent', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    mode: 'cors',
+                                    body: jsonBodyParsed,
+                                    signal: controller.signal
+                                })
+                                    .then(response => {
+                                        clearTimeout(timeoutId);
+                                        if (!response.ok) {
+                                            $('.message.bot').last().remove();
+                                            gravaCodigoResposta('Tom Texto acionado pós Mídia 1', message + ' ' + respBotMidiaTachado, response.status);
+                                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                                            // Lança erro com o status e statusText
+                                            // throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                                            return false;
+                                        }
+
+                                        return response.json();
+                                    })
+                                    .catch(error => {
+                                        if (error.name === 'AbortError') {
+                                            console.error('Erro: ', error);
+                                            gravaCodigoResposta('Tom Texto acionado pós Mídia 2', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', error.status);
+                                            $('.message.bot').last().remove();
+                                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                                        } else {
+                                            console.error('Erro:', error);
+                                            gravaCodigoResposta('Tom Texto acionado pós Mídia 3', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', error.status);
+                                            $('.message.bot').last().remove();
+                                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                                        }
+                                    })
+                                    .then(data => {
+                                        const jsonString = (JSON.stringify(data));
+                                        const jsonObject = JSON.parse(jsonString);
+                                        const respBot = (jsonObject.data.output.text[0]);
+                                        respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                                        respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                                        respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+                                        respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
+                                        respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
+
+                                        $('.message.bot').last().remove();
+                                        exibirMensagem('Tom', respBotTachado, 'bot');
+                                        $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
+                                        setTimeout(function () {
+                                            $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
+                                        }, 150);
+
+                                        contextoConversa = JSON.stringify(jsonObject.data.context);
+                                        const idConversa = (jsonObject.data.context.conversation_id);
+                                        const idUsuario = data.userId;
+                                        inputUsuario = message + ' ' + respBotMidiaTachado;
+                                        const codResposta = data.status;
+
+                                        gravarConversa(idConversa, idUsuario, 'Texto e Mídia', inputUsuario, respBotPulaLinha, contextoConversa);
+                                        gravaCodigoResposta('Tom Texto acionado pós Mídia 4', inputUsuario, codResposta);
+                                    })
+                                    .catch(error => {
+                                        console.error('Erro:', error);
+                                        const codResposta = data.status;
+
+                                        gravaCodigoResposta('Tom Texto acionado pós Mídia 5', inputUsuario, codResposta);
+                                        $('.message.bot').last().remove();
+                                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                                    });
+                                retorno = null;
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        // Captura o código de status do erro, se estiver na mensagem
+                        const statusMatch = error.message.match(/Erro (\d+):/);
+                        const codResposta = statusMatch ? parseInt(statusMatch[1]) : 0;
+
+                        gravaCodigoResposta('Tom Mídias antes do Texto', message + '<br><br><img src="' + midia + '" style="width: 200px; float: right;" />', codResposta);
+                        $('.message.bot').last().remove();
+                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                    });
                 retorno = null;
             }
         });
@@ -512,10 +607,10 @@ $(document).ready(function () {
 
     function enviarImagem(dadosBase64) {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
-        
+
         var message = dadosBase64;
-        
-        var contexto ='';
+
+        var contexto = '';
         var contextoNovo = '';
         var contextoTratado = '';
 
@@ -528,8 +623,8 @@ $(document).ready(function () {
             type: "GET",
             dataType: "JSON",
             dataSrc: "",
-            success: function(retorno) {
-                if ((retorno === null ) || (retorno.length == 0)){
+            success: function (retorno) {
+                if ((retorno === null) || (retorno.length == 0)) {
                     contextoTratado = '{"system": {"dialog_turn_counter": 0},"messages": []}';
                 } else {
                     contexto = JSON.stringify(retorno);
@@ -538,12 +633,12 @@ $(document).ready(function () {
                     contextoTratado = contextoNovo.substring(1, contextoNovo.length - 1);
                 }
 
-                const jsonBody = '{"data":{"input": "Extraia o conteúdo da imagem e resuma as principais informações", "images":["'+message+'"],"context": '+contextoTratado+'}}';
+                const jsonBody = '{"data":{"input": "Extraia o conteúdo da imagem e resuma as principais informações", "images":["' + message + '"],"context": ' + contextoTratado + '}}';
                 const jsonString = JSON.stringify(jsonBody);
                 const jsonBodyParsed = JSON.parse(jsonString);
                 // console.log(jsonBodyParsed);
-                exibirMensagem('Você', 'Analise a imagem selecionada <br><br> <img src="'+message+'" style="width: 200px; float: right;" />', 'user');
-                exibirMensagem('Tom', '<div class="loader" attr-dataHora="'+Date.now()+'"><span></span><span></span><span></span></div>', 'bot');
+                exibirMensagem('Você', 'Analise a imagem selecionada <br><br> <img src="' + message + '" style="width: 200px; float: right;" />', 'user');
+                exibirMensagem('Tom', '<div class="loader" attr-dataHora="' + Date.now() + '"><span></span><span></span><span></span></div>', 'bot');
                 verificarElemento(60000);
 
                 // Enviar a mensagem para a API de Mídia - Produção
@@ -560,59 +655,59 @@ $(document).ready(function () {
                     body: jsonBodyParsed,
                     signal: controller.signal
                 })
-                .then(response => {
-                    clearTimeout(timeoutId);
-                    if (!response.ok) {
-                        $('.message.bot').last().remove();
-                        gravaCodigoResposta('Tom Mídias', message+'<br><br><img src="'+base64+'" style="width: 200px; float: right;" />', response.status);
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                        // Lança erro com o status e statusText
-                        throw new Error(`Erro ${response.status}: ${response.statusText}`);
-                    }
-                    
-                    return response.json();
-                })
-                .then(data => {
-                    // console.log('Resposta do servidor:', data);
-                    
-                    const jsonString = (JSON.stringify(data));
-                    const jsonObject = JSON.parse(jsonString);
-                    const respBot = (jsonObject.data.output.text[0]);
-                    respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                    respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                    respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
-                    respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
-                    respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
+                    .then(response => {
+                        clearTimeout(timeoutId);
+                        if (!response.ok) {
+                            $('.message.bot').last().remove();
+                            gravaCodigoResposta('Tom Mídias', message + '<br><br><img src="' + base64 + '" style="width: 200px; float: right;" />', response.status);
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                            // Lança erro com o status e statusText
+                            throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                        }
 
-                    $('.message.bot').last().remove();
-                    exibirMensagem('Tom', respBotTachado, 'bot');
-                    $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
-                    setTimeout(function(){
-                        $('#chat-content').animate({ scrollTop: $('#chat-content')[0].scrollHeight }, 'fast');
-                    }, 150);
-                    
-                    contextoConversa = JSON.stringify(jsonObject.data.context);
-                    const idConversa = (jsonObject.data.context.conversation_id);
-                    const idUsuario = data.userId;
-                    const inputUsuario = message;
-                    const codResposta = data.status;
+                        return response.json();
+                    })
+                    .then(data => {
+                        // console.log('Resposta do servidor:', data);
 
-                    gravarConversa(idConversa, idUsuario, 'Mídia', inputUsuario, respBotPulaLinha, '');
-                    gravaCodigoResposta('Tom Mídias', inputUsuario, codResposta);
-                })
-                .catch(error => {
-                    if (error.name === 'AbortError') {
-                        console.error('Erro: ',error);
-                        gravaCodigoResposta('Tom Mídias', message+'<br><br><img src="'+base64+'" style="width: 200px; float: right;" />', '0');
+                        const jsonString = (JSON.stringify(data));
+                        const jsonObject = JSON.parse(jsonString);
+                        const respBot = (jsonObject.data.output.text[0]);
+                        respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                        respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                        respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+                        respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
+                        respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
+
                         $('.message.bot').last().remove();
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    } else {
-                        console.error('Erro:', error);
-                        gravaCodigoResposta('Tom Mídias', message+'<br><br><img src="'+base64+'" style="width: 200px; float: right;" />', error.status);
-                        $('.message.bot').last().remove();
-                        exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
-                    }
-                })
+                        exibirMensagem('Tom', respBotTachado, 'bot');
+                        $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
+                        setTimeout(function () {
+                            $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
+                        }, 150);
+
+                        contextoConversa = JSON.stringify(jsonObject.data.context);
+                        const idConversa = (jsonObject.data.context.conversation_id);
+                        const idUsuario = data.userId;
+                        const inputUsuario = message;
+                        const codResposta = data.status;
+
+                        gravarConversa(idConversa, idUsuario, 'Mídia', inputUsuario, respBotPulaLinha, '');
+                        gravaCodigoResposta('Tom Mídias', inputUsuario, codResposta);
+                    })
+                    .catch(error => {
+                        if (error.name === 'AbortError') {
+                            console.error('Erro: ', error);
+                            gravaCodigoResposta('Tom Mídias', message + '<br><br><img src="' + base64 + '" style="width: 200px; float: right;" />', '0');
+                            $('.message.bot').last().remove();
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        } else {
+                            console.error('Erro:', error);
+                            gravaCodigoResposta('Tom Mídias', message + '<br><br><img src="' + base64 + '" style="width: 200px; float: right;" />', error.status);
+                            $('.message.bot').last().remove();
+                            exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
+                        }
+                    })
 
                 // fetch('https://acs-assist-mdl-cad-tom.nia.hm.bb.com.br/acs/llms/agent', {
                 //     method: 'POST',
@@ -626,7 +721,7 @@ $(document).ready(function () {
                 // .then(response => response.json())
                 // .then(data => {
                 //     // console.log('Resposta do servidor:', data);
-                    
+
                 //     const jsonString = (JSON.stringify(data));
                 //     const jsonObject = JSON.parse(jsonString);
                 //     const respBot = (jsonObject.data.output.text[0]);
@@ -639,7 +734,7 @@ $(document).ready(function () {
                 //     $('.message.bot').last().remove();
                 //     exibirMensagem('Tom', respBotTachado, 'bot');
                 //     $('.message.bot').last().append('<br><button id="copiarTexto" title="Copiar texto no formato WhatsApp" style="background-color: #465eff;color: white;border: none;padding: 8px 12px;border-radius: 5px;cursor: pointer;font-size: 16px;float: right;" class=""><i class="fa fa-copy" style="color: #FFFFFF;" aria-hidden="true"></i></button>');
-                    
+
                 //     contextoConversa = JSON.stringify(jsonObject.data.context);
                 //     const idConversa = (jsonObject.data.context.conversation_id);
                 //     const idUsuario = data.userId;
@@ -654,21 +749,21 @@ $(document).ready(function () {
                 //     $('.message.bot').last().remove();
                 //     exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
                 // });
-                
+
                 retorno = null;
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 console.error("Erro na requisição AJAX:");
                 console.error("Status: " + textStatus);
                 console.error("Código HTTP: " + jqXHR.status);
                 console.error("Mensagem: " + errorThrown);
 
                 const codResposta = jqXHR.status;
-                    gravaCodigoResposta('Tom Mídias', inputUsuario, codResposta);
+                gravaCodigoResposta('Tom Mídias', inputUsuario, codResposta);
             }
         });
 
-        
+
         $.ajax({
             aSync: false,
             url: caminhoController,
@@ -678,10 +773,10 @@ $(document).ready(function () {
             type: "GET",
             dataType: "JSON",
             dataSrc: "",
-            success: function(retorno) {
+            success: function (retorno) {
                 // ... seu código existente ...
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 console.error("Erro na requisição AJAX:");
                 console.error("Status: " + textStatus);
                 console.error("Código HTTP: " + jqXHR.status);
@@ -691,14 +786,14 @@ $(document).ready(function () {
 
     }
 
-    $(document).on('click', '.sugestao', function(){
+    $(document).on('click', '.sugestao', function () {
         const textoBotao = $(this).text();
         const textArea = $('#chat-input');
         var valorAtual = textArea.val();
-        
+
         // Regex para verificar as duas últimas palavras
         const regex = /\b(Resumir texto|Criar texto|Revisar texto|Criar Jornada)\b\s*$/;
-        
+
         // Verifica se as duas últimas palavras correspondem a uma das palavras especificadas
         if (regex.test(valorAtual)) {
             // Remove as duas últimas palavras
@@ -714,14 +809,14 @@ $(document).ready(function () {
     });
 
     // funcão para enviar Imagem
-    $('.anexarArquivo').on('click', function() {
+    $('.anexarArquivo').on('click', function () {
         $('#file-input').click();
     });
 
     $('#file-input').on('change', function () {
         $(this).attr('attr-conteudoImagem', '1');
         const file = this.files[0];
-        if (file) {         
+        if (file) {
             // alert("Arquivo selecionado: " + file.name);
             // Adicionar lógica para enviar o arquivo
             const leitor = new FileReader();
@@ -741,12 +836,12 @@ $(document).ready(function () {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
         messageElement.classList.add(type);
-        if(sender != 'Você'){
+        if (sender != 'Você') {
             messageElement.innerHTML = `<strong>${sender}: </strong>${message}`;
         } else {
             messageElement.innerHTML = message;
         }
-                messagesElement.appendChild(messageElement);
+        messagesElement.appendChild(messageElement);
         // messagesElement.scrollTop = messagesElement.scrollHeight;
         setTimeout(() => {
             messagesElement.scrollTop = messagesElement.scrollHeight;
@@ -755,17 +850,17 @@ $(document).ready(function () {
     }
 
     // Função para gravar as conversas em BD
-    function gravarConversa(idConversa, idUsuario, tipoInput, inputUsuario, respostaBot, contextoConversa){
+    function gravarConversa(idConversa, idUsuario, tipoInput, inputUsuario, respostaBot, contextoConversa) {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
         var respostaBotTratada = respostaBot.replace(/\\+/g, '\\');
         var contextoConversaTratada = contextoConversa.replace(/\\+/g, '\\');
         var botaoLimpaContexto = $("#btnLimparContexto").attr('attr-idConversa');
         // console.log('length '+botaoLimpaContexto.length);
-        
-        if(botaoLimpaContexto.length == 0){
+
+        if (botaoLimpaContexto.length == 0) {
             $("#btnLimparContexto").attr('attr-idConversa', idConversa);
         }
-        
+
         $.ajax({
             aSync: true,
             url: caminhoController,
@@ -774,7 +869,7 @@ $(document).ready(function () {
                 idConversa: idConversa,
                 idUsuario: idUsuario,
                 tipoInput: tipoInput,
-                inputUsuario:  inputUsuario,
+                inputUsuario: inputUsuario,
                 respostaBot: respostaBotTratada,
                 contextoConversa: contextoConversaTratada
             },
@@ -784,7 +879,7 @@ $(document).ready(function () {
         });
     }
 
-    function zerarContexto(idConversa){
+    function zerarContexto(idConversa) {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
         $("#btnLimparContexto").attr('attr-idConversa', '');
         var nomeUsuario = $("#btnLimparContexto").attr('attr-nomeUsuario');
@@ -800,14 +895,14 @@ $(document).ready(function () {
             dataSrc: ""
         });
         $('#chat-content').html('');
-        $('#chat-content').html('<div id="chat-messages"></div><div class="message bot"><strong></strong> Olá, '+nomeUsuario+'! Eu sou o Tom, seu assistente virtual revisor e criador de textos do CAD BB. Como posso te ajudar?</div>');
+        $('#chat-content').html('<div id="chat-messages"></div><div class="message bot"><strong></strong> Olá, ' + nomeUsuario + '! Eu sou o Tom, seu assistente virtual revisor e criador de textos do CAD BB. Como posso te ajudar?</div>');
     }
 
     // Função para gravar os códigos de resposta da LLM em BD
-    async function gravaCodigoResposta(nomeBot, inputUsuario, codResposta){
+    async function gravaCodigoResposta(nomeBot, inputUsuario, codResposta) {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
         var inputUsuario = String(inputUsuario || '').replace(/\\+/g, '\\');
-        
+
         $.ajax({
             async: true,
             url: caminhoController,
@@ -820,11 +915,11 @@ $(document).ready(function () {
             type: "POST",
             dataType: "JSON",
             dataSrc: "",
-            
-            success: function(retorno) {
+
+            success: function (retorno) {
                 // console.log('Retorno gravaCodigoResposta:', retorno);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error('Log erro grava código:', error);
             }
 
@@ -854,18 +949,18 @@ $(document).ready(function () {
         return textarea.value;
     }
 
-    function verificarElemento(tempoEspera){
+    function verificarElemento(tempoEspera) {
         // console.log(tempoEspera);
         const target = $('.loader');
 
         // Verifica a cada 5 segundos se já passou o tempo de espera que o loader está exibido
         setInterval(function () {
-            if(target.is(':visible')) {
+            if (target.is(':visible')) {
                 const startTime = target.attr('attr-dataHora');
                 const currentTime = Date.now();
                 const elapsed = currentTime - startTime;
 
-                if(elapsed > tempoEspera){
+                if (elapsed > tempoEspera) {
                     $('.message.bot').last().remove();
                     exibirMensagem('Tom', 'Desculpe, estou enfrentando problemas técnicos e não estou conseguindo consultar minha base de conhecimento 😿.<br>Você pode recarregar a página no botão abaixo ou retornar em alguns instantes.<br><button id="btnLimparContextoConversa">Recarregar página</button>', 'bot');
                 }
@@ -892,7 +987,7 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click','#btnLimparContextoConversa', function () {
+    $(document).on('click', '#btnLimparContextoConversa', function () {
         $('#btnLimparContexto').trigger('click');
         location.reload();
     });
@@ -987,7 +1082,7 @@ $(document).ready(function () {
         e.preventDefault();
         e.stopPropagation();
         $(this).css('opacity', '0.5');
-        
+
     });
 
     $('#chat-input-container').on('dragleave drop', function (e) {
@@ -1003,3 +1098,28 @@ $(document).ready(function () {
         }
     });
 });
+
+window.gravaFeedbackTom = function (mensagemBot, comentarioUsuario, avaliacao) {
+    var caminhoController = `${BASE_URL}/tom/controller.php`;
+    var mensagemBotTratada = String(mensagemBot || '').replace(/\\+/g, '\\');
+    var comentarioUsuarioTratado = String(comentarioUsuario || '').replace(/\\+/g, '\\');
+
+    $.ajax({
+        async: true,
+        url: caminhoController,
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            request: 'gravaFeedbackTom',
+            mensagem_bot: mensagemBotTratada,
+            comentario_usuario: comentarioUsuarioTratado,
+            avaliacao: avaliacao
+        },
+        success: function (retorno) {
+            console.log('✅ Feedback gravado:', retorno);
+        },
+        error: function (xhr, status, error) {
+            console.error('❌ Erro ao gravar feedback:', error);
+        }
+    });
+};

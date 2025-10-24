@@ -17,10 +17,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <title>Minha Página</title> -->
     <link rel="stylesheet" href="chatbot/css/chatbot.css">
+    <link rel="stylesheet" href="chatbot/css/modal-chatbot.css">
     <!-- jQuery -->
     <script type="text/javascript" src="../../lib/js/jquery.3.7.1.js"></script>
     <script type="text/javascript" src="../../lib/js/jquery.3.7.1.min.js"></script>
     <script type="text/javascript" src="../../lib/js/jquery-ui.1.13.3.js"></script>
+    <script type="text/javascript" src="/Utils/js/toastFeedback.js"></script>
 </head>
 <body>
     
@@ -44,5 +46,24 @@
                 document.body.appendChild(script);
             });
     </script>
+
+    <!-- Modal de Feedback (Dislike) -->
+    <div id="modal-feedback" class="modal-feedback hidden">
+        <div class="modal-content-feedback">
+            <button class="close-modal-feedback">&times;</button>
+            <h2>Como podemos melhorar ?</h2>
+            <p>Pra melhorar sua experiência, conte porque esta resposta não te ajudou?</p>
+
+            <label for="feedback-text">Comentários adicionais (opcional):</label>
+            <textarea id="feedback-text" maxlength="500" placeholder="Descreva o que poderia ser melhor na resposta..."></textarea>
+            <div class="char-count">500 caracteres restantes</div>
+
+            <div class="modal-actions">
+            <button class="btn-skip">PULAR</button>
+            <button class="btn-send">ENVIAR FEEDBACK</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

@@ -1,0 +1,225 @@
+/* =========================
+   Fonte Institucional BB
+========================= */
+@font-face {
+  font-family: "Banco do Brasil Text";
+  src: url("https://cdn.bb.com.br/fonts/banco-do-brasil-text.woff2") format("woff2"),
+       url("https://cdn.bb.com.br/fonts/banco-do-brasil-text.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-bb: "Banco do Brasil Text", "Montserrat", "Roboto", "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================
+   Configuração geral
+========================= */
+.modal-content-feedback,
+.modal-content-feedback * {
+  font-family: var(--font-bb) !important;
+  box-sizing: border-box;
+}
+
+/* =========================
+   Fundo e Container Modal
+========================= */
+.modal-feedback.hidden {
+  display: none;
+}
+
+.modal-feedback {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content-feedback {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 700px;
+  max-width: 90%;
+  padding: 48px 18px 23px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  animation: scaleIn 0.25s ease;
+}
+
+/* =========================
+   Título e Subtítulo
+========================= */
+.modal-content-feedback h2 {
+  color: #465eff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.modal-content-feedback p {
+  font-size: 15px;
+  color: #2f2f2f;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* =========================
+   Campo de Feedback
+========================= */
+.modal-content-feedback label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f1f1f;
+  margin-bottom: 8px;
+}
+
+.modal-content-feedback textarea {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid #cfd5ff;
+  border-radius: 12px;
+  padding: 14px;
+  resize: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-content-feedback textarea::placeholder {
+  color: #a0a3b1;
+}
+
+.modal-content-feedback textarea:focus {
+  border-color: #465eff;
+  box-shadow: 0 0 0 3px rgba(70, 94, 255, 0.15);
+}
+
+/* =========================
+   Contador de caracteres
+========================= */
+.char-count {
+  text-align: left;
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   Botões (Figma Style)
+========================= */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-skip,
+.btn-send {
+  height: 50px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  min-width: 120px;
+}
+
+/* === Botão "Pular" === */
+.btn-skip {
+  background-color: #E0E9FF;
+  color: #465EFF;
+  box-shadow: none;
+}
+
+.btn-skip:hover {
+  background-color: #D3DEFF;
+  transform: translateY(-1px);
+}
+
+.btn-skip:active {
+  background-color: #C6D3FF;
+  transform: translateY(0);
+}
+
+/* === Botão "Enviar Feedback" === */
+.btn-send {
+  background-color: #4668FF;
+  color: #F9F9F9;
+  box-shadow: 0 4px 10px rgba(70, 104, 255, 0.35);
+  min-width: 144px;
+}
+
+.btn-send:hover {
+  background-color: #3E5AE5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(70, 104, 255, 0.4);
+}
+
+.btn-send:active {
+  background-color: #3650CC;
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(70, 104, 255, 0.3);
+}
+
+/* Foco acessível */
+.btn-skip:focus,
+.btn-send:focus {
+  outline: 3px solid rgba(70, 94, 255, 0.25);
+  outline-offset: 2px;
+}
+
+/* =========================
+   Botão Fechar
+========================= */
+.close-modal-feedback {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #8c8c8c;
+  transition: color 0.2s ease;
+}
+
+.close-modal-feedback:hover {
+  color: #465eff;
+}
+
+/* =========================
+   Animações
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

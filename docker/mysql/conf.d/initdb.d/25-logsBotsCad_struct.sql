@@ -137,19 +137,18 @@ CREATE TABLE `logGuiaLinguagemHomolog` (
   `ativo` int(11) DEFAULT 1 COMMENT 'Utilizado para dar a opção para o usuário apagar o contexto atual da sua conversa\n"0" = Contexto Inválido\n"1" = Contexto Válido',
   PRIMARY KEY (`idConversa`,`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping routines for database 'logsBotsCad'
---
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+DROP TABLE IF EXISTS `logFeedbackTom`;
 
--- Dump completed on 2025-10-06  0:19:35
+CREATE TABLE `logFeedbackTom` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `mensagem_bot` TEXT NOT NULL,
+  `matricula` VARCHAR(8) DEFAULT NULL,
+  `comentario_usuario` TEXT DEFAULT NULL,
+  `avaliacao` ENUM('like', 'dislike') NOT NULL,
+  `timestamp` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`, `timestamp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
