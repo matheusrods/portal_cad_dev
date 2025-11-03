@@ -57,6 +57,7 @@ if((date("Y-m-d")) <= "2024-12-31"){
         <script type="text/javascript" src="../lib/js/bootstrap.esm.min.js"></script>
         <script type="text/javascript" src="../lib/js/bootstrap.js"></script>
         <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/Utils//modal-feedback/css/modal-feedback.css">
         
         <!-- JS da página -->
         <script type="text/javascript" src="index.js"></script>

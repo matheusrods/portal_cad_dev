@@ -225,7 +225,7 @@ $(document).ready(function () {
                         $('.message.bot').last().remove();
 
                         // Monta resposta simulada
-                        const hora = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
+                        const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
                         const respBotMock = `
                             Aqui está uma sugestão pra você:<br><br>
                             "Os cartões do BB são pensados pra facilitar sua vida e oferecer vantagens incríveis.
@@ -249,7 +249,7 @@ $(document).ready(function () {
                         `;
 
                         $('#chat-content').append(feedbackHtml);
-                        $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
+                        $('#chat-content').animate({ scrollTop: $('#chat-content')[0].scrollHeight }, 'fast');
 
                         // --- Eventos dos botões de feedback ---
                         $(document)
@@ -275,12 +275,31 @@ $(document).ready(function () {
                             });
 
                         // --- Eventos da modal ---
+                        // Fechar (X)
                         $(document)
-                            .off('click', '.close-modal-feedback, .btn-skip')
-                            .on('click', '.close-modal-feedback, .btn-skip', function () {
+                            .off('click', '.close-modal-feedback')
+                            .on('click', '.close-modal-feedback', function () {
                                 $('#modal-feedback').addClass('hidden');
+                                console.log('🔒 Modal fechada (sem envio)');
                             });
 
+                        // Pular (grava dislike sem comentário)
+                        $(document)
+                            .off('click', '.btn-skip')
+                            .on('click', '.btn-skip', function () {
+                                const mensagemBot = respBotMock;
+                                $('#modal-feedback').addClass('hidden');
+
+                                gravaFeedbackTom(mensagemBot, '', 'dislike');
+                                console.log('🟡 Feedback enviado via botão PULAR');
+
+                                mostrarToastFeedback(
+                                    "Obrigado pelo seu feedback 😊",
+                                    "Vamos analisar para melhorar a sua experiência ao utilizar o Tom"
+                                );
+                            });
+
+                        // Atualiza contador de caracteres
                         $(document)
                             .off('input', '#feedback-text')
                             .on('input', '#feedback-text', function () {
@@ -288,7 +307,7 @@ $(document).ready(function () {
                                 $('.char-count').text(`${restante} caracteres restantes`);
                             });
 
-                        // --- Enviar feedback (dislike) ---
+                        // Enviar feedback (dislike com comentário)
                         $(document)
                             .off('click', '.btn-send')
                             .on('click', '.btn-send', function () {
@@ -297,13 +316,13 @@ $(document).ready(function () {
 
                                 $('#modal-feedback').addClass('hidden');
 
+                                gravaFeedbackTom(mensagemBot, comentario, 'dislike');
+                                console.log('🟢 Feedback enviado com comentário:', comentario);
+
                                 mostrarToastFeedback(
                                     "Obrigado pelo seu feedback 😊",
                                     "Vamos analisar para melhorar a sua experiência ao utilizar o Tom"
                                 );
-
-                                // Grava dislike no banco
-                                gravaFeedbackTom(mensagemBot, comentario, 'dislike');
                             });
 
                     }, 1200);

@@ -22,6 +22,7 @@ Class funcoes {
         $inputUsuario = addslashes($inputUsuario);
         $respostaBot = addslashes($respostaBot);
         $contextoConversa = addslashes($contextoConversa);
+        $retorno = array();
 
         $query = "
             INSERT INTO `logsBotsCad`.`logBotDev` (`idConversa`, `usuario`, `input`, `resposta_bot`, `contexto`) 
@@ -46,6 +47,8 @@ Class funcoes {
         $query = "
             SELECT contexto FROM logsBotsCad.logBotDev WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 ORDER BY timestamp DESC LIMIT 1;
         ";
+        $retorno = array();
+
         try{
             $execQuery = $db->DbGetAll($query);
             if($execQuery){
@@ -66,6 +69,8 @@ Class funcoes {
         $query = "
             UPDATE `logsBotsCad`.`logBotDev` SET `ativo` = '0' WHERE (`idConversa` = '".$idConversa."');
         ";
+        $retorno = array();
+        
         try{
             $execQuery = $db->DbGetAll($query);
             if($execQuery){
@@ -97,15 +102,53 @@ Class funcoes {
 
         return $caminhoArquivo;
     }
+
+    public function gravaFeedbackCaramelo($mensagem_bot, $comentario_usuario, $avaliacao)
+    {
+        $mat = $_SESSION['matricula'];
+        $db = new Database('logsBotsCad');
+
+        $mensagemTratada = addslashes($mensagem_bot);
+        $comentarioTratado = addslashes($comentario_usuario);
+        $avaliacaoTratada = addslashes($avaliacao);
+
+        $query = "
+            INSERT INTO `logsBotsCad`.`logFeedbackCaramelo`
+            (`mensagem_bot`, `matricula`, `comentario_usuario`, `avaliacao`, `timestamp`)
+            VALUES (
+                '" . $mensagemTratada . "',
+                '" . $mat . "',
+                '" . $comentarioTratado . "',
+                '" . $avaliacaoTratada . "',
+                current_timestamp()
+            );
+        ";
+
+        try {
+            $execQuery = $db->DbQuery($query);
+            if ($execQuery) {
+                $retorno = ['status' => 'Sucesso'];
+            }
+        } catch (Exception $e) {
+            $informacoesErro = "Erro: " . $e . "\n\n\$query: " . $query;
+            $arquivoLog = $this->geraLogExcecao("Log Bot Tom", "gravaFeedbackTom", $informacoesErro, $mat);
+            $retorno = [
+                'status' => 'Erro',
+                'mensagem' => "Erro ao gravar feedback. Arquivo: " . $arquivoLog . " - Matricula: " . $mat
+            ];
+        } finally {
+            return $retorno;
+        }
+    }
 }
 
 $class = new funcoes();
-$request = $_REQUEST["request"];
-$idConversa = $_POST["idConversa"];
-$idUsuario = $_POST["idUsuario"];
-$inputUsuario = $_POST["inputUsuario"];
-$respostaBot = $_POST["respostaBot"];
-$contextoConversa = $_POST["contextoConversa"];
+$request = $_REQUEST["request"] ?? null;
+$idConversa = $_POST["idConversa"] ?? null;
+$idUsuario = $_POST["idUsuario"] ?? null;
+$inputUsuario = $_POST["inputUsuario"] ?? null;
+$respostaBot = $_POST["respostaBot"] ?? null;
+$contextoConversa = $_POST["contextoConversa"] ?? null;
 
 if(!isset($_SESSION)){
     session_start();
@@ -127,6 +170,15 @@ switch($request){
         $retorno = $class->zerarContexto($idConversa)();
         echo json_encode($retorno);
     break;
+
+    case "gravaFeedbackCaramelo":
+        $mensagem_bot = $_POST['mensagem_bot'] ?? null;
+        $comentario_usuario = $_POST['comentario_usuario'] ?? null;
+        $avaliacao = $_POST['avaliacao'] ?? null;
+
+        $retorno = $class->gravaFeedbackCaramelo($mensagem_bot, $comentario_usuario, $avaliacao);
+        echo json_encode($retorno);
+        break;
 }
 
 ?>

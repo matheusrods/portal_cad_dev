@@ -152,3 +152,17 @@ CREATE TABLE `logFeedbackTom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
+DROP TABLE IF EXISTS `logFeedbackCaramelo`;
+
+CREATE TABLE `logFeedbackCaramelo` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `mensagem_bot` TEXT NOT NULL,
+  `matricula` VARCHAR(8) DEFAULT NULL,
+  `comentario_usuario` TEXT DEFAULT NULL,
+  `avaliacao` ENUM('like', 'dislike') NOT NULL,
+  `timestamp` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`, `timestamp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+

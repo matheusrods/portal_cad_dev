@@ -293,3 +293,57 @@ body {
         max-height: 70% !important;
     }
 }
+
+.feedback-container {
+    margin-top: 12px;
+    margin-left: 48px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feedback-container span {
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+}
+
+.feedback-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.feedback-container button i {
+    color: #777;
+    transition: color 0.2s ease;
+}
+
+/* Hover verde e vermelho */
+.feedback-container button:hover i.fa-thumbs-up {
+    color: #28a745;
+}
+
+.feedback-container button:hover i.fa-thumbs-down {
+    color: #dc3545;
+}
+
+/* Efeito de clique / seleção */
+.text-like i {
+    color: #28a745 !important;
+}
+
+.text-dislike i {
+    color: #dc3545 !important;
+}

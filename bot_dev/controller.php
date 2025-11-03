@@ -46,6 +46,7 @@ Class funcoes {
         $query = "
             SELECT contexto FROM logsBotsCad.logBotDev WHERE usuario = '".$mat."' AND CURDATE() = date(timestamp) and ativo = 1 ORDER BY timestamp DESC LIMIT 1;
         ";
+        $retorno = array();
         try{
             $execQuery = $db->DbGetAll($query);
             if($execQuery){
@@ -66,6 +67,8 @@ Class funcoes {
         $query = "
             UPDATE `logsBotsCad`.`logBotDev` SET `ativo` = '0' WHERE (`idConversa` = '".$idConversa."');
         ";
+        $retorno = array();
+        
         try{
             $execQuery = $db->DbGetAll($query);
             if($execQuery){
@@ -100,12 +103,12 @@ Class funcoes {
 }
 
 $class = new funcoes();
-$request = $_REQUEST["request"];
-$idConversa = $_POST["idConversa"];
-$idUsuario = $_POST["idUsuario"];
-$inputUsuario = $_POST["inputUsuario"];
-$respostaBot = $_POST["respostaBot"];
-$contextoConversa = $_POST["contextoConversa"];
+$request = $_REQUEST["request"] ?? null;
+$idConversa = $_POST["idConversa"] ?? null;
+$idUsuario = $_POST["idUsuario"] ?? null;
+$inputUsuario = $_POST["inputUsuario"] ?? null;
+$respostaBot = $_POST["respostaBot"] ?? null;
+$contextoConversa = $_POST["contextoConversa"] ?? null;
 
 if(!isset($_SESSION)){
     session_start();

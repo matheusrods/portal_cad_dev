@@ -3,13 +3,20 @@
 // ini_set("display_errors", E_ALL);
 session_start();
 
-if($_SESSION["nome"] == ""){
-    header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/bot_dev/#login/");
-}
-
-
-include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
+// include_once $_SERVER["DOCUMENT_ROOT"]."/lib/login/login.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+
+// if($_SESSION["nome"] == ""){
+//     header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=https://cad.bb.com.br/bot_dev/#login/");
+// }
+
+$_SESSION['matricula'] ='F0285739';
+$_SESSION['nome'] = 'Albert Ferreira Rosa';
+$_SESSION['cargo'] = 'Analista Tec Pleno';
+$_SESSION['MAIL'] = 'albert.rosa@bb.com.br';
+$_SESSION['dependencia'] = '1901';
+$_SESSION['ip'] = '10.10.10.10';
 
 $class = new gravaLogAcesso();
 $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome'], $_SESSION['cargo'], $_SESSION['MAIL'], $_SESSION['dependencia'], 'bot_dev', $_SESSION['ip']);
@@ -42,7 +49,8 @@ if((date("Y-m-d")) <= "2024-12-31"){
         <script type="text/javascript" src="../lib/js/bootstrap.esm.min.js"></script>
         <script type="text/javascript" src="../lib/js/bootstrap.js"></script>
         <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
-        
+        <link rel="stylesheet" href="/Utils//modal-feedback/css/modal-feedback.css">
+
         <!-- JS da página -->
         <script type="text/javascript" src="index.js"></script>
 

@@ -1,10 +1,13 @@
 <?php
-    header('Access-Control-Allow-Origin: https://cad.bb.com.br');
+
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+    
+    // header('Access-Control-Allow-Origin: ' . getBaseUrl());
 
     $divLuzesNatal = '';
 
     if((date("Y-m-d")) <= "2024-12-31"){
-        $divLuzesNatal = '<div class="natal" style="background-image: url(https://cad.bb.com.br/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -1rem -5rem;"></div>';
+        $divLuzesNatal = '<div class="natal" style="background-image: url(' . getBaseUrl() . '/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -1rem -5rem;"></div>';
     }
 ?>
 
@@ -19,11 +22,17 @@
     <script type="text/javascript" src="../../lib/js/jquery.3.7.1.js"></script>
     <script type="text/javascript" src="../../lib/js/jquery.3.7.1.min.js"></script>
     <script type="text/javascript" src="../../lib/js/jquery-ui.1.13.3.js"></script>
+    <script type="text/javascript" src="/Utils/js/toastFeedback.js"></script>
 </head>
 <body>
     
     <?php echo $divLuzesNatal; ?>
     <div id="chatbot-container-master" style="position: relative; z-index: 5;"></div>
+
+    <script>
+        const BASE_URL = "<?= getBaseUrl(); ?>";
+        const AMBIENTE = "<?= getAmbiente(); ?>";
+    </script>
     
     <script>
         fetch('chatbot/chatbot.php')
@@ -37,5 +46,8 @@
                 document.body.appendChild(script);
             });
     </script>
+
+    <!-- Modal de Feedback (Dislike) -->
+    <?php include_once "../Utils/modal-feedback/modal-feedback.html"; ?>
 </body>
 </html>

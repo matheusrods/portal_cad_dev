@@ -1,18 +1,21 @@
 <?php 
     session_start();
+
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
     $nomeUsuario = trim(strtok(ucfirst(strtolower($_SESSION['nome']))," "));
 
-    $background = "https://cad.desenv.bb.com.br/caramelo_v2/img/backgroundCar.png";
-    $imgCabecalho = "https://cad.desenv.bb.com.br/caramelo_v2/img/carameloTitulo.png";
+    $baseUrl = getBaseUrl();
+    $background = $baseUrl . "/caramelo_v2/img/backgroundCar.png";
+    $imgCabecalho = $baseUrl . "/caramelo_v2/img/carameloTitulo.png";
     $estiloImgCabecalho = 'style="width: 50px; height: 50px;"';
-    $caminhoImgCapa = "https://cad.bb.com.br/bot_dev/img/carameloDev.png";
+    $caminhoImgCapa = $baseUrl ."/bot_dev/img/carameloDev.png";
     $estiloJanelaChat = '';
 
     if((date("Y-m-d")) <= "2024-12-31"){
-        $background = "https://cad.desenv.bb.com.br/caramelo_v2/img/backgroundCarNatal.png";
-        $imgCabecalho = "https://cad.desenv.bb.com.br/caramelo_v2/img/carameloTituloNatal.png";
+        $background = $baseUrl . "/caramelo_v2/img/backgroundCarNatal.png";
+        $imgCabecalho = $baseUrl . "/caramelo_v2/img/carameloTituloNatal.png";
         $estiloImgCabecalho = 'style="width: 50px; height: 60px;"';
-        $caminhoImgCapa = "https://cad.bb.com.br/bot_dev/img/carameloDevNatal.png";
+        $caminhoImgCapa = $baseUrl . "/bot_dev/img/carameloDevNatal.png";
         $estiloJanelaChat = "style = 'top: 4% !important;'";
     }
 ?>
@@ -51,7 +54,7 @@
             <div class="input" style="width: 100%; display: inline-flex; flex-direction: column">
                 <textarea type="text" id="chat-input" placeholder="Digite sua mensagem..."></textarea>
                 <div class="botaoEnviar">
-                    <button id="send-message"><span>Enviar</span><img src="https://cad.desenv.bb.com.br/tom_v2/img/iconeButton.png"></button>
+                    <button id="send-message"><span>Enviar</span><img src="<?php echo $baseUrl; ?>/tom_v2/img/iconeButton.png"></button>
                 </div>
             </div>
         </div>
