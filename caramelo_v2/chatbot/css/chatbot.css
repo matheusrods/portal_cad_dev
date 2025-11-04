@@ -1,14 +1,56 @@
 /* Fonte BancoDoBrasilTextos */
-@font-face { font-family: BancoDoBrasilTextos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Regular.ttf'); } 
-@font-face { font-family: BancoDoBrasilTextos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Bold.ttf');}
-@font-face { font-family: BancoDoBrasilTextos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Italic.ttf');}
-@font-face { font-family: BancoDoBrasilTextos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-BoldIt.ttf');}
+@font-face {
+    font-family: BancoDoBrasilTextos;
+    font-style: normal;
+    font-weight: normal;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Regular.ttf');
+}
+
+@font-face {
+    font-family: BancoDoBrasilTextos;
+    font-weight: bold;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Bold.ttf');
+}
+
+@font-face {
+    font-family: BancoDoBrasilTextos;
+    font-style: italic;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-Italic.ttf');
+}
+
+@font-face {
+    font-family: BancoDoBrasilTextos;
+    font-style: italic;
+    font-weight: bold;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTextos-BoldIt.ttf');
+}
 
 /* Fonte BancoDoBrasilTitulos */
-@font-face { font-family: BancoDoBrasilTitulos; font-style: normal; font-weight: normal; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Regular.ttf'); } 
-@font-face { font-family: BancoDoBrasilTitulos; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Bold.ttf');}
-@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Italic.ttf');}
-@font-face { font-family: BancoDoBrasilTitulos; font-style: italic; font-weight: bold; src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-BoldIt.ttf');}
+@font-face {
+    font-family: BancoDoBrasilTitulos;
+    font-style: normal;
+    font-weight: normal;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Regular.ttf');
+}
+
+@font-face {
+    font-family: BancoDoBrasilTitulos;
+    font-weight: bold;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Bold.ttf');
+}
+
+@font-face {
+    font-family: BancoDoBrasilTitulos;
+    font-style: italic;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-Italic.ttf');
+}
+
+@font-face {
+    font-family: BancoDoBrasilTitulos;
+    font-style: italic;
+    font-weight: bold;
+    src: url('/lib/fonts/BancoDoBrasil/BancoDoBrasilTitulos-BoldIt.ttf');
+}
 
 body {
     font-family: BancoDoBrasilTextos;;
@@ -111,11 +153,28 @@ body {
     letter-spacing: -0.112px;
 }
 
+#btnFeedback {
+    background: #fff;
+    color: #465EFE;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: -314px;
+    border: 1px solid #9FACFF;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.112px;
+}
+
 #chat-content {
     padding: 10px;
     flex-grow: 1;
     overflow-y: auto;
-    background-color: #E5F5FF ;
+    background-color: #E5F5FF;
     border-bottom: 0px solid #ccc;
 }
 
@@ -144,15 +203,15 @@ body {
     flex-grow: 1;
     background-color: #fefefe;
     padding: 10px;
-    border: none; 
-    border-radius: 20px;   
+    border: none;
+    border-radius: 20px;
     margin-right: 10px;
     font-size: 14px;
     outline: none;
     box-shadow: none;
     resize: none;
     /* impede que o próprio usuário altere o tamanho do textarea */
-    height:48px;
+    height: 48px;
     max-height: 300px;
     overflow-y: auto !important;
 }
@@ -294,20 +353,27 @@ body {
     }
 }
 
+.feedback-wrapper {
+    width: 100%;
+    display: block;
+    clear: both;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
 .feedback-container {
-    margin-top: 12px;
-    margin-left: 48px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: #666;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 14px;
 }
 
 .feedback-container span {
-    font-size: 13px;
-    color: #888;
+    margin-right: 4px;
+    margin-top: 11px;
+    color: #777;
     font-weight: 400;
 }
 
@@ -316,13 +382,10 @@ body {
     border: none;
     cursor: pointer;
     font-size: 18px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: transform 0.15s ease, color 0.2s ease;
 }
 
 .feedback-container button i {
@@ -330,20 +393,10 @@ body {
     transition: color 0.2s ease;
 }
 
-/* Hover verde e vermelho */
 .feedback-container button:hover i.fa-thumbs-up {
     color: #28a745;
 }
 
 .feedback-container button:hover i.fa-thumbs-down {
     color: #dc3545;
-}
-
-/* Efeito de clique / seleção */
-.text-like i {
-    color: #28a745 !important;
-}
-
-.text-dislike i {
-    color: #dc3545 !important;
 }

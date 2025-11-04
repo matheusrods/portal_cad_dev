@@ -143,10 +143,11 @@ DROP TABLE IF EXISTS `logFeedbackTom`;
 
 CREATE TABLE `logFeedbackTom` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `mensagem_bot` TEXT NOT NULL,
+  `mensagem_bot` TEXT NULL,
   `matricula` VARCHAR(8) DEFAULT NULL,
   `comentario_usuario` TEXT DEFAULT NULL,
-  `avaliacao` ENUM('like', 'dislike') NOT NULL,
+  `avaliacao` ENUM('like', 'dislike') DEFAULT NULL,
+  `nota` TINYINT UNSIGNED DEFAULT NULL CHECK (`nota` BETWEEN 1 AND 5),
   `timestamp` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`, `timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -156,12 +157,13 @@ DROP TABLE IF EXISTS `logFeedbackCaramelo`;
 
 CREATE TABLE `logFeedbackCaramelo` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `mensagem_bot` TEXT NOT NULL,
+  `mensagem_bot` TEXT NULL,
   `matricula` VARCHAR(8) DEFAULT NULL,
   `comentario_usuario` TEXT DEFAULT NULL,
-  `avaliacao` ENUM('like', 'dislike') NOT NULL,
-  `timestamp` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`, `timestamp`)
+  `avaliacao` ENUM('like', 'dislike') DEFAULT NULL,
+  `nota` TINYINT UNSIGNED DEFAULT NULL CHECK (`nota` BETWEEN 1 AND 5),
+  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 

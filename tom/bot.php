@@ -15,8 +15,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Minha Página</title> -->
+
     <link rel="stylesheet" href="chatbot/css/chatbot.css">
+    <link rel="stylesheet" href="/Utils/modal-feedback/css/modal-feedback.css">
+    <link rel="stylesheet" href="/Utils/modal-feedback/css/feedback-nota.css">
+
     <!-- jQuery -->
     <script type="text/javascript" src="../../lib/js/jquery.3.7.1.js"></script>
     <script type="text/javascript" src="../../lib/js/jquery.3.7.1.min.js"></script>
@@ -48,5 +51,13 @@
 
     <!-- Modal de Feedback (Dislike) -->
     <?php include_once "../Utils/modal-feedback/modal-feedback.html"; ?>
+    <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/modal-feedback/modal-feedback-nota.html"; ?>
+
+    <script type="module">
+        import { initFeedbackNota } from '../Utils/modal-feedback/js/modal-feedback-nota.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initFeedbackNota('#modal-feedback-nota', '#btnFeedback', 'Tom');
+        });
+    </script>
 </body>
 </html>

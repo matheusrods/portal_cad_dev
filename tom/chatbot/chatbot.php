@@ -26,12 +26,8 @@
         <div id="chat-header">
             <img src="<?php echo getBaseUrl(); ?>/tom/img/gatoTomChat.png" alt="Imagem da mascote Bot ao lado do cabeçalho" style="width: 50px; height: 50px;">
             <h2>Assistente Virtual do CAD</h2>
-            <button id="btnLimparContexto" attr-idConversa="<?php echo $idConversa;?>" attr-nomeUsuario="<?php echo $nomeUsuario; ?>">
-                Deixe seu feedback 🌟
-            </button>
-            <button id="btnLimparContexto" attr-idConversa="<?php echo $idConversa;?>" attr-nomeUsuario="<?php echo $nomeUsuario; ?>">
-                Limpar conversa
-            </button>
+            <button id="btnFeedback" class="btn-feedback">Deixe seu feedback ✨</button>
+            <button id="btnLimparContexto" attr-idConversa="<?php echo $idConversa;?>" attr-nomeUsuario="<?php echo $nomeUsuario; ?>">Limpar conversa</button>
         </div>
         <div id="chat-content">
             <div id="chat-messages"></div>

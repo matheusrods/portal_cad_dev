@@ -149,23 +149,26 @@ class funcoes
         return $caminhoArquivo;
     }
 
-    public function gravaFeedbackTom($mensagem_bot, $comentario_usuario, $avaliacao)
+    public function gravaFeedbackTom($mensagem_bot, $comentario_usuario, $avaliacao, $nota = null)
     {
         $mat = $_SESSION['matricula'];
         $db = new Database('logsBotsCad');
 
         $mensagemTratada = addslashes($mensagem_bot);
         $comentarioTratado = addslashes($comentario_usuario);
-        $avaliacaoTratada = addslashes($avaliacao);
+        $avaliacaoTratada = (empty($avaliacao) || $avaliacao === 'nota') ? null : addslashes($avaliacao);
+        $avaliacaoSql = $avaliacaoTratada !== null ? "'$avaliacaoTratada'" : "NULL";
+        $notaSql = (!empty($nota) && is_numeric($nota)) ? "'$nota'" : "NULL";
 
         $query = "
             INSERT INTO `logsBotsCad`.`logFeedbackTom`
-            (`mensagem_bot`, `matricula`, `comentario_usuario`, `avaliacao`, `timestamp`)
+            (`mensagem_bot`, `matricula`, `comentario_usuario`, `avaliacao`, `nota`,`timestamp`)
             VALUES (
                 '" . $mensagemTratada . "',
                 '" . $mat . "',
                 '" . $comentarioTratado . "',
-                '" . $avaliacaoTratada . "',
+                $avaliacaoSql,
+                $notaSql,
                 current_timestamp()
             );
         ";
@@ -231,12 +234,13 @@ switch ($request) {
         echo json_encode($retorno);
         break;
 
-    case "gravaFeedbackTom":
+    case "gravaFeedback":
         $mensagem_bot = $_POST['mensagem_bot'] ?? null;
         $comentario_usuario = $_POST['comentario_usuario'] ?? null;
         $avaliacao = $_POST['avaliacao'] ?? null;
+        $nota = $_POST['nota'] ?? null;
 
-        $retorno = $class->gravaFeedbackTom($mensagem_bot, $comentario_usuario, $avaliacao);
+        $retorno = $class->gravaFeedbackTom($mensagem_bot, $comentario_usuario, $avaliacao, $nota);
         echo json_encode($retorno);
         break;
 }

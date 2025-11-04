@@ -103,23 +103,26 @@ Class funcoes {
         return $caminhoArquivo;
     }
 
-    public function gravaFeedbackCaramelo($mensagem_bot, $comentario_usuario, $avaliacao)
+    public function gravaFeedbackCaramelo($mensagem_bot, $comentario_usuario, $avaliacao, $nota = null)
     {
         $mat = $_SESSION['matricula'];
         $db = new Database('logsBotsCad');
 
         $mensagemTratada = addslashes($mensagem_bot);
         $comentarioTratado = addslashes($comentario_usuario);
-        $avaliacaoTratada = addslashes($avaliacao);
+        $avaliacaoTratada = (empty($avaliacao) || $avaliacao === 'nota') ? null : addslashes($avaliacao);
+        $avaliacaoSql = $avaliacaoTratada !== null ? "'$avaliacaoTratada'" : "NULL";
+        $notaSql = (!empty($nota) && is_numeric($nota)) ? "'$nota'" : "NULL";
 
         $query = "
             INSERT INTO `logsBotsCad`.`logFeedbackCaramelo`
-            (`mensagem_bot`, `matricula`, `comentario_usuario`, `avaliacao`, `timestamp`)
+            (`mensagem_bot`, `matricula`, `comentario_usuario`, `avaliacao`, `nota`,`timestamp`)
             VALUES (
                 '" . $mensagemTratada . "',
                 '" . $mat . "',
                 '" . $comentarioTratado . "',
-                '" . $avaliacaoTratada . "',
+                $avaliacaoSql,
+                $notaSql,
                 current_timestamp()
             );
         ";
@@ -131,7 +134,7 @@ Class funcoes {
             }
         } catch (Exception $e) {
             $informacoesErro = "Erro: " . $e . "\n\n\$query: " . $query;
-            $arquivoLog = $this->geraLogExcecao("Log Bot Tom", "gravaFeedbackTom", $informacoesErro, $mat);
+            $arquivoLog = $this->geraLogExcecao("Log Bot Caramelo", "gravaFeedbackCaramelo", $informacoesErro, $mat);
             $retorno = [
                 'status' => 'Erro',
                 'mensagem' => "Erro ao gravar feedback. Arquivo: " . $arquivoLog . " - Matricula: " . $mat
@@ -171,12 +174,13 @@ switch($request){
         echo json_encode($retorno);
     break;
 
-    case "gravaFeedbackCaramelo":
+    case "gravaFeedback":
         $mensagem_bot = $_POST['mensagem_bot'] ?? null;
         $comentario_usuario = $_POST['comentario_usuario'] ?? null;
         $avaliacao = $_POST['avaliacao'] ?? null;
+        $nota = $_POST['nota'] ?? null;
 
-        $retorno = $class->gravaFeedbackCaramelo($mensagem_bot, $comentario_usuario, $avaliacao);
+        $retorno = $class->gravaFeedbackCaramelo($mensagem_bot, $comentario_usuario, $avaliacao, $nota);
         echo json_encode($retorno);
         break;
 }

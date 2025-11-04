@@ -67,6 +67,7 @@ if((date("Y-m-d")) <= "2024-12-31"){
 
         <!-- CSS da página -->
         <link href="index.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/all.css"/>
     </head>
 
     <body style="background-image: url('img/BackgroundTom.png'); background-size: 100%; max-width: 100%; overflow-x: hidden;">

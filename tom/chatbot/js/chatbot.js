@@ -202,30 +202,16 @@ $(document).ready(function () {
                 verificarElemento(60000);
                 inputElement.value = '';
 
-                // Enviar a mensagem para a API Produção
-                // fetch('https://acs-assist-bot-cad-guia.nia.servicos.bb.com.br/acs/llms/agent', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Accept': 'application/json',
-                //         'Content-Type': 'application/json'
-                //     },
-                //     mode: 'cors',
-                //     body: jsonBodyParsed
-                // })
-                // // .then(response => response.json())
-
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 segundos
 
-                // MOCK LOCAL — substitui o fetch real quando não estiver na rede BB
-                if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
-                    console.log('🔧 Mockando resposta da API Tom...');
-
+                //MOCK 
+                // if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
                     setTimeout(() => {
+
                         $('.message.bot').last().remove();
 
-                        // Monta resposta simulada
-                        const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                        const hora = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
                         const respBotMock = `
                             Aqui está uma sugestão pra você:<br><br>
                             "Os cartões do BB são pensados pra facilitar sua vida e oferecer vantagens incríveis.
@@ -236,99 +222,13 @@ $(document).ready(function () {
                             <span class="hora-msg" style="float: right; font-size: 12px; color: #777;">${hora}</span>
                         `;
 
-                        // Bloco de feedback
-                        const feedbackHtml = `
-                            <div class="message bot" style="position: relative;">
-                                <strong>Tom:</strong> ${respBotMock}
-                                <div class="feedback-container" style="margin-top: 10px; font-size: 14px; color: #555;">
-                                    <span>Essa resposta te ajudou ?</span>
-                                    <button class="feedback-like" title="Sim" style="background:none;border:none;cursor:pointer;margin-left:8px;font-size:16px;">👍</button>
-                                    <button class="feedback-dislike" title="Não" style="background:none;border:none;cursor:pointer;margin-left:4px;font-size:16px;">👎</button>
-                                </div>
-                            </div>
-                        `;
-
-                        $('#chat-content').append(feedbackHtml);
-                        $('#chat-content').animate({ scrollTop: $('#chat-content')[0].scrollHeight }, 'fast');
-
-                        // --- Eventos dos botões de feedback ---
-                        $(document)
-                            .off('click', '.feedback-like, .feedback-dislike')
-                            .on('click', '.feedback-like, .feedback-dislike', function () {
-                                const isLike = $(this).hasClass('feedback-like');
-                                const mensagemBot = respBotMock;
-
-                                if (isLike) {
-                                    mostrarToastFeedback(
-                                        "Obrigado pelo seu feedback 😊",
-                                        "Fico feliz que a resposta te ajudou! Estou aqui para o que precisar"
-                                    );
-
-                                    // grava like no banco
-                                    gravaFeedbackTom(mensagemBot, '', 'like');
-                                } else {
-                                    // 👎 Abre a modal de feedback
-                                    $('#modal-feedback').removeClass('hidden');
-                                    $('#feedback-text').val('');
-                                    $('.char-count').text('500 caracteres restantes');
-                                }
-                            });
-
-                        // --- Eventos da modal ---
-                        // Fechar (X)
-                        $(document)
-                            .off('click', '.close-modal-feedback')
-                            .on('click', '.close-modal-feedback', function () {
-                                $('#modal-feedback').addClass('hidden');
-                                console.log('🔒 Modal fechada (sem envio)');
-                            });
-
-                        // Pular (grava dislike sem comentário)
-                        $(document)
-                            .off('click', '.btn-skip')
-                            .on('click', '.btn-skip', function () {
-                                const mensagemBot = respBotMock;
-                                $('#modal-feedback').addClass('hidden');
-
-                                gravaFeedbackTom(mensagemBot, '', 'dislike');
-                                console.log('🟡 Feedback enviado via botão PULAR');
-
-                                mostrarToastFeedback(
-                                    "Obrigado pelo seu feedback 😊",
-                                    "Vamos analisar para melhorar a sua experiência ao utilizar o Tom"
-                                );
-                            });
-
-                        // Atualiza contador de caracteres
-                        $(document)
-                            .off('input', '#feedback-text')
-                            .on('input', '#feedback-text', function () {
-                                const restante = 500 - $(this).val().length;
-                                $('.char-count').text(`${restante} caracteres restantes`);
-                            });
-
-                        // Enviar feedback (dislike com comentário)
-                        $(document)
-                            .off('click', '.btn-send')
-                            .on('click', '.btn-send', function () {
-                                const comentario = $('#feedback-text').val().trim();
-                                const mensagemBot = respBotMock;
-
-                                $('#modal-feedback').addClass('hidden');
-
-                                gravaFeedbackTom(mensagemBot, comentario, 'dislike');
-                                console.log('🟢 Feedback enviado com comentário:', comentario);
-
-                                mostrarToastFeedback(
-                                    "Obrigado pelo seu feedback 😊",
-                                    "Vamos analisar para melhorar a sua experiência ao utilizar o Tom"
-                                );
-                            });
+                        exibirFeedbackTom(respBotMock);
 
                     }, 1200);
 
                     return;
-                }
+                // }
+                //FIM MOCK
 
 
                 fetch('https://acs-assist-bot-cad-guia.nia.servicos.bb.com.br/acs/llms/agent', {
@@ -412,6 +312,101 @@ $(document).ready(function () {
             }
         });
     }
+
+    function exibirFeedbackTom(mensagemBot) {
+    console.log('💬 exibirFeedbackTom chamado com:', mensagemBot?.substring(0, 60));
+
+    // Cria a mensagem do bot
+    const messageHtml = `
+        <div class="message bot" style="position: relative;">
+            <strong>Tom:</strong> ${mensagemBot}
+        </div>
+    `;
+
+    // Cria o bloco de feedback (fora da bolha)
+    const feedbackHtml = `
+        <div class="feedback-container">
+            <span>Essa resposta te ajudou?</span>
+            <button class="feedback-like" title="Sim">
+                <i class="fa-regular fa-thumbs-up"></i>
+            </button>
+            <button class="feedback-dislike" title="Não">
+                <i class="fa-regular fa-thumbs-down"></i>
+            </button>
+        </div>
+    `;
+
+    // Adiciona a mensagem no chat
+    $('#chat-content').append(messageHtml);
+
+    const $ultimaMensagem = $('#chat-content .message.bot').last();
+    if ($ultimaMensagem.length) {
+        $ultimaMensagem.after(`<div class="feedback-wrapper">${feedbackHtml}</div>`);
+    }
+
+    // Faz o chat rolar até o final
+    $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
+
+    // --- Eventos dos botões de feedback ---
+    $(document)
+        .off('click', '.feedback-like, .feedback-dislike')
+        .on('click', '.feedback-like, .feedback-dislike', function () {
+            const isLike = $(this).hasClass('feedback-like');
+
+            if (isLike) {
+                $(this).find('i').removeClass('fa-regular').addClass('fa-solid text-like');
+                mostrarToastFeedback(
+                    "Obrigado pelo seu feedback 😊",
+                    "Fico feliz que a resposta te ajudou! Estou aqui para o que precisar  "
+                );
+                gravaFeedback(mensagemBot, '', 'like');
+            } else {
+                $(this).find('i').removeClass('fa-regular').addClass('fa-solid text-dislike');
+                $('#modal-feedback').removeClass('hidden');
+                $('#feedback-text').val('');
+                $('.char-count').text('500 caracteres restantes');
+            }
+        });
+
+    // --- Fechar e Pular ---
+    $(document)
+        .off('click', '.close-modal-feedback')
+        .on('click', '.close-modal-feedback', function () {
+            $('#modal-feedback').addClass('hidden');
+        });
+
+    $(document)
+        .off('click', '.btn-skip')
+        .on('click', '.btn-skip', function () {
+            $('#modal-feedback').addClass('hidden');
+            gravaFeedback(mensagemBot, '', 'dislike');
+            mostrarToastFeedback(
+                "Obrigado pelo seu feedback 😊",
+                "Vamos usar seu feedback para melhorar ainda mais o Tom"
+            );
+        });
+
+    // --- Atualiza contador ---
+    $(document)
+        .off('input', '#feedback-text')
+        .on('input', '#feedback-text', function () {
+            const restante = 500 - $(this).val().length;
+            $('.char-count').text(`${restante} caracteres restantes`);
+        });
+
+    // --- Enviar comentário ---
+    $(document)
+        .off('click', '.btn-send')
+        .on('click', '.btn-send', function () {
+            const comentario = $('#feedback-text').val().trim();
+            $('#modal-feedback').addClass('hidden');
+            gravaFeedback(mensagemBot, comentario, 'dislike');
+            mostrarToastFeedback(
+                "Obrigado pelo seu feedback 😊",
+                "Vamos usar seu feedback para melhorar ainda mais o Tom"
+            );
+        });
+}
 
     function enviarMidiaMensagem(dadosBase64) {
         var caminhoController = `${BASE_URL}/tom/controller.php`;
@@ -1118,27 +1113,33 @@ $(document).ready(function () {
     });
 });
 
-window.gravaFeedbackTom = function (mensagemBot, comentarioUsuario, avaliacao) {
+window.gravaFeedback = function (mensagemBot, comentarioUsuario, avaliacao, rating = null) {
     var caminhoController = `${BASE_URL}/tom/controller.php`;
     var mensagemBotTratada = String(mensagemBot || '').replace(/\\+/g, '\\');
     var comentarioUsuarioTratado = String(comentarioUsuario || '').replace(/\\+/g, '\\');
+
+    var dados = {
+        request: 'gravaFeedback',
+        mensagem_bot: mensagemBotTratada,
+        comentario_usuario: comentarioUsuarioTratado,
+        avaliacao: avaliacao || null
+    };
+
+    if (avaliacao === '' && typeof rating !== 'undefined' && rating > 0) {
+        dados.nota = rating;
+    }
 
     $.ajax({
         async: true,
         url: caminhoController,
         type: "POST",
         dataType: "JSON",
-        data: {
-            request: 'gravaFeedbackTom',
-            mensagem_bot: mensagemBotTratada,
-            comentario_usuario: comentarioUsuarioTratado,
-            avaliacao: avaliacao
-        },
+        data: dados,
         success: function (retorno) {
-            console.log('✅ Feedback gravado:', retorno);
+            console.log('✅ Feedback Tom gravado:', retorno);
         },
         error: function (xhr, status, error) {
-            console.error('❌ Erro ao gravar feedback:', error);
+            console.error('❌ Erro ao gravar feedback Tom:', error);
         }
     });
 };
