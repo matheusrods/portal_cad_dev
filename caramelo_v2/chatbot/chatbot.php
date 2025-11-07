@@ -27,7 +27,7 @@ if ((date("Y-m-d")) <= "2024-12-31") {
             <img src="<?php echo $imgCabecalho; ?>"
                  alt="Imagem da mascote Caramelo ao lado do cabeçalho" <?php echo $estiloImgCabecalho; ?> >
             <h2>Assistente Virtual do CAD</h2>
-            <button id="btnFeedback" class="btn-feedback">Deixe seu feedback ✨</button>
+            <button id="btnFeedback" class="btn-feedback">Deixe seu feedback 🌟</button>
             <button id="btnLimparContexto" attr-idConversa="" attr-nomeUsuario="<?php echo $nomeUsuario; ?>">Limpar
                 conversa
             </button>

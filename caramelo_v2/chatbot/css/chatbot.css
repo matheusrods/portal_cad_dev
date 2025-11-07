@@ -170,6 +170,16 @@ body {
     letter-spacing: -0.112px;
 }
 
+#btnFeedback:hover {
+    Background: #DFE3FF;
+    Stroke: #465EFE;
+}
+
+#btnLimparContexto:hover {
+    Background: #DFE3FF;
+    Stroke: #465EFE;
+}
+
 #chat-content {
     padding: 10px;
     flex-grow: 1;
@@ -399,4 +409,40 @@ body {
 
 .feedback-container button:hover i.fa-thumbs-down {
     color: #dc3545;
+}
+
+
+.feedback-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, color 0.2s ease, background-color 0.2s ease;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.feedback-container button i {
+    color: #777;
+    transition: color 0.2s ease;
+}
+
+/* 👍 Hover */
+.feedback-container button:hover i.fa-thumbs-up {
+    color: #28a745;
+}
+.feedback-container button:hover {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+/* 👎 Hover */
+.feedback-container button:hover i.fa-thumbs-down {
+    color: #dc3545;
+}
+.feedback-container button:hover.feedback-dislike {
+    background-color: rgba(220, 53, 69, 0.1);
 }

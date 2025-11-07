@@ -30,8 +30,12 @@ function mostrarToastFeedback(titulo, mensagem) {
                 <path d="M8 0C3.5816 0 0 3.5816 0 8C0 12.4184 3.5816 16 8 16C12.4184 16 16 12.4184 16 8C16 3.5816 12.4176 0 8 0ZM7.4 12.6L3.4 9.6L4.6 8L7 9.8L11.2 4.2L12.8 5.4L7.4 12.6Z" fill="#0C8A00"/>
                 </svg></div>
                 <div style="flex: 1;">
-                    <strong>${titulo}</strong><br>
-                    <span>${mensagem}</span>
+                    <div style="font-weight: bold; font-size: 15px; margin-bottom: 4px;">
+                        ${titulo}
+                    </div>
+                    <div style="font-size: 14px; line-height: 1.4;">
+                        ${mensagem}
+                    </div>
                 </div>
                 <button class="close-toast"
                     style="

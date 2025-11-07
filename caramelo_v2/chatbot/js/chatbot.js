@@ -1,45 +1,25 @@
-// Abrir a janela do chat
 window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById('divChamaBot').addEventListener('click', function () {
         document.getElementById('chat-window').classList.toggle('hidden');
     });
 });
 
-// // Fechar a janela do chat
-// document.getElementById('close-chat').addEventListener('click', function() {
-//     document.getElementById('chat-window').classList.add('hidden');
-// });
-
-// Enviar a mensagem ao clicar no botão
 document.getElementById('send-message').addEventListener('click', function (e) {
     enviarMensagem();
     $("textarea").css("height", "48px");
 });
 
-// // Enviar a mensagem ao pressionar Enter
-// document.getElementById('chat-input').addEventListener('keypress', function(e) {
-//     if (e.key === 'Enter') {
-//         enviarMensagem();
-//         $("textarea").css("height","48px");
-//     }
-// });
-
-// Função para que o textarea onde é digitada a pergunta seja automaticamente aumentado quando se digita um texto maior que a altura dele
 $("#chat-input").on("input", function () {
     this.style.height = "auto";
     this.style.height = this.scrollHeight + "px";
-
-// Contador de caracteres
     var maxLength = 2000;
     var length = $(this).val().length;
     var restante = maxLength - length;
-
     if (restante == maxLength) {
         $(this).attr('attr-conteudoTexto', '0');
     } else {
         $(this).attr('attr-conteudoTexto', '1');
     }
-
     $('#contadorInputCaramelo').text(restante + ' caracteres restantes');
     if (restante < 0) {
         $(this).val($(this).val().substring(0, maxLength));
@@ -47,7 +27,6 @@ $("#chat-input").on("input", function () {
     }
 });
 
-// Botão para limpeza de conversa e contexto
 $('#btnLimparContexto').on('click', function () {
     var idConversa = $("#btnLimparContexto").attr('attr-idConversa');
     if (idConversa.length > 0) {
@@ -55,7 +34,6 @@ $('#btnLimparContexto').on('click', function () {
     }
 });
 
-// Função para que o textarea onde é digitada a pergunta seja automaticamente aumentado quando se digita um texto maior que a altura dele
 $("textarea").each(function () {
     this.style.height = this.scrollHeight + "px";
     this.style.overflowY = "hidden";
@@ -64,62 +42,43 @@ $("textarea").each(function () {
     this.style.height = this.scrollHeight + "px";
 });
 
-// Função para enviar a mensagem
 function enviarMensagem() {
     var caminhoController = `${BASE_URL}/bot_dev/controller.php`;
     const inputElement = document.getElementById('chat-input');
     var message = inputElement.value.trim();
-    // message = message.replace(/(?:\r\n|\r|\n)/g, '<br>');
     message = message.replace(/"/g, "'");
-
     var contexto = '';
     var contextoNovo = '';
     var contextoTratado = '';
-
     if (message === '') {
         return;
     }
-
     $.ajax({
         aSync: false,
         url: caminhoController,
-        data: {
-            request: 'consultarContexto'
-        },
+        data: { request: 'consultarContexto' },
         type: "GET",
         dataType: "JSON",
         dataSrc: "",
         success: function (retorno) {
-
-
             if ((retorno === null) || (retorno.length == 0)) {
-                // console.log('Sem contexto');
                 contextoTratado = '{}';
             } else {
                 contexto = JSON.stringify(retorno);
-                // console.log('contexto: '+contexto);
                 contextoNovo = (contexto.replace(/\\"/g, '"'));
                 contextoNovo = (contextoNovo.replace(/\\"/g, '\"'));
-
-                // console.log('contextoNovo: '+contextoNovo);
                 contextoTratado = contextoNovo.substring(1, contextoNovo.length - 1);
-                // console.log('contexto tratado final: '+contextoTratado);
             }
-
-            // const jsonBody = '{"data":{"input": "'+message+'", "context": {}}}';
             const jsonBody = '{"data":{"input": "' + message + '", "context": ' + contextoTratado + '}}';
-            // console.log('jsonBody: '+jsonBody);
             const jsonString = JSON.stringify(jsonBody);
             const jsonBodyParsed = JSON.parse(jsonString);
-            // console.log('jsonBodyParsed >> '+jsonBodyParsed);
             exibirMensagem('Você', message, 'user');
             inputElement.value = '';
 
-            //MOCK 
-            // if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
-                setTimeout(() => {
-                    const hora = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
-                    const respBotMock = `
+            //mock
+            setTimeout(() => {
+                const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                const respBotMock = `
                         Aqui está uma sugestão pra você:<br><br>
                         "Os cartões do BB são pensados pra facilitar sua vida e oferecer vantagens incríveis.
                         Com eles, você pode fazer compras no Brasil e no exterior, parcelar suas despesas e ainda
@@ -128,22 +87,12 @@ function enviarMensagem() {
                         Esta mensagem é uma sugestão. Antes de utilizar, analise o conteúdo 😉
                         <span class="hora-msg" style="float: right; font-size: 12px; color: #777;">${hora}</span>
                     `;
+                exibirFeedbackCaramelo(respBotMock);
+            }, 1200);
+            return;
+            //fim mock
 
-                    exibirFeedbackCaramelo(respBotMock);
-
-                }, 1200);
-
-                return;
-            // }
-            //FIM MOCK
-
-
-            // Enviar a mensagem para a API Produção
             fetch('https://acs-assist-bot-cad-dev.nia.servicos.bb.com.br/acs/llms/agent', {
-
-                // Enviar a mensagem para a API Homologação
-                // fetch('https://acs-assist-bot-cad-guia.nia.hm.bb.com.br/acs/llms/agent', {
-
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -154,21 +103,12 @@ function enviarMensagem() {
             })
                 .then(response => response.json())
                 .then(data => {
-                    // console.log('Resposta do servidor:', data);
-
                     const jsonString = (JSON.stringify(data));
                     const jsonObject = JSON.parse(jsonString);
                     const respBot = (jsonObject.data.output.text[0]);
                     respBotPulaLinha = respBot.replace(/(?:\r\n|\r|\n)/g, '<br>');
                     respBotEscapaTag = respBotPulaLinha.replace(/<\?/g, '&lt;?').replace(/\?>/g, '?&gt;');
-                    // respBotNegrito = respBotPulaLinha.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                    // respBotItalico = respBotNegrito.replace(/\*([^*]+)\*/g, '<i>$1</i>');
-                    // respBotItalico2 = respBotItalico.replace(/_([^_]+)_/g, '<i>$1</i>');
-                    // respBotTachado = respBotItalico2.replace(/~~(.*?)~~/g, '<strike>$1</strike>');
-
-                    // exibirMensagem('Assistente', respBotTachado, 'bot');
                     exibirMensagem('CarameloDev', respBotEscapaTag, 'bot');
-
                     contextoConversa = JSON.stringify(jsonObject.data.context);
                     const idConversa = (jsonObject.data.context.conversation_id);
                     const idUsuario = data.userId;
@@ -184,31 +124,21 @@ function enviarMensagem() {
     });
 }
 
-// Ao clicar no botão de sugestão o texto aparece no campo
 $(document).ready(function () {
     let textoDigitado = '';
     let textoBotaoAnterior = '';
-
     $('.sugestao').on('click', function () {
         const textoBotao = $(this).text();
         const textArea = $('#chat-input');
         const valorAtual = textArea.val();
-
         if (!valorAtual.includes(textoBotaoAnterior)) {
             textoDigitado = valorAtual;
         }
-
         textArea.val(textoDigitado + ' ' + textoBotao);
         textoBotaoAnterior = textoBotao;
     });
 });
 
-
-// function substituirNegrito(texto) {
-//     return texto.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-// }
-
-// Função para exibir a mensagem na interface do usuário
 function exibirMensagem(sender, message, type) {
     const messagesElement = document.getElementById('chat-content');
     const messageElement = document.createElement('div');
@@ -219,18 +149,15 @@ function exibirMensagem(sender, message, type) {
     messagesElement.scrollTop = messagesElement.scrollHeight;
 }
 
-// Função para gravar as conversas em BD
 function gravarConversa(idConversa, idUsuario, inputUsuario, respostaBot, contextoConversa) {
     var caminhoController = `${BASE_URL}/bot_dev/controller.php`;
     var respostaBotTratada = respostaBot.replace(/\\+/g, '\\');
     var contextoConversaTratada = contextoConversa.replace(/\\+/g, '\\');
     var botaoLimpaContexto = $("#btnLimparContexto").attr('attr-idConversa');
     console.log('length ' + botaoLimpaContexto.length);
-
     if (botaoLimpaContexto.length == 0) {
         $("#btnLimparContexto").attr('attr-idConversa', idConversa);
     }
-
     $.ajax({
         aSync: true,
         url: caminhoController,
@@ -269,15 +196,11 @@ function zerarContexto(idConversa) {
 
 function exibirFeedbackCaramelo(mensagemBot) {
     console.log('💬 exibirFeedbackCaramelo chamado com:', mensagemBot?.substring(0, 60));
-
-    // Cria a mensagem do bot
     const messageHtml = `
         <div class="message bot" style="position: relative;">
             <strong>CarameloDev:</strong> ${mensagemBot}
         </div>
     `;
-
-    // Cria o bloco de feedback (fora da bolha)
     const feedbackHtml = `
         <div class="feedback-container">
             <span>Essa resposta te ajudou?</span>
@@ -289,46 +212,47 @@ function exibirFeedbackCaramelo(mensagemBot) {
             </button>
         </div>
     `;
-
-    // Adiciona a mensagem no chat
     $('#chat-content').append(messageHtml);
-
     const $ultimaMensagem = $('#chat-content .message.bot').last();
     if ($ultimaMensagem.length) {
         $ultimaMensagem.after(`<div class="feedback-wrapper">${feedbackHtml}</div>`);
     }
-
-    // Faz o chat rolar até o final
-    $('#chat-content').animate({scrollTop: $('#chat-content')[0].scrollHeight}, 'fast');
-
-    // --- Eventos dos botões de feedback ---
+    $('#chat-content').animate({ scrollTop: $('#chat-content')[0].scrollHeight }, 'fast');
     $(document)
         .off('click', '.feedback-like, .feedback-dislike')
         .on('click', '.feedback-like, .feedback-dislike', function () {
             const isLike = $(this).hasClass('feedback-like');
-
             if (isLike) {
-                $(this).find('i').removeClass('fa-regular').addClass('fa-solid text-like');
+                const $wrapper = $(this).closest('.feedback-wrapper');
+                $wrapper.find('.feedback-dislike i')
+                    .removeClass('fa-solid text-dislike')
+                    .addClass('fa-regular');
+                $(this).find('i')
+                    .removeClass('fa-regular')
+                    .addClass('fa-solid text-like');
                 mostrarToastFeedback(
                     "Obrigado pelo seu feedback 😊",
-                    "Fico feliz que a resposta te ajudou! Estou aqui para o que precisar  "
+                    "Fico feliz que a resposta te ajudou!<br>Estou aqui para o que precisar."
                 );
                 gravaFeedback(mensagemBot, '', 'like');
             } else {
-                $(this).find('i').removeClass('fa-regular').addClass('fa-solid text-dislike');
+                const $wrapper = $(this).closest('.feedback-wrapper');
+                $wrapper.find('.feedback-like i')
+                    .removeClass('fa-solid text-like')
+                    .addClass('fa-regular');
+                $(this).find('i')
+                    .removeClass('fa-regular')
+                    .addClass('fa-solid text-dislike');
                 $('#modal-feedback').removeClass('hidden');
                 $('#feedback-text').val('');
                 $('.char-count').text('500 caracteres restantes');
             }
         });
-
-    // --- Fechar e Pular ---
     $(document)
         .off('click', '.close-modal-feedback')
         .on('click', '.close-modal-feedback', function () {
             $('#modal-feedback').addClass('hidden');
         });
-
     $(document)
         .off('click', '.btn-skip')
         .on('click', '.btn-skip', function () {
@@ -339,16 +263,12 @@ function exibirFeedbackCaramelo(mensagemBot) {
                 "Vamos usar seu feedback para melhorar ainda mais o Caramelo"
             );
         });
-
-    // --- Atualiza contador ---
     $(document)
         .off('input', '#feedback-text')
         .on('input', '#feedback-text', function () {
             const restante = 500 - $(this).val().length;
             $('.char-count').text(`${restante} caracteres restantes`);
         });
-
-    // --- Enviar comentário ---
     $(document)
         .off('click', '.btn-send')
         .on('click', '.btn-send', function () {
@@ -362,23 +282,19 @@ function exibirFeedbackCaramelo(mensagemBot) {
         });
 }
 
-
 function gravaFeedback(mensagemBot, comentarioUsuario, avaliacao, rating = null) {
     var caminhoController = `${BASE_URL}/caramelo_v2/controller.php`;
     var mensagemBotTratada = String(mensagemBot || '').replace(/\\+/g, '\\');
     var comentarioUsuarioTratado = String(comentarioUsuario || '').replace(/\\+/g, '\\');
-
     var dados = {
         request: 'gravaFeedback',
         mensagem_bot: mensagemBotTratada,
         comentario_usuario: comentarioUsuarioTratado,
         avaliacao: avaliacao || null
     };
-
     if (avaliacao === '' && typeof rating !== 'undefined' && rating > 0) {
         dados.nota = rating;
     }
-
     $.ajax({
         async: true,
         url: caminhoController,
@@ -392,4 +308,4 @@ function gravaFeedback(mensagemBot, comentarioUsuario, avaliacao, rating = null)
             console.error('❌ Erro ao gravar feedback Caramelo:', error);
         }
     });
-};
+}
