@@ -34,4 +34,14 @@ else
   echo "[fix-sql] *home_struct.sql não encontrado — pulando correções de temporárias"
 fi
 
+for f in *.sql; do
+  [ -f "$f" ] || continue
+  echo "[fix-sql] Limpando cabeçalhos problemáticos: $f"
+  sed -i '/^\/\*M!999999/d' "$f"
+  sed -i '/^\/\*!/d' "$f"
+  sed -i '/^-- MariaDB/d' "$f"
+  sed -i '/^-- Host:/d' "$f"
+  sed -i '/^-- Server version/d' "$f"
+done
+
 echo "[fix-sql] Correções aplicadas."

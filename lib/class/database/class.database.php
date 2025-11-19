@@ -136,6 +136,10 @@ class Database extends Conexao {
 			exit();	
 		}	
 	}
+
+	function DbInsertId() {
+        return $this->connection->insert_id;
+    }
 	
 	function DbDisconnect() {
 		if(isset($this->connection)){

@@ -18,10 +18,10 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
 
 // Instancia a classe e consulta a lista de Squads ativa para montar a página
 $class = new funcoes();
-$squadsDesign = $class->consultaSquadsDesign();
-$ferramentas = $class->consultaFerramentas();
-$canais = $class->consultaCanais();
-$dicionario = $class->consultaDicionario();
+$squadsDesign = $class->consultaSquadsDesign() ?? ['status'=>0,'mensagem'=>[]];
+$ferramentas = $class->consultaFerramentas() ?? ['status'=>0,'mensagem'=>[]];
+$canais = $class->consultaCanais() ?? ['status'=>0,'mensagem'=>[]];
+$dicionario = $class->consultaDicionario() ?? ['status'=>0,'mensagem'=>[]];
 
 // Variável que receberá os valores obtidos nas consultas acima e salvarão em string o conteúdo que será exibido no navegador
 $montaDivSquads = '';
@@ -100,22 +100,24 @@ if($canais['status'] == 0){
 if($dicionario['status'] == 0){
     $montaDivDicionario = $dicionario['mensagem'];
 } else {
-    // Laço que monta o conteúdo do dicionário
-    for($i = 0; $i < sizeof($dicionario['mensagem']); $i++){
-        $montaDivDicionario = $montaDivDicionario.'
-            <div style="width: 18rem; padding: 16px; background: #FEFEFE; box-shadow: 0px 0px 1px rgba(25, 25, 28, 0.25); border-radius: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex; border-radius: 16px; box-shadow: 3px 3px 1px #ccc;">
-                <div style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex: 1 1 0; color: #111214; font-size: 24px; font-family: BancoDoBrasil Titulos; font-weight: 700; line-height: 22.50px; word-wrap: break-word">'.$dicionario['mensagem'][$i]['item'].'</div>
-                </div>
-                <div style="align-self: stretch; height: auto; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
-                    <div style="align-self: stretch; height: auto; padding-left: 16px; padding-right: 16px; padding-top: 6px; padding-bottom: 6px; background: #F0F2F4; border-radius: 4px; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: flex">
-                        <div style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                            <div style="flex: 1 1 0; color: #49494F; font-size: 12px; font-family: BancoDoBrasil Textos; font-weight: 400; letter-spacing: 0.14px; word-wrap: break-word">'.$dicionario['mensagem'][$i]['descricaoItem'].'</div>
+    
+    if (!empty($dicionario['mensagem']) && is_array($dicionario['mensagem'])) {
+        for($i = 0; $i < sizeof($dicionario['mensagem']); $i++){
+            $montaDivDicionario = $montaDivDicionario.'
+                <div style="width: 18rem; padding: 16px; background: #FEFEFE; box-shadow: 0px 0px 1px rgba(25, 25, 28, 0.25); border-radius: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex; border-radius: 16px; box-shadow: 3px 3px 1px #ccc;">
+                    <div style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                        <div style="flex: 1 1 0; color: #111214; font-size: 24px; font-family: BancoDoBrasil Titulos; font-weight: 700; line-height: 22.50px; word-wrap: break-word">'.$dicionario['mensagem'][$i]['item'].'</div>
+                    </div>
+                    <div style="align-self: stretch; height: auto; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
+                        <div style="align-self: stretch; height: auto; padding-left: 16px; padding-right: 16px; padding-top: 6px; padding-bottom: 6px; background: #F0F2F4; border-radius: 4px; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: flex">
+                            <div style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                                <div style="flex: 1 1 0; color: #49494F; font-size: 12px; font-family: BancoDoBrasil Textos; font-weight: 400; letter-spacing: 0.14px; word-wrap: break-word">'.$dicionario['mensagem'][$i]['descricaoItem'].'</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        ';
+            ';
+        }
     }
 }
 

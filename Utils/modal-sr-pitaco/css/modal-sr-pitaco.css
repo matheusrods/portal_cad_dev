@@ -1,0 +1,517 @@
+.titulo-feedback {
+  color: #101828;
+  font-family: "BancoDoBrasil Titulos", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.9rem; /* aumenta um pouco o tamanho */
+  line-height: 2.2rem; /* melhora o espaçamento entre linhas */
+  margin: -0.5rem 0 1rem; /* ajusta o espaçamento inferior */
+  text-align: left;
+  letter-spacing: -0.3px; /* aproxima o visual da tipografia do Figma */
+}
+
+
+.subtitulo-feedback {
+  color: var(--Cinza, #646464);
+  font-size: 17.6px;
+  margin-bottom: 1.8rem;
+  font-family: "BancoDoBrasil Titulos", Arial, sans-serif;
+  text-align: center;
+}
+
+.pitaco-layout {
+  display: flex;
+  align-items: center; /* centraliza o personagem e o conteúdo verticalmente */
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.pitaco-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 260px;
+  position: relative;
+  margin-left: 40px;
+  margin-top: -20px;
+}
+
+.pitaco-img {
+  width: 250px;
+  height: auto;
+  margin: 0;
+  transform: translateY(-25px);
+}
+
+
+.pitaco-balao {
+  background: #fff;
+  border-radius: 13px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  padding: 1rem 1.2rem;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  width: 260px;
+  position: absolute;
+  bottom: -8px; /* sobe o balão um pouco */
+  left: 37%; /* aponta mais para o braço */
+  transform: translateX(-50%);
+}
+
+.pitaco-balao::after {
+  content: "";
+  position: absolute;
+  left: 93px;
+  top: -10px;
+  border-bottom: 12px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+
+.pitaco-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-sr-pitaco-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOverlay 0.3s ease;
+}
+
+.modal-sr-pitaco {
+  height: 320px;
+  width: 922px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF5FF 100%);
+  border-radius: 7px;
+  padding: 48px 60px 62px 53px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  font-family: "BancoDoBrasil Textos", Arial, sans-serif;
+  animation: fadeIn .3s ease;
+}
+
+.modal-sr-pitaco::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* espessura da linha */
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  background: linear-gradient(90deg, #155DFC 0%, #9810FA 50%, #193CB8 100%);
+}
+
+
+.modal-sr-pitaco-close {
+  position: absolute;
+  top: -18px;            /* empurra pra fora do topo */
+  right: -18px;          /* empurra pra fora da lateral */
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #FFFFFF;
+  color: #475467;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-sr-pitaco-close:hover {
+  background: #f8f9fa;
+  color: #1D2939;
+  transform: scale(1.05);
+}
+
+.estrelas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 2px solid #DDE5F7;
+  border-radius: 16px;
+  padding: 18px 0;
+  width: 360px;
+  margin: 0;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.estrelas span {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'><path d='M19.2081 3.82499C19.2811 3.67742 19.3939 3.55321 19.5338 3.46636C19.6737 3.37952 19.8351 3.3335 19.9997 3.3335C20.1644 3.3335 20.3258 3.37952 20.4657 3.46636C20.6055 3.55321 20.7184 3.67742 20.7914 3.82499L24.6414 11.6233C24.895 12.1366 25.2694 12.5807 25.7325 12.9174C26.1955 13.2541 26.7333 13.4735 27.2997 13.5567L35.9097 14.8167C36.0729 14.8403 36.2262 14.9091 36.3522 15.0153C36.4783 15.1215 36.5721 15.2609 36.6231 15.4177C36.6741 15.5744 36.6802 15.7423 36.6407 15.9024C36.6012 16.0624 36.5178 16.2082 36.3997 16.3233L30.1731 22.3867C29.7624 22.7868 29.4552 23.2808 29.2778 23.826C29.1004 24.3713 29.0582 24.9515 29.1547 25.5167L30.6247 34.0833C30.6535 34.2464 30.6359 34.4143 30.5739 34.5678C30.5119 34.7213 30.408 34.8543 30.274 34.9516C30.14 35.049 29.9814 35.1067 29.8162 35.1181C29.651 35.1296 29.4859 35.0945 29.3397 35.0167L21.6431 30.97C21.1359 30.7037 20.5717 30.5646 19.9989 30.5646C19.4261 30.5646 18.8619 30.7037 18.3547 30.97L10.6597 35.0167C10.5136 35.094 10.3487 35.1288 10.1838 35.1171C10.0189 35.1054 9.86061 35.0476 9.7269 34.9503C9.5932 34.8531 9.48947 34.7203 9.4275 34.567C9.36554 34.4137 9.34784 34.2462 9.37641 34.0833L10.8447 25.5183C10.9417 24.9529 10.8997 24.3723 10.7223 23.8267C10.5449 23.2811 10.2374 22.7869 9.82641 22.3867L3.59974 16.325C3.48073 16.21 3.3964 16.064 3.35635 15.9034C3.3163 15.7429 3.32214 15.5743 3.37321 15.417C3.42428 15.2596 3.51852 15.1197 3.64521 15.0133C3.77189 14.9069 3.92592 14.8381 4.08974 14.815L12.6981 13.5567C13.2652 13.4742 13.8037 13.2551 14.2674 12.9183C14.731 12.5815 15.1059 12.1371 15.3597 11.6233L19.2081 3.82499Z' stroke='%23D1D5DC' stroke-width='3.33333' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+.estrelas span.ativo,
+.estrelas span:hover {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'><path d='M19.2081 3.82499C19.2811 3.67742 19.3939 3.55321 19.5338 3.46636C19.6737 3.37952 19.8351 3.3335 19.9997 3.3335C20.1644 3.3335 20.3258 3.37952 20.4657 3.46636C20.6055 3.55321 20.7184 3.67742 20.7914 3.82499L24.6414 11.6233C24.895 12.1366 25.2694 12.5807 25.7325 12.9174C26.1955 13.2541 26.7333 13.4735 27.2997 13.5567L35.9097 14.8167C36.0729 14.8403 36.2262 14.9091 36.3522 15.0153C36.4783 15.1215 36.5721 15.2609 36.6231 15.4177C36.6741 15.5744 36.6802 15.7423 36.6407 15.9024C36.6012 16.0624 36.5178 16.2082 36.3997 16.3233L30.1731 22.3867C29.7624 22.7868 29.4552 23.2808 29.2778 23.826C29.1004 24.3713 29.0582 24.9515 29.1547 25.5167L30.6247 34.0833C30.6535 34.2464 30.6359 34.4143 30.5739 34.5678C30.5119 34.7213 30.408 34.8543 30.274 34.9516C30.14 35.049 29.9814 35.1067 29.8162 35.1181C29.651 35.1296 29.4859 35.0945 29.3397 35.0167L21.6431 30.97C21.1359 30.7037 20.5717 30.5646 19.9989 30.5646C19.4261 30.5646 18.8619 30.7037 18.3547 30.97L10.6597 35.0167C10.5136 35.094 10.3487 35.1288 10.1838 35.1171C10.0189 35.1054 9.86061 35.0476 9.7269 34.9503C9.5932 34.8531 9.48947 34.7203 9.4275 34.567C9.36554 34.4137 9.34784 34.2462 9.37641 34.0833L10.8447 25.5183C10.9417 24.9529 10.8997 24.3723 10.7223 23.8267C10.5449 23.2811 10.2374 22.7869 9.82641 22.3867L3.59974 16.325C3.48073 16.21 3.3964 16.064 3.35635 15.9034C3.3163 15.7429 3.32214 15.5743 3.37321 15.417C3.42428 15.2596 3.51852 15.1197 3.64521 15.0133C3.77189 14.9069 3.92592 14.8381 4.08974 14.815L12.6981 13.5567C13.2652 13.4742 13.8037 13.2551 14.2674 12.9183C14.731 12.5815 15.1059 12.1371 15.3597 11.6233L19.2081 3.82499Z' fill='%23FFD700' stroke='%23FFD700' stroke-width='3.33333' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+
+.modal-sr-pitaco-close:hover {
+  background: #f2f2f2;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .pitaco-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .pitaco-col {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .pitaco-img {
+    width: 150px;
+    transform: none;
+  }
+
+  .pitaco-balao {
+    position: static;
+    width: 85%;
+    max-width: 300px;
+    transform: none;
+    margin-top: -10px;
+  }
+
+  .pitaco-balao::after {
+    display: none;
+  }
+
+  .pitaco-content {
+    text-align: center;
+    width: 100%;
+  }
+
+  .modal-sr-pitaco {
+    width: 95%;
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .titulo-feedback,
+  .subtitulo-feedback {
+    text-align: center;
+  }
+
+  .estrelas {
+    width: 85%;
+    padding: 14px 0;
+    font-size: 2.2rem;
+  }
+}
+
+.modal-sr-pitaco-etapa {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Quando a etapa está ativa */
+.modal-sr-pitaco-etapa.ativa {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+  overflow: visible;
+}
+
+/* Garante que a primeira etapa apareça por padrão */
+.modal-sr-pitaco-etapa.etapa1 {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+  overflow: visible;
+}
+
+/* Quando a modal expande na etapa 2 */
+.modal-sr-pitaco.expandida {
+  height: auto;
+  min-height: 620px;
+  transition: all 0.4s ease;
+}
+
+/* === BOTÕES DE MOTIVO (etapa 2) === */
+.motivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 1rem 0 2.5rem;
+}
+
+.motivo {
+  background: var(--button-secondary-default, #E4ECFF);
+  border: none;
+  border-radius: 100px;
+  padding: 10px 18px;
+  color: var(--text-on-secondary, #3354FD);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "BancoDoBrasil Textos", Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.motivo:hover {
+  background: #dbe6ff;
+  transform: translateY(-1px);
+}
+
+.motivo.ativo {
+  background: #FCFC30;     /* amarelo destaque */
+  color: #3354FD;           /* texto escuro, igual ao print */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transform: none;
+}
+
+/* === BOTÃO ENVIAR === */
+.btn-enviar {
+  display: inline-block;
+  margin-top: 1.8rem;
+  background: #ffeb00;
+  border: none;
+  color: #101828;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  border-radius: 6px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar:hover {
+  background: #fce500;
+  transform: translateY(-1px);
+}
+
+/* === TEXTAREA E LABEL === */
+.comentario-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+  margin-bottom: 6px;
+}
+
+.comentario {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1.8px solid #d0d5dd;
+  font-family: "BancoDoBrasil Textos", Arial, sans-serif;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.comentario:focus {
+  border-color: #155dfc;
+}
+
+.contador-caracteres {
+  font-size: 13px;
+  color: #667085;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* === AJUSTES SOMENTE PARA ETAPA 2 === */
+
+.modal-sr-pitaco-etapa.etapa2 .pitaco-content {
+  margin-top: 8px;
+}
+
+
+.modal-sr-pitaco-etapa.etapa2 .motivo:hover {
+  background: #dbe6ff;
+  transform: none;
+}
+
+/* Comentário (textarea) */
+.modal-sr-pitaco-etapa.etapa2 .comentario-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+  margin-bottom: 6px;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .comentario {
+  width: 100%;
+  min-height: 135px;
+  padding: 12px 14px;
+  background: #F0F2F4;          /* fundo cinza suave */
+  border: none;                 /* remove todas as bordas */
+  border-bottom: 2px solid #D0D5DD; /* linha sutil embaixo */
+  border-radius: 6px;           /* cantos levemente arredondados */
+  font-family: "BancoDoBrasil Textos", Arial, sans-serif;
+  font-size: 14px;
+  color: #1E293B;
+  resize: none;
+  outline: none;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05); /* dá leve relevo */
+  transition: all 0.25s ease;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .comentario::placeholder {
+  color: #6B7280;
+  opacity: 1;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .comentario:focus {
+  border-bottom-color: #155dfc; /* linha azul ao focar */
+  background: #f9fbff;          /* leve destaque ao foco */
+}
+
+/* Contador de caracteres */
+.modal-sr-pitaco-etapa.etapa2 .contador-caracteres {
+  font-size: 13px;
+  color: #667085;
+  margin-top: 6px;
+  text-align: left;
+}
+
+/* Ajusta a posição vertical do balão apenas na etapa 2 */
+.modal-sr-pitaco-etapa.etapa2 .pitaco-balao {
+  position: absolute;
+  bottom: 9px;                    /* balão mais acima do personagem */
+  left: 37%;
+  transform: translateX(-50%);
+}
+
+.modal-sr-pitaco-etapa.etapa2 .nota-texto {
+    margin-left: 117px;
+    text-align: center;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .estrelas span {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'><path d='M19.2081 3.82499C19.2811 3.67742 19.3939 3.55321 19.5338 3.46636C19.6737 3.37952 19.8351 3.3335 19.9997 3.3335C20.1644 3.3335 20.3258 3.37952 20.4657 3.46636C20.6055 3.55321 20.7184 3.67742 20.7914 3.82499L24.6414 11.6233C24.895 12.1366 25.2694 12.5807 25.7325 12.9174C26.1955 13.2541 26.7333 13.4735 27.2997 13.5567L35.9097 14.8167C36.0729 14.8403 36.2262 14.9091 36.3522 15.0153C36.4783 15.1215 36.5721 15.2609 36.6231 15.4177C36.6741 15.5744 36.6802 15.7423 36.6407 15.9024C36.6012 16.0624 36.5178 16.2082 36.3997 16.3233L30.1731 22.3867C29.7624 22.7868 29.4552 23.2808 29.2778 23.826C29.1004 24.3713 29.0582 24.9515 29.1547 25.5167L30.6247 34.0833C30.6535 34.2464 30.6359 34.4143 30.5739 34.5678C30.5119 34.7213 30.408 34.8543 30.274 34.9516C30.14 35.049 29.9814 35.1067 29.8162 35.1181C29.651 35.1296 29.4859 35.0945 29.3397 35.0167L21.6431 30.97C21.1359 30.7037 20.5717 30.5646 19.9989 30.5646C19.4261 30.5646 18.8619 30.7037 18.3547 30.97L10.6597 35.0167C10.5136 35.094 10.3487 35.1288 10.1838 35.1171C10.0189 35.1054 9.86061 35.0476 9.7269 34.9503C9.5932 34.8531 9.48947 34.7203 9.4275 34.567C9.36554 34.4137 9.34784 34.2462 9.37641 34.0833L10.8447 25.5183C10.9417 24.9529 10.8997 24.3723 10.7223 23.8267C10.5449 23.2811 10.2374 22.7869 9.82641 22.3867L3.59974 16.325C3.48073 16.21 3.3964 16.064 3.35635 15.9034C3.3163 15.7429 3.32214 15.5743 3.37321 15.417C3.42428 15.2596 3.51852 15.1197 3.64521 15.0133C3.77189 14.9069 3.92592 14.8381 4.08974 14.815L12.6981 13.5567C13.2652 13.4742 13.8037 13.2551 14.2674 12.9183C14.731 12.5815 15.1059 12.1371 15.3597 11.6233L19.2081 3.82499Z' stroke='%23D1D5DC' stroke-width='3.33333' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+.modal-sr-pitaco-etapa.etapa2 .estrelas span:hover {
+  transform: scale(1.1);
+}
+
+.modal-sr-pitaco-etapa.etapa2 .estrelas span.ativo {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'><path d='M19.2081 3.82499C19.2811 3.67742 19.3939 3.55321 19.5338 3.46636C19.6737 3.37952 19.8351 3.3335 19.9997 3.3335C20.1644 3.3335 20.3258 3.37952 20.4657 3.46636C20.6055 3.55321 20.7184 3.67742 20.7914 3.82499L24.6414 11.6233C24.895 12.1366 25.2694 12.5807 25.7325 12.9174C26.1955 13.2541 26.7333 13.4735 27.2997 13.5567L35.9097 14.8167C36.0729 14.8403 36.2262 14.9091 36.3522 15.0153C36.4783 15.1215 36.5721 15.2609 36.6231 15.4177C36.6741 15.5744 36.6802 15.7423 36.6407 15.9024C36.6012 16.0624 36.5178 16.2082 36.3997 16.3233L30.1731 22.3867C29.7624 22.7868 29.4552 23.2808 29.2778 23.826C29.1004 24.3713 29.0582 24.9515 29.1547 25.5167L30.6247 34.0833C30.6535 34.2464 30.6359 34.4143 30.5739 34.5678C30.5119 34.7213 30.408 34.8543 30.274 34.9516C30.14 35.049 29.9814 35.1067 29.8162 35.1181C29.651 35.1296 29.4859 35.0945 29.3397 35.0167L21.6431 30.97C21.1359 30.7037 20.5717 30.5646 19.9989 30.5646C19.4261 30.5646 18.8619 30.7037 18.3547 30.97L10.6597 35.0167C10.5136 35.094 10.3487 35.1288 10.1838 35.1171C10.0189 35.1054 9.86061 35.0476 9.7269 34.9503C9.5932 34.8531 9.48947 34.7203 9.4275 34.567C9.36554 34.4137 9.34784 34.2462 9.37641 34.0833L10.8447 25.5183C10.9417 24.9529 10.8997 24.3723 10.7223 23.8267C10.5449 23.2811 10.2374 22.7869 9.82641 22.3867L3.59974 16.325C3.48073 16.21 3.3964 16.064 3.35635 15.9034C3.3163 15.7429 3.32214 15.5743 3.37321 15.417C3.42428 15.2596 3.51852 15.1197 3.64521 15.0133C3.77189 14.9069 3.92592 14.8381 4.08974 14.815L12.6981 13.5567C13.2652 13.4742 13.8037 13.2551 14.2674 12.9183C14.731 12.5815 15.1059 12.1371 15.3597 11.6233L19.2081 3.82499Z' fill='%23FFD700' stroke='%23FFD700' stroke-width='3.33333' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+.modal-sr-pitaco-etapa.etapa2 .estrelas {
+  margin-bottom: 2.4rem; /* dá o espaço equivalente ao Figma (≈40px) */
+}
+
+.modal-sr-pitaco-etapa.etapa2 .motivos {
+  margin-top: 0.4rem;  /* pequeno ajuste fino */
+}
+
+.modal-sr-pitaco-etapa.etapa2 .subtitulo-etapa2 {
+    color: #1E2939;
+    font-family: var(--font-family-Font-1, "BancoDoBrasil Textos");
+    font-size: var(--font-size-14, 14px);
+    font-weight: 700;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .pitaco-feedback-detalhes {
+  width: fit-content;
+  margin: 0 auto 0; /* 🔧 alinha exatamente sob o texto principal */
+  margin-top: 19px;
+  text-align: left;
+}
+
+/* Mantém a etapa 1 como está */
+.modal-sr-pitaco-etapa.etapa1 .pitaco-layout {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Corrige a etapa 2 */
+.modal-sr-pitaco-etapa.etapa2 .pitaco-layout {
+  justify-content: flex-start;   /* força alinhamento à esquerda   */
+  align-items: flex-start;       /* personagem e conteúdo sobem juntos */
+  gap: 2.8rem;                   /* distância entre personagem e texto */
+}
+
+.modal-sr-pitaco-etapa.etapa2 .pitaco-etapa2-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 560px;
+  text-align: left;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .btn-enviar {
+  display: flex;
+  margin-top: 1.8rem;
+  margin-left: auto;     /* 🔧 empurra o botão para a direita */
+  background: #ffeb00;
+  border: none;
+  color: #465EFF;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: 4px;
+  padding: 12px 16px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+}
+
+.btn-enviar.desabilitado {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

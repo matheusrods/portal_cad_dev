@@ -1,6 +1,5 @@
 <?php
 
-//ini_set('display_errors', 1);
 if(!isset($_SESSION)){
     session_start();
 }
@@ -36,7 +35,6 @@ $portais = $class->carregaFerramentaPortais();
 $adicionaAvisoEcoa = $class->adicionaModalAvisoEcoa();
 $grandesNumeros = $class->carregaGrandesNumeros();
 $btnAddAvisoEcoa = $class->mostraBtnCadastraAvisoEcoa();
-
 
 ?>
 
@@ -86,12 +84,6 @@ $btnAddAvisoEcoa = $class->mostraBtnCadastraAvisoEcoa();
     
     <!-- JS Bootstrap -->
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/js/bootstrap.bundle.js"></script>
-    <script src="../lib/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/js/bootstrap.esm.js"></script>
-    <script src="../lib/js/bootstrap.esm.min.js"></script>
-    <script src="../lib/js/bootstrap.js"></script>
-    <script src="../lib/js/bootstrap.min.js"></script>
 
     <!-- JS Font Awesome -->
     <script src="../lib/js/fontawesome.js"></script>
@@ -525,7 +517,20 @@ $btnAddAvisoEcoa = $class->mostraBtnCadastraAvisoEcoa();
         $(document).ready(function(){
             $(this).scrollTop(0);
         });
+
+        window.PITACO_TELA_ATUAL = 'home';
     </script>
+
+    <?php 
+        include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/feedback-float/feedback-float.html";
+        include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/modal-sr-pitaco/modal-sr-pitaco.html";
+    ?>
+    <link rel="stylesheet" href="/Utils/feedback-float/css/feedback-float.css">
+    <link rel="stylesheet" href="/Utils/modal-sr-pitaco/css/modal-sr-pitaco.css">
+
+    <script src="/Utils/feedback-float/js/feedback-float.js"></script>
+    <script src="/Utils/modal-sr-pitaco/js/modal-sr-pitaco.js"></script>
+    <script type="text/javascript" src="/Utils/js/toastFeedback.js"></script>
 </body>
 
 

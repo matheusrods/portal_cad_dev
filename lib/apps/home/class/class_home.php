@@ -1,11 +1,13 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/geraLog.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 $mat = $_SESSION['matricula'];
 
@@ -21,6 +23,7 @@ Class funcoes {
     }
 
     public function carregaAvisoEcoa(){
+        $montaDivAviso = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('home');
 
@@ -104,6 +107,7 @@ Class funcoes {
     }
 
     public function consultaAvisoEcoa($idAviso){
+        $montaDivAviso = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('home');
         
@@ -123,8 +127,8 @@ Class funcoes {
                             <span class="spanTituloConsultaAviso">'.$execQuery[$i]['tituloAviso'].'</span>
                             <br>
                             <div class="dataHorarioConsultaAviso">
-                                <img src="https://cad.bb.com.br/lib/img/apps/home/calendarioIcone.svg"> <span class="spanTxtDataHorarioAviso">Data:</span> <span class="spanNumDataHorarioAviso">'.$execQuery[$i]['dataFormatada'].'</span>
-                                <img src="https://cad.bb.com.br/lib/img/apps/home/relogioIcone.svg" style="margin-left: 1rem;"> <span class="spanTxtDataHorarioAviso">Horário: </span><span class="spanNumDataHorarioAviso">'.$execQuery[$i]['horario'].'</span>
+                            <img src=" . getBaseUrl() . "/lib/img/apps/home/calendarioIcone.svg"> <span class="spanTxtDataHorarioAviso">Data:</span> <span class="spanNumDataHorarioAviso">'.$execQuery[$i]['dataFormatada'].'</span>
+                            <img src=" . getBaseUrl() . "/lib/img/apps/home/relogioIcone.svg" style="margin-left: 1rem;"> <span class="spanTxtDataHorarioAviso">Horário: </span><span class="spanNumDataHorarioAviso">'.$execQuery[$i]['horario'].'</span>
                             </div>
                         </div>
                         <div class="divInferiorConsultaAviso">
@@ -155,43 +159,6 @@ Class funcoes {
             return ($retorno);
         }
     }
-    
-    // public function consultaAvisoEcoa($idAviso){
-    //     $mat = $_SESSION['matricula'];
-    //     $db = new Database('home');
-
-    //     $query = "SELECT * FROM home.avisoEcoa WHERE idAvisoEcoa = 1";
-       
-    //     try{
-    //         $execQueryAvisoEcoa = $db->DbGetAll($query);
-
-    //         if ($execQueryAvisoEcoa > 0){
-                
-    //           echo "123";
-    //           die;
-                
-    //             $retorno = array();
-    //             $retorno["status"] = 1;
-    //             $retorno["mensagem"] = "teste";
-            
-    //         } else {
-    //             $retorno = array();
-    //             $retorno["status"] = 0;
-    //             $retorno["mensagem"] = "Não foi possível consultar o aviso nesse momento. Informe à equipe responsável. L106 - class_home.php";
-
-    //         }
-
-    //     } catch(Exception $e){
-    //         $informacoesErro = "erro: " . $e . "\n\\n\$query:" . $query;
-    //         $arquivoLog = $this->geraLogExcecao("home", "consultaAviso", $informacoesErro, $mat);
-    //         $retorno["mensagem"] = "<p style='font-size: 16px; font-weight: bold;'>Não foi possível consultar o aviso. Informe à equipe responsável o caminho a seguir: " . $arquivoLog."</p>";
-
-            
-    //     }finally {
-    //         return ($retorno);
-    //     }
-
-    // }
 
     public function mostraBtnCadastraAvisoEcoa(){
         $mat = $_SESSION['matricula'];
@@ -338,6 +305,7 @@ Class funcoes {
     }
 
     public function carregaReportDestaque(){
+        $montaDivDestaque = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('report');
 
@@ -390,6 +358,7 @@ Class funcoes {
 
 
     public function carregaReportTrending(){
+        $montaDivTrending = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('report');
 
@@ -507,6 +476,7 @@ Class funcoes {
     }
 
     public function carregaPesquisas(){
+        $montaPesquisas = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('estudosPesquisas');
                     
@@ -531,8 +501,8 @@ Class funcoes {
                     $montaPesquisas = $montaPesquisas.'
                                     <div class="hmolduraArea">
                                             <div class="hdivArea">
-                                                <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.pdf" target="_blank" style="text-decoration: none;"> 
-                                                    <div class="hcapaArea" style="background-image: url(https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.png);">           
+                                                <a href=". getBaseUrl() ."/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.pdf" target="_blank" style="text-decoration: none;"> 
+                                                    <div class="hcapaArea" style="background-image: url(". getBaseUrl() ."/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.png);">           
                                                         <div class="hTemaTag">'.$execQuery[$i]['temas'].'</div>
                                                     </div>
                                                 </a>
@@ -541,7 +511,7 @@ Class funcoes {
                                                     <div class="hsubtituloArea">'.$execQuery[$i]['subtitulo'].'</div>
                                                 </div>
                                                 <div class="rodapeDivAreas">
-                                                    <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.pdf" target="_blank" style="text-decoration: none;"> 
+                                                    <a href=". getBaseUrl() ."/lib/apps/estudosPesquisas/arquivos/'.$idPesquisa.'.pdf" target="_blank" style="text-decoration: none;"> 
                                                         <div class="btnAcessaDetalhe Clicar">Acessar</div>
                                                     </a>    
                                                 </div>
@@ -575,6 +545,7 @@ Class funcoes {
     }
 
     public function carregaRecursos(){
+        $montaRecursos  = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('recursos');
 
@@ -597,7 +568,7 @@ Class funcoes {
                                          
                                             <div class="hdivArea">
                                                 <a href="'.$execQuery[$i]['nomeArquivo'].'" target="_blank" style="text-decoration: none;"> 
-                                                    <div class="hcapaArea" style="background-image: url(https://cad.bb.com.br/lib/apps/recursos/arquivos/'.$execQuery[$i]['nomeCapa'].');">           
+                                                    <div class="hcapaArea" style="background-image: url(". getBaseUrl() ."/lib/apps/recursos/arquivos/'.$execQuery[$i]['nomeCapa'].');">           
                                                         <div class="hTemaTag">'.$execQuery[$i]['tema'].'</div>
                                                     </div>
                                                 </a>
@@ -648,6 +619,7 @@ Class funcoes {
 
 
     public function carregaExperimentos(){
+        $montaExperimento = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('experimentos');
 
@@ -669,8 +641,8 @@ Class funcoes {
                                     <div class="hmolduraArea">
                                          
                                             <div class="hdivArea">
-                                                <a href="https://cad.bb.com.br/lib/apps/experimentos/arquivos'.$idExperimento.'.pdf" target="_blank" style="text-decoration: none;"> 
-                                                    <div class="hcapaArea" style="background-image: url(https://cad.bb.com.br/lib/apps/experimentos/arquivos/'.$idExperimento.'.png);">           
+                                                <a href=". getBaseUrl() ."/lib/apps/experimentos/arquivos'.$idExperimento.'.pdf" target="_blank" style="text-decoration: none;"> 
+                                                    <div class="hcapaArea" style="background-image: url(". getBaseUrl() ."/lib/apps/experimentos/arquivos/'.$idExperimento.'.png);">           
                                                         <div class="hTemaTag">'.$execQuery[$i]['temas'].'</div>
                                                     </div>
                                                 </a>
@@ -679,7 +651,7 @@ Class funcoes {
                                                     <div class="hsubtituloArea">'.$execQuery[$i]['subtitulo'].'</div>
                                                 </div>
                                                 <div class="rodapeDivAreas">
-                                                    <a href="https://cad.bb.com.br/lib/apps/experimentos/arquivos/'.$idExperimento.'.pdf" target="_blank" style="text-decoration: none;"> 
+                                                    <a href=". getBaseUrl() ."/lib/apps/experimentos/arquivos/'.$idExperimento.'.pdf" target="_blank" style="text-decoration: none;"> 
                                                         <div class="btnAcessaDetalhe Clicar">Acessar</div>
                                                     </a>    
                                                 </div>
@@ -719,6 +691,7 @@ Class funcoes {
 
 
     public function carregaPaineis(){
+        $montaPainel  = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('experimentos');
 
@@ -742,7 +715,7 @@ Class funcoes {
                                     <div class="hmolduraArea">
                                             <div class="hdivArea">
                                                 <a href="'.$execQuery[$i]['link'].'" target="_blank" style="text-decoration: none; ">
-                                                    <div class="hcapaArea" style="background-image: url(https://cad.bb.com.br/lib/apps/paineis/img/'.$execQuery[$i]['idPainel'].'.png);">           
+                                                    <div class="hcapaArea" style="background-image: url(". getBaseUrl() ."/lib/apps/paineis/img/'.$execQuery[$i]['idPainel'].'.png);">           
                                                         <div class="hTemaTag">'.$execQuery[$i]['nomeTag'].'</div>
                                                     </div>
                                                 </a>
@@ -791,6 +764,7 @@ Class funcoes {
 
 
     public function carregaEstudos(){
+        $montaEstudos = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('estudosPesquisas');
                     
@@ -815,8 +789,8 @@ Class funcoes {
                     $montaEstudos = $montaEstudos.'
                                     <div class="hmolduraArea">
                                             <div class="hdivArea">
-                                                <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.pdf" target="_blank" style="text-decoration: none;"> 
-                                                    <div class="hcapaArea" style="background-image: url(https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.png);">           
+                                                <a href=". getBaseUrl() ."/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.pdf" target="_blank" style="text-decoration: none;"> 
+                                                    <div class="hcapaArea" style="background-image: url(". getBaseUrl() ."/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.png);">           
                                                         <div class="hTemaTag">'.$execQuery[$i]['temas'].'</div>
                                                     </div>
                                                 </a>
@@ -825,7 +799,7 @@ Class funcoes {
                                                     <div class="hsubtituloArea">'.$execQuery[$i]['subtitulo'].'</div>
                                                 </div>
                                                 <div class="rodapeDivAreas">
-                                                    <a href="https://cad.bb.com.br/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.pdf" target="_blank" style="text-decoration: none;"> 
+                                                    <a href=". getBaseUrl() ."/lib/apps/estudosPesquisas/arquivos/'.$idEstudo.'.pdf" target="_blank" style="text-decoration: none;"> 
                                                         <div class="btnAcessaDetalhe Clicar">Acessar</div>
                                                     </a>    
                                                 </div>
@@ -859,6 +833,7 @@ Class funcoes {
     }
 
     public function carregaCopilotos(){
+        $montaCopilotos = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('copilotos');
                     
@@ -881,7 +856,7 @@ Class funcoes {
                                             <div class="hdivArea" id="hdivCopiloto">
                                                 <a href="'.$execQuery[$i]['link'].'" target="_blank" style="text-decoration: none;"> 
                                                     <div class="hcapaAreaCopilotos">
-                                                        <img src="https://cad.bb.com.br/lib/img/apps/home/copiloto'.$idCopiloto.'.png">           
+                                                        <img src="/lib/img/apps/home/copiloto'.$idCopiloto.'.png">           
                                                     </div>
                                                 </a>
                                                 <div class="hAreaTxt">
@@ -922,6 +897,7 @@ Class funcoes {
     }
 
     public function carregaFerramentaPlataformas(){
+        $montaPlataformas = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('ferramentas');
                     
@@ -991,6 +967,7 @@ Class funcoes {
     }
 
     public function carregaFerramentaDesenvolvimento(){
+        $montaDesenvolvimento  = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('ferramentas');
                     
@@ -1061,6 +1038,7 @@ Class funcoes {
     }
 
     public function carregaFerramentaAtivo(){
+        $montaAtivo = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('ferramentas');
                     
@@ -1129,6 +1107,7 @@ Class funcoes {
     }
 
      public function carregaFerramentaPortais(){
+        $montaPortal = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('ferramentas');
                     
@@ -1199,6 +1178,7 @@ Class funcoes {
 
 
     public function carregaGrandesNumeros(){
+        $montaGrandesNumeros = "";
         $mat = $_SESSION['matricula'];
         $db = new Database('report');
 

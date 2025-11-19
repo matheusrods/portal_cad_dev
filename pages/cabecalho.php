@@ -1,6 +1,7 @@
 <?php
 
 include $_SERVER["DOCUMENT_ROOT"]."/pages/montaCabecalho.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 $class = new cabecalho();
 
@@ -11,7 +12,7 @@ $subMenus = $class->montaSubMenus();
 
 <div class="divElementosCabecalho">
     <div class="logoCadCabecalho">
-        <a href="https://cad.desenv.bb.com.br">
+        <a href="<?= getBaseUrl() ?>">
             <img src="/lib/img/cabecalho/imgCabecalho.svg" style="height: auto; width: 7rem; padding-bottom: 0.5rem;">
         </a>
     </div>

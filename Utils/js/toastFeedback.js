@@ -1,65 +1,83 @@
 /**
  * Exibe o popup de feedback (toast) no canto inferior direito.
- *
- * @param {string} titulo - Título principal do toast (ex: "Obrigado pelo seu feedback 😊")
- * @param {string} mensagem - Texto complementar (ex: "Vamos analisar para melhorar a sua experiência ao utilizar o Tom")
+ * @param {string} titulo - Título principal do toast
+ * @param {string} mensagem - Texto complementar
+ * @param {boolean} comPitaco - (opcional) Se true, mostra o Sr Pitaco thumbs-up
  */
-function mostrarToastFeedback(titulo, mensagem) {
-    // Remove qualquer toast anterior
+function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
     $('.feedback-toast').remove();
+
+    const imagemPitaco = comPitaco
+        ? `<img src="/Utils/feedback-float/img/sr_pitaco_like.png"
+                 alt="Sr Pitaco"
+                 style="width: 90px; height: auto; margin-right: 12px; flex-shrink: 0;">`
+        : '';
 
     const toast = $(`
         <div class="feedback-toast"
             style="
                 position: fixed;
-                bottom: 17px;
-                right: 106px;
-                background: #e6f4ea;
+                bottom: 20px;
+                right: 100px;
+                background: #e9f8ed;
                 border: 1px solid #3cba54;
                 color: #333;
-                padding: 23px 15px;
-                border-radius: 10px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                padding: 18px 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                 font-size: 14px;
-                max-width: 340px;
+                max-width: 440px;
+                display: flex;
+                align-items: center;
                 z-index: 9999;
-                animation: fadeIn 0.3s ease;
+                animation: fadeInUp 0.35s ease;
             ">
-            <div style="display: flex; align-items: flex-start;">
-                <div style="font-size: 18px; margin-right: 10px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 0C3.5816 0 0 3.5816 0 8C0 12.4184 3.5816 16 8 16C12.4184 16 16 12.4184 16 8C16 3.5816 12.4176 0 8 0ZM7.4 12.6L3.4 9.6L4.6 8L7 9.8L11.2 4.2L12.8 5.4L7.4 12.6Z" fill="#0C8A00"/>
-                </svg></div>
-                <div style="flex: 1;">
-                    <div style="font-weight: bold; font-size: 15px; margin-bottom: 4px;">
-                        ${titulo}
+
+            ${imagemPitaco}
+
+            <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="display: flex; align-items: center;">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 6px;">
+                            <path d="M8 0C3.5816 0 0 3.5816 0 8C0 12.4184 3.5816 16 8 16C12.4184 16 16 12.4184 16 8C16 3.5816 12.4176 0 8 0ZM7.4 12.6L3.4 9.6L4.6 8L7 9.8L11.2 4.2L12.8 5.4L7.4 12.6Z" fill="#0C8A00"/>
+                        </svg>
+                        <div style="font-weight: 600; font-size: 15px;">
+                            ${titulo}
+                        </div>
                     </div>
-                    <div style="font-size: 14px; line-height: 1.4;">
-                        ${mensagem}
-                    </div>
+                    <button class="close-toast"
+                        style="
+                            background: none;
+                            border: none;
+                            font-size: 18px;
+                            line-height: 1;
+                            margin-left: 10px;
+                            cursor: pointer;
+                            color: #666;
+                        ">✖</button>
                 </div>
-                <button class="close-toast"
-                    style="
-                        background: none;
-                        border: none;
-                        font-size: 16px;
-                        margin-left: 10px;
-                        cursor: pointer;
-                        color: #666;
-                    ">✖</button>
+                <div style="font-size: 14px; margin-top: 6px; line-height: 1.4;">
+                    ${mensagem}
+                </div>
             </div>
         </div>
     `);
 
     $('body').append(toast);
 
-    // Fecha ao clicar no X
     toast.find('.close-toast').on('click', function () {
         toast.fadeOut(200, () => toast.remove());
     });
 
-    // Fecha automaticamente
     setTimeout(() => toast.fadeOut(500, () => toast.remove()), 6000);
 }
 
-// Exporta para uso global
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}`;
+document.head.appendChild(style);
+
 window.mostrarToastFeedback = mostrarToastFeedback;

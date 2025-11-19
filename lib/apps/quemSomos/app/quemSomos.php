@@ -52,7 +52,9 @@ if($setores['status'] == 0) {
             
         $montaDivSquads = '';
         if($squads['status'] == 0){
-            echo $squads['mensagem'];
+            if (!is_array($squads['mensagem'])) {
+                echo $squads['mensagem'];
+            }
         } else {
             for($i=0; $i < sizeof($squads['mensagem']); $i++){
                 $border = '';

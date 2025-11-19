@@ -24,28 +24,18 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `intranet` /*!40100 DEFAULT CHARACTER S
 
 USE `intranet`;
 
---
--- Table structure for table `cabecalho_categoria_subitem`
---
-
 DROP TABLE IF EXISTS `cabecalho_categoria_subitem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `cabecalho_categoria_subitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(45) DEFAULT NULL,
   `vinculoItem` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `cabecalho_item`
---
 
 DROP TABLE IF EXISTS `cabecalho_item`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `cabecalho_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `item` varchar(45) DEFAULT NULL,
@@ -55,17 +45,13 @@ CREATE TABLE `cabecalho_item` (
   `producao` int(11) DEFAULT 0,
   `exclusivoCad` int(11) DEFAULT 1,
   `uorPermitida` varchar(10000) DEFAULT NULL,
+  `ordemCabecalho` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Table structure for table `cabecalho_subitem`
---
 
 DROP TABLE IF EXISTS `cabecalho_subitem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `cabecalho_subitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subitem` varchar(45) DEFAULT NULL,
@@ -80,15 +66,40 @@ CREATE TABLE `cabecalho_subitem` (
   `ordem` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `logEmailEnviado`
---
+INSERT INTO `cabecalho_item` VALUES
+(1,'Quem somos?','2','quemSomos',1,1,0,NULL,2),
+(2,'Capacitação','1',NULL,1,1,0,NULL,3),
+(3,'Notícias','1','',1,1,0,NULL,4),
+(4,'Analytics','1',NULL,1,1,0,NULL,5),
+(5,'Imersão Chatbot','2','mentoria',1,1,0,NULL,6),
+(6,'Explorar','1',NULL,1,1,0,NULL,7),
+(7,'Incidentes','2','incidentes',1,1,1,'514424',8),
+(8,'Solicitações','2','solicitacoes',0,0,1,'532286,514424,532283,514416',9),
+(9,'Home (?‍♀️?️ em construção)','2','home',0,0,1,'514424',10),
+(10,'Solicitações(refinamento)','2','refinamentoTecnico',0,0,1,NULL,11),
+(11,'Report','1',NULL,1,1,0,NULL,12),
+(12,'Home','2','home',1,1,0,NULL,1);
+
+INSERT INTO `cabecalho_subitem` VALUES
+(1,'Onboarding','onboarding',2,NULL,'Bem-vindo ao CAD! Tudo o que você precisa saber para dar seus primeiros passos','fas fa-users',1,1,0,1),
+(2,'UX','ux',2,NULL,'Nessa trilha você vai aprender tudo sobre experiência do usuário','fas fa-comments',1,1,0,2),
+(3,'Dev','dev',2,NULL,'Aprenda sobre a construção de jornadas conversacionais e desenvolvimento web','fas fa-tools',0,0,1,4),
+(4,'Analytics','analytics',2,NULL,'Se aprofunde na extração e tratamento de dados para criação de painéis de acompanhamento','fas fa-chart-line',0,0,1,NULL),
+(5,'Experimentos','experimentos',6,NULL,'Conheça nossos testes para melhorar a jornada dos usuários.','fa-solid fa-rocket',1,1,0,2),
+(6,'Estudos e Pesquisas','estudosPesquisas',6,NULL,'Pesquisas sobre nossos Assistentes Virtuais e o mercado de chatbots.','fa-solid fa-magnifying-glass',1,1,0,3),
+(7,'Painéis','paineis',4,NULL,'Consulte e acesse os painéis mais usados aqui no CAD','fa-solid fa-chart-line',1,1,0,1),
+(8,'Grandes Números','analytics',4,NULL,'Explore os Resultados do CAD e confira os números atingidos','fa-solid fa-calendar-days',1,1,0,2),
+(9,'Recursos','recursos',6,NULL,'Design System, Guia de linguagem, Reportes de curadoria, manuais do CAD...','fa-solid fa-book',1,1,0,1),
+(12,'Saiu na AGN','noticias',3,NULL,'As principais notícias, eventos e novidades do BB em um só lugar','fa-solid fa-bullhorn',1,1,0,1),
+(13,'Notícias do Mercado','trends',3,NULL,'Fique por dentro das principais novidades em tecnologia e inovação','fa fa-newspaper-o',1,1,0,2),
+(14,'Analytics','capacitacao_analytics',2,NULL,'O início de sua jornada no universo de Analytics','fa-solid fa-ranking-star',1,1,0,3),
+(16,'Report PF','reportPf',11,NULL,'Resumo Mensal de Experiências Conversacionais - WhatsApp PF','fa-brands fa-whatsapp',1,1,0,1),
+(17,'Report PJ','reportPj',11,NULL,'Resumo Mensal de Experiências Conversacionais - WhatsApp PJ','fa-brands fa-whatsapp',1,1,0,2);
+
 
 DROP TABLE IF EXISTS `logEmailEnviado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `logEmailEnviado` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tituloEmail` varchar(500) DEFAULT NULL,
@@ -98,15 +109,10 @@ CREATE TABLE `logEmailEnviado` (
   `timestamp` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `log_acesso`
---
 
 DROP TABLE IF EXISTS `log_acesso`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `log_acesso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `matricula` varchar(8) DEFAULT NULL,
@@ -119,19 +125,80 @@ CREATE TABLE `log_acesso` (
   `timestamp` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=114364 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping routines for database 'intranet'
---
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+DROP TABLE IF EXISTS `notaFeedbackPortal`;
 
--- Dump completed on 2025-08-20  0:15:47
+CREATE TABLE `notaFeedbackPortal` (
+  `id_nota` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(50) NOT NULL, 
+  PRIMARY KEY (`id_nota`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+DROP TABLE IF EXISTS `motivoFeedbackPortal`;
+
+CREATE TABLE `motivoFeedbackPortal` (
+  `id_motivo` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(150) NOT NULL, 
+  PRIMARY KEY (`id_motivo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DROP TABLE IF EXISTS `logFeedbackPortal`;
+
+CREATE TABLE `logFeedbackPortal` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `matricula` VARCHAR(8) DEFAULT NULL,
+  `id_nota` INT DEFAULT NULL,
+  `comentario` TEXT DEFAULT NULL,
+  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_item` INT DEFAULT NULL,      
+  `id_subitem` INT DEFAULT NULL,   
+  PRIMARY KEY (`id`),
+
+  CONSTRAINT `fk_feedback_nota`
+    FOREIGN KEY (`id_nota`) REFERENCES `notaFeedbackPortal` (`id_nota`)
+    ON UPDATE CASCADE ON DELETE SET NULL,
+
+  CONSTRAINT `fk_feedback_item`
+    FOREIGN KEY (`id_item`) REFERENCES `cabecalho_item` (`id`)
+    ON UPDATE CASCADE ON DELETE SET NULL,
+
+  CONSTRAINT `fk_feedback_subitem`
+    FOREIGN KEY (`id_subitem`) REFERENCES `cabecalho_subitem` (`id`)
+    ON UPDATE CASCADE ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DROP TABLE IF EXISTS `logFeedbackMotivo`;
+
+CREATE TABLE `logFeedbackMotivo` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_feedback` INT NOT NULL,
+  `id_motivo` INT NOT NULL,
+  PRIMARY KEY (`id`),
+
+  CONSTRAINT `fk_feedbackmotivo_feedback`
+    FOREIGN KEY (`id_feedback`) REFERENCES `logFeedbackPortal` (`id`)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+
+  CONSTRAINT `fk_feedbackmotivo_motivo`
+    FOREIGN KEY (`id_motivo`) REFERENCES `motivoFeedbackPortal` (`id_motivo`)
+    ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Inserindo notas padrão
+INSERT INTO notaFeedbackPortal (descricao) VALUES
+('Muito insatisfeito'),
+('Insatisfeito'),
+('Neutro'),
+('Satisfeito'),
+('Muito satisfeito');
+
+-- Inserindo motivos padrão
+INSERT INTO motivoFeedbackPortal (descricao) VALUES
+('Sistema bom, mas pode melhorar'),
+('Pequenos erros ocasionais'),
+('Interface poderia ser mais intuitiva'),
+('Tempo de resposta razoável'),
+('Outro motivo');
+

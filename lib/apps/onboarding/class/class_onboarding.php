@@ -1,10 +1,8 @@
 <?php
 
-// Mostrar erros do PHP
-// ini_set('display_startup_errors', 1);
-
-// Força o início da sessão
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 // Importação de arquivos de funções de banco de dados e de gravação de log
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
@@ -28,6 +26,9 @@ Class funcoes {
     // Função que consulta as Squads
     public function consultaSquadsDesign(){
         $mat = $_SESSION['matricula'];
+        $retorno = [];
+        $retorno['mensagem'] = [];
+        $retorno['status'] = 0;
 
         $db = New Database('cad');
         $query = "SELECT * FROM cad.squads WHERE idSetor = 4 ORDER BY squad ASC;";
@@ -53,6 +54,9 @@ Class funcoes {
     // Função que monta os elementos dos Canais atendidos pela CAD
     public function consultaCanais(){
         $mat = $_SESSION['matricula'];
+        $retorno = [];
+        $retorno['mensagem'] = [];
+        $retorno['status'] = 0;
 
         $db = New Database('cad');
         $query = "SELECT * FROM onboarding.canais WHERE ativo = 1 ORDER BY id ASC;";
@@ -78,6 +82,9 @@ Class funcoes {
     // Função que monta os elementos das ferramentas utilizadas pela CAD
     public function consultaFerramentas(){
         $mat = $_SESSION['matricula'];
+        $retorno = [];
+        $retorno['mensagem'] = [];
+        $retorno['status'] = 0;
 
         $db = New Database('cad');
         $query = "SELECT * FROM onboarding.ferramentas WHERE ativo = 1 ORDER BY id ASC;";
@@ -104,6 +111,9 @@ Class funcoes {
     // Função que monta os elementos do Dicionário
     public function consultaDicionario(){
         $mat = $_SESSION['matricula'];
+        $retorno = [];
+        $retorno['mensagem'] = [];
+        $retorno['status'] = 0;
 
         $db = New Database('cad');
         $query = "SELECT * FROM onboarding.dicionario WHERE ativo = 1 ORDER BY ordem;";
