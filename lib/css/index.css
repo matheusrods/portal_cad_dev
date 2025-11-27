@@ -336,8 +336,8 @@ main {
     background: linear-gradient(180deg, #ffffff 0%, #eef1ff 60%, #d6dcff 100%);
     border-top: 4px solid #4e44ff;
     border-bottom: 4px solid #465eff;
-    position: relative;                
-    overflow: visible;                 
+    position: relative !important;                
+    overflow: visible !important;                 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -505,4 +505,10 @@ main {
     .pitacoBolinhas {
         display: none;
     }
+}
+
+
+.bannerPitaco {
+    position: relative !important;
+    z-index: 50 !important;
 }

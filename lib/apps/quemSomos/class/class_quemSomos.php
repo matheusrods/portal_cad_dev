@@ -1,10 +1,8 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
 if(!isset($_SESSION)){
     session_start();
 }
-
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -26,7 +24,6 @@ Class funcoes {
     // Função que consulta os Setores ativos da CAD
     public function consultaSetores(){
         $mat = $_SESSION['matricula'];
-        $retorno = array("mensagem" => array(), "status" => 0);
 
         $db = New Database('cad');
         $query = "SELECT * FROM cad.setores WHERE ativo = 1 ORDER BY id ASC;";
@@ -52,9 +49,9 @@ Class funcoes {
     // Função que consulta as Squads de cada Setor
     public function consultaSquads($idSetor){
         $mat = $_SESSION['matricula'];
-        $retorno = array("mensagem" => array(), "status" => 0);
-
         $db = New Database('cad');
+        $retorno = array();
+
         $query = "
             SELECT 
                 a.id,
@@ -144,6 +141,31 @@ Class funcoes {
             if($execQuery){
                 $retorno = array();
                 $retorno['mensagem'] = $execQuery;
+                $retorno["status"] = 1;
+            }
+        } catch(Exception $e){
+            $informacoesErro = "erro: " . $e . "\n \n\$query: " . $query;
+            $arquivoLog = $this->geraLogExcecao("quemSomos", "consultaVagas", $informacoesErro, $mat);
+            $retorno["mensagem"] = "<p style='font-size: 20px; font-weight: bold;'>Não foi possível consultar as vagas disponíveis.<br>Informe à equipe responsável o caminho a seguir:<br>" . $arquivoLog;
+            $retorno["status"] = 0;
+        } finally {
+            return ($retorno);
+        }
+    }
+
+    // Função que soma o total de vagas disponíveis no CAD para mostrar ou não o quadro de vagas
+    public function somaVagas(){
+        $mat = $_SESSION['matricula'];
+
+        $db = New Database('cad');
+        $query = 'SELECT sum(qtdVagas) as qtd FROM cad.vagas WHERE ativo = 1;';
+        
+        try{
+            $execQuery = $db->DbGetAll($query);
+            
+            if($execQuery){
+                $retorno = array();
+                $retorno['mensagem'] = $execQuery[0]['qtd'];
                 $retorno["status"] = 1;
             }
         } catch(Exception $e){

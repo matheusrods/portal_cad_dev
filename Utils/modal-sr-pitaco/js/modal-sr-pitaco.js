@@ -24,7 +24,6 @@ function abrirModalSrPitaco(portal = false) {
 }
 
 function atualizarTituloModalPitaco(portal = false) {
-    console.log(window.PITACO_TELA_ATUAL);
     const telaAtual = portal 
         ? 'Portal' 
         : (window.PITACO_TELA_ATUAL || sessionStorage.getItem('PITACO_TELA_ATUAL'));
@@ -41,11 +40,9 @@ function atualizarTituloModalPitaco(portal = false) {
 
     window.PITACO_PORTAL = null;
 
-    console.log(telaAtual);
-
     buscaNomePaginaAtual(telaAtual, function(nomePagina) {
-        console.log(nomePagina);
-        const nomeFormatado = nomePagina.charAt(0).toUpperCase() + nomePagina.slice(1);
+        let nomeFormatado = nomePagina.charAt(0).toUpperCase() + nomePagina.slice(1);
+        nomeFormatado = nomeFormatado.replace(/\?/g, '');
 
         document.querySelectorAll('.titulo-feedback').forEach(el => {
             el.textContent = `Como foi sua experiência na página ${nomeFormatado}?`;

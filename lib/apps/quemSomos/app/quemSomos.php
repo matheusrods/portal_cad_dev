@@ -1,7 +1,7 @@
 <?php
 
 
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -41,120 +41,115 @@ $setores = $class->consultaSetores();
 
 $montaDivSetores = '';
 
-if($setores['status'] == 0) {
+if ($setores['status'] == 0) {
     // $montaDivSetores = $setores['mensagem'];
     echo $setores['mensagem'];
 } else {
-    for($k=0; $k < sizeof($setores['mensagem']); $k++){
+    for ($k = 0; $k < sizeof($setores['mensagem']); $k++) {
 
-        $montaDivSetores = $montaDivSetores.'<div id="'.$setores['mensagem'][$k]['id'].'" class="divSetor"><div class="nomeSetor">'.$setores['mensagem'][$k]['setor'].'</div><div class="descricaoSetor">'.$setores['mensagem'][$k]['descricaoSetor'].'</div>';
+        $montaDivSetores = $montaDivSetores . '<div id="' . $setores['mensagem'][$k]['id'] . '" class="divSetor"><div class="nomeSetor">' . $setores['mensagem'][$k]['setor'] . '</div><div class="descricaoSetor">' . $setores['mensagem'][$k]['descricaoSetor'] . '</div>';
         $squads = $class->consultaSquads($setores['mensagem'][$k]['id']);
-            
+
         $montaDivSquads = '';
-        if($squads['status'] == 0){
-            echo $squads['mensagem'];
+        if ($squads['status'] == 0) {
+            if (!is_array($squads['mensagem'])) {
+                echo $squads['mensagem'];
+            }
         } else {
-            for($i=0; $i < sizeof($squads['mensagem']); $i++){
+            for ($i = 0; $i < sizeof($squads['mensagem']); $i++) {
                 $border = '';
-        
-                if(($i==0) && ((sizeof($squads['mensagem'])>1))){
+
+                if (($i == 0) && ((sizeof($squads['mensagem']) > 1))) {
                     $border = 'style="border-top-right-radius: 16px;border-top-left-radius: 16px;"';
-                } else if(($i == (sizeof($squads['mensagem'])-1)) && ((sizeof($squads['mensagem'])>1))){
+                } else if (($i == (sizeof($squads['mensagem']) - 1)) && ((sizeof($squads['mensagem']) > 1))) {
                     $border = 'style="border-bottom-right-radius: 16px;border-bottom-left-radius: 16px; border-bottom: 0px; margin-bottom:8px;"';
-                } else if(sizeof($squads['mensagem']) == 1){
+                } else if (sizeof($squads['mensagem']) == 1) {
                     $border = 'style="border-radius: 16px; margin-bottom:8px;"';
                 } else {
                     $border = 'style="border-bottom: 1px solid #F0F2F4;"';
                 }
-        
-                $montaDivSquads = $montaDivSquads.'
-                    <div id="'.$squads['mensagem'][$i]['id'].'" class="divSquad" '.$border.'>
-                        <div class="funcisSquads">'.$squads['mensagem'][$i]['squad'].'<button class="btn btn-outline-dark botaoSetaSquad'.$squads['mensagem'][$i]['id'].'"><i class="fa fa-chevron-down iconeSetaSquad'.$squads['mensagem'][$i]['id'].'"></i></button></div>
+
+                $montaDivSquads = $montaDivSquads . '
+                    <div id="' . $squads['mensagem'][$i]['id'] . '" class="divSquad" ' . $border . '>
+                        <div class="funcisSquads">' . $squads['mensagem'][$i]['squad'] . '<button class="btn btn-outline-dark botaoSetaSquad' . $squads['mensagem'][$i]['id'] . '"><i class="fa fa-chevron-down iconeSetaSquad' . $squads['mensagem'][$i]['id'] . '"></i></button></div>
                             <div class="squadsFuncionarios" attr-squadAberta="0">
-                                <div class="squad'.$squads['mensagem'][$i]['id'].' classSquads" attr-idSquad="'.$squads['mensagem'][$i]['id'].'">
+                                <div class="squad' . $squads['mensagem'][$i]['id'] . ' classSquads" attr-idSquad="' . $squads['mensagem'][$i]['id'] . '">
                                     <br>
-                                    <div class="descricaoSquad">'.$squads['mensagem'][$i]['descricaoSquad'].'
+                                    <div class="descricaoSquad">' . $squads['mensagem'][$i]['descricaoSquad'] . '
                                     </div>
                                     <br>
                                     <div class="gerenteSquad">
-                                        <a class="abreHumanograma" href="https://humanograma.intranet.bb.com.br/'.$squads['mensagem'][$i]['matGerente'].'" target="_blank">
+                                        <a class="abreHumanograma" href="https://humanograma.intranet.bb.com.br/' . $squads['mensagem'][$i]['matGerente'] . '" target="_blank">
                                             <div class="detalheGerente">
                                                 <div style="width: 95px; height: 95px; background: #D9D9D9; border-radius: 9999px">
-                                                    <img class="detalheFunciFotoPerfil" src="https://humanograma.intranet.bb.com.br/avatar/'.$squads['mensagem'][$i]['matGerente'].'">
+                                                    <img class="detalheFunciFotoPerfil" src="https://humanograma.intranet.bb.com.br/avatar/' . $squads['mensagem'][$i]['matGerente'] . '">
                                                 </div>
                                                 <div style="flex-direction: column; justify-content: center; align-items: center; gap: 4px; display: flex">
-                                                    <div class="detalheNomeFunci">'.$squads['mensagem'][$i]['nomeGerente'].'
+                                                    <div class="detalheNomeFunci">' . $squads['mensagem'][$i]['nomeGerente'] . '
                                                     </div>
-                                                    <div class="detalheCargoFunci">'.$squads['mensagem'][$i]['nomeFuncao'].'
+                                                    <div class="detalheCargoFunci">' . $squads['mensagem'][$i]['nomeFuncao'] . '
                                                     </div>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                 ';
-        
+
                 $funcisSquads = $class->consultaFuncisSquads($squads['mensagem'][$i]['id']);
                 $montaFuncisSquads = '<div class="funciSquad">';
-                
-                for($j=0; $j < sizeof($funcisSquads['mensagem']); $j++){
-                    $montaFuncisSquads = $montaFuncisSquads.'
-                        <div class="detalhesFunci" attr-idSquad="'.$squads[$i]['id'].'">
-                            <a class="abreHumanograma" href="https://humanograma.intranet.bb.com.br/'.$funcisSquads['mensagem'][$j]['matricula'].'" target="_blank">
+
+                if ($funcisSquads['status'] == 0 || !is_array($funcisSquads['mensagem'])) {
+                    $montaDivSquads .= $montaFuncisSquads . '</div></div></div></div>';
+                    continue;
+                }
+
+                for ($j = 0; $j < sizeof($funcisSquads['mensagem']); $j++) {
+                    $montaFuncisSquads = $montaFuncisSquads . '
+                        <div class="detalhesFunci" attr-idSquad="' . $squads[$i]['id'] . '">
+                            <a class="abreHumanograma" href="https://humanograma.intranet.bb.com.br/' . $funcisSquads['mensagem'][$j]['matricula'] . '" target="_blank">
                                 <div class="detalheFunciTop">
                                     <div class="detalheFunciFoto">
-                                        <img class="detalheFunciFotoPerfil" src="https://humanograma.intranet.bb.com.br/avatar/'.$funcisSquads['mensagem'][$j]['matricula'].'">
+                                        <img class="detalheFunciFotoPerfil" src="https://humanograma.intranet.bb.com.br/avatar/' . $funcisSquads['mensagem'][$j]['matricula'] . '">
                                     </div>
                                 </div>
                                 <div class="detalheFunciBottom">
-                                    <div class="detalheNomeFunci">'.$funcisSquads['mensagem'][$j]['nomeGuerra'].'
+                                    <div class="detalheNomeFunci">' . $funcisSquads['mensagem'][$j]['nomeGuerra'] . '
                                     </div>
-                                    <div class="detalheCargoFunci">'.$funcisSquads['mensagem'][$j]['nomeFuncao'].'
+                                    <div class="detalheCargoFunci">' . $funcisSquads['mensagem'][$j]['nomeFuncao'] . '
                                     </div>
                                 </div>
                             </a>
                         </div>';
                 }
-                $montaDivSquads = $montaDivSquads.$montaFuncisSquads.'</div></div></div></div>';
+                $montaDivSquads = $montaDivSquads . $montaFuncisSquads . '</div></div></div></div>';
             }
-            $montaDivSetores = $montaDivSetores.$montaDivSquads.'</div>';
+            $montaDivSetores = $montaDivSetores . $montaDivSquads . '</div>';
         }
     }
-    echo $montaDivSetores.'</div>';
+    echo $montaDivSetores . '</div>';
 }
 
-$somaVagas = $class->somaVagas();
-$quadroDeVagas = '';
 
-if($somaVagas['mensagem'] != '0'){
-    
-    $consultaVagas = $class->consultaVagas();
-    $montaDivVagas = '';
-    $classeCorDeFundoSemVagas = '';
-    
-    for($i = 0; $i < sizeof($consultaVagas['mensagem']); $i++){
-    
-        if(($consultaVagas['mensagem'][$i]['qtdVagas']) == 0){
-            $classeCorDeFundoSemVagas = "style = 'background-color: #F0F2F4'";
-        }
-        
-        $montaDivVagas = $montaDivVagas.'
-            <div class= "quadroDadosVagas" '.$classeCorDeFundoSemVagas.'>
-                <div class = "dadosVaga">
-                    <div class="descCargo">'.$consultaVagas['mensagem'][$i]['descricaoFuncao'].'</div>
-                    <div class="codVaga">'.$consultaVagas['mensagem'][$i]['codVaga'].'</div>
-                </div>    
-                    <div class="qtdVagas">'.$consultaVagas['mensagem'][$i]['qtdVagas'].'</div>
-            </div>
-        ';
-        $classeCorDeFundoSemVagas = '';
+$consultaVagas = $class->consultaVagas();
+$montaDivVagas = '';
+$classeCorDeFundoSemVagas = '';
+
+for ($i = 0; $i < sizeof($consultaVagas['mensagem']); $i++) {
+
+    if (($consultaVagas['mensagem'][$i]['qtdVagas']) == 0) {
+        $classeCorDeFundoSemVagas = "style = 'background-color: #F0F2F4'";
     }
 
-    $quadroDeVagas = '
-        <div class="tituloConfiraOportunidades" style="width: 100%; height: 100%; text-align: center; padding-top: 32px;">
-            <span style="color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word">Confira nossas oportunidades:<br/></span>
+    $montaDivVagas = $montaDivVagas . '
+        <div class= "quadroDadosVagas" ' . $classeCorDeFundoSemVagas . '>
+            <div class = "dadosVaga">
+                <div class="descCargo">' . $consultaVagas['mensagem'][$i]['descricaoFuncao'] . '</div>
+                <div class="codVaga">' . $consultaVagas['mensagem'][$i]['codVaga'] . '</div>
+            </div>    
+                <div class="qtdVagas">' . $consultaVagas['mensagem'][$i]['qtdVagas'] . '</div>
         </div>
-        <div class="quadroVagasQuantidade">'.$montaDivVagas.'</div>
     ';
+    $classeCorDeFundoSemVagas = '';
 }
 
 echo '</div><br />
@@ -206,17 +201,31 @@ echo '</div><br />
         </div>
     </div>
     <div class="quadroVagas">
-        '.$quadroDeVagas.'
-        <div style="width: 100vw; text-align: center; color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word; margin-top: 16px; padding: 30px; ">Conheça o Programa de Formação do CAD</div>
-        <div class="quadroInscreva" class>
-            <a href="https://cad.bb.com.br/formacao-bots/" target="_blank" style="text-decoration: none;">
-                <div class="conteudoQuadroInscreva">
-                    <span style="color: #49494F; font-size: 20px; font-family: BancoDoBrasil Textos; font-weight: 700;">Clique aqui para acessar o hotsite</span>
-                </div>
-            </a>
+        <div style="width: 100%; height: 100%; text-align: center; padding-top: 32px;">
+            
+            <span style="color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word">Confira nossas oportunidades:<br/></span>
+        </div>
+        <div class="quadroVagasQuantidade">' . $montaDivVagas . '</div>
+            <!-- <div style="width: 100vw; text-align: center; color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word; margin-top: 16px;">Se inscreva no DigiTAO</div>
+            <div class="quadroInscreva" class>
+                <a href="https://plataforma.atendimento.bb.com.br:49286/estatico/gaw/app/spas/index/index.app.html?cd_modo_uso=44&amp;app=tao.inscricao" target="_blank" style="text-decoration: none;">
+                    <div class="conteudoQuadroInscreva">
+                        <span style="color: #49494F; font-size: 20px; font-family: BancoDoBrasil Textos; font-weight: 700;">Plataforma BB &gt; Pessoas &gt; Minha Visão &gt; Talentos e Oportunidades (DigiTAO)</span>
+                    </div>
+                </a>
+            </div> -->
+
+
+            <div style="width: 100vw; text-align: center; color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word; margin-top: 16px; padding: 30px; ">Conheça o Programa de Formação do CAD</div>
+            <div class="quadroInscreva" class>
+                <a href="https://cad.bb.com.br/formacao-bots/" target="_blank" style="text-decoration: none;">
+                    <div class="conteudoQuadroInscreva">
+                        <span style="color: #49494F; font-size: 20px; font-family: BancoDoBrasil Textos; font-weight: 700;">Clique aqui para acessar o hotsite</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 ';
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/pages/rodape.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/pages/rodape.php";
