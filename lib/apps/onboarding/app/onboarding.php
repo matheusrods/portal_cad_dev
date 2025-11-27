@@ -11,6 +11,7 @@ if(!isset($_SESSION)){
 // Importação de arquivos de funções da página onboarding e de gravação de log
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/onboarding/class/class_onboarding.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 // Registra o log de acesso à página
 $class = new gravaLogAcesso();
@@ -31,7 +32,7 @@ $montaDivDicionario = '';
 
 
 if($squadsDesign['status'] == 0){
-    $montaDivSquads = $squadsDesign['mensagem'];
+    $montaDivSquads = '';
 } else {
     // Laço que monta o conteúdo das squads
     for($i = 0; $i < sizeof($squadsDesign['mensagem']); $i++){
@@ -72,7 +73,7 @@ if($ferramentas['status'] == 0){
                     </div>
                     <div style="width: 100%;">
                         <a href="'.$ferramentas['mensagem'][$i]['linkAcesso'].'" target="_blank">
-                            <img style="width: 100%;" src="https://cad.bb.com.br/lib/img/apps/onboarding/'.$ferramentas['mensagem'][$i]['nomeArquivoImagem'].'.png"> </img>
+                            <img style="width: 100%;" src="'. getBaseUrl() .'/lib/img/apps/onboarding/'.$ferramentas['mensagem'][$i]['nomeArquivoImagem'].'.png"> </img>
                         </a>
                     </div>
                 </div>
@@ -88,7 +89,7 @@ if($canais['status'] == 0){
     // Laço que monta o conteúdo dos canais
     for($i = 0; $i < sizeof($canais['mensagem']); $i++){
         $montaDivCanais = $montaDivCanais.'
-            <div class="canalOnboarding" attr-idCanal="'.$canais[$i]['id'].'">
+            <div class="canalOnboarding" attr-idCanal="'.$canais['mensagem'][$i]['id'].'">
                 <div style="align-self: stretch; height: auto; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex">
                     <div style="align-self: stretch; color: #49494F; font-size: 22px; font-family: BancoDoBrasil Titulos; font-weight: 700; line-height: 27.50px; word-wrap: break-word">'.$canais['mensagem'][$i]['canal'].'</div>
                 </div>
@@ -129,7 +130,7 @@ echo '
     <div class="capaOnboarding">
         <div style="width: 100%; height: auto; padding-top: 64px; padding-bottom: 64px; background: #FDF429; justify-content: center; align-items: center; gap: 64px; display: inline-flex">
             <div style="width: 60%; display: inline-flex; gap: 32px;">
-                <img style="width: 350px; height: 350px; align-self: center;" src="https://cad.bb.com.br/lib/img/apps/onboarding/capa.png" />
+                <img style="width: 350px; height: 350px; align-self: center;" src="'. getBaseUrl() .'/lib/img/apps/onboarding/capa.png" />
                 <div style="flex-direction: column; justify-content: center; align-items: center; gap: 32px; display: inline-flex;width: 80%;">
                     <div style="width: 100%; height: 100%; color: #49494F; font-size: 96px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word; letter-spacing: -10px; line-height: 100%;">Que bom que você chegou!</div>
                     <div style="width: 100%; height: 100%"><span style="color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 300; word-wrap: break-word">Agora vou te mostrar um pouco de </span><span style="color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word">como a nossa dependência funciona</span><span style="color: #49494F; font-size: 32px; font-family: BancoDoBrasil Textos; font-weight: 300; word-wrap: break-word"> e tudo o que você precisa saber nesse primeiro contato!</span></div>
@@ -141,7 +142,7 @@ echo '
     <div class="conteudoOnboarding">
         <div class="divisaoEquipesOnboarding" style="width: 100%; height: auto; padding-left: 8px; padding-right: 8px; padding-top: 32px; padding-bottom: 32px; background: #FAFAFB; flex-direction: column; justify-content: flex-start; align-items: center; gap: 32px; display: inline-flex">
             <div style="width: 50%; text-align: center; color: #49494F; font-size: 48px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">Divisão das Equipes</div>
-            <img class ="imagemDivisaoCadOnboarding Clicar" attr-linkinterno ="quemSomos" style="width: 75%; height: auto" src="https://cad.bb.com.br/lib/img/apps/onboarding/nossasEquipes.svg" />
+            <img class ="imagemDivisaoCadOnboarding Clicar" attr-linkinterno ="quemSomos" style="width: 75%; height: auto" src="'. getBaseUrl() .'/lib/img/apps/onboarding/nossasEquipes.svg" />
         </div>
 
        <!-- <div class="apresentacaoSquadsOnboarding">
@@ -177,8 +178,8 @@ echo '
     <div class="divDinamicaTrabalhoOnboarding">
         <div style="width: 100%; height: auto; padding-left: 8px; padding-right: 8px; padding-top: 64px; padding-bottom: 64px; background: #F0F2F4; flex-direction: column; justify-content: flex-start; align-items: center; gap: 32px; display: inline-flex">
             <div style="width: 50%; text-align: center; color: #49494F; font-size: 48px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">Um pouco da nossa dinâmica de trabalho</div>
-            <img style="width: 70%; height: auto" src="https://cad.bb.com.br/lib/img/apps/onboarding/dinamica1.png" />
-            <img style="width: 50%; height: auto" src="https://cad.bb.com.br/lib/img/apps/onboarding/dinamica2.png" />
+            <img style="width: 70%; height: auto" src="'. getBaseUrl() .'/lib/img/apps/onboarding/dinamica1.png" />
+            <img style="width: 50%; height: auto" src="'. getBaseUrl() .'/lib/img/apps/onboarding/dinamica2.png" />
         </div>
     </div>
 
@@ -279,7 +280,7 @@ echo '
         <div style="width: 100%; height: auto; padding-left: 8px; padding-right: 8px; padding-top: 64px; padding-bottom: 64px; background: #FAFAFB; flex-direction: column; justify-content: flex-start; align-items: center; gap: 32px; display: inline-flex">
             <div style="width: 50%; text-align: center; color: #49494F; font-size: 48px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">Guia de linguagem</div>
             <div style="width: 50%; color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word">Tudo que você precisa saber para ensinar um robô a interagir utilizando a voz do BB.<br/><br/>É um material de consulta que visa à criação da linguagem dos bots e um manual de boas práticas.</div>
-            <img class="linkGuiaDeLinguagem Clicar" src="https://cad.bb.com.br/lib/img/apps/onboarding/guiaDeLinguagem.png" style="border-radius: 16px;box-shadow: 5px 5px 1px #ccc;">
+            <img class="linkGuiaDeLinguagem Clicar" src="'. getBaseUrl() .'/lib/img/apps/onboarding/guiaDeLinguagem.png" style="border-radius: 16px;box-shadow: 5px 5px 1px #ccc;">
         </div>
     </div>
 
@@ -319,11 +320,11 @@ echo '
                 <span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word">Utilizando o input </span><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word">#mudaCorpus</span><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word"> você tem a possibilidade de </span><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word">mudar os corpus do bot no WhatsApp.<br/></span>
                 <span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word"><br/>Isso facilita na hora de</span><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word"> testar as jornadas</span><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word"> que estão sendo construídas.</span>
             </div>
-            <img style="width: 800px; height: auto" src="https://cad.bb.com.br/lib/img/apps/onboarding/mudaCorpus.png">
+            <img style="width: 800px; height: auto" src="'. getBaseUrl() .'/lib/img/apps/onboarding/mudaCorpus.png">
             <div style="width: 828px; color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word">Nesse input tem a opção de ativar o modo teste, que é representado no NIA pela variável <b>$modo_teste</b>.</div>
-            <img style="width: 498px; height: auto; border-radius: 24px" src="https://cad.bb.com.br/lib/img/apps/onboarding/modoTeste.png" />
+            <img style="width: 498px; height: auto; border-radius: 24px" src="'. getBaseUrl() .'/lib/img/apps/onboarding/modoTeste.png" />
             <div style="width: 828px"><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word">Você também consegue limpar todo o contexto e reiniciar como se fosse uma nova conversa do zero com o comando </span><span style="color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 700; word-wrap: break-word">recomecar</span>.</div>
-            <img style="width: 498px; height: auto; border-radius: 24px" src="https://cad.bb.com.br/lib/img/apps/onboarding/recomecar.png" />
+            <img style="width: 498px; height: auto; border-radius: 24px" src="'. getBaseUrl() .'/lib/img/apps/onboarding/recomecar.png" />
         </div>
     </div>
 
@@ -417,3 +418,5 @@ echo '
 
 include_once $_SERVER["DOCUMENT_ROOT"]."/pages/rodape.php";
 ?>
+
+

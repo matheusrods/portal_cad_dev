@@ -50,7 +50,7 @@ echo '
                 <div class="botaoLimpaPesquisa Clicar">
                     <div class="textoBotoesCampoPesquisa">limpar</div>
                 </div>
-                '.$botaoAdicionarRecurso.'
+                '.($botaoAdicionarRecurso ?? "").'
             </div>
         </div>
 

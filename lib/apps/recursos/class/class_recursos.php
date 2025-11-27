@@ -1,11 +1,13 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/geraLog.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 Class funcoes {
 
@@ -81,8 +83,7 @@ Class funcoes {
                     FROM recursos.recursos a
                     LEFT JOIN recursos.recursosTemas b ON a.id = b.idRecurso
                     LEFT JOIN recursos.temas c ON b.idTema = c.id
-                    -- WHERE a.ativo = 1 ".$filtroIdTema."
-                    ".$whereAtivo." ".$filtroIdTema."
+                    ".$whereAtivo." ".($filtroIdTema ?? "")."
                     ORDER BY a.ativo DESC, a.id DESC;";
         
         try{
@@ -113,7 +114,7 @@ Class funcoes {
                     }
 
                     if($execQuery[$j]['linkExterno'] == 0){
-                        $caminhoRecurso = "https://cad.bb.com.br/lib/apps/recursos/arquivos/".$execQuery[$j]['nomeArquivo'];
+                        $caminhoRecurso = getBaseUrl() . "/lib/apps/recursos/arquivos/".$execQuery[$j]['nomeArquivo'];
                         $textoBotaoAcessar = 'Ver documento';
                     } else {
                         $caminhoRecurso = $execQuery[$j]['nomeArquivo'];
@@ -135,7 +136,7 @@ Class funcoes {
                     $montaRecursos = $montaRecursos.$abreDivNestRecurso.'
                         <div class="divRecurso" '.$estiloRecursoInativo.'>
                             <a href="'.$caminhoRecurso.'?t='.time().'" target="_blank" style="text-decoration: none;">
-                                <div class="fotoCapaRecurso" style="background-image: url(https://cad.bb.com.br/lib/apps/recursos/arquivos/'.$execQuery[$j]['nomeCapa'].'?t='.time().'); background-repeat: no-repeat; background-position: center; background-color: #465eff;">
+                                <div class="fotoCapaRecurso" style="background-image: url('.getBaseUrl().'/lib/apps/recursos/arquivos/'.$execQuery[$j]['nomeCapa'].'?t='.time().'); background-repeat: no-repeat; background-position: center; background-color: #465eff;">
                                     <div class="tagRecurso">
                                         <div class="textoTagRecurso">'.$execQuery[$j]['tema'].'</div>
                                     </div>
@@ -215,7 +216,7 @@ Class funcoes {
 
                     $montaRecursosFiltradas = $montaRecursosFiltradas.$abreDivNestRecurso.'
                         <div class="divRecurso">
-                            <div style="align-self: stretch; height: 272.27px; padding-top: 16px; padding-bottom: 8px; padding-left: 73px; padding-right: 16px; background-image: url(https://cad.bb.com.br/lib/apps/recursos/arquivos/'.$execQuery[$j]['nomeCapa'].'); background-repeat: no-repeat; background-position: center; background-color: #465eff;">
+                            <div style="align-self: stretch; height: 272.27px; padding-top: 16px; padding-bottom: 8px; padding-left: 73px; padding-right: 16px; background-image: url('.getBaseUrl().'/lib/apps/recursos/arquivos/'.$execQuery[$j]['nomeCapa'].'?t='.time().'); background-repeat: no-repeat; background-position: center; background-color: #465eff;">
                                 <div style="padding-left: 8px; padding-right: 8px; background: #FDF429; border-radius: 999px; flex-direction: column; justify-content: center; align-items: center; display: flex; flex-wrap: wrap;">
                                     <div style="text-align: center; color: #111214; font-size: 12px; font-family: BancoDoBrasil Textos; font-weight: 500; line-height: 13.50px; letter-spacing: 0.06px; word-wrap: break-word">'.$execQuery[$j]['tema'].'</div>
                                 </div>
@@ -314,7 +315,7 @@ Class funcoes {
                     }
 
                     if($execQuery[$j]['linkExterno'] == 0){
-                        $caminhoRecurso = "https://cad.bb.com.br/lib/apps/recursos/arquivos/".$execQuery[$j]['nomeArquivo'];
+                        $caminhoRecurso = getBaseUrl() . "/lib/apps/recursos/arquivos/".$execQuery[$j]['nomeArquivo'];
                         $textoBotaoAcessar = 'Ver documento';
                     } else {
                         $caminhoRecurso = $execQuery[$j]['nomeArquivo'];
@@ -337,7 +338,7 @@ Class funcoes {
                     $montaRecursos = $montaRecursos.$abreDivNestRecurso.'
                         <div class="divRecurso" '.$estiloRecursoInativo.'>
                             <a href="'.$caminhoRecurso.'" target="_blank" style="text-decoration: none;">
-                                <div class="fotoCapaRecurso" style="background-image: url(https://cad.bb.com.br/lib/apps/recursos/arquivos/'.$execQuery[$j]['nomeCapa'].'?t='.time().'); background-repeat: no-repeat; background-position: center; background-color: #465eff;">
+                                <div class="fotoCapaRecurso" style="background-image: url('.getBaseUrl().'/lib/apps/recursos/arquivos/'.$execQuery[$j]['nomeCapa'].'?t='.time().'); background-repeat: no-repeat; background-position: center; background-color: #465eff;">
                                     <div class="tagRecurso">
                                         <div class="textoTagRecurso">'.$execQuery[$j]['tema'].'</div>
                                     </div>
@@ -594,7 +595,7 @@ Class funcoes {
                         });
 
                         $(".btnGravaEdicaoRecurso").click(function () {
-                            var caminhoupload = "https://cad.bb.com.br/lib/apps/recursos/class/editarRecursos.php";
+                            var caminhoupload = '. getBaseUrl(). ' + "/lib/apps/recursos/class/editarRecursos.php";
                             var idRecurso = $(this).attr("attr-idRecurso");
                             var formData = new FormData();
                             var validaAlteracaoTitulo = $("#textAreaTituloEditarRecurso").attr("attr-alteracao");

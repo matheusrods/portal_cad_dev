@@ -1,7 +1,9 @@
 <?php
 
 // ini_set('display_startup_errors', 1);
-session_start();
+if(!isset($_SESSION)){
+  session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -62,7 +64,7 @@ Class funcoes {
                     $montaVideos = $montaVideos.$abreDivNestVideo.'
                         <div class="divVideoUx">
                             <a href="'.$execQuery[$j]['url'].'" target="_blank" style="text-decoration: none;">
-                                <div class="fotoCapaVideoUx" style="background-image: url(https://cad.bb.com.br/lib/apps/ux/img/'.$execQuery[$j]['id'].'.png);">
+                                <div class="fotoCapaVideoUx" style="background-image: url('. getBaseUrl() .'/lib/apps/ux/img/'.$execQuery[$j]['id'].'.png);">
                                     <div class="tagVideoUx" style="background: '.$execQuery[$j]['codigoCor'].' !important">
                                         <div class="textoTagAssunto">'.$execQuery[$j]['tagTema'].'</div>
                                     </div>
@@ -181,7 +183,7 @@ Class funcoes {
                     $montaVideos = $montaVideos.$abreDivNestVideo.'
                         <div class="divVideoUx">
                             <a href="'.$execQuery[$j]['url'].'" target="_blank" style="text-decoration: none;">
-                                <div class="fotoCapaVideoUx" style="background-image: url(https://cad.bb.com.br/lib/apps/ux/img/'.$execQuery[$j]['id'].'.png);">
+                                <div class="fotoCapaVideoUx" style="background-image: url('. getBaseUrl() .'/lib/apps/ux/img/'.$execQuery[$j]['id'].'.png);">
                                     <div class="tagVideoUx">
                                         <div class="textoTagAssunto">'.$execQuery[$j]['tagTema'].'</div>
                                     </div>

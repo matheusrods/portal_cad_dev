@@ -1,7 +1,9 @@
 <?php
 
 // ini_set('display_startup_errors', 1);
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -74,7 +76,7 @@ Class funcoes {
                     FROM noticias.noticias a
                     LEFT JOIN noticias.noticias_temas b ON a.id = b.idNoticia
                     LEFT JOIN noticias.temas c ON b.idTema = c.id
-                    WHERE a.ativo = 1 ".$filtroIdTema." ORDER BY dataPublicacao DESC;";
+                    WHERE a.ativo = 1 ". ($filtroIdTema ?? "") ." ORDER BY dataPublicacao DESC;";
 
         try{
             $execQuery = $db->DbGetAll($query);

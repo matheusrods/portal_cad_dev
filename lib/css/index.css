@@ -328,3 +328,181 @@ main {
         display: none;
     }
 }
+
+/* --- BANNER PITACO --- */
+.bannerPitaco {
+    width: 100%;
+    height: 195px;                      
+    background: linear-gradient(180deg, #ffffff 0%, #eef1ff 60%, #d6dcff 100%);
+    border-top: 4px solid #4e44ff;
+    border-bottom: 4px solid #465eff;
+    position: relative;                
+    overflow: visible;                 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pitacoContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1300px;
+}
+
+/* PERSONAGEM */
+.pitacoImg {
+    height: 250px;
+    position: absolute;
+    left: 315px;
+    top: -62px;
+    pointer-events: none;
+}
+
+/* TEXTOS */
+.pitacoTexto h2 {
+    color: #101828 !important;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.pitacoTexto p {
+    font-family: BancoDoBrasilTextos !important;
+    font-size: 25px !important;
+    margin: 6px 0 0 0 !important;
+    color: #101828 !important;
+}
+
+.pitacoAzul {
+    color: #3a57ff !important;
+    font-weight: bold;
+}
+
+/* BOTÃO */
+.pitacoBotao {
+    background: #FCFC30;
+    padding: 10px 32px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #465EFF;
+    font-family: "BancoDoBrasil Titulos";
+    white-space: nowrap;
+}
+
+
+.pitacoBotao:hover {
+    filter: brightness(0.9);
+}
+
+.pitacoEstrelas {
+    margin-bottom: 8px;
+}
+
+.estrela {
+    height: 18px;
+    margin-right: 3px;
+}
+
+.msg-pitaco {
+    height: 35px;
+    margin-right: 3px;
+}
+
+.pitacoBolinhas {
+    position: absolute;
+    right: 83px;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    pointer-events: none;
+}
+
+.bolinha {
+    opacity: 0.75;
+}
+
+.bolinha-azul {
+    width: 36px;
+    height: 36px;
+}
+
+.bolinha-roxa {
+    margin-left: 18px;
+    width: 48px;
+    height: 48px;
+}
+
+
+@media (max-width: 1200px) {
+    .pitacoBolinhas {
+        right: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .pitacoBolinhas {
+        right: 20px;
+        top: 50px;
+        gap: 20px;
+    }
+
+    .bolinha-azul {
+        width: 30px;
+        height: 30px;
+    }
+
+    .bolinha-roxa {
+        width: 40px;
+        height: 40px;
+        margin-left: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pitacoBolinhas {
+        right: 12px;
+        top: 55px;
+        gap: 18px;
+    }
+
+    .bolinha-azul {
+        width: 26px;
+        height: 26px;
+    }
+
+    .bolinha-roxa {
+        width: 34px;
+        height: 34px;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pitacoBolinhas {
+        right: 8px;
+        top: 60px;
+        gap: 14px;
+    }
+
+    .bolinha-azul {
+        width: 22px;
+        height: 22px;
+    }
+
+    .bolinha-roxa {
+        width: 28px;
+        height: 28px;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pitacoBolinhas {
+        display: none;
+    }
+}

@@ -2667,7 +2667,7 @@ body > * {
 #tab-content {
   margin: 0;
   padding: 0;
-  background-image: url(https://cad.desenv.bb.com.br/lib/apps/capacitacao_analytics/img/fundo_pagina.png);
+  background-image: var(--bg-fundo-capacitacao);
   /* background-size: contain; */
   background-repeat: repeat;
 }

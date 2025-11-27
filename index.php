@@ -34,3 +34,5 @@ if(sizeof($execQueryDev) > 0){
 } else {
     // header("Location: https://login.intranet.bb.com.br/sso/XUI/?goto=" . getBaseUrl() . "/#login/");
 }
+
+include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/modal-sr-pitaco/pitaco-loader.php";

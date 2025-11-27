@@ -1,10 +1,8 @@
 <?php
 
-// Mostrar erros do PHP
-// ini_set('display_startup_errors', 1);
-
-// Força o início da sessão
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 // Importação de arquivos de funções de banco de dados e de gravação de log
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";

@@ -387,10 +387,26 @@ if($consultaGrandesNumerosPf['status'] == 0){
     ';
 }
 
-if($consultaGrandesNumerosPj['status'] == 0){
-    $dadosGrandesNumerosPj = '<div class="erroGrandesNumeros" style="background:#002D4B; margin-top: 5%;">'.$consultaGrandesNumerosPj['mensagem'].'</div>'.$grandesNumerosErro;
+if (!is_array($consultaGrandesNumerosPj) || !isset($consultaGrandesNumerosPj['status']) || $consultaGrandesNumerosPj['status'] == 0) {
+    $mensagemPj = '';
+
+    if (is_array($consultaGrandesNumerosPj) && isset($consultaGrandesNumerosPj['mensagem'])) {
+        $mensagemPj = $consultaGrandesNumerosPj['mensagem'];
+    } else {
+        $mensagemPj = 'Nenhum dado encontrado.';
+    }
+
+    $dadosGrandesNumerosPj = '
+        <div class="erroGrandesNumeros" style="background:#002D4B; margin-top: 5%;">
+            '.$mensagemPj.'
+        </div>
+        '.$grandesNumerosErro;
+
 } else {
-    if(($consultaGrandesNumerosPj['mensagem'][0]['interacoesPj']) >= '1000000'){
+    
+    $interacoesPj = $consultaGrandesNumerosPj['mensagem'][0]['interacoesPj'] ?? null;
+
+    if ($interacoesPj !== null && $interacoesPj >= 1000000) {
         $textoInteracoesPj = 'de interações';
     } else {
         $textoInteracoesPj = 'interações';

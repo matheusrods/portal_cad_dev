@@ -7,6 +7,7 @@ if(!isset($_SESSION)){
 // ini_set("display_errors", E_ALL);
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/paineis/class/class_paineis.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 $class = new gravaLogAcesso();
 
@@ -15,7 +16,7 @@ $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome
 $class = new funcoes();
 $tags = $class->consultaTags();
 $paineis = $class->consultaPaineis();
-
+$semPaineis = empty(trim($paineis['mensagem'] ?? ''));
 
 
 echo '<!-- CSS específico do app --><link href="/lib/apps/paineis/css/paineis.css" rel="stylesheet">';
@@ -25,13 +26,13 @@ echo '<!-- JS específico do app --><script type="text/javascript" src="/lib/app
 
 echo preg_replace('/\>\s+\</m', '><', '
 
-<div class="containerAreaPaineis">
+<div class="containerAreaPaineis '.($semPaineis ? 'sem-paineis' : '').'">
 
     <div style="width: 100%; text-align: center; color: #49494F; font-size: 48px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word; padding-top: 1.8%;">
         Painéis
     </div>
-    <a href="https://cad.bb.com.br/bot_sql/" target="_blank">
-        <img id="divChamaBotSql" src="https://cad.bb.com.br/lib/img/apps/paineis/bolhaChatDado.png"">
+    <a href="'. getBaseUrl() .'/bot_sql/" target="_blank">
+        <img id="divChamaBotSql" src="'. getBaseUrl() .'/lib/img/apps/paineis/bolhaChatDado.png"">
     </a>
     <div class="campoPesquisaAnalytics">
         <div class="barraPesquisa">
@@ -55,10 +56,10 @@ echo preg_replace('/\>\s+\</m', '><', '
     </div>
   
     <div class="BotoesFiltroTag" style="display: contents;">
-            '.$tags['mensagem'].'
+            '.($tags['mensagem'] ?? "").'
     </div>
     <div class="containerPaineis">
-            '.$paineis['mensagem'].'
+            '.($paineis['mensagem'] ?? "").'
     </div>
     <div class="botaoVerMaisPaineis Clicar" attr-sequencia="1" style="padding-left: 32px; padding-right: 32px; padding-top: 15px; padding-bottom: 15px; background: #FDF429; border-radius: 4px; justify-content: center; margin: 1.75rem; align-items: center; gap: 10px; display: inline-flex">
         <div style="text-align: center; color: #3354FD; font-size: 16px; font-family: BancoDoBrasil Titulos; font-weight: 700; text-transform: uppercase; line-height: 18px; letter-spacing: 0.08px; word-wrap: break-word">Ver mais</div>

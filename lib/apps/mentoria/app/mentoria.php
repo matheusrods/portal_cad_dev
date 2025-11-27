@@ -7,6 +7,7 @@ if(!isset($_SESSION)){
 // ini_set("display_errors", E_ALL);
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/mentoria/class/class_mentoria.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 $class = new gravaLogAcesso();
 $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome'], $_SESSION['cargo'], $_SESSION['MAIL'], $_SESSION['dependencia'], 'Mentoria', $_SESSION['ip']);
@@ -17,6 +18,12 @@ $consultaDepoimentosMentoria = $class->consultaDepoimentosMentoria();
 $consultaProfessoresMentoria = $class->consultaProfessoresMentoria();
 
 ?>
+
+<style>
+    :root {
+        --bg-fundo: url('<?= getBaseUrl(); ?>/lib/img/apps/mentoria/fundoMentoria.png');
+    }
+</style>
 
 <!-- CSS específico do app -->
 <link href="/lib/apps/mentoria/css/mentoria.css" rel="stylesheet">
@@ -412,5 +419,5 @@ $consultaProfessoresMentoria = $class->consultaProfessoresMentoria();
 </style>
 
 <?php
-    // include_once $_SERVER["DOCUMENT_ROOT"]."/pages/rodape.php";
+    include_once $_SERVER["DOCUMENT_ROOT"]."/pages/rodape.php";
 ?>

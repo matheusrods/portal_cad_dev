@@ -1,7 +1,8 @@
 <?php
 
-//ini_set('display_startup_errors', 1);
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -58,6 +59,7 @@ Class funcoes {
         public function consultaGrandesNumerosPj($data){
             $mat = $_SESSION['matricula'];
             $db = New Database('report');
+            $retorno = array();
     
             $query = "call report.consultaGrandesNumerosPj('".$data."');";
                         
@@ -670,7 +672,7 @@ Class funcoes {
                     FROM paineis.paineis a
                     LEFT JOIN paineis.paineis_tags b ON a.idPainel = b.idPainel
                     LEFT JOIN paineis.tags c ON b.idTag = c.idTag
-                    WHERE a.ativo = 1 ".$filtroIdTag." 
+                    WHERE a.ativo = 1 ".($filtroIdTag ?? "")." 
                     group by idPainel
                     ORDER BY idPainel ASC;";
         

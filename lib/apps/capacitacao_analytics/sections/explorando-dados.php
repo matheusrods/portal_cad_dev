@@ -1,7 +1,8 @@
 <?php
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/capacitacao_analytics/class/class_capacitacao.php";
-
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+    
     $class = new funcoes();
     $cursos = $class->consultaCursos();
 
@@ -24,7 +25,7 @@
 
         <!-- ícone planeta à direita -->
         <div class="decorative-planet">
-            <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icone-planeta.png" alt="Planeta">
+            <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/icone-planeta.png' ?>" alt="Planeta">
         </div>
 
         <!-- 1) SQL -->
@@ -94,7 +95,7 @@
             </p>
             </div>
             <div class="bigdata-illustration">
-            <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icone-bigdata.png" alt="Ilustração BigData">
+            <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/icone-bigdata.png' ?>" alt="Ilustração BigData">
             </div>
         </div>
         </div>
@@ -104,29 +105,29 @@
             <h2 class="aplicacoes-title">Aplicações de Big Data em um Banco:</h2>
             <div class="aplicacoes-bigdata">
                 <div class="decorative-icon">
-                <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icone-cpu.png" alt="Ícone CPU">
+                <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/icone-cpu.png' ?>" alt="Ícone CPU">
                 </div>
                 <div class="cards-app">
                 <div class="card-app">
-                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icon-analise-comportamento.png" class="card-app-icon" alt="">
+                    <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/icon-analise-comportamento.png' ?>" class="card-app-icon" alt="">
                     <h4>Análise de Comportamento</h4>
                     <p>Coleta e análise de dados de transações, padrões de gasto, interações com o Bot, etc.
                     Criação de perfis de cliente para personalização de ofertas e serviços.</p>
                 </div>
                 <div class="card-app">
-                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/deteccao_fraudes.png" class="card-app-icon" alt="">
+                    <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/deteccao_fraudes.png' ?>" class="card-app-icon" alt="">
                     <h4>Detecção de Fraudes</h4>
                     <p>Monitoramento em tempo real de transações para identificar atividades suspeitas.
                     Uso de algoritmos de aprendizado de máquina para reconhecer padrões de fraude.</p>
                 </div>
                 <div class="card-app">
-                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/gestao_riscos.png" class="card-app-icon" alt="">
+                    <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/gestao_riscos.png' ?>" class="card-app-icon" alt="">
                     <h4>Gestão de Riscos</h4>
                     <p>Avaliação de riscos de crédito através da análise de dados financeiros históricos dos clientes.
                     Modelagem preditiva para prever inadimplência e outros riscos financeiros.</p>
                 </div>
                 <div class="card-app">
-                    <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/operacoes.png" class="card-app-icon" alt="">
+                    <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/operacoes.png' ?>" class="card-app-icon" alt="">
                     <h4>Otimização de Operações</h4>
                     <p>Análise de dados operacionais para melhorar a eficiência e reduzir custos.
                     Previsão de demanda e otimização de recursos.</p>
@@ -146,7 +147,7 @@
                     <div class="card-painel pequena">
                         <div class="thumb-wrapper">
                             <a target="_blank" href="<?= $c['url'] ?>">
-                                <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                                <img src="<?php //echo getBaseUrl().'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
                             
                                 <div class="play-icon">
                                     <svg viewBox="0 0 100 100">
@@ -170,7 +171,7 @@
                 <?php foreach ($cards as $c): ?>
                 <div class="card-painel" attr-link='<?= $c['url_iframe'] ?>'>
                     <div class="thumb-wrapper">
-                        <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                        <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
                         <div class="play-icon">
                             <svg viewBox="0 0 100 100">
                                 <polygon points="40,30 70,50 40,70" fill="#fff"/>
@@ -204,7 +205,7 @@
             <?php foreach ($recursos as $r): ?>
             <div class="card-recurso">
                 <div class="recurso-icon">
-                <img src="https://<?php echo $host;?>/lib/apps/capacitacao_analytics/img/icon_recursos.png" alt="Ícone painel">
+                <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/icon_recursos.png' ?>" alt="Ícone painel">
                 </div>
                 <p class="recurso-title"><?= htmlspecialchars($r['name']) ?></p>
                 <a href="<?= htmlspecialchars($r['url']) ?>" class="btn-acessar" target="_blank">ACESSAR</a>

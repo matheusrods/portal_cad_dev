@@ -1,6 +1,8 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/capacitacao_analytics/class/class_capacitacao.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+
 $class = new funcoes();
 $cursosBI = $class->consultaPowerBi();
 $cursosSpotfire = $class->consultaCursosSpotfire();
@@ -47,7 +49,7 @@ $host = $_SERVER['HTTP_HOST'];
         <!-- Power BI -->
         <div class="tool-box">
             <div class="tool-header">
-            <img class="tool-icon" src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon-powerbi.png" alt="Power BI">
+            <img class="tool-icon" src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/';?>img/icon-powerbi.png" alt="Power BI">
             <h3>Power BI</h3>
             </div>
             <ul>
@@ -64,7 +66,7 @@ $host = $_SERVER['HTTP_HOST'];
         <!-- Spotfire -->
         <div class="tool-box">
             <div class="tool-header">
-            <img class="tool-icon" src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icon-spotfire.png" alt="Spotfire">
+            <img class="tool-icon" src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/';?>img/icon-spotfire.png" alt="Spotfire">
             <h3>Spotfire</h3>
             </div>
             <ul>
@@ -88,7 +90,7 @@ $host = $_SERVER['HTTP_HOST'];
                     <div class="card-painel pequena">
                         <div class="thumb-wrapper">
                             <a target="_blank" href="<?= $c['url'] ?>">
-                                <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                                <img src="<?php //echo getBaseUrl().'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
                                 <div class="play-icon">
                                     <svg viewBox="0 0 100 100">
                                         <polygon points="40,30 70,50 40,70" fill="#fff"/>
@@ -112,7 +114,7 @@ $host = $_SERVER['HTTP_HOST'];
                 <?php foreach ($cards as $c): ?>
                 <div class="card-painel" attr-link='<?= $c['url_iframe'] ?>'>
                     <div class="thumb-wrapper">
-                        <img src="https://<?= $host.'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+                        <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/'.htmlspecialchars($c['url_img'] ?? 'img/thumb_paineis.png') ?>" alt="<?= htmlspecialchars($c['name']) ?>">
                         <div class="play-icon">
                             <svg viewBox="0 0 100 100">
                                 <polygon points="40,30 70,50 40,70" fill="#fff"/>
@@ -145,7 +147,7 @@ $host = $_SERVER['HTTP_HOST'];
                 $url     = !empty($r['url']) ? $r['url'] : '#';
                 ?>
                 <div class="resource-box">
-                    <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/<?= $icon ?>" alt="<?= htmlspecialchars($name) ?>">
+                    <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/';?>img/<?= $icon ?>" alt="<?= htmlspecialchars($name) ?>">
                     <h4><?= htmlspecialchars($name) ?></h4>
                     <?php if ($desc): ?>
                     <p><?= $desc ?></p>
@@ -179,6 +181,6 @@ $host = $_SERVER['HTTP_HOST'];
         </div>    
     </div>
     <div class="icon-graphics">
-        <img src="/lib/apps/capacitacao_analytics/img/icone-graphics.png" alt="Ícone Foguete">
+        <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/img/icone-graphics.png' ?>" alt="Ícone Foguete">
     </div>
 </section>

@@ -454,6 +454,7 @@ input:checked + .slider:before {
 }
 
 .containerAreaPaineis{
+    min-height: calc(100vh - 250px); 
     align-self: stretch;
     justify-content: center;
     align-items: center;
@@ -690,4 +691,8 @@ input:checked + .slider:before {
     .abrirPainel {
         display: none;
     }
+}
+
+.containerAreaPaineis.sem-paineis {
+    min-height: calc(100vh - 250px);
 }

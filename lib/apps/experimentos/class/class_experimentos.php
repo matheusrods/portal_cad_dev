@@ -1,7 +1,8 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -72,7 +73,7 @@ Class funcoes {
                     FROM experimentos.experimentos a
                     LEFT JOIN experimentos.experimentosTemas b ON a.idExperimento = b.idExperimento
                     LEFT JOIN experimentos.temas c ON b.idTema = c.idTema
-                    WHERE a.ativo = 1 AND b.idTema ".$filtroIdTema." GROUP BY a.idExperimento ORDER BY dtExperimento DESC, a.idExperimento ASC;";
+                    WHERE a.ativo = 1 AND b.idTema ".($filtroIdTema ?? "")." GROUP BY a.idExperimento ORDER BY dtExperimento DESC, a.idExperimento ASC;";
 
         try{
             $execQuery = $db->DbGetAll($query);

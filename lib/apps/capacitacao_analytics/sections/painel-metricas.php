@@ -1,6 +1,9 @@
 <?php
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/capacitacao_analytics/class/class_capacitacao.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+
+
     $class     = new funcoes();
     $rawRec    = $class->consultaRecursos('painel_metricas');  // use o slug da sua rota
     $recursos      = [];
@@ -31,12 +34,12 @@
 
         <!-- IMAGEM 3D: Gráfico (à esquerda do vídeo) -->
         <div class="icon-chart">
-        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/grafico.png" alt="Ícone Gráfico 3D">
+        <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/';?>img/grafico.png" alt="Ícone Gráfico 3D">
         </div>
 
         <!-- IMAGEM 3D: Foguete (à direita do vídeo) -->
         <div class="icon-rocket">
-        <img src="<?php echo $_SERVER["http_host"].'/lib/apps/capacitacao_analytics/';?>img/icone-rocket.png" alt="Ícone Foguete">
+        <img src="<?php echo getBaseUrl().'/lib/apps/capacitacao_analytics/';?>img/icone-rocket.png" alt="Ícone Foguete">
         </div>
 
         <!-- VÍDEO -->
@@ -47,7 +50,7 @@
             Seu navegador não suporta a tag de vídeo.
             </video> -->
             <video controls poster="img/thumbnail-padrao.png">
-                    <source src="https://cad.desenv.bb.com.br/lib/apps/capacitacao_analytics/img/conceitos_dados_bot.mp4" type="video/mp4">
+                    <source src="<?php echo getBaseUrl(); ?>/lib/apps/capacitacao_analytics/img/conceitos_dados_bot.mp4" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video>
             <div class="play-overlay">

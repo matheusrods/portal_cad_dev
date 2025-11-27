@@ -72,12 +72,21 @@ function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
     setTimeout(() => toast.fadeOut(500, () => toast.remove()), 6000);
 }
 
-const style = document.createElement('style');
-style.textContent = `
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}`;
-document.head.appendChild(style);
+if (!window.__toastFeedback__loaded) {
+    window.__toastFeedback__loaded = true;
 
-window.mostrarToastFeedback = mostrarToastFeedback;
+    let styleEl = document.querySelector('style[data-toast-style]');
+    if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.setAttribute('data-toast-style', 'true');
+        styleEl.textContent = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(10px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(styleEl);
+    }
+
+    window.mostrarToastFeedback = mostrarToastFeedback;
+}

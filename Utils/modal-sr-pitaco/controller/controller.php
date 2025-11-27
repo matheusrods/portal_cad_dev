@@ -17,6 +17,13 @@ class funcoes
         $mat = $_SESSION['matricula'];
     }
 
+    /**
+     * @param $nomeApp
+     * @param $nomeFuncao
+     * @param $informacoesAdicionais
+     * @param $mat
+     * @return string
+     */
     public function geraLogExcecao($nomeApp, $nomeFuncao, $informacoesAdicionais, $mat)
     {
         $mat = $_SESSION['matricula'];
@@ -36,21 +43,28 @@ class funcoes
         return $caminhoArquivo;
     }
 
-   public function gravaFeedbackSrPitaco($nota, $motivos, $comentario = null, $tela = null)
+    /**
+     * @param $nota
+     * @param $motivos
+     * @param $comentario
+     * @param $tela
+     * @return array|string[]
+     */
+    public function gravaFeedbackSrPitaco($nota, $motivos, $comentario = null, $tela = null): array
     {
         $mat = $_SESSION['matricula'];
         $db = new Database('intranet');
 
         try {
-            
+
             $db->DbQuery("START TRANSACTION;");
 
             $id_item = $id_subitem = "NULL";
-            if (!empty($tela)) {
+            if (!empty($tela) && $tela !== 'Portal') {
                 $sqlBusca = "
                     SELECT i.id AS id_item, s.id AS id_subitem
                     FROM cabecalho_item i
-                    LEFT JOIN cabecalho_subitem s ON s.vinculoItem = i.id
+                    LEFT JOIN cabecalho_subitem s ON s.vinculoItem = i.id and s.ativo = 1
                     WHERE i.nomePaginaInterna = '$tela' OR s.url = '$tela'
                     LIMIT 1;
                 ";
@@ -59,6 +73,9 @@ class funcoes
                     $id_item = !empty($resultado['id_item']) ? (int)$resultado['id_item'] : "NULL";
                     $id_subitem = !empty($resultado['id_subitem']) ? (int)$resultado['id_subitem'] : "NULL";
                 }
+            } else {
+                $id_item = "NULL";
+                $id_subitem = "NULL";
             }
 
             $sqlFeedback = sprintf(
@@ -96,6 +113,71 @@ class funcoes
         }
     }
 
+    public function getnomePaginaAtual($tela){
+        $mat = $_SESSION['matricula'];
+        $db = New Database('intranet');
+
+        try{
+
+            $queryItem = "
+                SELECT ci.item 
+                FROM cabecalho_item ci
+                WHERE ci.tipo = 2 
+                AND ci.nomePaginaInterna = '$tela' 
+                AND ci.ativo = 1;
+            ";
+
+            $item = $db->DbGetRow($queryItem);
+
+            if (!empty($item)) {
+                return [
+                    'status' => 1,
+                    'nome' => $item['item']
+                ];
+            }
+
+            $querySub = "
+                SELECT cs.subitem 
+                FROM cabecalho_subitem cs
+                WHERE cs.ativo = 1 
+                AND cs.url = '$tela';
+            ";
+
+            $subitem = $db->DbGetRow($querySub);
+
+            if (!empty($subitem)) {
+                return [
+                    'status' => 1,
+                    'nome' => $subitem['subitem']
+                ];
+            }
+
+            return [
+                'status' => 0,
+                'nome' => null
+            ];
+
+        } catch(Exception $e){
+
+            $info = "Erro ao buscar nome da página atual.\n".
+                "Tela: $tela\n".
+                "Erro: " . $e->getMessage();
+
+            $arquivoLog = $this->geraLogExcecao(
+                "SrPitaco",
+                "getnomePaginaAtual",
+                $info,
+                $mat
+            );
+
+            return [
+                'status' => -1,
+                'erro' => $e->getMessage(),
+                'log'  => $arquivoLog
+            ];
+        }
+    }
+
 }
 
 $class = new funcoes();
@@ -106,16 +188,17 @@ if (!isset($_SESSION)) {
 }
 $mat = strtolower($_SESSION['matricula']);
 
-switch ($request) {
-    case "gravaFeedbackSrPitaco":
-        $comentario = $_POST['comentario'] ?? null;
-        $motivos = $_POST['motivos'] ?? null;
-        $nota = $_POST['nota'] ?? null;
-        $tela = $_POST['tela'] ?? null;
+if ($request == "gravaFeedbackSrPitaco") {
+    $comentario = $_POST['comentario'] ?? null;
+    $motivos = $_POST['motivos'] ?? null;
+    $nota = $_POST['nota'] ?? null;
+    $tela = $_POST['tela'] ?? null;
 
-        $retorno = $class->gravaFeedbackSrPitaco($nota, $motivos, $comentario, $tela);
-        echo json_encode($retorno);
-        break;
+    $retorno = $class->gravaFeedbackSrPitaco($nota, $motivos, $comentario, $tela);
+    echo json_encode($retorno);
+} else if ($request == "getnomePaginaAtual") {
+    $tela = $_REQUEST['tela'] ?? null;
+
+    $retorno = $class->getnomePaginaAtual($tela);
+    echo json_encode($retorno);
 }
-
-?>

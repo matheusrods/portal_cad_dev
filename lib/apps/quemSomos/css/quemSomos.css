@@ -1,9 +1,9 @@
-.squadsFuncionarios{
+.squadsFuncionarios {
     background: white;
 }
 
 .funcisSquads {
-    cursor:pointer;
+    cursor: pointer;
     flex: 1 1 0;
     color: #49494F;
     font-size: 24px;
@@ -62,7 +62,7 @@ button[class*=botaoSetaSquad] {
 }
 
 .classSquads {
-    display:none;
+    display: none;
     height: auto;
     padding-left: 8px;
     padding-right: 8px;
@@ -292,27 +292,27 @@ button[class*=botaoSetaSquad] {
     display: inline-flex;
 }
 
-.quadroDadosVagas{
-    width: 19rem; 
-    height: 13rem; 
-    background: white; 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
-    border-radius: 16px; 
-    flex-direction: row; 
-    justify-content: center; 
-    align-items: center; 
+.quadroDadosVagas {
+    width: 19rem;
+    height: 13rem;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     /* gap: 8px;  */
     display: inline-flex;
     padding-right: 5px;
     padding-left: 5px;
 }
 
-.dadosVaga{
-    display: grid;  
-    align-content: stretch; 
-    justify-content: space-evenly; 
-    padding-left:10px;  
-    align-items: start; 
+.dadosVaga {
+    display: grid;
+    align-content: stretch;
+    justify-content: space-evenly;
+    padding-left: 10px;
+    align-items: start;
     justify-items: start;
     /* line-height: 190%; */
 }
@@ -329,38 +329,38 @@ button[class*=botaoSetaSquad] {
     padding-bottom: 64px;
 }
 
-.descCargo{
-    color: #49494F; 
-    font-size: 26px; 
-    height: 40%; 
-    width: 80%; 
-    font-family: BancoDoBrasil Textos; 
-    font-weight: 700; 
+.descCargo {
+    color: #49494F;
+    font-size: 26px;
+    height: 40%;
+    width: 80%;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
     word-wrap: break-word;
-    line-height: 120%; 
+    line-height: 120%;
 }
 
-.codVaga{
-    text-align: center; 
-    color: black; 
-    font-size: 13px; 
-    height: 30%; 
-    font-family: BancoDoBrasil Textos; 
-    font-weight: 300; 
+.codVaga {
+    text-align: center;
+    color: black;
+    font-size: 13px;
+    height: 30%;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 300;
     word-wrap: break-word;
 }
 
-.qtdVagas{
-    text-align: center; 
-    color: #49494F; 
-    font-size: 160px; 
-    font-family: BancoDoBrasil Textos; 
-    font-weight: 700; 
+.qtdVagas {
+    text-align: center;
+    color: #49494F;
+    font-size: 160px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
     word-wrap: break-word;
 }
 
 .quadroVagasQuantidade {
-    width:60%;
+    width: 60%;
     gap: 16px;
     display: flex;
     align-content: center;
@@ -369,7 +369,7 @@ button[class*=botaoSetaSquad] {
     flex-shrink: 0;
     flex-wrap: wrap;
     margin-top: 24px;
-  
+
 }
 
 
@@ -479,4 +479,15 @@ button[class*=botaoSetaSquad] {
     div.textoFotoQuemSomos {
         display: none;
     }
+}
+
+
+.descricaoQuemSomos,
+.nossasEquipes,
+.temosVagas,
+.quadroVagas,
+.divSetoresSquads,
+.textoFotoQuemSomos {
+    position: relative;
+    z-index: 1;
 }

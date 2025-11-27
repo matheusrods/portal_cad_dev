@@ -6,6 +6,8 @@ if(!isset($_SESSION)){
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/home/class/class_home.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
+
 $class = new gravaLogAcesso();
 $gravaLogAcesso = $class->gravaLogAcesso($_SESSION['matricula'], $_SESSION['nome'], $_SESSION['cargo'], $_SESSION['MAIL'], $_SESSION['dependencia'], 'Home', $_SESSION['ip']);
 
@@ -113,7 +115,7 @@ $btnAddAvisoEcoa = $class->mostraBtnCadastraAvisoEcoa();
 
 </head>
 
-<body style="display:flex;">
+<body>
 
     <header class="header">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/pages/cabecalho.php"; ?>
@@ -129,7 +131,7 @@ $btnAddAvisoEcoa = $class->mostraBtnCadastraAvisoEcoa();
             <?php
 
                 if((date("Y-m-d")) <= "2024-12-31"){
-                    echo '<div class="natal" style="background-image: url(https://cad.bb.com.br/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -0.5rem -5rem;"></div>';
+                    echo '<div class="natal" style="background-image: url('.getBaseUrl().'/lib/img/cabecalho/natal2.gif); background-repeat: repeat-x; width: 140%; height: 10vh; background-size: 500px; position: absolute; margin: -0.5rem -5rem;"></div>';
                 }
 
                 $escondeDivEcoa = "";
@@ -520,24 +522,4 @@ $btnAddAvisoEcoa = $class->mostraBtnCadastraAvisoEcoa();
 
         window.PITACO_TELA_ATUAL = 'home';
     </script>
-
-    <?php 
-        include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/feedback-float/feedback-float.html";
-        include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/modal-sr-pitaco/modal-sr-pitaco.html";
-    ?>
-    <link rel="stylesheet" href="/Utils/feedback-float/css/feedback-float.css">
-    <link rel="stylesheet" href="/Utils/modal-sr-pitaco/css/modal-sr-pitaco.css">
-
-    <script src="/Utils/feedback-float/js/feedback-float.js"></script>
-    <script src="/Utils/modal-sr-pitaco/js/modal-sr-pitaco.js"></script>
-    <script type="text/javascript" src="/Utils/js/toastFeedback.js"></script>
 </body>
-
-
-
-
-
-
-
-
-

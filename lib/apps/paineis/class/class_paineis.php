@@ -1,7 +1,8 @@
 <?php
 
-//ini_set('display_startup_errors', 1);
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/Conexao.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/database/class.database.php";
@@ -25,13 +26,9 @@ Class funcoes {
 
     public function consultaTags(){
         $mat = $_SESSION['matricula'];
-
         $db = New Database('paineis');
-        // $query = "SELECT distinct(b.idTag), b.nomeTag FROM paineis.paineis_tags a
-        // LEFT JOIN paineis.tags b ON a.idTag = b.idTag
-        // WHERE b.ativo = 1 ORDER BY b.nomeTag;";
+        $retorno = array();
 
-        # Query alterada por Albert para aparecer apenas tags que possuam relatórios vinculados - 03/12/2024
         $query = "SELECT distinct(b.idTag), b.nomeTag FROM paineis.paineis_tags a
         LEFT JOIN paineis.tags b ON a.idTag = b.idTag
         LEFT JOIN paineis.paineis c ON a.idPainel = c.idPainel
@@ -74,26 +71,20 @@ Class funcoes {
 
     public function consultaPaineis($idTag = null){
         $mat = strtoupper($_SESSION['matricula']);
+        $retorno = array(); 
 
         if($idTag > 0){
             $filtroIdTag = "AND c.idTag in (".$idTag.")";
         }
 
         $db = New Database('paineis');
-        // $query = "SELECT a.*, group_concat(c.nomeTag)as nomeTag
-        //             FROM paineis.paineis a
-        //             LEFT JOIN paineis.paineis_tags b ON a.idPainel = b.idPainel
-        //             LEFT JOIN paineis.tags c ON b.idTag = c.idTag
-        //             WHERE a.ativo = 1 ".$filtroIdTag." 
-        //             group by idPainel
-        //             ORDER BY idPainel ASC;";
         
         $query = "SELECT a.*, group_concat(c.nomeTag) as nomeTag, d.matricula
                     FROM paineis.paineis a
                     LEFT JOIN paineis.paineis_tags b ON a.idPainel = b.idPainel
                     LEFT JOIN paineis.tags c ON b.idTag = c.idTag
                     LEFT JOIN paineis.paineis_favoritos d ON a.idPainel = d.idPainel AND d.matricula = '".$mat."'
-                    WHERE a.ativo = 1 ".$filtroIdTag." 
+                    WHERE a.ativo = 1 ".($filtroIdTag ?? "") ." 
                     group by a.idPainel
                     ORDER BY d.idPainel DESC, a.idPainel ASC;";
 

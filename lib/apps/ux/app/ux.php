@@ -7,6 +7,7 @@ if(!isset($_SESSION)){
 // ini_set("display_errors", E_ALL);
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/apps/ux/class/class_ux.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/lib/class/gravaLogAcesso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/Ambiente.php";
 
 $class = new gravaLogAcesso();
 
@@ -39,14 +40,14 @@ echo preg_replace('/\>\s+\</m', '><', '
                     </span>
                 </div>
             </div>
-            <img class="imgBotCapaUx" src="https://cad.bb.com.br/lib/img/apps/ux/botCapa.png" />
-            <a href="https://cad.bb.com.br/bot_guia/index.php" target="_blank">
-                <img id="divChamaBot" src="https://cad.bb.com.br/lib/img/apps/ux/bolhaChatTom.png">
+            <img class="imgBotCapaUx" src="'. getBaseUrl() .'/lib/img/apps/ux/botCapa.png" />
+            <a href="'. getBaseUrl() .'/bot_guia/index.php" target="_blank">
+                <img id="divChamaBot" src="'. getBaseUrl() .'/lib/img/apps/ux/bolhaChatTom.png">
             </a>
         </div>
     </div>
     <div style="width: 100%; height: 394px; position: relative">
-        <img style="width: 100%; height: 394px; left: 0px; top: -1px; position: absolute; margin-top: -1px;" src="https://cad.bb.com.br/lib/img/apps/ux/baseCapaUx.png">
+        <img style="width: 100%; height: 394px; left: 0px; top: -1px; position: absolute; margin-top: -1px;" src="'. getBaseUrl() .'/lib/img/apps/ux/baseCapaUx.png">
     </div>
 </div>
 <div class="conteudoUx" style="width: 100%; margin-top: -5px;">
@@ -64,7 +65,7 @@ echo preg_replace('/\>\s+\</m', '><', '
             <div style="width: 100%; align-items: flex-start; gap: 8px; display: inline-flex; justify-content: center; flex-wrap: wrap;">
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeTrilhaUxAluraUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeTrilhaUxAluraUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/formacao-ux" target="_blank">
@@ -75,7 +76,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeEntendaExperienciaUsuarioUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeEntendaExperienciaUsuarioUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/fundamentos-ux-entendendo-experiencia-usuario" target="_blank">
@@ -86,7 +87,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeEscrevendoTextosUsuariosUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeEscrevendoTextosUsuariosUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/ux-writing-escrevendo-textos-usuarios" target="_blank">
@@ -97,7 +98,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeBenchmarkingEstrategicoUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeBenchmarkingEstrategicoUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/ux-research-benchmarking-estrategico" target="_blank">
@@ -108,7 +109,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeAnaliseConcorrentesUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeAnaliseConcorrentesUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/ux-research-analise-concorrentes" target="_blank">
@@ -119,7 +120,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx" style="padding-left: 32px; padding-right: 32px; padding-top: 16px; padding-bottom: 16px; background: #F2F4F8; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 48px; justify-content: flex-start; align-items: center; gap: 32px; display: flex">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeProjetandoChatbotUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeProjetandoChatbotUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/ux-writing-projetando-chatbot" target="_blank">    
@@ -130,7 +131,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeRedacaoExperienciasDigitaisUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeRedacaoExperienciasDigitaisUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/ux-writing-redacao-experiencias-digitais" target="_blank">    
@@ -141,7 +142,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 </div>
                 <div class="itemTrilhaUx">
                     <div style="width: 80px; height: 80px; position: relative">
-                        <img src="https://cad.bb.com.br/lib/img/apps/ux/iconeInteligenciaArtificialUx.png" />
+                        <img src="'. getBaseUrl() .'/lib/img/apps/ux/iconeInteligenciaArtificialUx.png" />
                     </div>
                     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
                         <a href="https://unibb.alura.com.br/course/Inteligencia-artificial-ux-construcao-produto-digital" target="_blank">        
@@ -153,7 +154,7 @@ echo preg_replace('/\>\s+\</m', '><', '
             </div>
         </div>
         <div class="imagemFechaDivTrilhasUx" style="width: 100%; height: 25rem; position: relative">
-            <img style="width: 100%; height: 25rem; left: 0px; top: 0px; position: absolute; margin-top: -1px;" src="https://cad.bb.com.br/lib/img/apps/ux/baseDivTrilhasUx.png" />
+            <img style="width: 100%; height: 25rem; left: 0px; top: 0px; position: absolute; margin-top: -1px;" src="'. getBaseUrl() .'/lib/img/apps/ux/baseDivTrilhasUx.png" />
         </div>
     </div>
 
@@ -161,14 +162,14 @@ echo preg_replace('/\>\s+\</m', '><', '
         <div class="apresentacaoUx">
             <div style="padding-left: 128px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
                 <div style="width: 464px; justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
-                    <img style="width: 63.91px; height: 96px" src="https://cad.bb.com.br/lib/img/apps/ux/logoFigmaUx.png" />
+                    <img style="width: 63.91px; height: 96px" src="'. getBaseUrl() .'/lib/img/apps/ux/logoFigmaUx.png" />
                     <div style="text-align: center; color: #49494F; font-size: 48px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">Figma</div>
                 </div>
                 <div style="align-self: stretch; color: #49494F; font-size: 24px; font-family: BancoDoBrasil Textos; font-weight: 400; word-wrap: break-word">Se torne especialista na maior e mais famosa ferramenta de prototipagem do mundo!<br/><br/>Navegue por nossa seleção de cursos e recursos para conhecer e dominar o Figma, uma das ferramentas de design mais inovadoras e colaborativas disponíveis, além de ser fundamental no trabalho dos nossos especialistas em UX e parceiros.<br><br>Essa plataforma é a mais utilizada no mundo, por empresas, designers e desenvolvedores, e que vem revolucionando a forma como times de produtos trabalham juntos.</div>
             </div>
             <div class="divYoutubeFigmaUx">
                 <a href="https://www.youtube.com/watch?v=Cx2dkpBxst8" target="_blank">
-                    <img style="align-self: stretch; border-radius: 15px" src="https://cad.bb.com.br/lib/img/apps/ux/youtubeFigmaUx.png" />
+                    <img style="align-self: stretch; border-radius: 15px" src="'. getBaseUrl() .'/lib/img/apps/ux/youtubeFigmaUx.png" />
                 </a>
             </div>
         </div>
@@ -180,7 +181,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 <a class="linksAcessosUx" href="https://www.figma.com/files/895713074855529774/team/1070010266891383332" target="_blank">
                     <div style="display: inline-flex; gap: 16px;">
                         <div class="divIconeSolicitarAcessoUx">
-                            <img style="width: 87px; height: 87px;" src="https://cad.bb.com.br/lib/img/apps/ux/iconeRepositorioJornadasUx.png" />
+                            <img style="width: 87px; height: 87px;" src="'. getBaseUrl() .'/lib/img/apps/ux/iconeRepositorioJornadasUx.png" />
                         </div>
                         <div class="divFraseAcessarRepositorioUx">
                             Acessar o repositório de jornadas do CAD
@@ -193,7 +194,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 <a class="linksAcessosUx" href="https://ux.bb.com.br/figma/access" target="_blank">
                     <div style="display: inline-flex; gap: 16px;">
                         <div class="divIconeSolicitarAcessoUx">
-                            <img style="width: 87px; height: 87px;" src="https://cad.bb.com.br/lib/img/apps/ux/iconeSolicitarAcessoFigmaUx.png" />
+                            <img style="width: 87px; height: 87px;" src="'. getBaseUrl() .'/lib/img/apps/ux/iconeSolicitarAcessoFigmaUx.png" />
                         </div>
                         <div class="divFraseSolicitarAcessoFigmaUx">
                             Solicitar acesso de editor no Figma
@@ -208,7 +209,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 <div style="width: 100%; height: 200px; position: relative;">
                     <a href="https://www.unibb.com.br/home/mais-conteudo/5173/figma-conhecendo-a-ferramenta" target="_blank">
                         <div style="width: 33%; height: 200px; background: #FEFEFE; align-items: center; gap: 24px; display: inline-flex;">
-                            <img style="width: 96px; height: 96px" src="https://cad.bb.com.br/lib/img/apps/ux/cursoFigmaAzulUx.png" />
+                            <img style="width: 96px; height: 96px" src="'. getBaseUrl() .'/lib/img/apps/ux/cursoFigmaAzulUx.png" />
                             <div style="flex-direction: column; gap: 4px; display: inline-flex;">
                                 <div class="tituloCursosFigmaUx">Figma: conhecendo a ferramenta</div>
                                 <div class="subtituloCursosFigmaUx">Conheça a ferramenta Figma e suas funcionalidades para criação de projetos digitais e aprenda a iniciar o design de novos produtos. Etenda quais são as ferramentas fundamentais e aprenda a utilizá-las.</div>
@@ -217,7 +218,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                     </a>
                     <a href="https://www.unibb.com.br/home/mais-conteudo/5215/figma-componentes-auto-layout-e-mascaras" target="_blank">
                         <div style="width: 33%; height: 200px; background: #F2F4F8; align-items: center; gap: 24px; display: inline-flex;">
-                            <img style="width: 96px; height: 96px" src="https://cad.bb.com.br/lib/img/apps/ux/cursoFigmaRosaUx.png" />
+                            <img style="width: 96px; height: 96px" src="'. getBaseUrl() .'/lib/img/apps/ux/cursoFigmaRosaUx.png" />
                             <div style="flex-direction: column; gap: 4px; display: inline-flex;">
                                 <div class="tituloCursosFigmaUx">Figma: componentes, auto layout e máscaras</div>
                                 <div class="subtituloCursosFigmaUx">Aprimore seus conhecimentos, focando na construção do projeto Fast Task, um checklist de lista de tarefas. Serão abordados recursos avançados, como Auto Layout e componentes, essenciais no Figma.</div>
@@ -226,7 +227,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                     </a>
                     <a href="https://www.unibb.com.br/home/mais-conteudo/5278/figma-prototipagem-interativa-e-animacoes" target="_blank">
                         <div style="width: 33%; height: 200px; background: #FEFEFE; align-items: center; gap: 24px; display: inline-flex;">
-                            <img style="width: 96px; height: 96px" src="https://cad.bb.com.br/lib/img/apps/ux/cursoFigmaVermelhoUx.png" />
+                            <img style="width: 96px; height: 96px" src="'. getBaseUrl() .'/lib/img/apps/ux/cursoFigmaVermelhoUx.png" />
                             <div style="flex-direction: column; gap: 4px; display: inline-flex;">
                                 <div class="tituloCursosFigmaUx">Figma: prototipagem interativa e animações</div>
                                 <div class="subtituloCursosFigmaUx">Aprenda a prototipar qualquer coisa dentro do Figma, além de utilizar funções de interação, gestos e criar animações incríveis em produtos ainda não codificados.</div>
@@ -235,7 +236,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                     </a>
                 </div>
                 <div style="width: 100%; height: auto; position: relative">
-                    <img style="width: 100%; top: 64px; position: relative;" src="https://cad.bb.com.br/lib/img/apps/ux/baseCursosUx.png">
+                    <img style="width: 100%; top: 64px; position: relative;" src="'. getBaseUrl() .'/lib/img/apps/ux/baseCursosUx.png">
                 </div>
             </div>
     </div>
@@ -246,7 +247,7 @@ echo preg_replace('/\>\s+\</m', '><', '
                 <div style="width: 464px; justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex">
                     <div style="width: 51.10px; height: 50px; position: relative">
                         <div style="width: 46.80px; height: 46.78px; left: 2px; top: 0.92px; position: absolute">
-                            <img style="width: 50px; height: 50px" src="https://cad.bb.com.br/lib/img/apps/ux/iconeDesignSystemUx.png" />
+                            <img style="width: 50px; height: 50px" src="'. getBaseUrl() .'/lib/img/apps/ux/iconeDesignSystemUx.png" />
                         </div>
                     </div>
                     <div style="text-align: center; color: #49494F; font-size: 48px; font-family: BancoDoBrasil Titulos; font-weight: 700; word-wrap: break-word">Design System</div>
@@ -261,7 +262,7 @@ echo preg_replace('/\>\s+\</m', '><', '
             <div class="divVideoFazapFigmaUx" style="padding-right: 47px;">
                 <a href="https://banco365-my.sharepoint.com/personal/jvdcamargo_bb_com_br/_layouts/15/stream.aspx?id=%2Fpersonal%2Fjvdcamargo%5Fbb%5Fcom%5Fbr%2FDocuments%2FGrava%C3%A7%C3%B5es%2FTreinamento%20Figma%20para%20o%20CAD%20%28online%29%20%2D%20Jo%C3%A3o%2D20240610%5F130356%2DGrava%C3%A7%C3%A3o%20de%20Reuni%C3%A3o%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee63c2e44%2Ddc86%2D4019%2D9e5c%2D95461712ab05" target="_blank">
                     <div style="width: 657px; height: 313px; position: relative">
-                        <img style="width: 657px; height: 313px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 47px" src="https://cad.bb.com.br/lib/img/apps/ux/fazapFigma2024.png" />
+                        <img style="width: 657px; height: 313px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 47px" src="'. getBaseUrl() .'/lib/img/apps/ux/fazapFigma2024.png" />
                         <div style="width: 96px; height: 96px; left: 281px; top: 108.36px; position: absolute; background: rgba(217, 217, 217, 0.70); box-shadow: 0px 0px 17px 11px rgba(255, 255, 255, 0.50); border-radius: 9999px; border: 7px white solid"></div>
                     </div>
                 </a>
@@ -290,19 +291,19 @@ echo preg_replace('/\>\s+\</m', '><', '
             <input type="radio" class = "botao_Carousel" name="carousel" id="slide5">
             <div class="slides">
                 <div class="slide">
-                    <img src="https://cad.bb.com.br/lib/img/apps/ux/designSystemPasso01.png" alt="Slide 1">
+                    <img src="'. getBaseUrl() .'/lib/img/apps/ux/designSystemPasso01.png" alt="Slide 1">
                 </div>
                 <div class="slide">
-                    <img src="https://cad.bb.com.br/lib/img/apps/ux/designSystemPasso02.png" alt="Slide 2">
+                    <img src="'. getBaseUrl() .'/lib/img/apps/ux/designSystemPasso02.png" alt="Slide 2">
                 </div>
                 <div class="slide">
-                    <img src="https://cad.bb.com.br/lib/img/apps/ux/designSystemPasso03.png" alt="Slide 3">
+                    <img src="'. getBaseUrl() .'/lib/img/apps/ux/designSystemPasso03.png" alt="Slide 3">
                 </div>
                 <div class="slide">
-                    <img src="https://cad.bb.com.br/lib/img/apps/ux/designSystemPasso04.png" alt="Slide 4">
+                    <img src="'. getBaseUrl() .'/lib/img/apps/ux/designSystemPasso04.png" alt="Slide 4">
                 </div>
                 <div class="slide">
-                    <img src="https://cad.bb.com.br/lib/img/apps/ux/designSystemPasso05.png" alt="Slide 5">
+                    <img src="'. getBaseUrl() .'/lib/img/apps/ux/designSystemPasso05.png" alt="Slide 5">
                 </div>
             </div>
             <div class="navigation">
@@ -318,7 +319,7 @@ echo preg_replace('/\>\s+\</m', '><', '
             
   
  <div style="width: 100%; position: relative">
-            <img style="width: 100%;" src="https://cad.bb.com.br/lib/img/apps/ux/topoRecursosLegaisUx.png" />
+            <img style="width: 100%;" src="'. getBaseUrl() .'/lib/img/apps/ux/topoRecursosLegaisUx.png" />
         </div>
     </div>
     <div class="recursosLegaisUx">
