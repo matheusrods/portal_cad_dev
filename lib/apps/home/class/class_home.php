@@ -1376,7 +1376,12 @@ Class funcoes {
 
 
 
-  public function geraLogExcecao($nomeApp, $nomeFuncao, $informacoesAdicionais, $mat){
+    public function geraLogExcecao($nomeApp, $nomeFuncao, $informacoesAdicionais, $mat)
+    {    
+        if (!is_dir($this->caminhoLogErro)) {
+            mkdir($this->caminhoLogErro, 0777, true);
+        }
+
         $dateTime = date("Y-m-d")."_". date("H.i.s");
         $nomeArquivo = $dateTime . "_" . $mat . "_" . $nomeApp . "_" . $nomeFuncao .".txt";
         $caminhoArquivo = $this->caminhoLogErro . "/" . $nomeArquivo;
