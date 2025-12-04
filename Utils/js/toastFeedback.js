@@ -49,11 +49,12 @@ function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
                         style="
                             background: none;
                             border: none;
-                            font-size: 18px;
+                            font-size: 10px !important;
                             line-height: 1;
                             margin-left: 10px;
                             cursor: pointer;
                             color: #666;
+                            margin-top: -18px;
                         ">✖</button>
                 </div>
                 <div style="font-size: 14px; margin-top: 6px; line-height: 1.4;">

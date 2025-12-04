@@ -196,9 +196,58 @@ INSERT INTO notaFeedbackPortal (descricao) VALUES
 
 -- Inserindo motivos padrão
 INSERT INTO motivoFeedbackPortal (descricao) VALUES
+('Não encontrei o que procurava'),
+('Pouco conteúdo'),
+('Difícil de navegar'),
+('Carregamento lento'),
+('Erro de gramática'),
+('Conteúdo desatualizado'),
+('Outro motivo'),
 ('Sistema bom, mas pode melhorar'),
 ('Pequenos erros ocasionais'),
 ('Interface poderia ser mais intuitiva'),
 ('Tempo de resposta razoável'),
-('Outro motivo');
+('Sistema rápido'),
+('Fácil de usar'),
+('Atende bem às necessidades'),
+('Interface clara e bonita'),
+('Funciona sem erros'),
+('Conteúdos úteis'),
+('Encontrei o que procurava');
 
+DROP TABLE IF EXISTS motivoNotaFeedbackPortal;
+
+CREATE TABLE motivoNotaFeedbackPortal (
+  id_nota INT NOT NULL,
+  id_motivo INT NOT NULL,
+
+  PRIMARY KEY (id_nota, id_motivo),
+
+  CONSTRAINT fk_motivo_nota
+      FOREIGN KEY (id_nota) REFERENCES notaFeedbackPortal(id_nota)
+      ON UPDATE CASCADE ON DELETE CASCADE,
+
+  CONSTRAINT fk_motivo_rel_motivo
+      FOREIGN KEY (id_motivo) REFERENCES motivoFeedbackPortal(id_motivo)
+      ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Nota 1 – Muito insatisfeito
+INSERT INTO motivoNotaFeedbackPortal VALUES
+(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7);
+
+-- Nota 2 – Insatisfeito
+INSERT INTO motivoNotaFeedbackPortal VALUES
+(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,7);
+
+-- Nota 3 – Neutro
+INSERT INTO motivoNotaFeedbackPortal VALUES
+(3,8),(3,9),(3,10),(3,11),(3,7);
+
+-- Nota 4 – Satisfeito
+INSERT INTO motivoNotaFeedbackPortal VALUES
+(4,12),(4,13),(4,14),(4,15),(4,17),(4,18),(4,7);
+
+-- Nota 5 – Muito satisfeito
+INSERT INTO motivoNotaFeedbackPortal VALUES
+(5,12),(5,13),(5,14),(5,15),(5,17),(5,18),(5,7);

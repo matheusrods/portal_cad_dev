@@ -7,6 +7,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function aplicarComportamentoEstrelas(container, callbackClick = null, notaInicial = 0) {
+    const estrelas = container.querySelectorAll("span");
+    let notaSelecionada = notaInicial;
+    let notaHover = 0;
+
+    estrelas.forEach((s, i) => {
+        s.classList.toggle("ativo", i + 1 <= notaSelecionada);
+    });
+
+    estrelas.forEach((estrela, idx) => {
+        const valor = idx + 1;
+
+        estrela.addEventListener("mouseenter", () => {
+            notaHover = valor;
+            estrelas.forEach((s, i) => s.classList.toggle("ativo", i + 1 <= notaHover));
+        });
+
+        estrela.addEventListener("mouseleave", () => {
+            estrelas.forEach((s, i) => s.classList.toggle("ativo", i + 1 <= notaSelecionada));
+        });
+
+        estrela.addEventListener("click", () => {
+            notaSelecionada = valor;
+            estrelas.forEach((s, i) => s.classList.toggle("ativo", i + 1 <= notaSelecionada));
+
+            if (callbackClick) callbackClick(valor);
+        });
+    });
+}
+
+
 function abrirModalSrPitaco(portal = false) {
     resetarModalSrPitaco();
     document.body.classList.add("modal-pitaco-open");
@@ -24,15 +55,19 @@ function abrirModalSrPitaco(portal = false) {
 }
 
 function atualizarTituloModalPitaco(portal = false) {
-    const telaAtual = portal 
-        ? 'Portal' 
+    const telaAtual = portal
+        ? 'Portal'
         : (window.PITACO_TELA_ATUAL || sessionStorage.getItem('PITACO_TELA_ATUAL'));
 
     if (portal) {
         window.PITACO_PORTAL = telaAtual;
 
         document.querySelectorAll('.titulo-feedback').forEach(el => {
-            el.textContent = `Como foi sua experiência no Portal?`;
+            el.textContent = `Como foi sua experiência navegando pelo Portal?`;
+        });
+
+        document.querySelectorAll('.modal-sr-pitaco-etapa.etapa1 .pitaco-balao').forEach(el => {
+            el.textContent = `Olá! Eu sou o Sr. Pitaco. Estou curioso pra saber o que você achou do Portal! 😄`;
         });
 
         return;
@@ -40,12 +75,16 @@ function atualizarTituloModalPitaco(portal = false) {
 
     window.PITACO_PORTAL = null;
 
-    buscaNomePaginaAtual(telaAtual, function(nomePagina) {
+    buscaNomePaginaAtual(telaAtual, function (nomePagina) {
         let nomeFormatado = nomePagina.charAt(0).toUpperCase() + nomePagina.slice(1);
         nomeFormatado = nomeFormatado.replace(/\?/g, '');
 
         document.querySelectorAll('.titulo-feedback').forEach(el => {
             el.textContent = `Como foi sua experiência na página ${nomeFormatado}?`;
+        });
+
+        document.querySelectorAll('.modal-sr-pitaco-etapa.etapa1 .pitaco-balao').forEach(el => {
+            el.textContent = `Olá! Eu sou o Sr Pitaco, me conte como foi sua experiência hoje nessa página ? 😊`;
         });
     });
 }
@@ -101,31 +140,25 @@ function resetarModalSrPitaco() {
     }
 }
 
-
 function inicializarEstrelasPitaco() {
-    const estrelas = document.querySelectorAll("#pitaco-estrelas-avaliacao span");
+    const container = document.querySelector("#pitaco-estrelas-avaliacao");
 
-    if (!estrelas.length) return;
-
+    if (!container) return;
+    const estrelas = container.querySelectorAll("span");
     estrelas.forEach(e => {
         const clone = e.cloneNode(true);
+        clone.dataset.valor = e.dataset.valor;
         e.replaceWith(clone);
     });
 
-    const novasEstrelas = document.querySelectorAll("#pitaco-estrelas-avaliacao span");
-
-    novasEstrelas.forEach(e => {
-        e.addEventListener("click", () => {
-            novasEstrelas.forEach(s => s.classList.remove("selecionada"));
-            e.classList.add("selecionada");
-            mostrarEtapa2Pitaco(e.dataset.valor);
-        });
+    aplicarComportamentoEstrelas(container, (valor) => {
+        mostrarEtapa2Pitaco(valor);
     });
 
     const comentario = document.querySelector(".comentario");
     const contador = document.querySelector(".contador-caracteres");
 
-    if (comentario)
+    if (comentario && contador)
         comentario.addEventListener("input", () => {
             contador.textContent = `${500 - comentario.value.length} caracteres restantes`;
         });
@@ -151,15 +184,23 @@ function mostrarEtapa2Pitaco(valor) {
 
     for (let i = 1; i <= 5; i++) {
         const estrela = document.createElement("span");
+        estrela.dataset.valor = i;
         estrela.classList.add("estrela");
         if (i <= valor) estrela.classList.add("ativo");
-
-        estrela.addEventListener("click", () => {
-            mostrarEtapa2Pitaco(i);
-        });
-
         estrelasDiv.appendChild(estrela);
     }
+
+    aplicarComportamentoEstrelas(
+        estrelasDiv,
+        (val) => mostrarEtapa2Pitaco(val),
+        valor
+    );
+
+    setTimeout(() => {
+        carregarMotivosPorNota(valor).then(motivos => {
+            renderizarMotivos(motivos);
+        });
+    }, 350);
 
     const textos = {
         1: "Muito Insatisfeito",
@@ -170,6 +211,7 @@ function mostrarEtapa2Pitaco(valor) {
     };
     textoNota.textContent = textos[valor] || "Neutro";
 }
+
 
 function enviarModalSrPitaco() {
     var caminhoController = `${BASE_URL}/Utils/modal-sr-pitaco/controller/controller.php`;
@@ -199,11 +241,20 @@ function enviarModalSrPitaco() {
         success: function (retorno) {
             fecharFeedbackFloat();
             fecharModalSrPitaco();
-            mostrarToastFeedback(
-                "Avaliação da página enviada 😍",
-                "Seu feedback ajuda a melhorar <br> sua experiência com o Portal",
-                true
-            );
+
+            if (window.PITACO_PORTAL === 'Portal') {
+                mostrarToastFeedback(
+                    "Avaliação do Portal enviada 😍",
+                    "Seu feedback ajuda a melhorar <br> sua experiência com o Portal",
+                    true
+                );
+            } else {
+                mostrarToastFeedback(
+                    "Avaliação da página enviada 😍",
+                    "Seu feedback ajuda a melhorar <br> sua experiência com o Portal",
+                    true
+                );
+            }
         },
         error: function (xhr, status, error) {
         }
@@ -271,3 +322,35 @@ function buscaNomePaginaAtual(telaAtual, callback) {
         }
     });
 }
+
+function renderizarMotivos(motivos) {
+    const container = document.getElementById("pitaco-motivos");
+    container.innerHTML = "";
+
+    motivos.forEach(m => {
+        const button = document.createElement("button");
+        button.classList.add("motivo");
+        button.dataset.id = m.id;
+        button.textContent = m.descricao;
+
+        container.appendChild(button);
+    });
+}
+
+
+function carregarMotivosPorNota(nota) {
+    return new Promise((resolve) => {
+        $.ajax({
+            url: `${BASE_URL}/Utils/modal-sr-pitaco/controller/controller.php`,
+            type: "GET",
+            dataType: "JSON",
+            data: {
+                request: "getMotivosPorNota",
+                nota: nota
+            },
+            success: (ret) => resolve(ret.motivos || []),
+            error: () => resolve([])
+        });
+    });
+}
+

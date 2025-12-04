@@ -1,78 +1,73 @@
 <div id="modal-sr-pitaco" class="modal-sr-pitaco-overlay" style="display:none;">
-  <div class="modal-sr-pitaco">
-    <button class="modal-sr-pitaco-close" onclick="fecharModalSrPitaco()">×</button>
+    <div class="modal-sr-pitaco">
+        <button class="modal-sr-pitaco-close" onclick="fecharModalSrPitaco()">×</button>
 
-    <!-- ETAPA 1 -->
-    <div class="modal-sr-pitaco-etapa etapa1">
-      <div class="pitaco-layout">
-        <div class="pitaco-col">
-          <img src="/Utils/feedback-float/img/sr_pitaco_direction.png" class="pitaco-img" alt="Sr Pitaco" />
-          <div class="pitaco-balao">
-            Olá! Eu sou o Sr Pitaco, me conte como foi sua experiência hoje nessa página ? 😊
-          </div>
-        </div>
-
-        <div class="pitaco-content">
-          <h2 class="titulo-feedback">
-            Como foi sua experiência na página de Incidentes ?
-          </h2>
-          <p class="subtitulo-feedback">Clique nas estrelas para avaliar</p>
-
-          <div id="pitaco-estrelas-avaliacao" class="estrelas">
-            <span data-valor="1"></span>
-            <span data-valor="2"></span>
-            <span data-valor="3"></span>
-            <span data-valor="4"></span>
-            <span data-valor="5"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ETAPA 2 -->
-    <div class="modal-sr-pitaco-etapa etapa2" style="display:none;">
-        <div class="pitaco-layout">
-            <div class="pitaco-col">
-            <img src="/Utils/feedback-float/img/sr_pitaco_direction.png" class="pitaco-img" alt="Sr Pitaco" />
-            <div class="pitaco-balao">
-                Perfeito 😄! Agora me conta rapidinho o motivo da sua nota
-            </div>
-            </div>
-
-            <div class="pitaco-etapa2-content">
-                <h2 class="titulo-feedback">
-                    Como foi sua experiência na página de Incidentes ?
-                </h2>
-
-                <p id="pitaco-texto-nota" class="nota-texto">Neutro</p>
-
-                <div class="estrelas selecionadas">
-                    <span></span><span></span><span></span><span></span><span></span>
+        <!-- ETAPA 1 -->
+        <div class="modal-sr-pitaco-etapa etapa1">
+            <div class="pitaco-layout">
+                <div class="pitaco-col">
+                    <img src="/Utils/feedback-float/img/sr_pitaco_direction.png" class="pitaco-img" alt="Sr Pitaco"/>
+                    <div class="pitaco-balao">
+                        Olá! Eu sou o Sr Pitaco, me conte como foi sua experiência hoje nessa página ? 😊
+                    </div>
                 </div>
 
+                <div class="pitaco-content">
+                    <h2 class="titulo-feedback">
+                        Como foi sua experiência na página de Incidentes ?
+                    </h2>
+                    <p class="subtitulo-feedback">Clique nas estrelas para avaliar</p>
+
+                    <div id="pitaco-estrelas-avaliacao" class="estrelas">
+                        <span data-valor="1"></span>
+                        <span data-valor="2"></span>
+                        <span data-valor="3"></span>
+                        <span data-valor="4"></span>
+                        <span data-valor="5"></span>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="pitaco-feedback-detalhes">
-            <p class="subtitulo-etapa2">
-                Selecione pelo menos 1 motivo para a sua avaliação :
-            </p>
 
-            <div class="motivos">
-                <button class="motivo" data-id="1">Sistema bom, mas pode melhorar</button>
-                <button class="motivo" data-id="2">Pequenos erros ocasionais</button>
-                <button class="motivo" data-id="3">Interface poderia ser mais intuitiva</button>
-                <button class="motivo" data-id="4">Tempo de resposta razoável</button>
-                <button class="motivo" data-id="5">Outro motivo</button>
+        <!-- ETAPA 2 -->
+        <div class="modal-sr-pitaco-etapa etapa2" style="display:none;">
+            <div class="pitaco-layout">
+                <div class="pitaco-col">
+                    <img src="/Utils/feedback-float/img/sr_pitaco_direction.png" class="pitaco-img" alt="Sr Pitaco"/>
+                    <div class="pitaco-balao">
+                        Perfeito 😄! Agora me conta rapidinho o motivo da sua nota
+                    </div>
+                </div>
+
+                <div class="pitaco-etapa2-content">
+                    <h2 class="titulo-feedback">
+                        Como foi sua experiência na página de Incidentes ?
+                    </h2>
+
+                    <p id="pitaco-texto-nota" class="nota-texto">Neutro</p>
+
+                    <div class="estrelas selecionadas">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="pitaco-feedback-form">
-                <label class="comentario-label">Adicionar comentário (opcional):</label>
-                <textarea class="comentario" maxlength="500" placeholder="Conte aqui a sua experiência ao todo no Portal"></textarea>
-                <p class="contador-caracteres">500 caracteres restantes</p>
-            </div>
+            <div class="pitaco-feedback-detalhes">
+                <p class="subtitulo-etapa2">
+                    Selecione pelo menos 1 motivo para a sua avaliação :
+                </p>
 
-            <button class="btn-enviar" onclick="enviarModalSrPitaco()">ENVIAR AVALIAÇÃO</button>
+                <div class="motivos" id="pitaco-motivos"></div>
+
+                <div class="pitaco-feedback-form">
+                    <label class="comentario-label">Adicionar comentário (opcional):</label>
+                    <textarea class="comentario" maxlength="500"
+                              placeholder="Conte aqui a sua experiência ao todo no Portal"></textarea>
+                    <p class="contador-caracteres">500 caracteres restantes</p>
+                </div>
+
+                <button class="btn-enviar" onclick="enviarModalSrPitaco()">ENVIAR AVALIAÇÃO</button>
+            </div>
         </div>
     </div>
-</div>

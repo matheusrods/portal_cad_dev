@@ -1,143 +1,136 @@
 #feedback-float {
-  font-family: "BancoDoBrasil Textos", Arial, sans-serif;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: linear-gradient(165deg, #AD46FF 0%, #615FFF 40%, #2B7FFF 100%);
-  color: #fff;
-  border-radius: 50px;
-  padding: 10px 26px 10px 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  z-index: 9999;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border: none;
-  outline: none;
+    font-family: "BancoDoBrasil Textos", Arial, sans-serif;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(165deg, #AD46FF 0%, #615FFF 40%, #2B7FFF 100%);
+    color: #fff;
+    border-radius: 50px;
+    padding: 10px 26px 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: none;
+    outline: none;
 }
 
 #feedback-float:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
 }
 
 #feedback-float .feedback-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
 }
 
 #feedback-float .avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: contain;
-  background: transparent;
-  flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: transparent;
+    flex-shrink: 0;
 }
 
 #feedback-float .text-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  line-height: 1.15;
-  margin-top: 0; /* remove o desnível */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.15;
+    margin-top: 0; /* remove o desnível */
 }
 
 #feedback-float .text-block .title {
-  font-family: "BancoDoBrasil Titulos", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 3px;
+    font-family: "BancoDoBrasil Titulos", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 3px;
 }
 
 #feedback-float .text-block .subtitle {
-  font-size: 15px;
-  color: #e6e6e6;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  line-height: 1.1;
+    font-size: 15px;
+    color: #e6e6e6;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    line-height: 1.1;
 }
 
 #feedback-float .sparkles .dot {
-  position: absolute;
-  top: -4px;
-  right: -8px;
-  width: 14px;
-  height: 14px;
-  background: #00FF85;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #00FF85;
-  animation: pulse 1.5s infinite ease-in-out;
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    width: 14px;
+    height: 14px;
+    background: #00FF85;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00FF85;
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
 #feedback-float .close-dot {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 16px;
-  height: 16px;
-  background: #00ff85;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #00ff85;
-  border: 2px solid #fff;
-  cursor: pointer;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    background: #838484;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 #feedback-float .close-dot:hover {
-  transform: scale(1.2);
-  opacity: 0.9;
+    transform: scale(1.2);
+    opacity: 0.9;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.4);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Ícone de “x” branco dentro da bolinha verde */
 #feedback-float .close-dot::before,
 #feedback-float .close-dot::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 1px;
-  transform-origin: center;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 1px;
+    transform-origin: center;
 }
 
 #feedback-float .close-dot::before {
-  transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 #feedback-float .close-dot::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-#feedback-float .close-dot:hover {
-  transform: scale(1.2);
-  opacity: 0.9;
-  box-shadow: 0 0 12px #00ffaa;
+    transform: translate(-50%, -50%) rotate(-45deg);
 }

@@ -2,25 +2,25 @@
     color: #101828;
     font-family: "BancoDoBrasil Titulos", Arial, sans-serif;
     font-weight: 900;
-    font-size: 1.9rem; /* aumenta um pouco o tamanho */
-    line-height: 2.2rem; /* melhora o espaçamento entre linhas */
-    margin: -0.5rem 0 1rem; /* ajusta o espaçamento inferior */
+    font-size: 1.9rem;
+    line-height: 2.2rem;
+    margin: -0.5rem 0 1rem;
     text-align: left;
-    letter-spacing: -0.3px; /* aproxima o visual da tipografia do Figma */
 }
 
 
 .subtitulo-feedback {
     color: var(--Cinza, #646464);
-    font-size: 17.6px;
     margin-bottom: 1.8rem;
     font-family: "BancoDoBrasil Titulos", Arial, sans-serif;
+    width: 100%;
     text-align: center;
+    margin-left: 0;
 }
 
 .pitaco-layout {
     display: flex;
-    align-items: center; /* centraliza o personagem e o conteúdo verticalmente */
+    align-items: center;
     justify-content: flex-start;
     gap: 2rem;
 }
@@ -28,11 +28,11 @@
 .pitaco-col {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex: 0 0 260px;
     position: relative;
-    margin-left: 40px;
+    margin-left: 0;
     margin-top: -20px;
 }
 
@@ -55,8 +55,8 @@
     text-align: center;
     width: 260px;
     position: absolute;
-    bottom: -8px; /* sobe o balão um pouco */
-    left: 37%; /* aponta mais para o braço */
+    bottom: -8px;
+    left: 37%;
     transform: translateX(-50%);
 }
 
@@ -89,19 +89,8 @@
     justify-content: center;
     z-index: 999999 !important;
     animation: fadeInOverlay 0.3s ease;
-}
-
-.modal-sr-pitaco {
-    height: 320px;
-    width: 922px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #EDF5FF 100%);
-    border-radius: 7px;
-    padding: 48px 60px 62px 53px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    font-family: "BancoDoBrasil Textos", Arial, sans-serif;
-    animation: fadeIn .3s ease;
-    z-index: 1000000 !important;
-    position: fixed !important;
+    overflow-y: auto;
+    padding: 40px 0;
 }
 
 .modal-sr-pitaco::before {
@@ -110,33 +99,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px; /* espessura da linha */
+    height: 4px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     background: linear-gradient(90deg, #155DFC 0%, #9810FA 50%, #193CB8 100%);
-}
-
-
-.modal-sr-pitaco-close {
-    position: absolute;
-    top: -18px; /* empurra pra fora do topo */
-    right: -18px; /* empurra pra fora da lateral */
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: none;
-    background: #FFFFFF;
-    color: #475467;
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    z-index: 10;
 }
 
 .modal-sr-pitaco-close:hover {
@@ -201,75 +167,21 @@
     }
 }
 
-@media (max-width: 768px) {
-    .pitaco-layout {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-
-    .pitaco-col {
-        margin-left: 0;
-        align-items: center;
-    }
-
-    .pitaco-img {
-        width: 150px;
-        transform: none;
-    }
-
-    .pitaco-balao {
-        position: static;
-        width: 85%;
-        max-width: 300px;
-        transform: none;
-        margin-top: -10px;
-    }
-
-    .pitaco-balao::after {
-        display: none;
-    }
-
-    .pitaco-content {
-        text-align: center;
-        width: 100%;
-    }
-
-    .modal-sr-pitaco {
-        width: 95%;
-        height: auto;
-        padding: 2rem 1.5rem;
-    }
-
-    .titulo-feedback,
-    .subtitulo-feedback {
-        text-align: center;
-    }
-
-    .estrelas {
-        width: 85%;
-        padding: 14px 0;
-        font-size: 2.2rem;
-    }
-}
-
 .modal-sr-pitaco-etapa {
     opacity: 0;
     transform: translateY(10px);
     transition: all 0.4s ease;
-    height: 0;
+    max-height: 0;
     overflow: hidden;
 }
 
-/* Quando a etapa está ativa */
 .modal-sr-pitaco-etapa.ativa {
     opacity: 1;
     transform: translateY(0);
-    height: auto;
+    max-height: 2000px;
     overflow: visible;
 }
 
-/* Garante que a primeira etapa apareça por padrão */
 .modal-sr-pitaco-etapa.etapa1 {
     opacity: 1;
     transform: translateY(0);
@@ -277,14 +189,12 @@
     overflow: visible;
 }
 
-/* Quando a modal expande na etapa 2 */
 .modal-sr-pitaco.expandida {
     height: auto;
     min-height: 620px;
     transition: all 0.4s ease;
 }
 
-/* === BOTÕES DE MOTIVO (etapa 2) === */
 .motivos {
     display: flex;
     flex-wrap: wrap;
@@ -305,25 +215,18 @@
     transition: all 0.2s ease;
 }
 
-.motivo:hover {
-    background: #dbe6ff;
-    transform: translateY(-1px);
-}
-
 .motivo.ativo {
-    background: #FCFC30; /* amarelo destaque */
-    color: #3354FD; /* texto escuro, igual ao print */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    background: #FCFC30;
+    color: #3354FD;
     transform: none;
 }
 
-/* === BOTÃO ENVIAR === */
 .btn-enviar {
     display: inline-block;
     margin-top: 1.8rem;
     background: #ffeb00;
     border: none;
-    color: #101828;
+    color: #465EFF;
     font-weight: 700;
     font-size: 15px;
     letter-spacing: 0.4px;
@@ -331,15 +234,13 @@
     padding: 14px 28px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-enviar:hover {
-    background: #fce500;
+    background: #EAE206;
     transform: translateY(-1px);
 }
 
-/* === TEXTAREA E LABEL === */
 .comentario-label {
     display: block;
     font-size: 14px;
@@ -372,19 +273,28 @@
     text-align: right;
 }
 
-/* === AJUSTES SOMENTE PARA ETAPA 2 === */
+.modal-sr-pitaco-etapa.etapa1 .pitaco-content {
+    flex: 0 0 auto;
+    max-width: 480px;
+    width: 480px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modal-sr-pitaco-etapa.etapa1 .pitaco-col {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .modal-sr-pitaco-etapa.etapa2 .pitaco-content {
     margin-top: 8px;
 }
 
-
-.modal-sr-pitaco-etapa.etapa2 .motivo:hover {
-    background: #dbe6ff;
-    transform: none;
-}
-
-/* Comentário (textarea) */
 .modal-sr-pitaco-etapa.etapa2 .comentario-label {
     display: block;
     font-size: 14px;
@@ -397,16 +307,16 @@
     width: 100%;
     min-height: 135px;
     padding: 12px 14px;
-    background: #F0F2F4; /* fundo cinza suave */
-    border: none; /* remove todas as bordas */
-    border-bottom: 2px solid #D0D5DD; /* linha sutil embaixo */
-    border-radius: 6px; /* cantos levemente arredondados */
+    background: #F0F2F4;
+    border: none;
+    border-bottom: 2px solid #D0D5DD;
+    border-radius: 6px;
     font-family: "BancoDoBrasil Textos", Arial, sans-serif;
     font-size: 14px;
     color: #1E293B;
     resize: none;
     outline: none;
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05); /* dá leve relevo */
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05);
     transition: all 0.25s ease;
 }
 
@@ -416,11 +326,11 @@
 }
 
 .modal-sr-pitaco-etapa.etapa2 .comentario:focus {
-    border-bottom-color: #155dfc; /* linha azul ao focar */
-    background: #f9fbff; /* leve destaque ao foco */
+    border-bottom-color: #155dfc;
+    background: #f9fbff;
 }
 
-/* Contador de caracteres */
+
 .modal-sr-pitaco-etapa.etapa2 .contador-caracteres {
     font-size: 13px;
     color: #667085;
@@ -428,10 +338,9 @@
     text-align: left;
 }
 
-/* Ajusta a posição vertical do balão apenas na etapa 2 */
 .modal-sr-pitaco-etapa.etapa2 .pitaco-balao {
     position: absolute;
-    bottom: 9px; /* balão mais acima do personagem */
+    bottom: 9px;
     left: 37%;
     transform: translateX(-50%);
 }
@@ -463,11 +372,11 @@
 }
 
 .modal-sr-pitaco-etapa.etapa2 .estrelas {
-    margin-bottom: 2.4rem; /* dá o espaço equivalente ao Figma (≈40px) */
+    margin-bottom: 2.4rem;
 }
 
 .modal-sr-pitaco-etapa.etapa2 .motivos {
-    margin-top: 0.4rem; /* pequeno ajuste fino */
+    margin-top: 0.4rem;
 }
 
 .modal-sr-pitaco-etapa.etapa2 .subtitulo-etapa2 {
@@ -479,22 +388,23 @@
 
 .modal-sr-pitaco-etapa.etapa2 .pitaco-feedback-detalhes {
     width: fit-content;
-    margin: 0 auto 0; /* 🔧 alinha exatamente sob o texto principal */
+    margin: 0 auto 0;
     margin-top: 19px;
     text-align: left;
 }
 
-/* Mantém a etapa 1 como está */
 .modal-sr-pitaco-etapa.etapa1 .pitaco-layout {
-    justify-content: space-between;
+    margin-right: -50px;
+    justify-content: center;
     align-items: center;
+    gap: 2rem;
 }
 
-/* Corrige a etapa 2 */
 .modal-sr-pitaco-etapa.etapa2 .pitaco-layout {
-    justify-content: flex-start; /* força alinhamento à esquerda   */
-    align-items: flex-start; /* personagem e conteúdo sobem juntos */
-    gap: 2.8rem; /* distância entre personagem e texto */
+    margin-right: -50px;
+    justify-content: center !important;
+    align-items: center;
+    gap: 2.8rem;
 }
 
 .modal-sr-pitaco-etapa.etapa2 .pitaco-etapa2-content {
@@ -503,14 +413,14 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    max-width: 560px;
+    max-width: 480px;
+    width: 480px;
     text-align: left;
 }
 
 .modal-sr-pitaco-etapa.etapa2 .btn-enviar {
     display: flex;
     margin-top: 1.8rem;
-    margin-left: auto; /* 🔧 empurra o botão para a direita */
     background: #ffeb00;
     border: none;
     color: #465EFF;
@@ -519,11 +429,175 @@
     border-radius: 4px;
     padding: 12px 16px;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
     transition: all 0.2s ease;
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 100%;
+}
+
+.modal-sr-pitaco-etapa.etapa2 .btn-enviar:hover {
+    background: #EAE206;
 }
 
 .btn-enviar.desabilitado {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.modal-sr-pitaco-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 0;
+    overflow-y: auto;
+    z-index: 999999 !important;
+    animation: fadeInOverlay 0.3s ease;
+}
+
+.modal-sr-pitaco {
+    width: 922px;
+    max-width: 95%;
+    background: linear-gradient(180deg, #FFFFFF 0%, #EDF5FF 100%);
+    border-radius: 7px;
+    padding: 48px 60px 62px 53px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    font-family: "BancoDoBrasil Textos", Arial, sans-serif;
+    animation: fadeIn .3s ease;
+    position: relative;
+    margin: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.modal-sr-pitaco-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #FFFFFF;
+    font-size: 22px;
+    color: #475467;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 999999;
+
+}
+
+.modal-sr-pitaco-etapa.etapa2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+
+    .modal-sr-pitaco {
+        width: 92%;
+        padding: 24px 18px 28px;
+        border-radius: 10px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-sr-pitaco-close {
+        top: -12px;
+        right: -12px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
+
+    .pitaco-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin: 0;
+    }
+
+    .pitaco-img {
+        width: 150px;
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    .pitaco-balao {
+        position: static;
+        transform: none;
+        margin-top: -5px;
+        width: 90%;
+        max-width: 280px;
+    }
+
+    .pitaco-balao::after {
+        display: none;
+    }
+
+    .estrelas {
+        width: 100%;
+        padding: 14px 0;
+        gap: 10px;
+    }
+
+    .estrelas span {
+        width: 32px;
+        height: 32px;
+        background-size: contain;
+    }
+
+    .titulo-feedback {
+        font-size: 1.4rem;
+        text-align: center;
+        margin: 0 auto 10px;
+    }
+
+    .subtitulo-feedback {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 1rem;
+    }
+
+    .pitaco-etapa2-content {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .modal-sr-pitaco-etapa.etapa2 .nota-texto {
+        margin-left: 0;
+    }
+
+    .motivos {
+        justify-content: center;
+    }
+
+    .pitaco-feedback-detalhes {
+        width: 100%;
+        padding: 0 6px;
+    }
+
+    .comentario {
+        min-height: 100px;
+    }
+
+    .btn-enviar {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 240px;
+        text-align: center;
+    }
+}
+
+
+body.modal-pitaco-open {
+    overflow: hidden !important;
 }

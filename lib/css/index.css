@@ -349,15 +349,13 @@ main {
     justify-content: center;
     gap: 40px;
     max-width: 1300px;
+    margin: 0 auto;
 }
 
-/* PERSONAGEM */
 .pitacoImg {
     height: 250px;
-    position: absolute;
-    left: 315px;
-    top: -62px;
-    pointer-events: none;
+    margin-top: -63px;
+    margin-right: -8px;
 }
 
 /* TEXTOS */
@@ -391,6 +389,7 @@ main {
     color: #465EFF;
     font-family: "BancoDoBrasil Titulos";
     white-space: nowrap;
+    cursor: pointer;
 }
 
 

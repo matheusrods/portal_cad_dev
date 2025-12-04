@@ -113,11 +113,16 @@ class funcoes
         }
     }
 
-    public function getnomePaginaAtual($tela){
+    /**
+     * @param $tela
+     * @return array
+     */
+    public function getnomePaginaAtual($tela): array
+    {
         $mat = $_SESSION['matricula'];
-        $db = New Database('intranet');
+        $db = new Database('intranet');
 
-        try{
+        try {
 
             $queryItem = "
                 SELECT ci.item 
@@ -157,10 +162,10 @@ class funcoes
                 'nome' => null
             ];
 
-        } catch(Exception $e){
+        } catch (Exception $e) {
 
-            $info = "Erro ao buscar nome da página atual.\n".
-                "Tela: $tela\n".
+            $info = "Erro ao buscar nome da página atual.\n" .
+                "Tela: $tela\n" .
                 "Erro: " . $e->getMessage();
 
             $arquivoLog = $this->geraLogExcecao(
@@ -173,7 +178,61 @@ class funcoes
             return [
                 'status' => -1,
                 'erro' => $e->getMessage(),
-                'log'  => $arquivoLog
+                'log' => $arquivoLog
+            ];
+        }
+    }
+
+    /**
+     * Retorna os motivos disponíveis para a nota escolhida
+     * (utilizando a tabela de relacionamento motivoNotaFeedbackPortal)
+     *
+     * @param int $nota
+     * @return array
+     */
+    public function getMotivosPorNota(int $nota): array
+    {
+        $mat = $_SESSION['matricula'];
+        $db = new Database('intranet');
+
+        try {
+            $sql = "
+                SELECT m.id_motivo AS id, m.descricao
+                FROM motivoNotaFeedbackPortal mn
+                INNER JOIN motivoFeedbackPortal m 
+                        ON m.id_motivo = mn.id_motivo
+                WHERE mn.id_nota = $nota
+                ORDER BY 
+                CASE 
+                    WHEN m.descricao = 'Outro motivo' THEN 1
+                    ELSE 0
+                END;
+            ";
+
+            $motivos = $db->DbGetAll($sql);
+
+            return [
+                'status' => 1,
+                'motivos' => $motivos
+            ];
+
+        } catch (Exception $e) {
+
+            $infoErro = "Erro ao buscar motivos da nota.\n" .
+                "Nota: $nota\n" .
+                "Erro: " . $e->getMessage();
+
+            $arquivoLog = $this->geraLogExcecao(
+                "SrPitaco",
+                "getMotivosPorNota",
+                $infoErro,
+                $mat
+            );
+
+            return [
+                'status' => 0,
+                'erro' => "Erro ao buscar motivos. Log: $arquivoLog",
+                'motivos' => []
             ];
         }
     }
@@ -188,17 +247,39 @@ if (!isset($_SESSION)) {
 }
 $mat = strtolower($_SESSION['matricula']);
 
-if ($request == "gravaFeedbackSrPitaco") {
-    $comentario = $_POST['comentario'] ?? null;
-    $motivos = $_POST['motivos'] ?? null;
-    $nota = $_POST['nota'] ?? null;
-    $tela = $_POST['tela'] ?? null;
+switch ($request) {
 
-    $retorno = $class->gravaFeedbackSrPitaco($nota, $motivos, $comentario, $tela);
-    echo json_encode($retorno);
-} else if ($request == "getnomePaginaAtual") {
-    $tela = $_REQUEST['tela'] ?? null;
+    case "gravaFeedbackSrPitaco":
+        $comentario = $_POST['comentario'] ?? null;
+        $motivos = $_POST['motivos'] ?? null;
+        $nota = $_POST['nota'] ?? null;
+        $tela = $_POST['tela'] ?? null;
 
-    $retorno = $class->getnomePaginaAtual($tela);
-    echo json_encode($retorno);
+        $retorno = $class->gravaFeedbackSrPitaco($nota, $motivos, $comentario, $tela);
+        echo json_encode($retorno);
+        break;
+
+
+    case "getnomePaginaAtual":
+        $tela = $_REQUEST['tela'] ?? null;
+
+        $retorno = $class->getnomePaginaAtual($tela);
+        echo json_encode($retorno);
+        break;
+
+
+    case "getMotivosPorNota":
+        $nota = intval($_REQUEST['nota'] ?? 0);
+        $retorno = $class->getMotivosPorNota($nota);
+        echo json_encode($retorno);
+        break;
+
+
+    default:
+        echo json_encode([
+            'status' => 0,
+            'erro' => "Requisição inválida",
+            'request' => $request
+        ]);
+        break;
 }
