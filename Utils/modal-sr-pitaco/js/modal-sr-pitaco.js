@@ -70,6 +70,10 @@ function atualizarTituloModalPitaco(portal = false) {
             el.textContent = `Olá! Eu sou o Sr. Pitaco. Estou curioso pra saber o que você achou do Portal! 😄`;
         });
 
+        document.querySelectorAll('.pitaco-feedback-form textarea.comentario').forEach(el => {
+            el.placeholder = "Conte aqui a sua experiência ao todo no Portal";
+        });
+
         return;
     }
 
@@ -85,6 +89,10 @@ function atualizarTituloModalPitaco(portal = false) {
 
         document.querySelectorAll('.modal-sr-pitaco-etapa.etapa1 .pitaco-balao').forEach(el => {
             el.textContent = `Olá! Eu sou o Sr Pitaco, me conte como foi sua experiência hoje nessa página ? 😊`;
+        });
+
+        document.querySelectorAll('.pitaco-feedback-form textarea.comentario').forEach(el => {
+            el.placeholder = "Conte aqui a sua experiência nessa página";
         });
     });
 }
