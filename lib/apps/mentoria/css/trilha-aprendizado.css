@@ -1,0 +1,115 @@
+.trilha-grid {
+    width: 80% !important;
+    margin: 40px auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 25px !important;
+    align-items: start !important;
+}
+
+.trilha-card {
+    background: #637DF4 !important;
+    border-radius: 22px !important;
+    padding: 25px !important;
+    color: white !important;
+    transition: background .25s ease, box-shadow .25s ease, transform .25s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 200px;
+}
+
+.trilha-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    cursor: pointer !important;
+}
+
+.trilha-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.trilha-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 18px !important;
+}
+
+.trilha-modulo {
+    font-size: 16px !important;
+    font-family: "BancoDoBrasil Textos" !important;
+    opacity: 0.8 !important;
+}
+
+.trilha-titulo {
+    font-size: 28px !important;
+    font-family: "BancoDoBrasil Titulos" !important;
+    font-weight: 700 !important;
+}
+
+.trilha-desc {
+    margin-top: 8px !important;
+    font-size: 20px !important;
+    font-family: "BancoDoBrasil Textos" !important;
+}
+
+.trilha-content {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.35s ease !important;
+    padding-left: 65px !important;
+    margin-top: 10px !important;
+    font-size: 15px !important;
+    opacity: 0.9 !important;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trilha-content.open {
+    max-height: 800px !important;
+}
+
+.trilha-plus {
+    font-size: 25px;
+    color: #fff;
+    transition: transform .25s ease;
+}
+
+.trilha-plus.open {
+    transform: rotate(180deg);
+}
+
+.trilha-card.open-card { background: #4668FF !important; }
+
+.trilha-card.open-card .trilha-modulo,
+.trilha-card.open-card .trilha-titulo {
+    color: #FFF200 !important;
+}
+
+.trilha-card.open-card .trilha-icon {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(89%) saturate(749%) hue-rotate(359deg) brightness(101%) contrast(100%);
+}
+
+.trilha-card.open-card .trilha-desc::after {
+    content:"";
+    display:block;
+    width:100%;
+    height:1px;
+    background:rgba(255,255,255,.6);
+    margin-top:10px;
+}
+
+.trilha-card.open-card .trilha-content {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+.trilha-card:hover {
+    background: #4668FF !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18) !important;
+    transform: translateY(-2px);
+}
+
+

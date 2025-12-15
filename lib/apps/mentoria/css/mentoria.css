@@ -167,8 +167,9 @@
 .transicaoCabecalhoTemasMentoria {
     display: flex;
     position: relative;
-    height: 300px;
-    background: url('/lib/img/apps/mentoria/faixaTransicao01.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    height: 80px;
+    background: var(--bg-fundo);
+    /* background: url('/lib/img/apps/mentoria/faixaTransicao01.png'), linear-gradient(90deg, #525252 0%, black 100%); */
     background-size: cover;
     margin-top: -3px;
     background-size: cover;
@@ -181,7 +182,8 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    background: url('/lib/img/apps/mentoria/fundoTemas.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    background: #3333BD;
+    /* background: url('/lib/img/apps/mentoria/fundoTemas.png'), linear-gradient(90deg, #525252 0%, black 100%); */
     background-size: cover;
     padding: 20px;
 }
@@ -192,7 +194,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px;
 }
 
@@ -211,11 +213,13 @@
 }
 
 .subtituloTemaMentoria {
-    color: #FCFC30;
-    font-size: 28px;
+    color: #FFFFFF;
+    font-size: 32px;
     font-family: 'BancoDoBrasil Titulos', sans-serif;
-    font-weight: 700;
-    margin-bottom: -5%;
+    font-weight: 300;
+    letter-spacing: -1.92px;
+    font-style: normal;
+    line-height: normal;
 }
 
 .descricaoTemaMentoria {
@@ -248,14 +252,6 @@
     text-align: left;
 }
 
-.temaClicadoMentoria{
-    border-style: solid;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    border-bottom-color: #00EBD0;
-}
-
 .visible {
     display: inline-flex;
     visibility: visible;
@@ -274,7 +270,8 @@
     display: flex;
     position: relative;
     height: 300px;
-    background: url('/lib/img/apps/mentoria/faixaTransicao02.png'), linear-gradient(90deg, #525252 0%, black 100%);
+    background: #3333BD;
+    /* background: url('/lib/img/apps/mentoria/faixaTransicao02.png'), linear-gradient(90deg, #525252 0%, black 100%); */
     background-size: cover;
     margin-top: -3px;
 }
