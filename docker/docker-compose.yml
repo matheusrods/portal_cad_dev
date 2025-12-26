@@ -19,6 +19,18 @@ services:
       DB_PASSWORD: rootpassword
       SITE_ROOT: /var/www/html
       CHARSET: utf8mb4
+    
+  frontend-angular:
+    build:
+      context: ../portal-cad-frontend
+      dockerfile: ../docker/angular/Dockerfile
+    container_name: portal-cad-dev-angular
+    ports:
+      - "4200:4200"
+    volumes:
+      - ../portal-cad-frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
   
   db:
     build:
