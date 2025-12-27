@@ -1,0 +1,189 @@
+.depoimentos-carousel {
+    width: 100%;
+    overflow: visible;
+}
+
+.depoimentos-track {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin: 20px 0 40px 120px;
+    padding-right: 120px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    cursor: grab;
+}
+
+.depoimentos-track:active {
+    cursor: grabbing;
+}
+
+.depoimentos-track::-webkit-scrollbar {
+    display: none;
+}
+
+.depoimento-card {
+    width: 830px;
+    height: 497px;
+    flex-shrink: 0;
+    display: flex;
+    background: rgba(217, 217, 217, 0.62);
+    border-radius: 17px;
+    overflow: hidden;
+    transition: opacity .3s ease, filter .3s ease;
+}
+
+.foto-dados {
+    width: 280px;
+    height: 100%;
+    background: #6FDDE8;
+    display: flex;
+    flex-direction: column;
+}
+
+.foto-dados img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+
+.dados {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nome {
+    color: #FFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.92px;
+}
+
+.cargo {
+    margin-top: 4px;
+    color: #FFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.44px;
+}
+
+.dependencia {
+    margin-top: 2px;
+    color: #FFF;
+    text-align: center;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -1.2px;
+}
+
+.texto-depoimento {
+    flex: 1;
+    padding: 75px;
+    position: relative;
+    color: #FFF;
+    font-family: "BancoDoBrasil Textos";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.92px;
+}
+
+.aspas {
+    position: absolute;
+    top: -5px;
+    left: 32px;
+    pointer-events: none;
+    color: #FFF;
+    font-family: Balthazar;
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -7.68px;
+}
+
+.depoimentos-track .depoimento-card:first-child {
+    background: #735CC6;
+    opacity: 1;
+    filter: none;
+}
+
+@media (max-width: 1200px) {
+    .tituloOQueDizemSobreMentoria {
+        font-size: 72px;
+    }
+
+    .depoimentos-track {
+        margin-left: 60px;
+        padding-right: 60px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .depoimento-card {
+        width: 90%;
+        min-width: 90%;
+    }
+
+    .depoimentos-track {
+        margin-left: 40px;
+        padding-right: 40px;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tituloOQueDizemSobreMentoria {
+        font-size: 56px;
+    }
+
+    .depoimento-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .foto-dados {
+        width: 100%;
+    }
+
+    .foto-dados img {
+        height: 280px;
+    }
+
+    .texto-depoimento {
+        padding: 32px;
+        font-size: 18px;
+    }
+
+    .aspas {
+        font-size: 72px;
+        top: 16px;
+        left: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tituloOQueDizemSobreMentoria {
+        font-size: 42px;
+    }
+
+    .texto-depoimento {
+        font-size: 16px;
+    }
+}

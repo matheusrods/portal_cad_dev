@@ -81,7 +81,9 @@
     transform: rotate(180deg);
 }
 
-.trilha-card.open-card { background: #4668FF !important; }
+.trilha-card.open-card {
+    background: #4668FF !important;
+}
 
 .trilha-card.open-card .trilha-modulo,
 .trilha-card.open-card .trilha-titulo {
@@ -93,12 +95,12 @@
 }
 
 .trilha-card.open-card .trilha-desc::after {
-    content:"";
-    display:block;
-    width:100%;
-    height:1px;
-    background:rgba(255,255,255,.6);
-    margin-top:10px;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, .6);
+    margin-top: 10px;
 }
 
 .trilha-card.open-card .trilha-content {
@@ -108,8 +110,27 @@
 
 .trilha-card:hover {
     background: #4668FF !important;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18) !important;
     transform: translateY(-2px);
 }
 
 
+.temas-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 157px;
+}
+
+.temas-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-fundo-trilha-aprendizado);
+    background-repeat: repeat;
+    background-size: auto;
+    z-index: 0;
+}
+
+#temasImersao {
+    position: relative;
+    z-index: 1;
+}

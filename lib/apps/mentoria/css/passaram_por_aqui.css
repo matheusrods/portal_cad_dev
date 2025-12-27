@@ -1,0 +1,89 @@
+.passaram-figma {
+    background: url('/lib/img/apps/mentoria/fundoMentoria.png');
+    padding: 120px 0;
+    text-align: center;
+}
+
+.titulo-passaram {
+    font-family: BancoDoBrasil Titulos;
+    font-size: 96px;
+    font-weight: 700;
+    color: #FCFC30;
+    margin-bottom: 80px;
+}
+
+.metricas-passaram {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin-bottom: 80px;
+}
+
+.metrica img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metrica-img {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.metrica-pessoas img {
+    width: 300px;
+}
+
+.metrica-turmas img {
+    width: 338px;
+}
+
+.metrica-nps img {
+    width: 451px;
+}
+
+.metrica .valor {
+    font-family: BancoDoBrasil Titulos;
+    font-size: 96px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.metrica .label {
+    font-family: BancoDoBrasil Textos;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+
+.box-prefixos {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+    padding: 54px 99px;
+    width: fit-content;
+    margin: 0 auto;
+    color: white;
+}
+
+.titulo-prefixos {
+    font-size: 32px;
+    font-family: BancoDoBrasil Textos;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.lista-prefixos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.lista-prefixos span {
+    font-size: 24px;
+    font-family: BancoDoBrasil Textos;
+    color: white;
+    white-space: nowrap;
+}
