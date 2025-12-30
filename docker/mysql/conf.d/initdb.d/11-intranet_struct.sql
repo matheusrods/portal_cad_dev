@@ -251,3 +251,12 @@ INSERT INTO motivoNotaFeedbackPortal VALUES
 -- Nota 5 – Muito satisfeito
 INSERT INTO motivoNotaFeedbackPortal VALUES
 (5,12),(5,13),(5,14),(5,15),(5,17),(5,18),(5,7);
+
+CREATE TABLE `favoritos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `matricula` VARCHAR(8) DEFAULT NULL,
+  `titulo` VARCHAR(50)DEFAULT NULL,
+  `url` VARCHAR(255) DEFAULT NULL,
+  `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

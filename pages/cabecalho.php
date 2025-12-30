@@ -8,6 +8,7 @@ $class = new cabecalho();
 $cabecalho = $class->montaCabecalho();
 $subMenus = $class->montaSubMenus();
 
+include_once $_SERVER["DOCUMENT_ROOT"] . "/Utils/favoritos/favoritos-loader.php";
 ?>
 
 <div class="divElementosCabecalho">
@@ -20,7 +21,7 @@ $subMenus = $class->montaSubMenus();
     <div class="atalhosCabecalho">
         <ul class="fa-ul" style="display: flex; flex-direction: row; gap: 1rem; list-style-type: none; align-items: center;">
             <li>
-                <a id="atalhoFavoritos" href="" target="_blank" title="Favoritos">
+                <a id="atalhoFavoritos" href="javascript:void(0)" title="Favoritos">
                     <img class="iconeAtalhoCabecalho" src="/lib/img/cabecalho/icon-favoritos.svg" style="color: #FFFFFF;">
                 </a>
             </li>

@@ -1,0 +1,63 @@
+<div id="favoritos-overlay" class="favoritos-overlay">
+    <div class="favoritos-modal">
+        <button class="favoritos-fechar" id="btnFecharFavoritos">×</button>
+
+        <div class="favoritos-conteudo">
+            <div class="favoritos-header">
+                <h1>Links Favoritos</h1>
+            </div>
+
+            <div class="campoPesquisaFavoritos">
+                <div class="barraPesquisa">
+                    <div style="align-self: stretch; height: 39px; width:100%; padding: 8px 16px; background: #F0F2F4; border-top-left-radius: 4px; border-top-right-radius: 4px;  border-bottom: 1px solid #B4B9C1;justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                        <div style="position: relative">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                    <div style="flex: 1 1 0; height: 20px; justify-content: flex-start; align-items: center; display: flex">
+                        <input class="inputCampoPesquisa" placeholder="Buscar Links...">
+                    </div>
+                </div>
+            </div>   
+                <div class="botoesPesquisaLimpaPaineis">
+                    <div class="botaoCampoPesquisa Clicar">
+                        <div class="textoBotoesCampoPesquisa">Pesquisar</div>
+                    </div>
+                    <div class="botaoLimpaPesquisa Clicar">
+                        <div class="TextoAdicionarLink">+ ADICIONAR LINK</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favoritos-body">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="adicionar-link-overlay" class="adicionar-link-overlay">
+    <div class="adicionar-link-modal">
+        <button class="adicionar-link-fechar" id="btnFecharAdicionarLink">×</button>
+
+        <h2>Adicionar Link</h2>
+
+        <div class="form-adicionar-link">
+            <label>
+                Título do Favorito
+                <input type="text" id="favoritoTitulo" placeholder="Digite o nome do favorito" maxlength="50">
+                <small>50 caracteres</small>
+            </label>
+
+            <label>
+                Endereço (URL)
+                <input type="text" id="favoritoUrl" placeholder="Digite a url do site">
+            </label>
+        </div>
+
+        <div class="adicionar-link-acoes">
+            <button class="btn-cancelar">CANCELAR</button>
+            <button class="btn-salvar" disabled>SALVAR</button>
+        </div>
+    </div>
+</div>
