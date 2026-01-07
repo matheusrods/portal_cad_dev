@@ -70,7 +70,7 @@
                         <div>
                             <div class="trilha-modulo">MÓDULO 3</div>
                             <div class="trilha-titulo">Arquitetura Conversacional:</div>
-                            <div class="trilha-desc">Introdução, organização e estruturação do conhecimento</div>
+                            <div class="trilha-desc">Desenvolvendo para entregar valor em cada interação</div>
                         </div>
                     </div>
 

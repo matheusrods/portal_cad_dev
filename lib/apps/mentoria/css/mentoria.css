@@ -187,7 +187,7 @@
 
 .tituloTemaMentoria {
     color: #FCFC30;
-    font-size: 80px;
+    font-size: 93px;
     font-family: 'BancoDoBrasil Titulos', sans-serif;
     font-weight: 700;
 }
@@ -811,11 +811,11 @@
     }
 
     .tituloTemaMentoria {
-        font-size: 40px;
+        font-size: 100px;
     }
 
     .subtituloTemaMentoria {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .linhaVerticalDescricaoImersaoMentoria, .separadorDeLinhasMentoria {
