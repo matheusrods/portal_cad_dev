@@ -1,7 +1,7 @@
 .favoritos-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.45);
+    background: rgba(0, 0, 0, .45);
     backdrop-filter: blur(2px);
     display: none;
     align-items: flex-start;
@@ -54,7 +54,7 @@
     padding: 24px 32px;
     box-sizing: border-box;
     max-width: 1200px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .favoritos-header {
@@ -129,19 +129,20 @@
 .favoritos-body {
     flex: 1;
     overflow-y: auto;
+    padding-top: 40px;
 }
 
 .campoPesquisaFavoritos {
     display: -webkit-box;
 }
 
-.barraPesquisa{
+.barraPesquisa {
     width: 50rem;
     height: 100%;
     justify-content: flex-start;
     align-items: flex-end;
     display: inline-flex;
-   
+
 }
 
 .botoesPesquisaLimpaPaineis {
@@ -188,7 +189,7 @@
 }
 
 
-.inputCampoPesquisa {
+.inputCampoPesquisaLink {
     flex: 1 1 0;
     background-color: #F0F2F4;
     font-size: 16px;
@@ -211,20 +212,10 @@
     word-wrap: break-word;
 }
 
-.inputCampoPesquisa:focus {
-    border: 0.5px solid #49494F;
-    outline: none;
-    border-radius: 5px;
-}
-
-.inputCampoPesquisa:focus::placeholder {
-    color: transparent;
-}
-
 .adicionar-link-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.35);
+    background: rgba(0, 0, 0, .35);
     display: none;
     align-items: center;
     justify-content: center;
@@ -253,7 +244,7 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 700;
-    line-height: 125%; 
+    line-height: 125%;
     margin: 0 0 20px;
 }
 
@@ -337,7 +328,7 @@
     align-items: center;
     gap: 10px;
     border-radius: 4px;
-    background:#FCFC30;
+    background: #FCFC30;
     border: none;
     height: 2.5rem;
     color: #465EFF;
@@ -356,4 +347,92 @@
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+}
+
+.erro-url {
+    color: #D92D20;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.favoritos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.favorito-card {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    height: 127px;
+    border: 1px solid #E4E7EC;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.favorito-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.favorito-icone {
+    margin-top: 32px;
+    font-size: 18px;
+    color: #465EFF;
+}
+
+.favorito-card .titulo {
+    margin-top: 9px;
+    font-family: "BancoDoBrasil Titulos";
+    font-size: 14px;
+    font-weight: 700;
+    color: #111214;
+}
+
+.favorito-acoes {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.favorito-card:hover .favorito-acoes {
+    opacity: 1;
+}
+
+.favorito-acoes button {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: #F7FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #667085;
+}
+
+.favorito-acoes button:hover {
+    background: #E0E9FF;
+    color: #465EFF;
+}
+
+.favorito-acoes .acao-excluir:hover {
+    background: #FEE4E2;
+    color: #D92D20;
+}
+
+.favoritos-vazio {
+    text-align: center;
+    padding: 40px 16px;
+    color: #6b7280;
+    font-size: 14px;
 }

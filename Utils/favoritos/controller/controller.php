@@ -92,6 +92,150 @@ class funcoes
             ];
         }
     }
+
+    public function listarFavoritos(int $pagina = 1, int $limite = 10, ?string $busca = null): array
+    {
+        $mat = $_SESSION['matricula'] ?? null;
+        $db = new Database('intranet');
+
+        $offset = ($pagina - 1) * $limite;
+
+        $whereBusca = '';
+        if ($busca) {
+            $busca = addslashes($busca);
+            $whereBusca = "AND (titulo LIKE '%$busca%' OR url LIKE '%$busca%')";
+        }
+
+        $sqlTotal = sprintf(
+            "SELECT COUNT(*) AS total 
+            FROM favoritos 
+            WHERE matricula = '%s' %s",
+            addslashes($mat),
+            $whereBusca
+        );
+
+        $total = (int)$db->DbGetRow($sqlTotal)['total'];
+
+        $sql = sprintf(
+            "SELECT id, titulo, url
+            FROM favoritos
+            WHERE matricula = '%s' %s
+            ORDER BY timestamp DESC
+            LIMIT %d OFFSET %d",
+            addslashes($mat),
+            $whereBusca,
+            $limite,
+            $offset
+        );
+
+        $dados = $db->DbGetAll($sql);
+
+        return [
+            'status' => 'sucesso',
+            'dados' => $dados,
+            'total' => $total,
+            'pagina' => $pagina,
+            'limite' => $limite
+        ];
+    }
+
+    /**
+     * @param int $id
+     * @param string $titulo
+     * @param string $url
+     * @return array
+     */
+    public function editarFavorito(int $id, string $titulo, string $url): array
+    {
+        $mat = $_SESSION['matricula'] ?? null;
+        $db = new Database('intranet');
+
+        try {
+            $db->DbQuery("START TRANSACTION;");
+
+            $sql = sprintf(
+                "UPDATE favoritos
+                SET titulo = '%s',
+                    url = '%s'
+                WHERE id = %d
+                AND matricula = '%s';",
+                addslashes($titulo),
+                addslashes($url),
+                (int)$id,
+                addslashes($mat)
+            );
+
+            $db->DbQuery($sql);
+
+            $db->DbQuery("COMMIT;");
+
+            return [
+                'status' => 'sucesso'
+            ];
+
+        } catch (Exception $e) {
+            $db->DbQuery("ROLLBACK;");
+
+            $arquivo = $this->geraLogExcecao(
+                "Favoritos",
+                "editarFavorito",
+                $e->getMessage(),
+                $mat
+            );
+
+            return [
+                'status' => 'erro',
+                'mensagem' => 'Erro ao atualizar favorito',
+                'log' => $arquivo
+            ];
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function excluirFavorito(int $id): array
+    {
+        $mat = $_SESSION['matricula'] ?? null;
+        $db = new Database('intranet');
+
+        try {
+            $db->DbQuery("START TRANSACTION;");
+
+            $sql = sprintf(
+                "DELETE FROM favoritos
+                WHERE id = %d
+                AND matricula = '%s';",
+                (int)$id,
+                addslashes($mat)
+            );
+
+            $db->DbQuery($sql);
+
+            $db->DbQuery("COMMIT;");
+
+            return [
+                'status' => 'sucesso'
+            ];
+
+        } catch (Exception $e) {
+            $db->DbQuery("ROLLBACK;");
+
+            $arquivo = $this->geraLogExcecao(
+                "Favoritos",
+                "excluirFavorito",
+                $e->getMessage(),
+                $mat
+            );
+
+            return [
+                'status' => 'erro',
+                'mensagem' => 'Erro ao excluir favorito',
+                'log' => $arquivo
+            ];
+        }
+    }
 }
 
 $class = new funcoes();
@@ -111,6 +255,28 @@ switch ($request) {
 
         $retorno = $class->gravarFavorito($titulo, $url);
         echo json_encode($retorno);
+        break;
+
+    case "listarFavoritos":
+        $pagina = intval($_POST['pagina'] ?? 1);
+        $limite = intval($_POST['limite'] ?? 10);
+        $busca = $_POST['busca'] ?? null;
+
+        echo json_encode(
+            $class->listarFavoritos($pagina, $limite, $busca)
+        );
+        break;
+
+    case 'editarFavorito':
+        $id = $_POST['id'];
+        $titulo = $_POST['titulo'];
+        $url = $_POST['url'];
+        echo json_encode($class->editarFavorito($id, $titulo, $url));
+        break;
+
+    case 'excluirFavorito':
+        $id = intval($_POST['id'] ?? 0);
+        echo json_encode($class->excluirFavorito($id));
         break;
 
 

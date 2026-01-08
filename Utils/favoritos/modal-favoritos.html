@@ -13,11 +13,11 @@
                         <div style="position: relative">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
-                    <div style="flex: 1 1 0; height: 20px; justify-content: flex-start; align-items: center; display: flex">
-                        <input class="inputCampoPesquisa" placeholder="Buscar Links...">
+                        <div style="flex: 1 1 0; height: 20px; justify-content: flex-start; align-items: center; display: flex">
+                            <input class="inputCampoPesquisaLink" placeholder="Buscar Links...">
+                        </div>
                     </div>
                 </div>
-            </div>   
                 <div class="botoesPesquisaLimpaPaineis">
                     <div class="botaoCampoPesquisa Clicar">
                         <div class="textoBotoesCampoPesquisa">Pesquisar</div>
@@ -29,8 +29,14 @@
             </div>
 
             <div class="favoritos-body">
+                <div class="favoritos-grid"></div>
+                
+                <div class="favoritos-vazio" style="display: none;">
+                    Nenhum resultado encontrado
+                </div>
             </div>
 
+            <div class="favoritos-paginacao"></div>
         </div>
     </div>
 </div>
@@ -52,6 +58,9 @@
             <label>
                 Endereço (URL)
                 <input type="text" id="favoritoUrl" placeholder="Digite a url do site">
+                <small class="erro-url" style="display:none;">
+                    URL inválida. Use http:// ou https://
+                </small>
             </label>
         </div>
 

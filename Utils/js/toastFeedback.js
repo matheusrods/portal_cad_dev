@@ -22,7 +22,7 @@ function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
                 background: #e9f8ed;
                 border: 1px solid #3cba54;
                 color: #333;
-                padding: 18px 20px;
+                padding: 28px 20px;
                 border-radius: 12px;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                 font-size: 14px;
