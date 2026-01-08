@@ -2,16 +2,51 @@
  * Exibe o popup de feedback (toast) no canto inferior direito.
  * @param {string} titulo - Título principal do toast
  * @param {string} mensagem - Texto complementar
- * @param {boolean} comPitaco - (opcional) Se true, mostra o Sr Pitaco thumbs-up
+ * @param {boolean} comPitaco - (opcional) Se true, mostra o Sr Pitaco
+ * @param {string} tipo - (opcional) 'sucesso' | 'erro'
  */
-function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
+function mostrarToastFeedback(titulo, mensagem, comPitaco = false, tipo = 'sucesso') {
     $('.feedback-toast').remove();
 
-    const imagemPitaco = comPitaco
+    const isErro = tipo === 'erro';
+
+    const cores = isErro
+        ? {
+            bg: '#fdecea',
+            border: '#e53935',
+            icon: '#c62828'
+        }
+        : {
+            bg: '#e9f8ed',
+            border: '#3cba54',
+            icon: '#0C8A00'
+        };
+
+    const imagemPitaco = (!isErro && comPitaco)
         ? `<img src="/Utils/feedback-float/img/sr_pitaco_like.png"
                  alt="Sr Pitaco"
                  style="width: 90px; height: auto; margin-right: 12px; flex-shrink: 0;">`
         : '';
+
+    const icone = isErro
+        ? `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 
+                         10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-2h2v2Zm0-4h-2V7h2v6Z"
+                      fill="${cores.icon}"/>
+            </svg>
+        `
+        : `
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                <path d="M8 0C3.5816 0 0 3.5816 0 8C0 12.4184 
+                         3.5816 16 8 16C12.4184 16 
+                         16 12.4184 16 8C16 3.5816 
+                         12.4176 0 8 0ZM7.4 12.6L3.4 
+                         9.6L4.6 8L7 9.8L11.2 4.2L12.8 
+                         5.4L7.4 12.6Z"
+                      fill="${cores.icon}"/>
+            </svg>
+        `;
 
     const toast = $(`
         <div class="feedback-toast"
@@ -19,8 +54,8 @@ function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
                 position: fixed;
                 bottom: 20px;
                 right: 100px;
-                background: #e9f8ed;
-                border: 1px solid #3cba54;
+                background: ${cores.bg};
+                border: 1px solid ${cores.border};
                 color: #333;
                 padding: 28px 20px;
                 border-radius: 12px;
@@ -37,10 +72,8 @@ function mostrarToastFeedback(titulo, mensagem, comPitaco = false) {
 
             <div style="flex: 1;">
                 <div style="display: flex; justify-content: space-between; align-items: start;">
-                    <div style="display: flex; align-items: center;">
-                        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 6px;">
-                            <path d="M8 0C3.5816 0 0 3.5816 0 8C0 12.4184 3.5816 16 8 16C12.4184 16 16 12.4184 16 8C16 3.5816 12.4176 0 8 0ZM7.4 12.6L3.4 9.6L4.6 8L7 9.8L11.2 4.2L12.8 5.4L7.4 12.6Z" fill="#0C8A00"/>
-                        </svg>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        ${icone}
                         <div style="font-weight: 600; font-size: 15px;">
                             ${titulo}
                         </div>

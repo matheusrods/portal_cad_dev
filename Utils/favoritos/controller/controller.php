@@ -54,6 +54,25 @@ class funcoes
         $db = new Database('intranet');
 
         try {
+            $sqlExiste = sprintf(
+                "SELECT 1 
+                FROM favoritos 
+                WHERE matricula = '%s' 
+                AND LOWER(titulo) = LOWER('%s')
+                LIMIT 1;",
+                addslashes($mat),
+                addslashes($titulo)
+            );
+
+            $existe = $db->DbGetRow($sqlExiste);
+
+            if ($existe) {
+                return [
+                    'status' => 'erro',
+                    'mensagem' => 'Já existe um favorito com esse título.'
+                ];
+            }
+
             $db->DbQuery("START TRANSACTION;");
 
             $sql = sprintf(
@@ -65,9 +84,7 @@ class funcoes
             );
 
             $db->DbQuery($sql);
-
             $id = $db->DbInsertId();
-
             $db->DbQuery("COMMIT;");
 
             return [
@@ -151,6 +168,28 @@ class funcoes
         $db = new Database('intranet');
 
         try {
+
+            $sqlExiste = sprintf(
+                "SELECT 1 
+                FROM favoritos 
+                WHERE matricula = '%s'
+                AND LOWER(titulo) = LOWER('%s')
+                AND id <> %d
+                LIMIT 1;",
+                addslashes($mat),
+                addslashes($titulo),
+                (int)$id
+            );
+
+            $existe = $db->DbGetRow($sqlExiste);
+
+            if ($existe) {
+                return [
+                    'status' => 'erro',
+                    'mensagem' => 'Já existe um favorito com esse título.'
+                ];
+            }
+
             $db->DbQuery("START TRANSACTION;");
 
             $sql = sprintf(

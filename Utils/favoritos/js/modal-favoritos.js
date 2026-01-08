@@ -126,7 +126,12 @@ $(document).ready(function () {
 
                     carregarFavoritos(1);
                 } else {
-                    alert(res.mensagem || 'Erro ao salvar favorito');
+                    mostrarToastFeedback(
+                        'Erro ao salvar',
+                        'Já existe um favorito com esse título',
+                        false,
+                        'erro'
+                    );
                 }
             },
             error: function () {
@@ -284,7 +289,12 @@ $(document).ready(function () {
                     mostrarToastFeedback('Link atualizado com sucesso!', '');
                     carregarFavoritos(1);
                 } else {
-                    alert(res.mensagem || 'Erro ao atualizar');
+                    mostrarToastFeedback(
+                        'Erro ao salvar',
+                        'Já existe um favorito com esse título',
+                        false,
+                        'erro'
+                    );
                 }
             },
             complete: function () {
